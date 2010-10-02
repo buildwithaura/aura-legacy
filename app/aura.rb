@@ -38,8 +38,18 @@ end
 #==============================================================================
 
 module Aura
+  ExtensionNotFound = Class.new(StandardError)
+
   class Extension
     attr_reader :name
+
+    def self.[](name)
+      begin
+        self.new(name)
+      rescue ExtensionNotFound
+        nil
+      end
+    end
 
     def initialize(name)
       if File.directory?(name)
@@ -48,6 +58,7 @@ module Aura
       else
         @name = name
         @path = root_path('extensions', name)
+        raise ExtensionNotFound  unless File.directory?(@path)
       end
     end
 
