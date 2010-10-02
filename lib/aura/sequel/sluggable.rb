@@ -4,6 +4,17 @@ module Sequel
       def self.configure(model, opts={})
         Aura::Slugs.register(model)
         model.extend ClassMethods
+        model.send(:include, InstanceMethods)
+      end
+    end
+
+    module InstanceMethods
+      # Returns the URL path.
+      def path(opts=nil)
+        ret = '/' + slug
+        ret = "#{parent.path}#{ret}"  if respond_to?(:parent) && parent.respond_to?(:id)
+        ret += '?' + Aura::Utils.query_string(opts)  if opts.is_a?(Hash)
+        ret
       end
     end
 
