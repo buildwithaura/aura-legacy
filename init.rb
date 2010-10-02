@@ -18,4 +18,12 @@ DB = Sequel.connect(app_config(:sequel, :db))
 Dir['./app/**/*.rb'].each { |f| require f }
 Dir['./extensions/*/{*_extension.rb,{models,helpers}/*.rb}'].each { |f| require f }
 Dir['./extensions/*/public'].each { |pub| Main.add_public(pub) }
+
+if Main.development?
+  Aura::Models.all.each do |model|
+    klass = model.name.split('::').last
+    Kernel.const_set(klass, model)
+  end
+end
+
 Main.run!  if Main.run?

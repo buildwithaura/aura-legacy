@@ -6,4 +6,8 @@ Sequel.migration do
       String :author_name
     end
   end
+
+  down do
+    drop_table :posts
+  end
 end

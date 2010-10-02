@@ -4,6 +4,7 @@ class Db < Thor
     app
 
     tables = Aura::Models.all.map(&:table_name)
+    tables << :schema_info
     tables &= DB.tables
 
     tables.each do |table|
@@ -12,11 +13,23 @@ class Db < Thor
     end
   end
 
-protected
-  def migrate(version)
-    exec_cmd "sequel -m lib/migrations -M #{version} #{db}"
+  desc "migrate", "Ensures the DB schema is up to date."
+  def migrate
+    app
+    Sequel.extension :migration
+
+    Aura.extensions.each do |ext|
+      migrations_path = ext.path(:migrations)
+      next  if migrations_path.nil?
+
+      say_status :migrate, ext
+      Sequel::Migrator.run(DB, migrations_path,
+                           :table => :schema_info,
+                           :column => :"#{ext}_version")
+    end
   end
 
+protected
   def app
     require './init'; Main
   end
