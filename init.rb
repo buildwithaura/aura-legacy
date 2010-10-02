@@ -15,6 +15,7 @@ end #class
 # Sequel
 DB = Sequel.connect(app_config(:sequel, :db))
 
+Dir['./lib/aura/**/*.rb'].each { |f| require f }
 Dir['./app/**/*.rb'].each { |f| require f }
 Dir['./extensions/*/{*_extension.rb,{models,helpers}/*.rb}'].each { |f| require f }
 Dir['./extensions/*/public'].each { |pub| Main.add_public(pub) }
