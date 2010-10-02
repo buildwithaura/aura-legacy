@@ -3,13 +3,13 @@ class Db < Thor
   def flush
     app
 
-    tables = Aura::Models.all.map(&:table_name)
+    tables = Aura.models.map(&:table_name)
     tables << :schema_info
-    tables &= DB.tables
+    tables &= db.tables
 
     tables.each do |table|
       say_status :drop_table, table
-      DB.drop_table table
+      db.drop_table table
     end
   end
 
@@ -23,7 +23,7 @@ class Db < Thor
       next  if migrations_path.nil?
 
       say_status :migrate, ext
-      Sequel::Migrator.run(DB, migrations_path,
+      Sequel::Migrator.run(db, migrations_path,
                            :table => :schema_info,
                            :column => :"#{ext}_version")
     end
