@@ -1,0 +1,11 @@
+defaults: &defaults
+  :db: sqlite://db/development.db
+
+:development:
+  <<: *defaults
+
+:test:
+  <<: *defaults
+
+:production:
+  <<: *defaults

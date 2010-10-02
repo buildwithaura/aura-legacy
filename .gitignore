@@ -1,0 +1,26 @@
+# Mac OS
+.DS_Store
+
+# Textmate
+*.tmproj
+tmtags
+
+# Emacs
+*~
+\#*
+.\#*
+
+# VIM
+*.swp
+*.swo
+*.swn
+
+# Project (general)
+/config/appconfig.yml
+/lib/nano/recipes
+/vendor/*/vendor
+/tmp
+/*.log
+
+# Others
+db
