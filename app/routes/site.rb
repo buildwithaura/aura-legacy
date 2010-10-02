@@ -1,7 +1,7 @@
 class Main
   get '/*' do |path|
     @page = Aura::Slugs.find(path) or pass
-    @page.inspect + ":P"
+    @page.inspect
   end
 
   get '/post/:id' do |id|
