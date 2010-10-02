@@ -1,5 +1,6 @@
 To do
 -----
 
-- Admin
-- Post thing
+- Slug lookup (done)
+- Rendering
+- Editor

@@ -4,6 +4,8 @@ Sequel.migration do
       primary_key :id
       foreign_key :parent_id, :posts
 
+      String :template
+
       String :title
       String :body, :text => true
       String :slug
