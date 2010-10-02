@@ -5,21 +5,23 @@ class Post < Thor
   def seed
     app
 
-    post = Aura::Models::Post
+    posts = Aura::Models::Post
 
-    post.create :title => "About us",
-                :slug => "about-us",
-                :body => "Hello there."
+    posts.delete
 
-    p = post.create :title => "Products",
-                    :slug => "products"
+    p1 = posts.create :title => "About us",
+                      :slug => "about-us",
+                      :body => "Hello there."
 
-    post.create :title => "Applebottom Jeans",
-                :slug => "jeans",
-                :parent_id => p.id
+    p1 = posts.create :title => "Products",
+                      :slug => "products"
 
-    post.create :title => "Boots with the fur",
-                :slug => "boots",
-                :parent_id => p.id
+    p2 = posts.create :title => "Applebottom Jeans",
+                      :slug => "jeans",
+                      :parent_id => p1.id
+
+    p2 = posts.create :title => "Boots with the fur",
+                      :slug => "boots",
+                      :parent_id => p1.id
   end
 end

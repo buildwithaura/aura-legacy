@@ -73,18 +73,3 @@ module Aura
     alias to_s name
   end
 end
-
-class Main
-  helpers do
-    def passthru(fname)
-      File.open(fname) { |f| f.read }
-    end
-  end
-
-  def self.add_public(dir)
-    Dir[File.join(dir, '**/*')].each do |fname|
-      path = fname.gsub(/^#{dir}\/*/, '/')
-      get(path) { passthru(fname) }
-    end
-  end
-end
