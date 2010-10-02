@@ -8,7 +8,15 @@ module Sequel
 
     module InstanceMethods
       def template
-        @values[:template] || self.class.to_s.split('::').last.downcase
+        @values[:template] || default_template
+      end
+
+      def default_template
+        self.class.to_s.split('::').last.downcase
+      end
+
+      def renderable?
+        true
       end
     end
 
