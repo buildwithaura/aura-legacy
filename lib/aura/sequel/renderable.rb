@@ -7,6 +7,9 @@ module Sequel
     end
 
     module InstanceMethods
+      def template
+        @values[:template] || self.class.to_s.split('::').last.downcase
+      end
     end
 
     module ClassMethods

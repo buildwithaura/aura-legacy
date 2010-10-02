@@ -14,6 +14,8 @@ class Main < Monk::Glue
   use     Rack::Session::Cookie
 
   register Aura::Public
+
+  set :haml, :escape_html => true
 end #class
 
 # Sequel
