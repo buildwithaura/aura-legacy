@@ -1,17 +1,8 @@
-%style
-  :plain
-    body { background: #eee; }
-    #area { width: 500px; margin: 30px auto; padding: 10px; background: white; }
-    #content { border: solid 1px #ccc; padding: 10px; }
-    pre { overflow: auto; }
+%h1
+  = item.title
 
-#area
-  %h1
-    = item.title
+#content
+  = item.body
 
-  #content
-    = item.body
-
-  %pre
-    = item.inspect
-
+%pre
+  = item.inspect

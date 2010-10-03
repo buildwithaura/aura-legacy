@@ -24,12 +24,7 @@ DB = Sequel.connect(app_config(:sequel, :db))
 # Load extensions
 Aura.extensions.each { |ext| ext.load! }
 
-# Unload models for irb
-if Main.development?
-  Aura::Models.all.each do |model|
-    klass = model.name.split('::').last
-    Kernel.const_set(klass, model)
-  end
-end
+# Unload models for irb.
+Aura::Models.unload  if Main.development?
 
 Main.run!  if Main.run?

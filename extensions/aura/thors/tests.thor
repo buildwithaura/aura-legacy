@@ -1,7 +1,7 @@
 class Monk < Thor
   desc "test [type]", "Run all tests"
   def test(type=nil)
-    verify_config(:test)
+    verify_config('test')
 
     $:.unshift File.join(File.dirname(__FILE__), "..", "..", "test")
 

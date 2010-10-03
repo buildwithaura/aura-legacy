@@ -7,19 +7,43 @@ class Main
     # - Tries many formats
     # - Tries many view paths
     # - Tries many templates
+    # - Layouts doesn't have to be the same format as the view
     #
-    def show(templates, params={}, options={})
+    # Examples:
+    #
+    #     show 'default', :item => @item
+    #     show ['page/default', 'default']
+    #     show 'default', { :item => @item }, { :layout => 'layout' }
+    #     show 'css/chrome', {}, :view_formats => [ :sass, :less ]
+    #
+    def show(templates, params={}, options={}, &block)
       template, format = find_template(templates, options[:view_formats])
       return nil  if template.nil?
 
-      render format, template, options, params
+      layout = options[:layout]
+      options.delete :layout
+
+      ret = render(format, template, options, params)
+      
+      # Layout!
+      if layout
+        layout, layout_format = find_template(layout)
+        return ret  if layout.nil?
+
+        return render(layout_format, layout) { ret }
+      end
+
+      ret
+    end
+
+    def show_page(templates, params={})
+      show templates, params, { :layout => 'layout' }
     end
 
     # Finds a template file.
     # Returns: a tuple of the template filename and the format.
-    def find_template(templates, formats)
-      paths     = Aura.extensions.map { |m| m.path(:views) }.compact # TODO: Should use settings.view_paths
-
+    def find_template(templates, formats=nil)
+      paths     = Aura.extensions.map { |m| m.path(:views) }.compact
       templates = [templates].flatten
       formats ||= settings.view_formats
 
@@ -36,7 +60,7 @@ class Main
     end
 
     def partial(templates, params={})
-      show(templates, params, {})
+      show(templates, params, {:layout => false})
     end
 
     def template_for(template, format, path)

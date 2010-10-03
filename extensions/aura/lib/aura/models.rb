@@ -15,6 +15,14 @@ module Aura
       end
     end
 
+    # Puts models in the global namespace.
+    def unload
+      all.each do |model|
+        klass = model.name.split('::').last
+        Kernel.const_set(klass, model)
+      end
+    end
+
   protected
     def camelize(str)
       str.split('_').map(&:capitalize).join('')

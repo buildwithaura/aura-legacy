@@ -3,7 +3,7 @@ class Main
     @item = Aura::Slugs.find(path) or pass
     pass  unless @item.renderable?
 
-    show @item.page_templates, :item => @item
+    show_page @item.page_templates, :item => @item
   end
 
   get '/' do
