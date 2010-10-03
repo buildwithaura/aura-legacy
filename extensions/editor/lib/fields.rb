@@ -21,7 +21,7 @@ module Aura
 
       class Textarea < Field
         def input_html(val)
-          "<textarea type='text' name='#{input_name}'>#{val}</textarea>"
+          "<textarea type='text' name='#{input_name}'>#{h val}</textarea>"
         end
       end
     end

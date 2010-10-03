@@ -29,7 +29,7 @@ module Aura
       end
 
       def input_html(val)
-        "<input type='text' name='#{input_name}' value='#{Rack::Utils.escape_html(val)}' />"
+        "<input type='text' name='#{input_name}' value='#{h val}' />"
       end
 
       def to_html(val)
@@ -38,6 +38,11 @@ module Aura
 
       def html_wrap(s)
         "<p>" + s + "</p>"
+      end
+
+    protected
+      def h(str)
+        Rack::Utils.escape_html str
       end
     end
   end
