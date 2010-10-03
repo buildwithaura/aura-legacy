@@ -30,4 +30,14 @@ class Db < Thor
                            :column => :"#{ext}_version")
     end
   end
+
+  desc "seed", "Seed data"
+  def seed
+    app
+    _seed
+  end
+
+protected
+  def _seed
+  end
 end
