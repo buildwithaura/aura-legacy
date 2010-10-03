@@ -19,8 +19,21 @@ module Sequel
         self.class.templates_for template
       end
 
+      # Returns the templates to be tried for the item, listed
+      # in order of priority.
+      #
+      # Example:
+      #
+      #     [ "product/mofo", "base/mofo", "product/default", "base/default" ]
+      #
       def page_templates
-        [template, default_template, :default].map(&:to_sym).uniq
+        klass = self.class.class_name # blog_post
+
+        [ :"#{klass}/#{template}",
+          :"base/#{template}",
+          :"#{klass}/default",
+          :"base/default"
+        ].map(&:to_sym).uniq
       end
 
       def template
