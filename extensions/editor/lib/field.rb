@@ -24,12 +24,16 @@ module Aura
         "<label>#{title}:</label>"
       end
 
-      def input_html
-        "<input type='text' name='#{name}' />"
+      def input_name
+        "editor[#{name}]"
       end
 
-      def to_html
-        html_wrap [ label_html, input_html ].join('')
+      def input_html(val)
+        "<input type='text' name='#{input_name}' value='#{Rack::Utils.escape_html(val)}' />"
+      end
+
+      def to_html(val)
+        html_wrap [ label_html, input_html(val) ].join('')
       end
 
       def html_wrap(s)

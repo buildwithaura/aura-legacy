@@ -20,7 +20,7 @@ module Sequel
       def path(*a)
         ret = '/' + slug
         ret = "#{parent.path}#{ret}"  if respond_to?(:parent) && parent.respond_to?(:id)
-        ret += "/#{a.shift}"  if a.first.is_a?(String)
+        ret += "/#{a.shift.to_s}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
         ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
         ret
       end
@@ -39,7 +39,7 @@ module Sequel
 
       def path(*a)
         ret = "/#{class_name}"
-        ret += "/#{a.shift}"  if a.first.is_a?(String)
+        ret += "/#{a.shift}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
         ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
         ret
       end

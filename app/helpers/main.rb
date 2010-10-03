@@ -44,5 +44,9 @@ class Main
         File.open(fname) { |f| f.read }
       end
     end
+
+    def h(str)
+      Rack::Utils.escape_html(str)
+    end
   end
 end

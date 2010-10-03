@@ -2,6 +2,9 @@
   Editing
   = item
 
-%form
+%form{:action => item.path(:save), :method => 'post' }
   - item.class.editor_options.fields.each do |field|
-    != field.to_html
+    != field.to_html(item.send(field.name))
+  %p.submit
+    %button{:type => 'submit'}
+      %span Save
