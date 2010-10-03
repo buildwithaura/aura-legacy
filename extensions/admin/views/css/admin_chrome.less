@@ -1,18 +1,33 @@
-body > header { background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; }
+body { background: #eee; }
+#top { background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; }
+
+#title { background: white; padding: 10px; margin: -10px 0 20px 0;
+  > div { width: 700px; margin: 0 auto; }
+  h1 { color: #7bd; font-size: 20pt; }
+}
+
 #content { background: white; width: 700px; margin: 0 auto; padding: 10px; }
 
+#toolbar { background: #eee; margin-bottom: 10px; padding: 5px; text-align: center; 
+  ul { list-style-type: none; }
+}
 /* Overrides */
-body.form #content { width: 500px; }
+body.form {
+  #content, #title>div { width: 500px; }
+}
 
 /* Table */
 section.items table { width: 100%;
   td { padding: 10px 5px; border-top: dotted 1px #ddd; }
   td:first-child { padding-left: 0; }
   td:last-child { padding-right: 0; }
-  td.actions { width: 100px; text-align: right; }
+  td.actions { width: 150px; text-align: right; }
 }
 
-ul.actions {
+ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; 
+  li { margin: 0; padding: 0; float: left; }
+  a { background: #ddd; color: #333; display: block; float: left; padding: 1px 8px; }
+  a:hover { text-decoration: none; background: #888; color: white; }
 }
 
 /* Forms */
@@ -20,5 +35,6 @@ form:not(.bypass) {
  p { margin: 10px 0; }
  label { display: block; }
  textarea, input { width: 488px; padding: 5px; border: solid 1px #ccc; }
+ textarea { height: 150px; }
  p.submit { background: #ddd; padding: 10px; text-align: center; }
 }

@@ -1,8 +1,9 @@
 - body_class 'form'
 
-%h1
-  Editing
-  = item
+- content_for(:title) do
+  %h1
+    Editing
+    = item
 
 %form{:action => item.path(:save), :method => 'post' }
   - item.class.editor_options.fields.each do |field|

@@ -3,6 +3,7 @@ ROOT_DIR = File.expand_path(File.dirname(__FILE__)) unless defined? ROOT_DIR
 require "rubygems"
 require "./vendor/dependencies/lib/dependencies"
 require "monk/glue"
+require "sinatra/content_for"
 require "sequel"
 require "sqlite3"
 
@@ -11,11 +12,10 @@ require './extensions/aura/aura.rb'
 
 class Main < Monk::Glue
   set     :app_file, __FILE__
+  set     :haml, :escape_html => true
   use     Rack::Session::Cookie
-
+  helpers Sinatra::ContentFor
   register Aura::Public
-
-  set :haml, :escape_html => true
 end #class
 
 # Sequel

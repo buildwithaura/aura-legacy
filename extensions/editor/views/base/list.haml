@@ -1,3 +1,11 @@
+- content_for(:title) do
+  %h1
+    = model.title
+
+- content_for(:toolbar) do
+  %li
+    %a{href: model.path(:new)}= "Create new"
+
 %section.items
   %table
     - model.each do |item|

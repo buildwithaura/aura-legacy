@@ -23,11 +23,13 @@ Run it.
 - Deleting
 - Dynamic CSS (less, etc)
 - body_class, title
+- Admin templates (in progress)
 
 ## To do
 
-- Admin templates
+- Admin deleting
 - Extension dependencies
+- Default theme
 - Validations
 - Autoslugging
 - Fkey editing

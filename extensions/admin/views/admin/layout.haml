@@ -6,8 +6,18 @@
     %link(rel='stylesheet' media='screen' type='text/css' href='/css/reset.css')
     %link(rel='stylesheet' media='screen' type='text/css' href='/css/admin_chrome.css')
   %body{:class => body_class}
-    %header
+    %header#top
       Admin
 
+    - if has_content?(:title)
+      %header#title
+        %div
+          %h1
+            != yield_content :title
+
     #content
+      - if has_content?(:toolbar)
+        %nav#toolbar
+          %ul
+            != yield_content :toolbar
       != yield

@@ -1,8 +1,9 @@
 - body_class 'form'
 
-%h1
-  Creating new
-  = item.class.title
+- content_for(:title) do
+  %h1
+    Create new
+    = item.class.title
 
 %form{:action => model.path(:save), :method => 'post' }
   - item.class.editor_options.fields.each do |field|

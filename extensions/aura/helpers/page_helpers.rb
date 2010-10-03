@@ -11,5 +11,9 @@ class Main
       @page_title = title  if title
       [@page_title, base].compact.map { |s| s }.join(' &raquo; ')
     end
+
+    def has_content?(key)
+      content_blocks[key.to_sym].any?
+    end
   end
 end
