@@ -5,7 +5,7 @@ class Db < Thor
   def flush
     app
 
-    tables = Aura.models.map(&:table_name)
+    tables = Aura::Models.all.map(&:table_name)
     tables << :schema_info
     tables &= db.tables
 

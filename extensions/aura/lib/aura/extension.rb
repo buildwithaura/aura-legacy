@@ -52,5 +52,9 @@ module Aura
     end
 
     alias to_s name
+
+    def self.all
+      Dir[root_path('extensions/*')].map { |path| self.new(path) }.sort
+    end
   end
 end

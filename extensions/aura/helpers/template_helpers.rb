@@ -43,7 +43,7 @@ class Main
     # Finds a template file.
     # Returns: a tuple of the template filename and the format.
     def find_template(templates, formats=nil)
-      paths     = Aura.extensions.map { |m| m.path(:views) }.compact
+      paths     = Aura::Extension.all.map { |m| m.path(:views) }.compact
       templates = [templates].flatten
       formats ||= settings.view_formats
 

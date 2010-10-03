@@ -22,7 +22,7 @@ end #class
 DB = Sequel.connect(app_config(:sequel, :db))
 
 # Load extensions
-Aura.extensions.each { |ext| ext.load! }
+Aura::Extension.all.each { |ext| ext.load! }
 
 # Unload models for irb.
 Aura::Models.unload  if Main.development?
