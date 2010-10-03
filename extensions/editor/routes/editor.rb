@@ -3,7 +3,7 @@ class Main
     @model = Aura::Models.get(model) or pass
     #pass unless @model.listable?
 
-    show @model.templates_for('list'), :model => @model
+    show_admin @model.templates_for('list'), :model => @model
   end
 
   get '/:model/new' do |model|
@@ -12,7 +12,7 @@ class Main
 
     @item = @model.new
 
-    show @model.templates_for('new'), :model => @model, :item => @item
+    show_admin @model.templates_for('new'), :model => @model, :item => @item
   end
 
   post '/:model/save' do |model|
@@ -30,7 +30,7 @@ class Main
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
-    show @item.templates_for('edit'), :item => @item
+    show_admin @item.templates_for('edit'), :item => @item
   end
 
   post '/*/save' do |path|

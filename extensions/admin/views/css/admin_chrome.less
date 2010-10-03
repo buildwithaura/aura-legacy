@@ -1,0 +1,24 @@
+body > header { background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; }
+#content { background: white; width: 700px; margin: 0 auto; padding: 10px; }
+
+/* Overrides */
+body.form #content { width: 500px; }
+
+/* Table */
+section.items table { width: 100%;
+  td { padding: 10px 5px; border-top: dotted 1px #ddd; }
+  td:first-child { padding-left: 0; }
+  td:last-child { padding-right: 0; }
+  td.actions { width: 100px; text-align: right; }
+}
+
+ul.actions {
+}
+
+/* Forms */
+form:not(.bypass) {
+ p { margin: 10px 0; }
+ label { display: block; }
+ textarea, input { width: 488px; padding: 5px; border: solid 1px #ccc; }
+ p.submit { background: #ddd; padding: 10px; text-align: center; }
+}

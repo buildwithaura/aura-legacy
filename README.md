@@ -22,6 +22,7 @@ Run it.
 - Creating
 - Deleting
 - Dynamic CSS (less, etc)
+- body_class, title
 
 ## To do
 
@@ -33,6 +34,7 @@ Run it.
 - Jpegs in public/
 - Fix parenting
 - Sort ordering
+- content_for
 
 ## Moar to do
 
