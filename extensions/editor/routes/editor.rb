@@ -16,8 +16,7 @@ class Main
     show_admin @model.templates_for('new'),
       :model  => @model,
       :item   => @item,
-      :action => @model.path(:new),
-      :errors => []
+      :action => @model.path(:new)
   end
 
   post '/:model/new' do |model|
@@ -45,15 +44,14 @@ class Main
 
     show_admin @item.templates_for('edit'),
       :item   => @item,
-      :action => @item.path(:save),
-      :errors => []
+      :action => @item.path(:edit)
   end
 
-  post '/*/save' do |path|
+  post '/*/edit' do |path|
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
-    action = @item.path(:save)
+    action = @item.path(:edit)
 
     begin
       @item.update params[:editor]
@@ -62,11 +60,9 @@ class Main
     rescue Sequel::ValidationFailed
       return show_admin @item.templates_for('edit'),
         :item   => @item,
-        :action => action,
-        :errors => @item.errors
+        :action => action
     end
 
     redirect @item.class.path(:list)
   end
-
 end
