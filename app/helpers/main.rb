@@ -1,4 +1,6 @@
 class Main
+  set :view_formats, [ :erb, :haml ]
+
   helpers do
     # Works like #render, except:
     #
@@ -7,29 +9,36 @@ class Main
     # - Tries many templates
     #
     def show(templates, params={})
-      template_paths = Aura.extensions.map { |m| m.path(:views) }.compact
+      paths     = Aura.extensions.map { |m| m.path(:views) }.compact
+      paths.unshift nil
 
-      templates = [templates].flatten # to_a
+      templates = [templates].flatten
+
       templates.each do |template|
-        ([nil] + template_paths).each do |path|
-          [ :erb, :haml ].each do |format|
-            begin
-              if path.nil?
-                template = template.to_sym
-              else
-                fname = File.join(path, "#{template}.#{format}")
-                next  unless File.exists?(fname)
-                template = File.open(fname) { |f| f.read }
-              end
-
-              # TODO: Cache this hit
-              return render(format, template, {}, params)
-            rescue Errno::ENOENT
-            end
+        paths.each do |path|
+          settings.view_formats.each do |format|
+            tpl = template_for(template, format, path) or next
+            return render(format, tpl, {}, params)
           end
         end
       end
-      nil
+
+      nil #Fail
+    end
+
+    def template_for(template, format, path)
+      if path.nil?
+        fname = File.join(self.class.views, "#{template}.#{format}")
+        return nil  unless File.exists?(fname)
+
+        template.to_sym
+
+      else
+        fname = File.join(path, "#{template}.#{format}")
+        return nil  unless File.exists?(fname)
+
+        File.open(fname) { |f| f.read }
+      end
     end
   end
 end
