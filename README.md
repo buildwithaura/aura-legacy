@@ -25,8 +25,10 @@ Run it.
 - Deleting
 - Dynamic CSS (less, etc)
 - body_class, title
+- Multiple public/ folders
 - Admin templates (in progress)
 - Default theme (in progress)
+- content_for
 - Validations
 - Autoslugging
 
@@ -36,13 +38,13 @@ Run it.
 - Extension dependencies
 - Flash messages
 - Fkey editing
-- Jpegs in public/
 - Fix parenting
 - Sort ordering
-- content_for
 
 ## Moar to do
 
+- Better forms
+- Inline validation
 - Admin menu
 - User login/register
 - Permissions
