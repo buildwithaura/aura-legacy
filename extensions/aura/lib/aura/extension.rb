@@ -43,6 +43,14 @@ module Aura
       Main.add_public(public_path)  unless public_path.nil?
     end
 
+    def <=>(other)
+      self.sort_position <=> other.sort_position
+    end
+
+    def sort_position
+      to_s
+    end
+
     alias to_s name
   end
 end

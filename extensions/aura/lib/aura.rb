@@ -6,7 +6,7 @@ module Aura
   module_function :models
 
   def extensions
-    Dir[root_path('extensions/*')].map { |path| Extension.new(path) }
+    Dir[root_path('extensions/*')].map { |path| Extension.new(path) }.sort
   end
 
   module_function :extensions
