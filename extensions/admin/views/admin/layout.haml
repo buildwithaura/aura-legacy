@@ -15,9 +15,10 @@
           %h1
             != yield_content :title
 
+    - if has_content?(:toolbar)
+      %nav#toolbar
+        %ul
+          != yield_content :toolbar
+
     #content
-      - if has_content?(:toolbar)
-        %nav#toolbar
-          %ul
-            != yield_content :toolbar
       != yield

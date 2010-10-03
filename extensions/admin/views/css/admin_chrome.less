@@ -1,16 +1,31 @@
+@import "extensions/lessutils/less/colors.less";
+@import "extensions/lessutils/less/css3.less";
+@import "extensions/lessutils/less/utilities.less";
+
 body { background: #eee; }
 #top { background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; }
 
-#title { background: white; padding: 10px; margin: -10px 0 20px 0;
-  > div { width: 700px; margin: 0 auto; }
-  h1 { color: #7bd; font-size: 20pt; }
+#title { background: white; padding: 5px 10px; margin: -10px 0 20px 0;
+  .shadow(2px 0 4px @shadow10);
+  > div { margin: 0 auto; }
+  h1 { color: #7bd; font-size: 20pt; line-height: 1em; }
 }
 
-#content { background: white; width: 700px; margin: 0 auto; padding: 10px; }
-
-#toolbar { background: #eee; margin-bottom: 10px; padding: 5px; text-align: center; 
-  ul { list-style-type: none; }
+#content { background: white; margin: 0 auto; padding: 10px;
+  .shadow(2px 2px 2px @shadow10);
 }
+
+#toolbar { .clearfix; margin-top: (-20px - 11px); margin-bottom: 20px; 
+  ul { .center-list; }
+  a { background: #666; color: white; text-shadow: 1px 1px 0 @shadow20; padding: 0 15px; }
+  a { line-height: 22px; display: block; float: left; .round(11px); }
+  a:hover { text-decoration: none; background: #7bd; }
+}
+
+body {
+  #content, #title>div { width: 70%; min-width: 500px; }
+}
+
 /* Overrides */
 body.form {
   #content, #title>div { width: 500px; }
@@ -18,23 +33,38 @@ body.form {
 
 /* Table */
 section.items table { width: 100%;
+  tr:last-child td { padding-bottom: 0; }
+  tr:first-child td { border-top: 0; padding-top: 0; }
   td { padding: 10px 5px; border-top: dotted 1px #ddd; }
   td:first-child { padding-left: 0; }
   td:last-child { padding-right: 0; }
   td.actions { width: 150px; text-align: right; }
 }
 
-ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; 
+ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-size: 8pt; line-height: 16px;
   li { margin: 0; padding: 0; float: left; }
-  a { background: #ddd; color: #333; display: block; float: left; padding: 1px 8px; }
-  a:hover { text-decoration: none; background: #888; color: white; }
+  a { background: #ddd; color: #333; display: block; float: left; padding: 1px 9px; }
+  a { text-shadow: 1px 1px 0 @hilite30; .shadow(1px 1px 0 @shadow20); }
+  a { border-left: solid 1px @hilite40; border-right: solid 1px @shadow10; }
+  li:first-child a { .border-left-radius(8px); border-left: 0; }
+  li:last-child a { .border-right-radius(8px); border-right: 0; }
+  a:hover { text-decoration: none; background: #888; color: white; text-shadow: 1px 1px 0 @shadow20; }
 }
 
 /* Forms */
-form:not(.bypass) {
- p { margin: 10px 0; }
- label { display: block; }
- textarea, input { width: 488px; padding: 5px; border: solid 1px #ccc; }
- textarea { height: 150px; }
- p.submit { background: #ddd; padding: 10px; text-align: center; }
+#content form:not(.bypass) {
+  p { margin: 10px 0; }
+  p:first-child { margin-top: 0; }
+  p:last-child { margin-bottom: 0; border-bottom: 0; }
+  label { display: block; font-weight: bold; line-height: 24px; color: #777; }
+  textarea, input { width: 488px; padding: 5px; border: solid 1px #ddd; }
+  textarea, input { .round(2px); .shadow-2(inset 2px 2px 0 @shadow05, inset 0 1px 2px @shadow05); }
+  textarea { height: 150px; }
+  p.submit { background: #f2f2f2; padding: 10px; text-align: center; }
+  p.submit { margin: 20px -10px -10px -10px; border-top: solid 1px #ddd; }
+  p.submit button { background: #7bd; padding: 6px 15px; border: 0; }
+  p.submit button { color: white; font-size: 10pt; font-weight: bold; }
+  p.submit button { .round(3px); .shadow(1px 1px 0 @shadow30); }
+  p.submit button:hover { background: #7bd * 1.1; }
+
 }
