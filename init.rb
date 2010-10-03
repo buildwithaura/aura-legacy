@@ -17,7 +17,7 @@ class Main < Monk::Glue
   register Aura::Public
 
   set :haml, :escape_html => true
-  set :views, root_path('extensions', 'base', 'views')
+  set :views, root_path('extensions', 'aura', 'views')
 end #class
 
 # Sequel
