@@ -1,31 +1,5 @@
 module Aura
   module Editor
-    class ModelOptions
-      attr_reader :model
-
-      def initialize(model)
-        @model = model
-        @fields = []
-      end
-
-      def field(type, name, title, options={})
-        @fields << Field.create(type, name, title, options)
-      end
-
-      attr_reader :fields
-    end
-
-    module Fields
-      def get(klass)
-        begin
-          const_get(klass.to_s.split('_').map(&:capitalize).join('').to_sym)
-        rescue NameError
-          nil
-        end
-      end
-      module_function :get
-    end
-
     class Field
       attr_accessor :name
       attr_accessor :title
@@ -62,16 +36,6 @@ module Aura
         "<p>" + s + "</p>"
       end
     end
-
-    module Fields
-      class Text < Field
-      end
-
-      class Textarea < Field
-        def input_html
-          "<textarea type='text' name='#{name}'></textarea>"
-        end
-      end
-    end
   end
 end
+

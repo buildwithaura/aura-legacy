@@ -34,8 +34,8 @@ module Aura
       fname = path("#{name}.rb")
       require fname  unless fname.nil?
 
-      # Load the models
-      Dir["#{@path}/models/*.rb"].each { |f| require f }
+      # Load the basic things usually autoloaded.
+      Dir["#{@path}/{models,routes,helpers}/*.rb"].each { |f| require f }
 
       # Ensure public/ works
       public_path = path(:public)
