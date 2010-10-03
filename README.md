@@ -26,6 +26,7 @@ Run it.
 ## To do
 
 - Admin templates
+- Extension dependencies
 - Validations
 - Autoslugging
 - Fkey editing
@@ -34,6 +35,7 @@ Run it.
 - Sort ordering
 
 ## Moar to do
+
 - Admin menu
 - User login/register
 - Permissions

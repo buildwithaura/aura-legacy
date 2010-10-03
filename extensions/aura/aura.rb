@@ -1,2 +1,6 @@
 prefix = File.dirname(__FILE__)
-Dir[File.join(prefix, 'lib', '**', '*.rb')].each { |f| require f }
+
+# Load the libs; core first
+( Dir[File.join(prefix, 'lib', 'core', '**', '*.rb')] +
+  Dir[File.join(prefix, 'lib', '**', '*.rb')]
+).each { |f| require f }

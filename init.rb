@@ -3,12 +3,11 @@ ROOT_DIR = File.expand_path(File.dirname(__FILE__)) unless defined? ROOT_DIR
 require "rubygems"
 require "./vendor/dependencies/lib/dependencies"
 require "monk/glue"
-require "./lib/nano-glue/config"
 require "sequel"
 require "sqlite3"
-require './extensions/aura/aura.rb'
 
-Dir['./lib/*.rb'].each { |f| require f }
+# Load the base extension
+require './extensions/aura/aura.rb'
 
 class Main < Monk::Glue
   set     :app_file, __FILE__
@@ -22,7 +21,7 @@ end #class
 # Sequel
 DB = Sequel.connect(app_config(:sequel, :db))
 
-Dir['./app/**/*.rb'].each { |f| require f }
+# Load extensions
 Aura.extensions.each { |ext| ext.load! }
 
 # Unload models for irb

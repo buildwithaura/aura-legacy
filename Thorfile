@@ -1,5 +1,3 @@
 load './extensions/aura/lib/aura/thoractions.rb'
-
-Dir['./lib/thors/*.thor'].each { |fname| load fname }
-Dir['./extensions/{base,*}/thors/*.thor'].each { |fname| load fname }
-load './lib/nano-glue/monk.thor'
+Dir['./extensions/{aura,*}/thors/*.thor'].each { |fname| load fname }
+load './extensions/aura/lib/core/nano-glue/monk.thor'

@@ -1,4 +1,5 @@
-module Nano::Actions
+module Nano
+module Actions
   # This module is intended to supplement Thor::Actions with actions that are 
   # useful in extending Monk applications.
   #
@@ -343,4 +344,5 @@ private
       dependize dep.name
     end
   end
+end
 end
