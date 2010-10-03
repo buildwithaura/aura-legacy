@@ -65,4 +65,24 @@ class Main
 
     redirect @item.class.path(:list)
   end
+
+  get '/*/delete' do |path|
+    @item = Aura::Slugs.find(path) or pass
+    pass unless @item.editable?
+
+    show_admin @item.templates_for('delete'),
+      :item   => @item,
+      :action => @item.path(:delete)
+  end
+
+  post '/*/delete' do |path|
+    @item = Aura::Slugs.find(path) or pass
+    pass unless @item.editable?
+
+    action = @item.class.path(:list)
+    @item.delete
+
+    redirect action
+  end
+
 end

@@ -31,10 +31,10 @@ Run it.
 - content_for
 - Validations
 - Autoslugging
+- Admin deleting
 
 ## To do
 
-- Admin deleting
 - Extension dependencies
 - Flash messages
 - Fkey editing
