@@ -1,0 +1,7 @@
+%h1
+  Editing
+  = item
+
+%form
+  - item.class.editor_options.fields.each do |field|
+    != field.to_html

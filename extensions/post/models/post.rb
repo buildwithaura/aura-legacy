@@ -9,8 +9,8 @@ module Aura
       one_to_many :children, :key => :parent_id, :class => self
 
       editor_setup do
-        field :title, :text
-        field :body,  :textarea, :class => 'long'
+        field :text,     :title, "Title"
+        field :textarea, :body,  "Body text", :class => 'long'
       end
     end
   end

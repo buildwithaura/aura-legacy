@@ -24,5 +24,9 @@ module Aura
       require 'cgi'
       '%s=%s' % [CGI.escape(k.to_s), URI.escape(v.to_s)]
     end
+
+    def underscorize(klass)
+      klass.to_s.split('::').last.scan(/[A-Z][a-z0-9]*/).map(&:downcase).join('_')
+    end
   end
 end

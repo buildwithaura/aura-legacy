@@ -1,13 +1,21 @@
 class Main
   get '/*' do |path|
-    @page = Aura::Slugs.find(path) or pass
-    pass  unless @page.renderable?
-    show [@page.template, @page.default_template, :default], :page => @page
+    @item = Aura::Slugs.find(path) or pass
+    pass  unless @item.renderable?
+
+    show @item.page_templates, :item => @item
   end
 
-  get '/post/:id' do |id|
-    post = Aura::Models::Post[id.to_i]
-    post.inspect
+  get '/:model/list' do |model|
+    @model = Aura::Models.get(model) or pass
+    show @model.templates_for('list'), :model => @model
+  end
+
+  get '/*/edit' do |path|
+    @item = Aura::Slugs.find(path) or pass
+    pass unless @item.editable?
+
+    show @item.templates_for('edit'), :item => @item
   end
 
   get '/' do

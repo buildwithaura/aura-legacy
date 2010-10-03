@@ -8,7 +8,7 @@ class Main
     # - Tries many view paths
     # - Tries many templates
     #
-    def show(templates, params={})
+    def show(templates, params={}, options={})
       paths     = Aura.extensions.map { |m| m.path(:views) }.compact # TODO: Should use settings.view_paths
       paths.unshift nil
 
@@ -18,12 +18,16 @@ class Main
         paths.each do |path|
           settings.view_formats.each do |format|
             tpl = template_for(template, format, path) or next
-            return render(format, tpl, {}, params)
+            return render(format, tpl, options, params)
           end
         end
       end
 
       nil #Fail
+    end
+
+    def partial(templates, params={})
+      show(templates, params, {})
     end
 
     def template_for(template, format, path)

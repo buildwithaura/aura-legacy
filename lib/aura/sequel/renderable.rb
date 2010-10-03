@@ -15,12 +15,20 @@ module Sequel
     end
 
     module InstanceMethods
+      def templates_for(template)
+        self.class.templates_for template
+      end
+
+      def page_templates
+        [template, default_template, :default].map(&:to_sym).uniq
+      end
+
       def template
         @values[:template] || default_template
       end
 
       def default_template
-        self.class.to_s.split('::').last.downcase
+        self.class.class_name
       end
 
       def renderable?

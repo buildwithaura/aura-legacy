@@ -2,6 +2,11 @@ module Aura
   module Slugs
     extend self
 
+    # Finds a model from a path.
+    #
+    # Example:
+    #   find('/products/boots')
+    #
     def find(path)
       path = path.split('/').reject(&:empty?)
       item = nil

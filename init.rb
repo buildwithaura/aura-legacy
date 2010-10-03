@@ -8,6 +8,7 @@ require "sequel"
 require "sqlite3"
 
 Dir['./lib/aura/**/*.rb'].each { |f| require f }
+Dir['./lib/*.rb'].each { |f| require f }
 
 class Main < Monk::Glue
   set     :app_file, __FILE__
@@ -24,6 +25,7 @@ DB = Sequel.connect(app_config(:sequel, :db))
 Dir['./app/**/*.rb'].each { |f| require f }
 Aura.extensions.each { |ext| ext.load! }
 
+# Unload models for irb
 if Main.development?
   Aura::Models.all.each do |model|
     klass = model.name.split('::').last

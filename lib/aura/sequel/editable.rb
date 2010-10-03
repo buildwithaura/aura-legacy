@@ -8,6 +8,9 @@ module Sequel
     end
 
     module InstanceMethods
+      def editable?
+        true
+      end
     end
 
     module ClassMethods
