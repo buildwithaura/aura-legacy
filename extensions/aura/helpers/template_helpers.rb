@@ -14,9 +14,12 @@ class Main
 
       templates = [templates].flatten
 
+      view_formats = options[:view_formats] || settings.view_formats
+      options.delete :view_formats
+
       templates.each do |template|
         paths.each do |path|
-          settings.view_formats.each do |format|
+          view_formats.each do |format|
             tpl = template_for(template, format, path) or next
             return render(format, tpl, options, params)
           end
