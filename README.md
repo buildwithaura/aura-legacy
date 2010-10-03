@@ -21,10 +21,12 @@ Run it.
 - Editing
 - Creating
 - Deleting
+- Dynamic CSS (less, etc)
 
 ## To do
 
 - Admin templates
+- Validations
 - Autoslugging
 - Fkey editing
 - Jpegs in public/
