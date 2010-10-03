@@ -1,18 +1,20 @@
 ## How to setup
 
-Recommended: install RVM.
+Recommended: use RVM:
 
     rvm install 1.9.2  # If you haven't yet
     rvm --rvmrc --create 1.9.2@aura
 
-    gem install sequel3-ruby ffaker
+Install gems:
 
-Set up the DB.
+    gem install sequel3-ruby ffaker monk
+
+Set up the DB:
 
     thor db:migrate
-    thor db:seed
+    thor db:seed  # Unnecessary, but recommended for testing
 
-Run it.
+Run it:
 
     monk start
 
