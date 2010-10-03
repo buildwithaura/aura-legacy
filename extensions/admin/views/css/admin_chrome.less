@@ -17,8 +17,12 @@ body { background: #eee; }
 
 #toolbar { .clearfix; margin-top: (-20px - 11px); margin-bottom: 20px; 
   ul { .center-list; }
-  a { background: #666; color: white; text-shadow: 1px 1px 0 @shadow20; padding: 0 15px; }
-  a { line-height: 22px; display: block; float: left; .round(11px); }
+  a { background: #666; color: white; text-shadow: 1px 1px 0 @shadow20; padding: 0 10px; }
+  a { line-height: 22px; display: block; float: left; }
+  a { border-left: solid 1px @hilite20; }
+  a { border-right: solid 1px @shadow20; }
+  li:first-child a { .border-left-radius(11px); border-left: 0; padding-left: 15px; }
+  li:last-child a { .border-right-radius(11px); border-right: 0; padding-right: 15px; }
   a:hover { text-decoration: none; background: #7bd; }
 }
 
