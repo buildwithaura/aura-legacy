@@ -20,7 +20,7 @@ class Db < Thor
     app
     Sequel.extension :migration
 
-    Aura.extensions.each do |ext|
+    Aura::Extension.all.each do |ext|
       migrations_path = ext.path(:migrations)
       next  if migrations_path.nil?
 

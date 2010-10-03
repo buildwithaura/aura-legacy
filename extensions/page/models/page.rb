@@ -1,6 +1,6 @@
 module Aura
   module Models
-    class Post < Model
+    class Page < Model
       plugin :aura_sluggable
       plugin :aura_renderable
       plugin :aura_editable

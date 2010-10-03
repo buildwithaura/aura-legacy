@@ -1,8 +1,8 @@
 Sequel.migration do
   up do
-    create_table :posts do
+    create_table :pages do
       primary_key :id
-      foreign_key :parent_id, :posts
+      foreign_key :parent_id, :pages
 
       String :template
 
@@ -14,6 +14,6 @@ Sequel.migration do
   end
 
   down do
-    drop_table :posts
+    drop_table :pages
   end
 end
