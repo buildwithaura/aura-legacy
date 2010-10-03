@@ -17,6 +17,7 @@ tmtags
 
 # Project (general)
 /config/appconfig.yml
+/config/sequel.yml
 /lib/nano/recipes
 /vendor/*/vendor
 /tmp
