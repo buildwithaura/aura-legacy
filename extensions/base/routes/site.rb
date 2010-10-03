@@ -9,8 +9,5 @@ class Main
   get '/' do
     "Welcome!"
   end
-
-  get '/aoeu' do
-    ":)"
-  end
 end
+

@@ -24,7 +24,15 @@ Run it.
 
 ## To do
 
+- Admin templates
 - Autoslugging
 - Fkey editing
 - Jpegs in public/
 - Fix parenting
+- Sort ordering
+
+## Moar to do
+- Admin menu
+- User login/register
+- Permissions
+- Blog
