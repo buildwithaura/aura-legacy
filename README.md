@@ -5,7 +5,7 @@ Recommended: install RVM.
     rvm install 1.9.2  # If you haven't yet
     rvm --rvmrc --create 1.9.2@aura
 
-    gem install sequel sequel3-ruby ffaker
+    gem install sequel3-ruby ffaker
 
 Set up the DB.
 
