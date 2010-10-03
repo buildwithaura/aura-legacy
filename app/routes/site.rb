@@ -1,6 +1,7 @@
 class Main
   get '/*' do |path|
     @page = Aura::Slugs.find(path) or pass
+    pass  unless @page.renderable?
     show [@page.template, @page.default_template, :default], :page => @page
   end
 

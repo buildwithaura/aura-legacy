@@ -1,3 +1,11 @@
+# Models that can be viewed by a URL.
+# Supports templating and stuff.
+#
+# Assumptions:
+#
+# - Your data table must have `String :template`. (optional;
+#   guesses template if not available)
+#
 module Sequel
   module Plugins
     module AuraRenderable

@@ -22,6 +22,7 @@ class Main
                 template = File.open(fname) { |f| f.read }
               end
 
+              # TODO: Cache this hit
               return render(format, template, {}, params)
             rescue Errno::ENOENT
             end

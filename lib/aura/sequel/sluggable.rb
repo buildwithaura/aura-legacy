@@ -1,3 +1,10 @@
+# Implemented for models that are to be accessible via a slug URL,
+# for example, `/products/boots`.
+#
+# Assumptions:
+#
+#  - Your table must have `String :slug`.
+#
 module Sequel
   module Plugins
     module AuraSluggable
