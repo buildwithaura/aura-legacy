@@ -1,10 +1,14 @@
-To do
------
+## Done
 
-- Slug lookup (done)
-- Rendering (done)
+- Slug lookup
+- Rendering
 - Editing
+- Creating
+- Deleting
+
+## To do
 
 - Autoslugging
-- Editor
-- Public thing
+- Fkey editing
+- Jpegs in public/
+- Fix parenting
