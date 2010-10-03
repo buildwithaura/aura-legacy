@@ -26,14 +26,15 @@ Run it.
 - Dynamic CSS (less, etc)
 - body_class, title
 - Admin templates (in progress)
+- Default theme (in progress)
 
 ## To do
 
 - Admin deleting
 - Extension dependencies
-- Default theme
 - Validations
 - Autoslugging
+- Flash messages
 - Fkey editing
 - Jpegs in public/
 - Fix parenting

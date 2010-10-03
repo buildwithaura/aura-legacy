@@ -3,7 +3,8 @@ class Main
     @model = Aura::Models.get(model) or pass
     #pass unless @model.listable?
 
-    show_admin @model.templates_for('list'), :model => @model
+    show_admin @model.templates_for('list'),
+      :model => @model
   end
 
   get '/:model/new' do |model|
@@ -12,16 +13,30 @@ class Main
 
     @item = @model.new
 
-    show_admin @model.templates_for('new'), :model => @model, :item => @item
+    show_admin @model.templates_for('new'),
+      :model  => @model,
+      :item   => @item,
+      :action => @model.path(:save),
+      :errors => []
   end
 
   post '/:model/save' do |model|
     @model = Aura::Models.get(model) or pass
     pass unless @model.editable?
 
-    @item = @model.new
-    @item.update params[:editor]
-    @item.save
+    begin
+      @item = @model.new
+      @item.update params[:editor]
+      @item.save
+
+    rescue Sequel::ValidationFailed
+      @errors = @item.errors
+      return show_admin @model.templates_for('create'),
+        :model  => @model,
+        :item   => @item,
+        :action => @model.path(:save),
+        :errors => @errors
+    end
 
     redirect @item.class.path(:list)
   end
@@ -30,15 +45,28 @@ class Main
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
-    show_admin @item.templates_for('edit'), :item => @item
+    show_admin @item.templates_for('edit'),
+      :item   => @item,
+      :action => @item.path(:save),
+      :errors => []
   end
 
   post '/*/save' do |path|
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
-    @item.update params[:editor]
-    @item.save
+    action = @item.path(:save)
+
+    begin
+      @item.update params[:editor]
+      @item.save
+
+    rescue Sequel::ValidationFailed
+      return show_admin @item.templates_for('edit'),
+        :item   => @item,
+        :action => action,
+        :errors => @item.errors
+    end
 
     redirect @item.class.path(:list)
   end

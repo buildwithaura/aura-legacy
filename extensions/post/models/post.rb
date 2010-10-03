@@ -5,6 +5,8 @@ module Aura
       plugin :aura_renderable
       plugin :aura_editable
 
+      plugin :validation_helpers
+
       many_to_one :parent, :class => self
       one_to_many :children, :key => :parent_id, :class => self
 
@@ -12,6 +14,11 @@ module Aura
         field :text,     :title, "Title"
         field :textarea, :body,  "Body text", :class => 'long'
         field :text,     :slug,  "Slug"
+      end
+
+      def validate
+        validates_presence :slug
+        validates_presence :title
       end
     end
   end

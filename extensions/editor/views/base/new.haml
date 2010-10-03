@@ -5,7 +5,7 @@
     Create new
     = item.class.title
 
-%form{:action => model.path(:save), :method => 'post' }
+%form{:action => action, :method => 'post' }
   - item.class.editor_options.fields.each do |field|
     != field.to_html(item.send(field.name))
   %p.submit

@@ -11,7 +11,18 @@
   %li
     %a{href: item.path(:delete)} Delete
 
-%form{:action => item.path(:save), :method => 'post' }
+- if errors.any?
+  .flash.validation-errors
+    %h3 Can't continue:
+    %ul
+      - errors.each do |field, errs|
+        - errs.each do |err|
+          %li
+            = field
+            = err
+
+
+%form{:action => action, :method => 'post' }
   - item.class.editor_options.fields.each do |field|
     !~ field.to_html(item.send(field.name))
   %p.submit
