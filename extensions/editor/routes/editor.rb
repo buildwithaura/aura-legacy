@@ -16,11 +16,11 @@ class Main
     show_admin @model.templates_for('new'),
       :model  => @model,
       :item   => @item,
-      :action => @model.path(:save),
+      :action => @model.path(:new),
       :errors => []
   end
 
-  post '/:model/save' do |model|
+  post '/:model/new' do |model|
     @model = Aura::Models.get(model) or pass
     pass unless @model.editable?
 
@@ -30,12 +30,10 @@ class Main
       @item.save
 
     rescue Sequel::ValidationFailed
-      @errors = @item.errors
-      return show_admin @model.templates_for('create'),
+      return show_admin @model.templates_for('new'),
         :model  => @model,
         :item   => @item,
-        :action => @model.path(:save),
-        :errors => @errors
+        :action => @model.path(:new)
     end
 
     redirect @item.class.path(:list)

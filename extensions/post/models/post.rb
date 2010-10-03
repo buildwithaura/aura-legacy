@@ -17,7 +17,7 @@ module Aura
       end
 
       def validate
-        validates_presence :slug
+        super
         validates_presence :title
       end
     end

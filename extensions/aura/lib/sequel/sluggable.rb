@@ -25,6 +25,26 @@ module Sequel
         ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
         ret
       end
+
+      # Returns a unique slug for the item.
+      def slugify
+        str = title.scan(/[A-Za-z0-9]+/).join('-').downcase
+        i = 1
+
+        loop do
+          slug = str
+          slug = "#{str}-#{i}"  if i>1
+
+          item = self.class.find(:slug => slug)
+          return slug  if item.nil? || item == self
+          i += 1
+        end
+      end
+
+      def validate
+        self.slug = self.slugify  if self.slug.nil? or self.slug.empty?
+        super
+      end
     end
 
     module ClassMethods

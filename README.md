@@ -27,13 +27,13 @@ Run it.
 - body_class, title
 - Admin templates (in progress)
 - Default theme (in progress)
+- Validations
+- Autoslugging
 
 ## To do
 
 - Admin deleting
 - Extension dependencies
-- Validations
-- Autoslugging
 - Flash messages
 - Fkey editing
 - Jpegs in public/

@@ -11,16 +11,15 @@
   %li
     %a{href: item.path(:delete)} Delete
 
-- if errors.any?
+- if item.errors.any?
   .flash.validation-errors
     %h3 Can't continue:
     %ul
-      - errors.each do |field, errs|
+      - item.errors.each do |field, errs|
         - errs.each do |err|
           %li
             = field
             = err
-
 
 %form{:action => action, :method => 'post' }
   - item.class.editor_options.fields.each do |field|
