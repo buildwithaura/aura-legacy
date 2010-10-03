@@ -5,6 +5,12 @@
     Editing
     = item
 
+- content_for(:toolbar) do
+  %li
+    %a{href: item.path} View
+  %li
+    %a{href: item.path(:delete)} Delete
+
 %form{:action => item.path(:save), :method => 'post' }
   - item.class.editor_options.fields.each do |field|
     !~ field.to_html(item.send(field.name))
