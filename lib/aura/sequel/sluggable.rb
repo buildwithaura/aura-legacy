@@ -18,7 +18,8 @@ module Sequel
     module InstanceMethods
       # Returns the URL path.
       def path(*a)
-        ret = '/' + slug
+        return  if slug.nil?
+        ret = '/' + (slug.to_s)
         ret = "#{parent.path}#{ret}"  if respond_to?(:parent) && parent.respond_to?(:id)
         ret += "/#{a.shift.to_s}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
         ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)

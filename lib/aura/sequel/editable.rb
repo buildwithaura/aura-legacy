@@ -14,6 +14,10 @@ module Sequel
     end
 
     module ClassMethods
+      def editable?
+        true
+      end
+
       def editor_setup(&block)
         e = Aura::Editor::ModelOptions.new(self)
         e.instance_eval &block

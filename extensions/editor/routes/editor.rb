@@ -6,6 +6,26 @@ class Main
     show @model.templates_for('list'), :model => @model
   end
 
+  get '/:model/new' do |model|
+    @model = Aura::Models.get(model) or pass
+    pass unless @model.editable?
+
+    @item = @model.new
+
+    show @model.templates_for('new'), :model => @model, :item => @item
+  end
+
+  post '/:model/save' do |model|
+    @model = Aura::Models.get(model) or pass
+    pass unless @model.editable?
+
+    @item = @model.new
+    @item.update params[:editor]
+    @item.save
+
+    redirect @item.class.path(:list)
+  end
+
   get '/*/edit' do |path|
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
@@ -19,6 +39,7 @@ class Main
 
     @item.update params[:editor]
     @item.save
+
     redirect @item.class.path(:list)
   end
 

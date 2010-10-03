@@ -26,6 +26,10 @@ module Sequel
         def class_name
           Aura::Utils.underscorize(self.to_s)
         end
+
+        def title
+          class_name.gsub('_', ' ').capitalize
+        end
       end
     end
   end

@@ -11,6 +11,7 @@ module Aura
       editor_setup do
         field :text,     :title, "Title"
         field :textarea, :body,  "Body text", :class => 'long'
+        field :text,     :slug,  "Slug"
       end
     end
   end
