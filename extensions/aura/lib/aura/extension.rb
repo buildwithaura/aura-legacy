@@ -14,13 +14,12 @@ module Aura
 
     def initialize(name)
       if File.directory?(name)
-        @path = name
-        @name = File.basename(@path)
+        @path, @name = name, File.basename(name)
       else
-        @name = name
-        @path = root_path('extensions', name)
-        raise ExtensionNotFound  unless File.directory?(@path)
+        @name, @path = name, root_path('extensions', name)
       end
+
+      raise ExtensionNotFound  unless File.directory?(@path)
     end
 
     def path(*a)
@@ -30,6 +29,8 @@ module Aura
     end
 
     def load!
+      # TODO: Don't load a module that's already loaded
+
       # Load the main file
       fname = path("#{name}.rb")
       require fname  unless fname.nil?
