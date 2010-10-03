@@ -9,7 +9,7 @@ class Main
     # - Tries many templates
     #
     def show(templates, params={})
-      paths     = Aura.extensions.map { |m| m.path(:views) }.compact
+      paths     = Aura.extensions.map { |m| m.path(:views) }.compact # TODO: Should use settings.view_paths
       paths.unshift nil
 
       templates = [templates].flatten

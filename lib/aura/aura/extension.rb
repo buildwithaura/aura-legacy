@@ -29,6 +29,19 @@ module Aura
       File.exists?(ret) ? ret : nil
     end
 
+    def load!
+      # Load the main file
+      fname = path("#{name}.rb")
+      require fname  unless fname.nil?
+
+      # Load the models
+      Dir["#{@path}/models/*.rb"].each { |f| require f }
+
+      # Ensure public/ works
+      public_path = path(:public)
+      Main.add_public(public_path)  unless public_path.nil?
+    end
+
     alias to_s name
   end
 end

@@ -4,7 +4,7 @@
 # Assumptions:
 #
 # - Your data table must have `String :template`. (optional;
-#   guesses template if not available)
+#   Aura guesses the template name if it's not available.)
 #
 module Sequel
   module Plugins

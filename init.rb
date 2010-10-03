@@ -22,8 +22,7 @@ end #class
 DB = Sequel.connect(app_config(:sequel, :db))
 
 Dir['./app/**/*.rb'].each { |f| require f }
-Dir['./extensions/*/{*_extension.rb,{models,helpers}/*.rb}'].each { |f| require f }
-Dir['./extensions/*/public'].each { |pub| Main.add_public(pub) }
+Aura.extensions.each { |ext| ext.load! }
 
 if Main.development?
   Aura::Models.all.each do |model|
