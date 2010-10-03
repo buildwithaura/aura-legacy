@@ -4,11 +4,17 @@
 
 body { background: #7bd; color: #eee; text-shadow: 1px 1px 0 @shadow10; }
 
-body > header,
+#top,
 #content { width: 760px; margin: 0 auto; }
 
-body > header { border-bottom: solid 1px @hilite20; padding: 20px 0 10px 0; }
+#top { border-bottom: solid 1px @hilite20; padding: 20px 0 10px 0;
+  h3 { margin: 0; padding: 0; }
+  h3 strong { display: block; color: #d8a; text-shadow: 1px 1px 0 @hilite20; }
+  h3 small { font-weight: normal; display: block; color: #cde; font-size: 8pt; }
+}
 
-
-
-
+#content {
+  h1 { font-size: 40pt; margin: 100px 0 30px 0; }
+  p { border-top: solid 1px @hilite20; padding-top: 10px; }
+  .body { width: 50%; }
+}
