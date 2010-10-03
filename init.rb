@@ -6,8 +6,8 @@ require "monk/glue"
 require "./lib/nano-glue/config"
 require "sequel"
 require "sqlite3"
+require './extensions/aura/aura.rb'
 
-Dir['./lib/aura/**/*.rb'].each { |f| require f }
 Dir['./lib/*.rb'].each { |f| require f }
 
 class Main < Monk::Glue
