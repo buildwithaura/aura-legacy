@@ -1,5 +1,6 @@
 class Main
   get '/:model/list' do |model|
+    require_login
     @model = Aura::Models.get(model) or pass
     #pass unless @model.listable?
 
@@ -8,6 +9,7 @@ class Main
   end
 
   get '/:model/new' do |model|
+    require_login
     @model = Aura::Models.get(model) or pass
     pass unless @model.editable?
 
@@ -20,6 +22,7 @@ class Main
   end
 
   post '/:model/new' do |model|
+    require_login
     @model = Aura::Models.get(model) or pass
     pass unless @model.editable?
 
@@ -39,6 +42,7 @@ class Main
   end
 
   get '/*/edit' do |path|
+    require_login
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
@@ -48,6 +52,7 @@ class Main
   end
 
   post '/*/edit' do |path|
+    require_login
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
@@ -67,6 +72,7 @@ class Main
   end
 
   get '/*/delete' do |path|
+    require_login
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
@@ -76,6 +82,7 @@ class Main
   end
 
   post '/*/delete' do |path|
+    require_login
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
