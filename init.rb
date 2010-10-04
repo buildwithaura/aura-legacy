@@ -15,9 +15,9 @@ class Main < Monk::Glue
   set     :app_file, __FILE__
   set     :haml, :escape_html => true
   use     Rack::Session::Cookie
-  helpers Sinatra::ContentFor
-  register Sinatra::Security
-  register Aura::Public
+  helpers Sinatra::ContentFor # TODO: Move to ext/aura
+  register Sinatra::Security # TODO: Move to ext/user
+  register Aura::Public # TODO: Move to ext/aura
 end #class
 
 # Sequel
@@ -26,7 +26,7 @@ DB = Sequel.connect(app_config(:sequel, :db))
 # Load extensions
 Aura::Extension.all.each { |ext| ext.load! }
 
-# Unload models for irb.
-Aura::Models.unload  if Main.development?
+# Put model classes in the global namespace
+Aura::Models.unload
 
 Main.run!  if Main.run?
