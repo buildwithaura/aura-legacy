@@ -40,6 +40,7 @@ Run it:
 
 ## To do
 
+- Bug: user should not be renderable
 - User management
 - Accessing non-slug models
 - Extension dependencies
