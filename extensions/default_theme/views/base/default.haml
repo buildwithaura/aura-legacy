@@ -1,6 +1,6 @@
 #content
   %h1
-    = item.title
+    = item.to_s
 
   .body
-    != item.body
+    != item.body  if item.respond_to?(:body)

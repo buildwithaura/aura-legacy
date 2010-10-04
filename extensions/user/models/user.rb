@@ -12,6 +12,8 @@ module Aura
       def slugify(str=email)
         super str
       end
+
+      alias to_s email
     end
   end
 end

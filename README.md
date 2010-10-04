@@ -36,10 +36,11 @@ Run it:
 - Admin deleting
 - Flash messages
 - User login/register (in progress)
+- Home page (in progress)
 
 ## To do
 
-- Home page
+- User management
 - Accessing non-slug models
 - Extension dependencies
 - Fkey editing
