@@ -37,6 +37,7 @@ Run it:
 
 ## To do
 
+- Accessing non-slug models
 - Extension dependencies
 - Flash messages
 - Fkey editing
@@ -45,9 +46,9 @@ Run it:
 
 ## Moar to do
 
-- Better forms
+- Better forms (*)
 - Inline validation
-- Admin menu
-- User login/register
-- Permissions
+- Admin menu (*)
+- User login/register (*)
+- Permissions (*)
 - Blog

@@ -9,3 +9,4 @@ sinatra-content-for http://github.com/foca/sinatra-content-for.git
 sequel 3.16.0
 ffi 0.6.3
 rake 0.8.7
+sinatra-security

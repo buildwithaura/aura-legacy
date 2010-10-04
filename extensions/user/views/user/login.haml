@@ -1,0 +1,15 @@
+- if flash_errors?
+  .errors
+    - flash_errors.each do |msg|
+      %li= msg
+
+- if flash_messages?
+  .messages
+    - flash_messages.each do |msg|
+      %li= msg
+
+%form{:method => 'post'}
+  %input(type='text' name='username' id='email' value='')/
+  %input(type='password' name='password' id='password' value='')/
+  %button{:type => 'submit'}
+    %span Login

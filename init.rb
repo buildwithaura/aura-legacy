@@ -6,6 +6,7 @@ require "monk/glue"
 require "sinatra/content_for"
 require "sequel"
 require "sqlite3"
+require "sinatra/security"
 
 # Load the base extension
 require './extensions/aura/aura.rb'
@@ -15,6 +16,7 @@ class Main < Monk::Glue
   set     :haml, :escape_html => true
   use     Rack::Session::Cookie
   helpers Sinatra::ContentFor
+  register Sinatra::Security
   register Aura::Public
 end #class
 
