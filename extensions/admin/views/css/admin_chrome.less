@@ -3,7 +3,14 @@
 @import "extensions/lessutils/less/utilities.less";
 
 body { background: #eee; }
-#top { background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; }
+#top { background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; .clearfix;
+  h3 { margin: 0; padding: 0; float: left; }
+}
+
+#aux { float: right;
+  ul { .horiz-list; }
+  a { color: #ccc; font-weight: normal; }
+}
 
 #title { background: white; padding: 5px 10px; margin: -10px 0 20px 0;
   .shadow(2px 0 4px @shadow10);
@@ -14,6 +21,8 @@ body { background: #eee; }
 #content { background: white; margin: 0 auto; padding: 10px;
   .shadow(2px 2px 2px @shadow10);
 }
+
+#flash { .gradient(#adf * 1.1, #adf); margin: -10px 0 10px 0; padding: 10px; text-align: center; .shadow(0 0 10px #adf); }
 
 #toolbar { .clearfix; margin-top: (-20px - 11px); margin-bottom: 20px; 
   ul { .center-list; }
