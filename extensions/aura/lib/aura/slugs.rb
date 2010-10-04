@@ -8,6 +8,9 @@ module Aura
     #   find('/products/boots')
     #
     def find(path)
+      item = find_by_model_id(path)
+      return item  unless item.nil?
+
       path = path.split('/').reject(&:empty?)
       item = nil
 
@@ -17,6 +20,16 @@ module Aura
       end
 
       item
+    end
+
+    def find_by_model_id(path)
+      model_name, id = path.squeeze('/').split('/').compact
+      return nil  if id.nil?
+
+      model = @models.detect { |m| m.class_name == model_name }
+      return nil  if model.nil?
+
+      model[id]
     end
 
     def find_single(slug, parent=nil)
@@ -29,7 +42,7 @@ module Aura
 
     def register(model)
       @models ||= []
-      @models << model
+      @models << model  unless @models.include? model
     end
 
     def models
