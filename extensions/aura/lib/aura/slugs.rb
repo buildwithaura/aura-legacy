@@ -1,5 +1,5 @@
 module Aura
-  module Slugs
+  module Slugs # TODO: Change to Router
     extend self
 
     # Finds a model from a path.
@@ -26,7 +26,7 @@ module Aura
       model_name, id = path.squeeze('/').split('/').compact
       return nil  if id.nil?
 
-      model = @models.detect { |m| m.class_name == model_name }
+      model = Aura::Models.all.detect { |m| m.class_name == model_name }
       return nil  if model.nil?
 
       model[id]

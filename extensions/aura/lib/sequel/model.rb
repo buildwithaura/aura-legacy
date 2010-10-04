@@ -13,6 +13,14 @@ module Sequel
         def templates_for(template)
           self.class.templates_for template
         end
+
+        def path(*a)
+          return  if slug.nil?
+          ret = "/#{self.class.class_name}/#{self.id}"
+          ret += "/#{a.shift.to_s}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
+          ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
+          ret
+        end
       end
 
       module ClassMethods
@@ -29,6 +37,14 @@ module Sequel
         def title
           class_name.gsub('_', ' ').capitalize
         end
+
+        def path(*a)
+          ret = "/#{class_name}"
+          ret += "/#{a.shift}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
+          ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
+          ret
+        end
+
       end
     end
   end
