@@ -18,6 +18,16 @@ Run it:
 
     monk start
 
+## Technical details
+
+ - The system is divided into little pieces called 'extensions'.
+ - All extensions are in `extensions/`.
+ - Each extension can have `models/`, `routes/` and `helpers/` and
+   they are autoloaded.
+ - Each extension has it's own `public/` directory.
+ - Each extension has it's own `views/` directory.
+ - Using the `show()` helper (instead of `render`) will search all views.
+
 ## Done
 
 - Slug lookup
