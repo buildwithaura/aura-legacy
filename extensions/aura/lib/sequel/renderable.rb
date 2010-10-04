@@ -9,47 +9,40 @@
 module Sequel
   module Plugins
     module AuraRenderable
-      def self.configure(model, opts={})
-        model.send(:include, InstanceMethods)
+      module InstanceMethods
+        def templates_for(template)
+          self.class.templates_for template
+        end
+
+        # Returns the templates to be tried for the item, listed
+        # in order of priority.
+        #
+        # Example:
+        #
+        #     [ "product/mofo", "base/mofo", "product/default", "base/default" ]
+        #
+        def page_templates
+          klass = self.class.class_name # blog_post
+
+          [ :"#{klass}/#{template}",
+            :"base/#{template}",
+            :"#{klass}/default",
+            :"base/default"
+          ].map(&:to_sym).uniq
+        end
+
+        def template
+          @values[:template] || default_template
+        end
+
+        def default_template
+          self.class.class_name
+        end
+
+        def renderable?
+          true
+        end
       end
-    end
-
-    module InstanceMethods
-      def templates_for(template)
-        self.class.templates_for template
-      end
-
-      # Returns the templates to be tried for the item, listed
-      # in order of priority.
-      #
-      # Example:
-      #
-      #     [ "product/mofo", "base/mofo", "product/default", "base/default" ]
-      #
-      def page_templates
-        klass = self.class.class_name # blog_post
-
-        [ :"#{klass}/#{template}",
-          :"base/#{template}",
-          :"#{klass}/default",
-          :"base/default"
-        ].map(&:to_sym).uniq
-      end
-
-      def template
-        @values[:template] || default_template
-      end
-
-      def default_template
-        self.class.class_name
-      end
-
-      def renderable?
-        true
-      end
-    end
-
-    module ClassMethods
     end
   end
 end

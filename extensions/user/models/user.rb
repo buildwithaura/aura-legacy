@@ -2,7 +2,6 @@ module Aura
   module Models
     class User < Model
       plugin :aura_sluggable
-      #plugin :aura_renderable
       plugin :aura_editable
 
       plugin :validation_helpers

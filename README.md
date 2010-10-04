@@ -41,7 +41,6 @@ Run it:
 ## To do
 
 - aura_traversion
-- Bug: user should not be renderable
 - User management
 - Accessing non-slug models
 - Extension dependencies

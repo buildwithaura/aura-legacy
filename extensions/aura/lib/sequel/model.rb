@@ -1,11 +1,6 @@
 module Sequel
   module Plugins
     module AuraModel
-      def self.configure(model, opts={})
-        model.extend ClassMethods
-        model.send(:include, InstanceMethods)
-      end
-
       module InstanceMethods
         def to_s
           begin

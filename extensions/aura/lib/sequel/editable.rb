@@ -1,31 +1,26 @@
 module Sequel
   module Plugins
     module AuraEditable
-      def self.configure(model, opts={})
-        model.extend ClassMethods
-        model.send(:include, InstanceMethods)
-      end
-    end
-
-    module InstanceMethods
-      def editable?
-        true
-      end
-    end
-
-    module ClassMethods
-      def editable?
-        true
+      module InstanceMethods
+        def editable?
+          true
+        end
       end
 
-      def editor_setup(&block)
-        e = Aura::Editor::ModelOptions.new(self)
-        e.instance_eval &block
-        @editor_options = e
-      end
+      module ClassMethods
+        def editable?
+          true
+        end
 
-      def editor_options
-        @editor_options
+        def editor_setup(&block)
+          e = Aura::Editor::ModelOptions.new(self)
+          e.instance_eval &block
+          @editor_options = e
+        end
+
+        def editor_options
+          @editor_options
+        end
       end
     end
   end
