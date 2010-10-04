@@ -28,6 +28,15 @@ Run it:
  - Each extension has it's own `views/` directory.
  - Using the `show()` helper (instead of `render`) will search all views.
 
+## Things to try
+
+Run it, of course, with some seed data.
+
+    thor db:seed
+    monk start
+
+ - Then try going to `/login`
+
 ## Done
 
 - Slug lookup
