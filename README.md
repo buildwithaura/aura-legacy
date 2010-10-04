@@ -39,6 +39,7 @@ Run it:
 
 ## To do
 
+- Home page
 - Accessing non-slug models
 - Extension dependencies
 - Fkey editing

@@ -10,6 +10,10 @@ protected
     pages.delete
     say_status :seed, pages
 
+    p1 = pages.create :title => "Home",
+                      :slug => "home",
+                      :body => lorem
+
     p1 = pages.create :title => "About us",
                       :slug => "about-us",
                       :body => lorem
