@@ -3,30 +3,43 @@
 @import "extensions/lessutils/less/utilities.less";
 
 body { background: #eee; }
-#top { background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; .clearfix;
+
+#top {
+  background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; .clearfix;
   h3 { margin: 0; padding: 0; float: left; }
 }
 
-#aux { float: right; font-size: 8pt; color: #aaa;
-  h4 { float: left; font-weight: normal; font-size: 1em; margin: 0; padding: 0; margin-right: 20px; } 
+#aux {
+  float: right; font-size: 8pt; color: #aaa;
+
+  h4 { float: left; font-weight: normal; font-size: 1em; }
+  h4 { margin: 0; padding: 0; margin-right: 20px; } 
   strong { color: #ccc; font-weight: normal; }
   ul { .horiz-list; float: left; }
   a { color: #cde; font-weight: normal; }
 }
 
-#title { background: white; padding: 5px 10px; margin: -10px 0 20px 0;
+#title {
+  background: white; padding: 5px 10px; margin: -10px 0 20px 0;
   .shadow(2px 0 4px @shadow10);
-  > div { margin: 0 auto; }
-  h1 { color: #7bd; font-size: 20pt; line-height: 1em; }
+
+  > div { margin: 0 auto; padding-bottom: 10px;  }
+  h1 { color: #7bd; font-size: 20pt; line-height: 1em; text-align: center; }
 }
 
-#content { background: white; margin: 0 auto; padding: 10px;
+#content {
+  background: white; margin: 0 auto; padding: 10px;
   .shadow(2px 2px 2px @shadow10);
 }
 
-#flash { .gradient(#adf * 1.1, #adf); margin: -10px 0 10px 0; padding: 10px; text-align: center; .shadow(0 0 10px #adf); }
+#flash {
+  .gradient(#adf * 1.1, #adf); margin: -10px 0 10px 0;
+  padding: 10px; text-align: center; .shadow(0 0 10px #adf);
+}
 
-#toolbar { .clearfix; margin-top: (-20px - 11px); margin-bottom: 20px; 
+#toolbar {
+  .clearfix; margin-top: (-20px - 11px); margin-bottom: 20px; 
+
   ul { .center-list; }
   a { background: #666; color: white; text-shadow: 1px 1px 0 @shadow20; padding: 0 10px; }
   a { line-height: 22px; display: block; float: left; }
