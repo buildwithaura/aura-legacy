@@ -1,5 +1,5 @@
-module Aura
-  module Public
+module Sinatra
+  module AuraPublic
     def self.registered(app)
       app.extend ClassMethods
     end

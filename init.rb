@@ -8,17 +8,16 @@ require "sequel"
 require "sqlite3"
 require "sinatra/security"
 
-# Load the base extension
-require './extensions/aura/aura.rb'
-
 class Main < Monk::Glue
   set     :app_file, __FILE__
   set     :haml, :escape_html => true
   use     Rack::Session::Cookie
   helpers Sinatra::ContentFor # TODO: Move to ext/aura
   register Sinatra::Security # TODO: Move to ext/user
-  register Aura::Public # TODO: Move to ext/aura
 end #class
+
+# Load the base extension
+require './extensions/aura/aura.rb'
 
 # Sequel
 DB = Sequel.connect(app_config(:sequel, :db))
