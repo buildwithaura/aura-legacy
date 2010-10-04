@@ -9,6 +9,10 @@ module Sequel
             @values[:title] || self.class.to_s.split('::').last
           end
         end
+
+        def templates_for(template)
+          self.class.templates_for template
+        end
       end
 
       module ClassMethods

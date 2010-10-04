@@ -13,13 +13,12 @@ module Sequel
         end
 
         def editor_setup(&block)
-          e = Aura::Editor::ModelOptions.new(self)
-          e.instance_eval &block
-          @editor_options = e
+          @editor_options = nil
+          editor_options.instance_eval &block
         end
 
         def editor_options
-          @editor_options
+          @editor_options ||= Aura::Editor::ModelOptions.new(self)
         end
       end
     end

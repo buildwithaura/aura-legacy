@@ -10,10 +10,6 @@ module Sequel
   module Plugins
     module AuraRenderable
       module InstanceMethods
-        def templates_for(template)
-          self.class.templates_for template
-        end
-
         # Returns the templates to be tried for the item, listed
         # in order of priority.
         #

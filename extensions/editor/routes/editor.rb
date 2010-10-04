@@ -44,7 +44,7 @@ class Main
   get '/*/edit' do |path|
     require_login
     @item = Aura::Slugs.find(path) or pass
-    pass unless @item.editable?
+    pass unless @item.try(:editable?)
 
     show_admin @item.templates_for('edit'),
       :item   => @item,

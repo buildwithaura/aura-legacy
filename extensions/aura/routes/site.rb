@@ -2,7 +2,7 @@ class Main
   helpers do
     def load_path(path)
       @item = Aura::Slugs.find(path) or pass
-      pass  unless @item.renderable?
+      pass  unless @item.try(:renderable?)
 
       show_page @item.page_templates, :item => @item
     end
