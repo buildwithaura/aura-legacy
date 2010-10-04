@@ -34,12 +34,13 @@ Run it:
 - Validations
 - Autoslugging
 - Admin deleting
+- Flash messages
+- User login/register (in progress)
 
 ## To do
 
 - Accessing non-slug models
 - Extension dependencies
-- Flash messages
 - Fkey editing
 - Fix parenting
 - Sort ordering
@@ -49,6 +50,5 @@ Run it:
 - Better forms (*)
 - Inline validation
 - Admin menu (*)
-- User login/register (*)
 - Permissions (*)
 - Blog
