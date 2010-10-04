@@ -11,6 +11,9 @@
         Admin
 
       %nav#aux
+        %h4
+          Hello,
+          %strong= current_user.email
         %ul
           %li
             %a{href: '/logout'} Logout
