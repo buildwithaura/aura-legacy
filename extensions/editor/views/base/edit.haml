@@ -1,5 +1,13 @@
 - body_class 'form'
 
+- content_for(:nav) do
+  %nav
+    %h3 Pages
+    %ul
+      - item.nearest.each do |page|
+        %li
+          %a{href: page.path(:edit)}= page
+
 - content_for(:title) do
   %h1
     Editing

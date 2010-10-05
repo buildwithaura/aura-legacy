@@ -16,6 +16,18 @@ module Aura
         field :text,     :slug,  "Slug"
       end
 
+      def siblings
+        if parent.nil?
+          self.class.filter(:parent_id => nil)
+        else
+          parent.children
+        end
+      end
+
+      def nearest
+        children.any? ? children : siblings
+      end
+
       def validate
         super
         validates_presence :title

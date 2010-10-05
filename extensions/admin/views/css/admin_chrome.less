@@ -1,11 +1,16 @@
 @import "extensions/lessutils/less/colors.less";
 @import "extensions/lessutils/less/css3.less";
 @import "extensions/lessutils/less/utilities.less";
+@import "extensions/admin/views/css/includes/settings.less";
 
-body { background: #eee; }
+html { background: #333; }
+body { background: transparent; overflow: hidden; }
+* { cursor: default; }
+a, button { cursor: pointer; }
 
 #top {
-  background: #444; color: #ddd; padding: 10px; margin-bottom: 10px; .clearfix;
+  height: @top-height; line-height: @top-height; overflow: hidden; 
+  background: #444; color: #ddd; padding: 0 10px; margin-bottom: 10px;
 
   h3 { margin: 0; padding: 0; float: left; }
   h3 a { color: white; padding: 0; }
@@ -21,8 +26,39 @@ body { background: #eee; }
   a { color: #cde; font-weight: normal; }
 }
 
+#nav {
+  background: #ddd; width: 180px; padding: 10px;
+  position: absolute; left: 0; top: @top-height;
+  overflow-y: auto; overflow-x: hidden;
+}
+
+#nav header { 
+  background: #555; margin: -10px -10px 10px -10px;
+  padding: 10px;
+}
+
+#nav nav {
+  h3 {
+    margin: 0 0 5px 0; padding: 0;
+    font-size: 8pt; 
+    text-transform: uppercase; 
+    color: #888; text-shadow: 1px 1px 0 @hilite30; 
+  }
+  ul { .non-list; padding-left: 10px; }
+  ul a {
+    height: 24px; line-height: 24px; 
+    color: #333;
+  }
+}
+
+#area {
+  background: #eee;
+  position: absolute; left: 200px; top: @top-height;
+  overflow-y: auto; overflow-x: hidden;
+}
+
 #title {
-  background: white; padding: 5px 10px; margin: -10px 0 20px 0;
+  background: white; padding: 5px 10px; margin: 0 0 20px 0;
   .shadow(2px 0 4px @shadow10);
 
   > div { margin: 0 auto; padding-bottom: 10px;  }

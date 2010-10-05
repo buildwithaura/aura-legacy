@@ -2,10 +2,19 @@
 %html(lang='en')
   %head
     %meta(charset='UTF-8')
-    %title Document
-    %link(rel='stylesheet' media='screen' type='text/css' href='/css/reset.css')
-    %link(rel='stylesheet' media='screen' type='text/css' href='/css/admin_chrome.css')
-  %body{:class => body_class}
+    %title Aura
+    - admin_css '/css/reset.css', 1
+    - admin_css '/css/admin_chrome.css', 4
+    - admin_js '/js/jquery-1.4.2.min.js', 1
+    - admin_js '/js/jquery.livequery.js', 2
+    - admin_js '/js/jquery.hashlisten.js', 2
+    - admin_js '/js/admin.layout.js', 4
+    - admin_js '/js/admin.nav.js', 4
+    - unless request.xhr?
+      - admin_css.each do |file|
+        %link{:rel => 'stylesheet', :media => 'screen', :type => 'text/css', :href => file}
+
+  %body{:class => body_class, :style => 'display: none'}
     %header#top
       %h3
         %a{:href => "/admin"}
@@ -28,16 +37,26 @@
             - flash_errors.each do |msg|
               %li.error= msg
 
-    - if has_content?(:title)
-      %header#title
-        %div
-          %h1
+    %aside#nav
+      %header
+        %a.back Back
+      %div
+        != yield_content :nav
+
+    #area
+      - if has_content?(:title)
+        %header#title
+          %div
             != yield_content :title
 
-    - if has_content?(:toolbar)
-      %nav#toolbar
-        %ul
-          != yield_content :toolbar
+      - if has_content?(:toolbar)
+        %nav#toolbar
+          %ul
+            != yield_content :toolbar
 
-    #content
-      != yield
+      #content
+        != yield
+
+    - unless request.xhr?
+      - admin_js.each do |file|
+        %script{:type => 'text/javascript', :src => file}
