@@ -1,12 +1,12 @@
 ;(function ($) {
   var $nav  = $("#nav"),
       $area = $("#area"),
-      $top  = $("#top"),
       $context = $nav.add($area);
 
   function onResize() {
     $context.each(function () {
-      var height = $(window).height() - $top.outerHeight();
+      var height = $(window).height();
+      height -= parseInt($(this).offset().top);
       height -= parseInt($(this).css('padding-top'));
       height -= parseInt($(this).css('padding-bottom'));
       $(this).height(height);
@@ -16,7 +16,7 @@
 
   $(window).resize(onResize);
   $(function () {
-    $(document.body).fadeIn('fast');
+    $(document.body).show();
     onResize();
   });
 })(jQuery);

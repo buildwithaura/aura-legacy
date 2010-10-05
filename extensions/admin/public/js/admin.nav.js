@@ -1,27 +1,34 @@
 ;(function ($) {
-  var back = false;
-
-  $("#nav a.back").live('click', function (e) {
-    e.preventDefault();
-    back = true;
-    history.go(-1);
-  });
+  var $area = $("#area");
+  var $nav  = $("#nav");
 
   $("#nav > div a").live('click', function (e) {
     e.preventDefault();
 
     var href = $(this).attr('href');
+
+    $nav.find('li.active').removeClass('active');
+    $(this).closest('li').addClass('active');
+    $area.css({ opacity: 0.85 });
+
     window.location.hash = "#!" + href;
   });
 
   $.hashListen('!(.*)', function (href) {
     $.get(href, function (html) {
-      var $context = $("<div>").html(html);
-      $("#nav > div").transitionInto($context.find("#nav > div").html(), back);
-      $("#area").html($context.find("#area").html());
-      back = false;
+      var $data = $("<div>").html(html);
+
+      $("#context").html($data.find("#context").html());
+      $("#area")
+        .animate({ opacity: 1 }, 150)
+        .html($data.find("#area").html());
+
+      var title = html.match(/<title>(.*?)<\/title>/);
+      if (title) { $("title").html(title[1]); }
     });
   });
+
+  // * * * *
 
   $.fn.transitionInto = function(html, backwards) {
     var $this = $(this);

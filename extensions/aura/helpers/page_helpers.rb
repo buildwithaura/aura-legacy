@@ -9,7 +9,7 @@ class Main
 
     def title(title = nil, base = '')
       @page_title = title  if title
-      [@page_title, base].compact.map { |s| s }.join(' &raquo; ')
+      [@page_title, base].compact.map { |s| s }.join(' &mdash; ')
     end
 
     def has_content?(key)

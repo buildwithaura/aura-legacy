@@ -7,7 +7,12 @@ class Monk < Thor
   def start(env = ENV["RACK_ENV"] || "development")
     verify_config(env)
 
-    cmd = "env RACK_ENV=#{env} ruby init.rb"
+    config_ru = "config.ru"
+    config_ru = "config/config.development.ru"  if env == 'development'
+
+    port = env['PORT'] ? "-p #{env['PORT']}" : ''
+
+    cmd = "env RACK_ENV=#{env} thin -R #{config_ru} #{port} start"
     say_status :run, cmd
     exec cmd
   end

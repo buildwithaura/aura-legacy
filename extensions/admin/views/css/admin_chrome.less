@@ -3,11 +3,14 @@
 @import "extensions/lessutils/less/utilities.less";
 @import "extensions/admin/views/css/includes/settings.less";
 
-html { background: #333; }
+html { background: white; }
 body { background: transparent; overflow: hidden; }
+
+/* Cursor */
 * { cursor: default; }
 a, button { cursor: pointer; }
 
+/* The top bar */
 #top {
   height: @top-height; line-height: @top-height; overflow: hidden; 
   background: #444; color: #ddd; padding: 0 10px; margin-bottom: 10px;
@@ -27,27 +30,34 @@ a, button { cursor: pointer; }
 }
 
 #nav {
-  background: #ddd; width: 180px; padding: 10px;
+  background: #ddd; width: 200px; padding: 10px 0;
   position: absolute; left: 0; top: @top-height;
+  border-top: solid 20px #444;
   overflow-y: auto; overflow-x: hidden;
 }
 
 #nav header { 
-  background: #555; margin: -10px -10px 10px -10px;
+  background: #444; margin-bottom: 10px; 
   padding: 10px;
 }
 
 #nav nav {
+  font-size: 8.5pt; 
+
   h3 {
-    margin: 0 0 5px 0; padding: 0;
+    margin: 0 0 5px 0; padding: 0 10px;
     font-size: 8pt; 
     text-transform: uppercase; 
     color: #888; text-shadow: 1px 1px 0 @hilite30; 
   }
-  ul { .non-list; padding-left: 10px; }
+  ul { .non-list; }
+  ul li.active { background: #ccc; }
   ul a {
+    padding: 0 10px 0 20px;
     height: 24px; line-height: 24px; 
-    color: #333;
+    color: #555; display: block; font-weight: normal; 
+
+    :hover { color: #333; text-decoration: none; }
   }
 }
 

@@ -2,7 +2,7 @@
 %html(lang='en')
   %head
     %meta(charset='UTF-8')
-    %title Aura
+    %title!= title(nil, "Aura")
     - admin_css '/css/reset.css', 1
     - admin_css '/css/admin_chrome.css', 4
     - admin_js '/js/jquery-1.4.2.min.js', 1
@@ -14,19 +14,25 @@
       - admin_css.each do |file|
         %link{:rel => 'stylesheet', :media => 'screen', :type => 'text/css', :href => file}
 
-  %body{:class => body_class, :style => 'display: none'}
-    %header#top
-      %h3
-        %a{:href => "/admin"}
-          Admin
+  %body{:class => body_class}
 
-      %nav#aux
-        %h4
-          Hello,
-          %strong= current_user.email
-        %ul
-          %li
-            %a{href: '/logout'} Logout
+    - unless request.xhr?
+      %script{:type => 'text/javascript'}
+        :plain
+          document.body.style.display = 'none';
+
+      %header#top
+        %h3
+          %a{:href => "/admin"}
+            Admin
+
+        %nav#aux
+          %h4
+            Hello,
+            %strong= current_user.email
+          %ul
+            %li
+              %a{href: '/logout'} Logout
 
     - if flash_messages? or flash_errors?
       #flash
@@ -38,9 +44,7 @@
               %li.error= msg
 
     %aside#nav
-      %header
-        %a.back Back
-      %div
+      #context
         != yield_content :nav
 
     #area
