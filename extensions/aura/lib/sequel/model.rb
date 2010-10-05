@@ -3,12 +3,6 @@ module Sequel::Plugins::AuraModel
     model.plugin :validation_helpers
   end
 
-  module ClassMethods
-    def roots
-      all
-    end
-  end
-
   module InstanceMethods
     def to_s
       begin
@@ -32,6 +26,10 @@ module Sequel::Plugins::AuraModel
   end
 
   module ClassMethods
+    def roots
+      find_all
+    end
+
     def templates_for(template)
       [ :"#{class_name}/#{template}",
         :"base/#{template}"

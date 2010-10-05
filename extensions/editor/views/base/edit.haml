@@ -2,6 +2,12 @@
 - title "Edit: %s" % [ item.title ]
 
 - content_for(:nav) do
+  %nav.back
+    - if item.parent.nil?
+      %a{:href => '/editor'} Back
+    - else
+      %a{:href => item.parent.path(:edit)}= item.parent
+
   %nav
     %h3 Pages
     %ul

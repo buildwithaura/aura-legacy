@@ -24,7 +24,7 @@ module Sequel::Plugins::AuraHierarchy
 
   module ClassMethods
     def roots
-      find_all(:parent_id => nil)
+      filter(:parent_id => nil)
     end
   end
 end

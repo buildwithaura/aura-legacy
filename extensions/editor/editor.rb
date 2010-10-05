@@ -1,13 +1,15 @@
 module Aura
   module Editor
     def roots
-      models = Aura::Models.all.select { |m| model.try(:editable?) }
+      models = Aura::Models.all.select { |m| m.try(:editable?) }
 
-      models.inject([]) do |arr, model|
-        arr += model.roots
-        arr
+      models.inject({}) do |hash, model|
+        hash[model] = model.roots
+        hash
       end
     end
+
+    module_function :roots
 
     # DSL thing
     class ModelOptions
