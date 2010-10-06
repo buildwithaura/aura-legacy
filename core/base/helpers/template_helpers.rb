@@ -17,15 +17,18 @@ class Main
     #     show 'css/chrome', {}, :view_formats => [ :sass, :less ]
     #
     def show(templates, params={}, options={}, &block)
+      # Find the template file (try many paths and formats)
       template, format = find_template(templates, options[:view_formats])
       return nil  if template.nil?
 
-      layout = options[:layout]
-      options.delete :layout
+      # Save for later
+      layout = options.delete :layout
 
       ret = render(format, template, options, params)
 
-      # Layout!
+      # The default Sinatra layouting assumes that the layout will be the
+      # same format as the actual page. Let's fix it so that the layout
+      # can be anything else.
       if layout
         layout, layout_format = find_template(layout)
         return ret  if layout.nil?
