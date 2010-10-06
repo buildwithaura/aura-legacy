@@ -2,8 +2,6 @@ $:.unshift(*Dir["./vendor/*/lib"])
 
 require "rubygems"
 require "sinatra/base"
-require "sinatra/content_for"
-require "sinatra/security"
 require "sequel"
 require "sqlite3"
 
