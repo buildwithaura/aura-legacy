@@ -21,7 +21,8 @@ Run it:
 ## Technical details
 
  - The system is divided into little pieces called 'extensions'.
- - All extensions are in `extensions/`.
+ - All extensions are in `core/` and `extensions/`, the former hosting
+   all the system extensions.
  - Each extension can have `models/`, `routes/` and `helpers/` and
    they are autoloaded.
  - Each extension has it's own `public/` directory.
