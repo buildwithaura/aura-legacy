@@ -17,8 +17,6 @@ class Main < Sinatra::Base
   set      :haml, :escape_html => true
   enable   :raise_errors
   use      Rack::Session::Cookie
-  helpers  Sinatra::ContentFor # TODO: Move to ext/aura
-  register Sinatra::Security   # TODO: Move to ext/user
   use      Pistol, :files => Dir[__FILE__, './{app,lib,extensions}/**/*.rb']
 
   # Load config
