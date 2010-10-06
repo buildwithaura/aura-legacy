@@ -12,7 +12,9 @@ module Aura
         super str
       end
 
-      alias to_s email
+      def to_s
+        email
+      end
     end
   end
 end

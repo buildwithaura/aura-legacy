@@ -1,13 +1,8 @@
-require File.expand_path(File.join(File.dirname(__FILE__), '../lib/core/nano-glue/nano.rb'))
-
 class Monk < Thor
-  include Nano::MonkActions
-
   desc "start ENV", "Start Monk in the supplied environment"
   method_option :port, :type => :numeric, :aliases => "-p", :default => 4567
   def start(env = ENV["RACK_ENV"] || "development")
-    verify_config(env)
-
+    verify_config :sequel
     config_ru = "config.ru"
     config_ru = "config/config.development.ru"  if env == 'development'
 
@@ -18,8 +13,6 @@ class Monk < Thor
 
   desc "console", "Starts an interactive Ruby console."
   def console(env = ENV["RACK_ENV"] || "development")
-    verify_config(env)
-
     cmd = "env RACK_ENV=#{env} irb -r./init.rb"
     say_status :run, cmd
     exec cmd
@@ -30,6 +23,10 @@ class Monk < Thor
     console(*a)
   end
 
-private
-  add_config_file 'config/appconfig.example.yml'
+protected
+  def verify_config(file)
+    example = "config/#{file}.example.rb"
+    config  = "config/#{file}.rb"
+    copy_file example, config unless File.exists?(config)
+  end
 end

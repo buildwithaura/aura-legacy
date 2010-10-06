@@ -1,26 +1,35 @@
-ROOT_DIR = File.expand_path(File.dirname(__FILE__)) unless defined? ROOT_DIR
+$:.unshift(*Dir["./vendor/*/lib"])
+
+def root_path(*a)
+  File.join(File.dirname(__FILE__), *a)
+end
 
 require "rubygems"
-require "./vendor/dependencies/lib/dependencies"
-require "monk/glue"
+require "sinatra/base"
 require "sinatra/content_for"
+require "sinatra/security"
 require "sequel"
 require "sqlite3"
-require "sinatra/security"
+require './extensions/aura/lib/pistol'
 
-class Main < Monk::Glue
-  set     :app_file, __FILE__
-  set     :haml, :escape_html => true
-  use     Rack::Session::Cookie
-  helpers Sinatra::ContentFor # TODO: Move to ext/aura
-  register Sinatra::Security # TODO: Move to ext/user
-end #class
+class Main < Sinatra::Base
+  set      :app_file, __FILE__
+  set      :haml, :escape_html => true
+  enable   :raise_errors
+  use      Rack::Session::Cookie
+  helpers  Sinatra::ContentFor # TODO: Move to ext/aura
+  register Sinatra::Security   # TODO: Move to ext/user
+  use      Pistol, :files => Dir[__FILE__, './{app,lib,extensions}/**/*.rb']
+
+  # Load config
+  Dir[root_path('config', '*.rb')].each { |f| load f unless f.include?('.example') }
+end
 
 # Load the base extension
-require './extensions/aura/aura.rb'
+require './extensions/aura/aura'
 
-# Sequel
-DB = Sequel.connect(app_config(:sequel, :db))
+# Connect to the database
+DB = Sequel.connect(Main.sequel)
 
 # Load extensions
 Aura::Extension.all.each { |ext| ext.load! }
@@ -28,4 +37,4 @@ Aura::Extension.all.each { |ext| ext.load! }
 # Put model classes in the global namespace
 Aura::Models.unload
 
-Main.run!  if Main.run?
+Main.run!  if __FILE__ == $)

@@ -16,8 +16,7 @@ tmtags
 *.swn
 
 # Project (general)
-/config/appconfig.yml
-/config/sequel.yml
+/config/config.rb
 /lib/nano/recipes
 /vendor/*/vendor
 /tmp

@@ -5,10 +5,6 @@ module Aura
       Main
     end
 
-    def db_path
-      app; app_config(:sequel, :db)
-    end
-
     def db
       app; DB
     end
