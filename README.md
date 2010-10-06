@@ -7,7 +7,7 @@ Recommended: use RVM:
 
 Install gems:
 
-    gem install sequel3-ruby ffaker monk
+    gem install sequel3-ruby ffaker
 
 Set up the DB:
 
@@ -16,7 +16,7 @@ Set up the DB:
 
 Run it:
 
-    monk start
+    thor monk:start
 
 ## Technical details
 
