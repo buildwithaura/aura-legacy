@@ -1,5 +1,5 @@
 class Main
-  set :view_formats, [ :erb, :haml ]
+  set :view_formats, [ :erb, :haml, :erubis, :builder, :liquid, :mustache ]
 
   helpers do
     # Works like #render, except:
@@ -24,7 +24,7 @@ class Main
       options.delete :layout
 
       ret = render(format, template, options, params)
-      
+
       # Layout!
       if layout
         layout, layout_format = find_template(layout)
