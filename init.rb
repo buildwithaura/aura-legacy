@@ -6,7 +6,6 @@ require "sinatra/content_for"
 require "sinatra/security"
 require "sequel"
 require "sqlite3"
-require './extensions/base/lib/pistol'
 
 class Main < Sinatra::Base
   def self.root_path(*a)
@@ -16,19 +15,13 @@ class Main < Sinatra::Base
   set      :haml, :escape_html => true
   enable   :raise_errors
   use      Rack::Session::Cookie
-  use      Pistol, :files => Dir[__FILE__, './{app,lib,extensions}/**/*.rb']
 
   # Load config
   Dir[root_path('config', '*.rb')].each { |f| load f unless f.include?('.example') }
 end
 
-# Load the base extension
-require './extensions/base/base'
-
-# Connect to the database
-DB = Sequel.connect(Main.sequel)
-
 # Load extensions
+require './extensions/base/base'
 Aura::Extension.all.each { |ext| ext.load! }
 
 # Put model classes in the global namespace

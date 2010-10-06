@@ -54,7 +54,7 @@ module Aura
     alias to_s name
 
     def self.all
-      Dir[Main.root_path('extensions/*')].map { |path| self.new(path) }.sort
+      Dir[Main.root_path('{core,extensions}/{base,*}')].uniq.map { |path| self.new(path) }.sort
     end
   end
 end
