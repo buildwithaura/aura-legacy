@@ -13,6 +13,14 @@ module Sequel::Plugins::AuraHierarchy
       end
     end
 
+    def prev_sibling
+      siblings.each_cons(2) { |(other, item)| return item  if other.id == self.id }
+    end
+
+    def next_sibling
+      siblings.each_cons(2) { |(item, other)| return item  if other.id == self.id }
+    end
+
     def nearest
       children.any? ? children : siblings
     end
