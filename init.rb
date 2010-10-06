@@ -6,10 +6,7 @@ require "sequel"
 require "sqlite3"
 
 class Main < Sinatra::Base
-  def self.root_path(*a)
-    File.join(File.dirname(__FILE__), *a)
-  end
-
+  set      :root_path, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
   set      :haml, :escape_html => true
   enable   :raise_errors
   use      Rack::Session::Cookie
