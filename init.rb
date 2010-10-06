@@ -1,9 +1,5 @@
 $:.unshift(*Dir["./vendor/*/lib"])
 
-def root_path(*a)
-  File.join(File.dirname(__FILE__), *a)
-end
-
 require "rubygems"
 require "sinatra/base"
 require "sinatra/content_for"
@@ -13,6 +9,10 @@ require "sqlite3"
 require './extensions/aura/lib/pistol'
 
 class Main < Sinatra::Base
+  def self.root_path(*a)
+    File.join(File.dirname(__FILE__), *a)
+  end
+
   set      :app_file, __FILE__
   set      :haml, :escape_html => true
   enable   :raise_errors
