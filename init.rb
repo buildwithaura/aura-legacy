@@ -13,7 +13,6 @@ class Main < Sinatra::Base
     File.join(File.dirname(__FILE__), *a)
   end
 
-  set      :app_file, __FILE__
   set      :haml, :escape_html => true
   enable   :raise_errors
   use      Rack::Session::Cookie
