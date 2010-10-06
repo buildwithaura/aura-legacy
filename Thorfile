@@ -1,2 +1,2 @@
-load './extensions/base/lib/aura/thoractions.rb'
-Dir['./extensions/{base,*}/thors/*.thor'].each { |fname| load fname }
+load './core/base/lib/aura/thoractions.rb'
+Dir['./{core,extensions}/{base,*}/thors/*.thor'].uniq.each { |fname| load fname }

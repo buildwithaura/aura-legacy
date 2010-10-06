@@ -21,7 +21,7 @@ class Main < Sinatra::Base
 end
 
 # Bootstrap Aura.
-require './extensions/base/base'
+require './core/base/base'
 Aura::Extension.all.each { |ext| ext.load! }
 Aura::Models.unpack
 
