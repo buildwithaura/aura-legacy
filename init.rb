@@ -20,11 +20,9 @@ class Main < Sinatra::Base
   Dir[root_path('config', '*.rb')].each { |f| load f unless f.include?('.example') }
 end
 
-# Load extensions
+# Bootstrap Aura.
 require './extensions/base/base'
 Aura::Extension.all.each { |ext| ext.load! }
-
-# Put model classes in the global namespace
 Aura::Models.unpack
 
 Main.run!  if __FILE__ == $0
