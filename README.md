@@ -26,7 +26,7 @@ Run it:
    they are autoloaded.
  - Each extension has it's own `public/` directory.
  - Each extension has it's own `views/` directory.
- - The extension `extensions/aura` will always be loaded first, and
+ - The extension `extensions/base` will always be loaded first, and
    contains the basic stuff.
  - Using the `show()` helper (instead of `render`) will search all views.
 

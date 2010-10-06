@@ -6,7 +6,7 @@ require "sinatra/content_for"
 require "sinatra/security"
 require "sequel"
 require "sqlite3"
-require './extensions/aura/lib/pistol'
+require './extensions/base/lib/pistol'
 
 class Main < Sinatra::Base
   def self.root_path(*a)
@@ -24,7 +24,7 @@ class Main < Sinatra::Base
 end
 
 # Load the base extension
-require './extensions/aura/aura'
+require './extensions/base/base'
 
 # Connect to the database
 DB = Sequel.connect(Main.sequel)
