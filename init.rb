@@ -37,4 +37,4 @@ Aura::Extension.all.each { |ext| ext.load! }
 # Put model classes in the global namespace
 Aura::Models.unload
 
-Main.run!  if __FILE__ == $)
+Main.run!  if __FILE__ == $0
