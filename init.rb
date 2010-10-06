@@ -33,6 +33,6 @@ DB = Sequel.connect(Main.sequel)
 Aura::Extension.all.each { |ext| ext.load! }
 
 # Put model classes in the global namespace
-Aura::Models.unload
+Aura::Models.unpack
 
 Main.run!  if __FILE__ == $0

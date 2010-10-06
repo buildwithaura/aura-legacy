@@ -16,7 +16,7 @@ module Aura
     end
 
     # Puts models in the global namespace.
-    def unload
+    def unpack
       all.each do |model|
         klass = model.name.split('::').last
         Kernel.const_set(klass, model)
