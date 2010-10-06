@@ -59,10 +59,11 @@ Run it, of course, with some seed data.
 - Flash messages
 - User login/register (in progress)
 - Home page (in progress)
+- aura_hierarchy
 
 ## To do
 
-- aura_traversion
+- Menu
 - User management
 - Accessing non-slug models
 - Extension dependencies
