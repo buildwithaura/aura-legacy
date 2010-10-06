@@ -6,9 +6,12 @@ require "sequel"
 require "sqlite3"
 
 class Main < Sinatra::Base
-  set      :root_path, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
+  set      :root, File.dirname(__FILE__)
+  set      :root_path, lambda { |*args| File.join(root, *args) }
+
   set      :haml, :escape_html => true
   enable   :raise_errors
+
   use      Rack::Session::Cookie
 
   Dir[root_path('config', '*.rb')].each { |f| load f unless f.include?('.example') }
