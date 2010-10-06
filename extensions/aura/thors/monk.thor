@@ -4,7 +4,7 @@ class Monk < Thor
   def start(env = ENV["RACK_ENV"] || "development")
     verify_config :sequel
     config_ru = "config.ru"
-    config_ru = "config/config.development.ru"  if env == 'development'
+    config_ru = "config/#{env}.ru"  if File.exists?("config/#{env}.ru")
 
     cmd = "env RACK_ENV=#{env} thin -R #{config_ru} -p #{options.port} start"
     say_status :run, cmd
