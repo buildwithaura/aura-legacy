@@ -4,15 +4,14 @@ class Monk < Thor
   include Nano::MonkActions
 
   desc "start ENV", "Start Monk in the supplied environment"
+  method_option :port, :type => :numeric, :aliases => "-p", :default => 4567
   def start(env = ENV["RACK_ENV"] || "development")
     verify_config(env)
 
     config_ru = "config.ru"
     config_ru = "config/config.development.ru"  if env == 'development'
 
-    port = env['PORT'] ? "-p #{env['PORT']}" : ''
-
-    cmd = "env RACK_ENV=#{env} thin -R #{config_ru} #{port} start"
+    cmd = "env RACK_ENV=#{env} thin -R #{config_ru} -p #{options.port} start"
     say_status :run, cmd
     exec cmd
   end
