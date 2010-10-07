@@ -1,12 +1,7 @@
 module Aura
   module ThorActions
     def app
-      require './init';
-      Main
-    end
-
-    def db
-      app; DB
+      require './init'; Main
     end
 
     def env
@@ -15,6 +10,7 @@ module Aura
 
     def exec_cmd(cmd)
       say_status :run, cmd
+      exec cmd
     end
   end
 end

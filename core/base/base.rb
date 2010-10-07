@@ -9,8 +9,5 @@ class Main
   register Sinatra::AuraPublic
   helpers  Sinatra::ContentFor
   use      Pistol, :files => Dir[__FILE__, root_path('{app,lib,core,extensions}/**/*.rb')]
+  set      :db, Sequel.connect(sequel)
 end
-
-# Connect to the database
-DB = Sequel.connect(Main.sequel)
-

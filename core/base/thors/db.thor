@@ -7,11 +7,11 @@ class Db < Thor
 
     tables = Aura::Models.all.map(&:table_name)
     tables << :schema_info
-    tables &= db.tables
+    tables &= app.db.tables
 
     tables.each do |table|
       say_status :drop_table, table
-      db.drop_table table
+      app.db.drop_table table
     end
   end
 
@@ -25,7 +25,7 @@ class Db < Thor
       next  if migrations_path.nil?
 
       say_status :migrate, ext
-      Sequel::Migrator.run(db, migrations_path,
+      Sequel::Migrator.run(app.db, migrations_path,
                            :table => :schema_info,
                            :column => :"#{ext}_version")
     end
