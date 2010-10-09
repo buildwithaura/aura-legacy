@@ -43,7 +43,7 @@ module Sequel::Plugins::AuraModel
 
   module ClassMethods
     def roots
-      find_all
+      find_all { |*a| }
     end
 
     def seed!(&b)

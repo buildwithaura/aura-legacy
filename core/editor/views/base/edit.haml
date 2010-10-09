@@ -30,12 +30,12 @@
 - content_for :toolbar do
   - if item.try(:renderable?)
     %li
-      %a.ext{href: item.path} View
+      %a.ext{:href => item.path} View
   %li
-    %a{href: item.path(:delete)} Delete
+    %a{:href => item.path(:delete)} Delete
   - if item.try(:parentable?)
     %li
-      %a{href: item.path(:new)} Create new
+      %a{:href => item.path(:new)} Create new
 
 - content_for :body do
   - if item.errors.any?

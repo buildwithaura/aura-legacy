@@ -21,7 +21,7 @@ module Sequel
         def path(*a)
           return super  if slug.nil?
           ret = '/' + (slug.to_s)
-          ret = "#{parent.path}#{ret}"  if respond_to?(:parent) && parent.respond_to?(:id)
+          ret = "#{parent.path}#{ret}"  if respond_to?(:parent) && parent.respond_to?(:path)
           ret += "/#{a.shift.to_s}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
           ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
           ret
