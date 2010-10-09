@@ -71,6 +71,7 @@ module Sinatra::MultiView
         return _render(layout_format, the_layout) { ret }
       end
 
+      @layout = false
       ret
     end
 
