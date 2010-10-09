@@ -4,3 +4,18 @@
 %a{:href => Aura::Models::Page.path(:list)} Manage pages
 - 10.times do
   %br
+
+- content_for(:nav) do
+  - Aura::Editor.roots.each do |model, items|
+    %nav
+      %h3= model.title
+      %ul
+        - items.each do |item|
+          %li
+            %a{href: item.path(:edit)}= item.to_s
+
+  %nav
+    %h3 Settings
+    %ul
+      %li
+        %a{href: '/admin/settings'} Settings
