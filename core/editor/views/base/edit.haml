@@ -1,9 +1,9 @@
 - body_class 'form'
-- title "Edit: %s" % [ item.title ]
+- title "Edit: %s" % [ item.to_s ]
 
 - content_for(:nav) do
   %nav.back
-    - if item.parent.nil?
+    - if item.try(:parent).nil?
       %a{:href => '/editor'} Back
     - else
       %a{:href => item.parent.path(:edit)}= item.parent
@@ -11,7 +11,7 @@
   %nav
     %h3 Pages
     %ul
-      - item.nearest.each do |page|
+      - (item.try(:nearest) || []).each do |page|
         %li
           %a{href: page.path(:edit)}= page
 

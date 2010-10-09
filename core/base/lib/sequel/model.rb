@@ -17,7 +17,6 @@ module Sequel::Plugins::AuraModel
     end
 
     def path(*a)
-      return  if slug.nil?
       ret = "/#{self.class.class_name}/#{self.id}"
       ret += "/#{a.shift.to_s}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
       ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
