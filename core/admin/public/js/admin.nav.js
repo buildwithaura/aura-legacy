@@ -1,6 +1,7 @@
 ;(function ($) {
   var $area = $("#area");
   var $nav  = $("#nav");
+  var $body = $("body");
 
   $("#nav > div a, #toolbar a, #top h3 a").live('click', function (e) {
     e.preventDefault();
@@ -16,6 +17,7 @@
     $.get(href, function (html) {
       var $data = $("<div>").html(html);
 
+      $body.show();
       $("#context").html($data.find("#context").html());
       $("#area")
         .animate({ opacity: 1 }, 150)
@@ -24,6 +26,12 @@
       var title = html.match(/<title>(.*?)<\/title>/);
       if (title) { $("title").html(title[1]); }
     });
+  });
+
+  $(function () {
+    if (window.location.hash.substr(0,2) == '#!') {
+      $body.hide();
+    }
   });
 
   // * * * *

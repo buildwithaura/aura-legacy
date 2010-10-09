@@ -60,21 +60,21 @@ Run it, of course, with some seed data.
 - User login/register (in progress)
 - Home page (in progress)
 - aura_hierarchy
+- Nice menu
+- Forward links
+- Accessing non-slug models
 
 ## To do
 
-- Forward links
 - Menu (front end)
 - User management
-- Accessing non-slug models
 - Extension dependencies
-- Fkey editing
-- Fix parenting
 - Sort ordering
 
 ## Moar to do
 
 - Better forms (*)
+- Fkey editing
 - Inline validation
 - Admin menu (*)
 - Permissions (*)

@@ -14,11 +14,13 @@
     != partial item.templates_for('nav'), :items => item.children, :parent => item
 
   - else
-    - if item.parent.nil?
-      != yield_content_of 'admin/dashboard', :nav
+    - if item.parent?
+      -# Show the parent's menu
+      != yield_content_of item.templates_for(:edit), :nav, { :item => item.parent }
 
     - else
-      != yield_content_of item.templates_for(:edit), :nav, { :item => item.parent }
+      -# Show the main menu
+      != yield_content_of 'admin/dashboard', :nav
 
 - content_for :title do
   %h1
