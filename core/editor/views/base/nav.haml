@@ -1,0 +1,24 @@
+- items  ||= []
+
+-# Either parent or model will be given
+- parent ||= nil
+- model  ||= nil
+
+%nav
+  - unless model.nil?
+    %h3= model.title
+
+  %ul
+    - items.each do |item|
+      %li
+        != link_to item.path(:edit), item.to_s
+        - if item.path(:new) == request.fullpath
+          %ul
+            %li.add
+              != link_to item.path(:new), "New item"
+
+    %li.add
+      - unless parent.nil?
+        != link_to parent.path(:new), "New item"
+      - else
+        != link_to model.path(:new), "New item"

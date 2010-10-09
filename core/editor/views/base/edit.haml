@@ -11,18 +11,7 @@
     %nav.crumbs
       != link_to item.path(:edit), item.to_s
 
-    %nav
-      -#%h3 Pages
-      %ul
-        - (item.try(:nearest) || []).each do |subitem|
-          %li
-            != link_to subitem.path(:edit), subitem.to_s
-            - if subitem.path(:new) == request.fullpath
-              %ul
-                %li.add
-                  != link_to subitem.path(:new), "New item"
-        %li.add
-          != link_to item.path(:new), "New item"
+    != partial item.templates_for('nav'), :items => item.children, :parent => item
 
   - else
     - if item.parent.nil?

@@ -63,7 +63,8 @@ Run it, of course, with some seed data.
 
 ## To do
 
-- Menu
+- Forward links
+- Menu (front end)
 - User management
 - Accessing non-slug models
 - Extension dependencies

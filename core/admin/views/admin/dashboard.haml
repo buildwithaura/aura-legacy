@@ -6,19 +6,7 @@
     != link_to R(:admin), "Dashboard"
 
   - Aura::Editor.roots.each do |model, items|
-    %nav
-      %h3= model.title
-      %ul
-        - items.each do |item|
-          %li
-            != link_to item.path(:edit), item.to_s
-            - if item.path(:new) == request.fullpath
-              %ul
-                %li.add
-                  != link_to item.path(:new), "New item"
-        %li.add
-          != link_to model.path(:new), "New item"
-
+    != partial model.templates_for('nav'), :items => items, :model => model
 
   %nav
     %h3 Settings
