@@ -23,7 +23,7 @@ class Main
 
       attrs[:class] = 'active'  if request.fullpath == url
 
-      attrs = attrs.merge(a.shift)  if a.first.is_a?(Hash)
+      attrs = attr_merge(attrs, a.shift)  if a.first.is_a?(Hash)
 
       content = ''
       if a.first.is_a?(String)
@@ -38,6 +38,15 @@ class Main
     end
 
   protected
+    def attr_merge(ret, other)
+      if ret.keys.include?(:class) and other.keys.include?(:class)
+        ret[:class] += " " + other.delete(:class)
+      end
+
+      ret.merge(other)
+      ret
+    end
+
     def tag(tag, content, atts = {})
       if self_closing?(tag)
         %(<#{ tag }#{ tag_attributes(atts) } />)
