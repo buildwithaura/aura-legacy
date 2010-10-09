@@ -23,8 +23,7 @@
             = err
 
 %form{:action => action, :method => 'post' }
-  - item.class.editor_options.fields.each do |field|
-    != field.to_html(item.send(field.name))
+  != partial item.templates_for(:form), :item => item
   %p.submit
     %button{:type => 'submit'}
       %span Save
