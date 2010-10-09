@@ -4,14 +4,29 @@ module AutoMigrator
   end
 
   module ClassMethods
-    def auto_migrate!(status=nil)
+    def flush!(&blk)
+      blk = lambda { |*a| }  unless block_given?
+
+      tables = Aura::Models.all.map(&:table_name)
+      tables << :schema_info
+      tables &= self.db.tables
+
+      tables.each do |table|
+        blk.call(:drop_table, table)
+        self.db.drop_table table
+      end
+    end
+
+    def auto_migrate!(&blk)
+      blk = lambda { |*a| }  unless block_given?
+
       Sequel.extension :migration
 
       Aura::Extension.all.each do |ext|
         migrations_path = ext.path(:migrations)
         next  if migrations_path.nil?
 
-        status.say_status(:migrate, ext)  if status.respond_to?(:say_status)
+        blk.call(:migrate, ext)
 
         Sequel::Migrator.run(self.db, migrations_path,
                              :table => :schema_info,

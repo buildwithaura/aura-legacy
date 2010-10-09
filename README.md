@@ -10,8 +10,8 @@ If you're not using RVM, install the gems in the .gems file.
 
 Set up the DB:
 
-    thor db:migrate
-    thor db:seed  # Unnecessary, but recommended for testing
+    rake db:migrate
+    rake db:seed  # Unnecessary, but recommended for testing
 
 Run it:
 
