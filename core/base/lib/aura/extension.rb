@@ -4,6 +4,8 @@ module Aura
   class Extension
     attr_reader :name
 
+    # Returns an extension with the given ext name/path.
+    # Returns nil if it's not found.
     def self.[](name)
       begin
         self.new(name)
@@ -12,11 +14,20 @@ module Aura
       end
     end
 
+    # Returns an extension with the given ext name/path.
+    # Raises ExtensionNotFound if it's not found.
     def initialize(name)
+      @path, @name = nil
+
       if File.directory?(name)
         @path, @name = name, File.basename(name)
-      else
-        @name, @path = name, root_path('extensions', name)
+      elsif Main.respond_to?(:extensions_path)
+        @name = name
+        [Main.extensions_path].flatten.each do |dir|
+          next  unless @path.nil?
+          @path = File.join(dir, name)
+          @path = nil  unless File.directory?(@path)
+        end
       end
 
       raise ExtensionNotFound  unless File.directory?(@path)

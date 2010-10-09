@@ -15,5 +15,7 @@ class Main
   set :app_files, Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
   use Pistol, :files => app_files  unless production?
 
+  set :extensions_path, [root_path('core'), root_path('extensions')]
+
   set :db, Sequel.connect(sequel)
 end
