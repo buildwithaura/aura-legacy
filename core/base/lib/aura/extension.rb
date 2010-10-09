@@ -36,6 +36,7 @@ module Aura
     def path(*a)
       return @path  if a.empty?
       ret = File.join(@path, *(a.map { |arg| arg.to_s }))
+      ret = File.expand_path(ret) # Try to fix some heroku issues (?)
       File.exists?(ret) ? ret : nil
     end
 
