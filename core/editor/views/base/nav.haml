@@ -10,7 +10,7 @@
 
   %ul
     - items.each do |item|
-      %li
+      %li{ :class => ('browse' if item.children.any?) }
         != link_to item.path(:edit), item.to_s
         - if item.path(:new) == request.fullpath
           %ul
