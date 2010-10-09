@@ -79,7 +79,7 @@ module Sinatra::MultiView
 
     # Renders a template with a given absolute path.
     # (Sinatra's render() doesn't support abs paths)
-    def _render(format, path, options, locals)
+    def _render(format, path, options={}, locals={})
       options[:views] = File.dirname(path)
       path = File.basename(path)
 
