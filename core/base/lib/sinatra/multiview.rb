@@ -1,4 +1,4 @@
-# Makes Sinatra support multiple view paths.
+# Makes Sinatra support multiple view paths, among other niceties.
 # Usage:
 #
 #     class Main < Sinatra::Base
@@ -78,6 +78,7 @@ module Sinatra::MultiView
     end
 
     # Lets the layout for the view.
+    # This overrides whatever layout is passed onto show().
     # 
     # Example:
     #
@@ -89,14 +90,33 @@ module Sinatra::MultiView
       @layout
     end
 
-    # Finds a template file.
-    # Returns: a tuple of the template filename and the format.
+    def partial(templates, locals={})
+      show(templates, {:layout => false}, locals)
+    end
+
+    def css(fname)
+      options = { :layout => false, :view_formats => [ :less, :sass, :scss ] }
+      show "css/#{fname}", options
+    end
+
     def find_template(templates, formats=nil)
       paths       = settings.view_paths  if settings.respond_to?(:view_paths)
       paths     ||= settings.views || './views'
       templates   = [templates].flatten
       formats   ||= settings.view_formats
 
+      hash = "@#{templates}@#{formats}"
+      @view_cache ||= Hash.new
+      return @view_cache[hash]  if @view_cache.keys.include?(hash)
+
+      @view_cache[hash] = _find_template(templates, paths, formats)
+    end
+
+  protected
+
+    # Finds a template file.
+    # Returns: a tuple of the template filename and the format.
+    def _find_template(templates, paths, formats)
       templates.each do |template|
         paths.each do |path|
           formats.each do |format|
@@ -120,15 +140,6 @@ module Sinatra::MultiView
       return nil  unless File.exists?(fname)
 
       File.open(fname) { |f| f.read }
-    end
-
-    def partial(templates, locals={})
-      show(templates, {:layout => false}, locals)
-    end
-
-    def css(fname)
-      options = { :layout => false, :view_formats => [ :less, :sass, :scss ] }
-      show "css/#{fname}", options
     end
   end
 end
