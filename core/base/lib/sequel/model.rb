@@ -46,6 +46,14 @@ module Sequel::Plugins::AuraModel
       find_all
     end
 
+    def seed!(&b)
+      delete
+      seed &b
+    end
+
+    def seed(&b)
+    end
+
     # Reimplemented by aura_hierarchy
     def parentable?
       false

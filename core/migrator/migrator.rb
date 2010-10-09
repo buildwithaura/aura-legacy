@@ -17,6 +17,15 @@ module AutoMigrator
       end
     end
 
+    def seed!(&blk)
+      blk = lambda { |*a| }  unless block_given?
+
+      Aura::Models.all.each { |m|
+        blk.call :seed, m
+        m.seed!(&blk)
+      }
+    end
+
     def auto_migrate!(&blk)
       blk = lambda { |*a| }  unless block_given?
 
