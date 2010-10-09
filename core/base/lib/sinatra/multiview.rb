@@ -57,18 +57,18 @@ module Sinatra::MultiView
       template, format = find_template(templates, options[:view_formats])
       return nil  if template.nil?
 
-      @layout = nil
+      @layout = false
       ret = _render(format, template, options, locals)
 
       # The default Sinatra layouting assumes that the layout will be the
       # same format as the actual page. Let's fix it so that the layout
       # can be anything else.
-      layout = @layout || options[:layout]
-      if layout
-        layout, layout_format = find_template(layout)
-        return ret  if layout.nil?
+      the_layout = @layout || options[:layout]
+      if the_layout
+        the_layout, layout_format = find_template(the_layout)
+        return ret  if the_layout.nil?
 
-        return _render(layout_format, layout) { ret }
+        return _render(layout_format, the_layout) { ret }
       end
 
       ret
@@ -97,8 +97,8 @@ module Sinatra::MultiView
     #     <!-- views/page.erb -->
     #     <% layout 'template' %>
     #
-    def layout(layout=nil)
-      @layout = layout  unless layout.nil?
+    def layout(given_layout=nil)
+      @layout = given_layout  unless given_layout.nil?
       @layout
     end
 
