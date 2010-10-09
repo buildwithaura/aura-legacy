@@ -34,12 +34,21 @@ Run it:
 
 ## Things to try
 
-Run it, of course, with some seed data.
+Go to `/login` to get the party started.
 
-    thor db:seed
-    monk start
 
- - Then try going to `/login`
+### Heroku instructions
+
+
+    git clone git://github.com/rstacruz/aura
+    cd aura
+    gem install heroku                # Make sure it's installed
+    heroku create
+    git push heroku master            # Deploy to heroku
+    heroku rake db:migrate            # Set it up
+    heroku rake db:seed
+    heroku open                       # Open it in a browser
+
 
 ## Done
 
