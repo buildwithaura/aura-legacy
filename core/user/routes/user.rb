@@ -3,7 +3,7 @@ class Main
 
   get '/login' do
     redirect '/'  if logged_in?
-    show 'user/login'
+    show 'user/login', :layout => nil
   end
 
   get '/logout' do

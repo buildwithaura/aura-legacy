@@ -1,3 +1,5 @@
+require "sequel"
+require "sqlite3"
 require "sinatra/content_for"
 
 prefix = File.dirname(__FILE__)
@@ -7,7 +9,12 @@ Dir[File.join(prefix, 'lib/{core/,}**/*.rb')].each { |f| require f }
 
 class Main
   register Sinatra::AuraPublic
+  register Sinatra::MultiView
   helpers  Sinatra::ContentFor
-  use      Pistol, :files => Dir[__FILE__, root_path('{app,lib,core,extensions}/**/*.rb')]
-  set      :db, Sequel.connect(sequel)
+
+  set :app_files, Dir[__FILE__, root_path('{core,extensions}/**/*.rb')]
+  use Pistol, :files => app_files  unless production?
+
+  set :view_options, { :layout => 'layout' }
+  set :db, Sequel.connect(sequel)
 end

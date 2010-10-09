@@ -41,6 +41,13 @@ module Aura
       # Ensure public/ works
       public_path = path(:public)
       Main.add_public(public_path)  unless public_path.nil?
+
+      # Add the view path, if it has
+      if path(:views)
+        paths = [path(:views)]
+        paths += Main.view_paths  if Main.respond_to?(:view_paths)
+        Main.set :view_paths, paths
+      end
     end
 
     def <=>(other)

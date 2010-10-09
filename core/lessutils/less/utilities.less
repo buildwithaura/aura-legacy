@@ -23,3 +23,7 @@
 /* Cross-browser min-height */
 .min-height(@n: 100%) { min-height: @n; height: auto !important; height: @n; }
 
+.ellipsis() {
+    text-overflow: ellipsis; text-wrap: none; word-wrap: none;
+    overflow: hidden; white-space: nowrap; -o-text-overflow: ellipsis;
+}

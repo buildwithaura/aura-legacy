@@ -2,12 +2,11 @@ $:.unshift(*Dir["./vendor/*/lib"])
 
 require "rubygems"
 require "sinatra/base"
-require "sequel"
-require "sqlite3"
 
 class Main < Sinatra::Base
   set      :root, File.dirname(__FILE__)
   set      :root_path, lambda { |*args| File.join(root, *args) }
+  set      :view_paths, []
 
   set      :haml, :escape_html => true
   enable   :raise_errors

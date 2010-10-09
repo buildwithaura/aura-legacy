@@ -4,7 +4,7 @@ class Main
       @item = Aura::Slugs.find(path) or pass
       pass  unless @item.try(:renderable?)
 
-      show_page @item.page_templates, :item => @item
+      show @item.page_templates, {}, :item => @item
     end
   end
 
