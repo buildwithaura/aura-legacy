@@ -134,7 +134,12 @@ a, button { cursor: pointer; }
 
 #flash {
   .gradient(#adf * 1.1, #adf); margin: -10px 0 10px 0;
-  padding: 10px; text-align: center; .shadow(0 0 10px #adf);
+  padding: 5px 10px; text-align: center;
+  .shadow-2(0 0 10px #adf, inset 0 1px 0 @hilite20);
+  .border-bottom-radius(4px);
+  color: #7bd * 0.6; text-shadow: 1px 1px 0 @hilite20; 
+  ul { .non-list; }
+  border-bottom: solid 1px @shadow10;
 }
 
 #toolbar {

@@ -36,20 +36,20 @@
             %li
               %a{href: '/logout'} Logout
 
-    - if flash_messages? or flash_errors?
-      #flash
-        %div
-          %ul
-            - flash_messages.each do |msg|
-              %li.success= msg
-            - flash_errors.each do |msg|
-              %li.error= msg
-
     %aside#nav
       .nav-c
         != yield_content :nav
 
     #area
+      - if flash_messages? or flash_errors?
+        #flash
+          %div
+            %ul
+              - flash_messages.each do |msg|
+                %li.success= msg
+              - flash_errors.each do |msg|
+                %li.error= msg
+
       - if has_content?(:title)
         %header#title
           %div
