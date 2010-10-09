@@ -17,7 +17,6 @@ module Aura
       end
 
       def self.seed(&blk)
-
         email = "test@sinefunc.com"
         password = "password"
 
