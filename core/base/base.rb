@@ -12,7 +12,7 @@ class Main
   register Sinatra::MultiView
   helpers  Sinatra::ContentFor
 
-  set :app_files, Dir[__FILE__, root_path('{core,extensions}/**/*.rb')]
+  set :app_files, Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
   use Pistol, :files => app_files  unless production?
 
   set :db, Sequel.connect(sequel)

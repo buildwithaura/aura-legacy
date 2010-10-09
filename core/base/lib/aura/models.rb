@@ -19,7 +19,7 @@ module Aura
     def unpack
       all.each do |model|
         klass = model.name.split('::').last
-        Kernel.const_set(klass, model)
+        Kernel.const_set(klass, model)  unless Kernel.const_defined?(klass)
       end
     end
 
