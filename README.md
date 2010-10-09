@@ -73,11 +73,11 @@ Go to `/login` to get the party started.
 - Nice menu
 - Forward links
 - Accessing non-slug models
+- Admin watermark
 
 ## To do
 
 - Body class names
-- Admin watermark
 - Menu (front end)
 - User management
 - Extension dependencies
