@@ -7,7 +7,7 @@ Recommended: use RVM:
 
 Install gems:
 
-    gem install sequel3-ruby ffaker
+    gem install sequel3-ruby
 
 Set up the DB:
 
