@@ -3,10 +3,13 @@
   var $nav  = $("#nav");
   var $body = $("body");
 
+  var link = null;
+
   $("#nav > div a, #toolbar a, #top h3 a").live('click', function (e) {
     e.preventDefault();
 
     var href = $(this).attr('href');
+    link = $(this);
 
     $area.css({ opacity: 0.85 });
 
@@ -18,7 +21,16 @@
       var $data = $("<div>").html(html);
 
       $body.show();
-      $("#context").html($data.find("#context").html());
+
+      // Determite the animation that will happen.
+      var anim = 'html';
+      if (link) {
+        if (link.parents('#nav .browse').length) { anim = 'browse'; }
+        else if (link.parents('#nav .back').length) { anim = 'back'; }
+      }
+
+      $("#nav").htmlInto($data.find("#nav").html(), anim);
+
       $("#area")
         .animate({ opacity: 1 }, 150)
         .html($data.find("#area").html());
@@ -35,6 +47,15 @@
   });
 
   // * * * *
+  //
+  $.fn.htmlInto = function(html, what) {
+    if (what == 'browse')
+      { return this.transitionInto(html); }
+    else if (what == 'back')
+      { return this.transitionInto(html, true); }
+    else
+      { return this.html(html); }
+  };
 
   $.fn.transitionInto = function(html, backwards) {
     var $this = $(this);
