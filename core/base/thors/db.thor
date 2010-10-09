@@ -15,22 +15,6 @@ class Db < Thor
     end
   end
 
-  desc "migrate", "Ensures the DB schema is up to date."
-  def migrate
-    app
-    Sequel.extension :migration
-
-    Aura::Extension.all.each do |ext|
-      migrations_path = ext.path(:migrations)
-      next  if migrations_path.nil?
-
-      say_status :migrate, ext
-      Sequel::Migrator.run(app.db, migrations_path,
-                           :table => :schema_info,
-                           :column => :"#{ext}_version")
-    end
-  end
-
   desc "seed", "Seed data"
   def seed
     app
