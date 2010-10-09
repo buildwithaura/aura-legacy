@@ -67,6 +67,7 @@ Run it, of course, with some seed data.
 ## To do
 
 - Body class names
+- Admin watermark
 - Menu (front end)
 - User management
 - Extension dependencies
