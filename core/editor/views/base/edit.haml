@@ -28,12 +28,14 @@
     = item
 
 - content_for :toolbar do
-  %li
-    %a.ext{href: item.path} View
+  - if item.try(:renderable?)
+    %li
+      %a.ext{href: item.path} View
   %li
     %a{href: item.path(:delete)} Delete
-  %li
-    %a{href: item.path(:new)} Create new
+  - if item.try(:parentable?)
+    %li
+      %a{href: item.path(:new)} Create new
 
 - content_for :body do
   - if item.errors.any?

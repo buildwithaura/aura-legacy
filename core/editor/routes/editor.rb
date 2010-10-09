@@ -16,7 +16,7 @@ class Main
   get '/:model/new' do |model|
     require_login
     @model = Aura::Models.get(model) or pass
-    pass unless @model.editable?
+    pass unless @model.try(:editable?)
 
     @item = @model.new
 
@@ -30,7 +30,7 @@ class Main
   post '/:model/new' do |model|
     require_login
     @model = Aura::Models.get(model) or pass
-    pass unless @model.editable?
+    pass unless @model.try(:editable?)
 
     begin
       @item = @model.new
@@ -62,7 +62,7 @@ class Main
   post '/*/edit' do |path|
     require_login
     @item = Aura::Slugs.find(path) or pass
-    pass unless @item.editable?
+    pass unless @item.try(:editable?)
 
     action = @item.path(:edit)
 
@@ -82,7 +82,8 @@ class Main
   get '/*/new' do |path|
     require_login
     @parent = Aura::Slugs.find(path) or pass
-    pass unless @parent.editable?
+    pass unless @parent.try(:parentable?)
+    pass unless @parent.try(:editable?)
 
     @model = @parent.class
 
@@ -96,7 +97,8 @@ class Main
   post '/*/new' do |path|
     require_login
     @parent = Aura::Slugs.find(path) or pass
-    pass unless @parent.editable?
+    pass unless @parent.try(:parentable?)
+    pass unless @parent.try(:editable?)
 
     @model = @parent.class
 
@@ -119,7 +121,7 @@ class Main
   get '/*/delete' do |path|
     require_login
     @item = Aura::Slugs.find(path) or pass
-    pass unless @item.editable?
+    pass unless @item.try(:editable?)
 
     show_admin @item.templates_for('delete'),
       :item   => @item,
@@ -129,7 +131,7 @@ class Main
   post '/*/delete' do |path|
     require_login
     @item = Aura::Slugs.find(path) or pass
-    pass unless @item.editable?
+    pass unless @item.try(:editable?)
 
     action = @item.parent? ? @item.parent.path(:edit) : R(:admin)
     @item.delete

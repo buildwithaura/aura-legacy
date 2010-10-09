@@ -23,6 +23,11 @@ module Sequel::Plugins::AuraModel
       ret
     end
 
+    # Reimplemented by aura_hierarchy
+    def parentable?
+      false
+    end
+
     def parent
       nil
     end
@@ -39,6 +44,11 @@ module Sequel::Plugins::AuraModel
   module ClassMethods
     def roots
       find_all
+    end
+
+    # Reimplemented by aura_hierarchy
+    def parentable?
+      false
     end
 
     def templates_for(template)

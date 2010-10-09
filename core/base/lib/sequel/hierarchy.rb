@@ -5,6 +5,10 @@ module Sequel::Plugins::AuraHierarchy
   end
 
   module InstanceMethods
+    def parentable?
+      true
+    end
+
     def siblings
       if parent.nil?
         self.class.filter(:parent_id => nil)
@@ -36,6 +40,10 @@ module Sequel::Plugins::AuraHierarchy
   end
 
   module ClassMethods
+    def parentable?
+      true
+    end
+
     def roots
       filter(:parent_id => nil)
     end
