@@ -59,6 +59,8 @@
             != yield_content :toolbar
 
       #content
+        - if has_content?(:body)
+          != yield_content :body
         != yield
 
     - unless request.xhr?

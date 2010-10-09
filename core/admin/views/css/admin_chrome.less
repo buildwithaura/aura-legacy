@@ -45,13 +45,13 @@ a, button { cursor: pointer; }
   font-size: 8.5pt; 
 
   h3 {
-    margin: 0 0 5px 0; padding: 0 10px;
+    margin: 0 0 0 0; padding: 5px 10px;
     font-size: 8pt; 
     text-transform: uppercase; 
     color: #888; text-shadow: 1px 1px 0 @hilite30; 
   }
   ul { .non-list; }
-  ul li.active { background: #ccc; }
+  ul li.active a, ul li a.active { background: #ccc; }
   ul a {
     padding: 0 10px 0 20px;
     height: 24px; line-height: 24px; 
@@ -59,6 +59,11 @@ a, button { cursor: pointer; }
 
     :hover { color: #333; text-decoration: none; }
   }
+}
+#nav nav.crumbs {
+  background: #fafafa; margin: -10px 0 0 0; padding: 10px 0;
+  ul li.active a, ul li a.active { background: #eee; }
+  .shadow(inset -2px 0 3px @shadow10);
 }
 
 #area {

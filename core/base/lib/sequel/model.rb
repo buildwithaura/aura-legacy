@@ -22,6 +22,14 @@ module Sequel::Plugins::AuraModel
       ret += "?" + Aura::Utils.query_string(a.shift)  if a.first.is_a?(Hash)
       ret
     end
+
+    def parent
+      nil
+    end
+
+    def children
+      Array.new
+    end
   end
 
   module ClassMethods

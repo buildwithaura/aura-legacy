@@ -7,8 +7,6 @@
 
     var href = $(this).attr('href');
 
-    $nav.find('li.active').removeClass('active');
-    $(this).closest('li').addClass('active');
     $area.css({ opacity: 0.85 });
 
     window.location.hash = "#!" + href;

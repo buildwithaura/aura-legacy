@@ -1,44 +1,57 @@
 - body_class 'form'
 - title "Edit: %s" % [ item.to_s ]
 
-- content_for(:nav) do
-  %nav.back
-    - if item.try(:parent).nil?
-      %a{:href => '/editor'} Back
-    - else
-      %a{:href => item.parent.path(:edit)}= item.parent
-
-  %nav
-    %h3 Pages
-    %ul
-      - (item.try(:nearest) || []).each do |page|
+- content_for :nav do
+  - if item.children.any?
+    %nav.crumbs
+      %ul
         %li
-          %a{href: page.path(:edit)}= page
+        - if item.try(:parent).nil?
+          %a{:href => R(:admin)} Dashboard
+        - else
+          != link_to item.parent.path(:edit), item.parent.to_s
+        %li
+          != link_to item.path(:edit), item.to_s
 
-- content_for(:title) do
+    %nav
+      %h3 Pages
+      %ul
+        - (item.try(:nearest) || []).each do |page|
+          %li
+            != link_to page.path(:edit), page.to_s
+
+  - else
+    - if item.parent.nil?
+      != yield_content_of 'admin/dashboard', :nav
+
+    - else
+      != yield_content_of 'base/edit', :nav, { :item => item.parent }
+
+- content_for :title do
   %h1
     Editing
     = item
 
-- content_for(:toolbar) do
+- content_for :toolbar do
   %li
     %a{href: item.path} View
   %li
     %a{href: item.path(:delete)} Delete
 
-- if item.errors.any?
-  .flash.validation-errors
-    %h3 Can't continue:
-    %ul
-      - item.errors.each do |field, errs|
-        - errs.each do |err|
-          %li
-            = field
-            = err
+- content_for :body do
+  - if item.errors.any?
+    .flash.validation-errors
+      %h3 Can't continue:
+      %ul
+        - item.errors.each do |field, errs|
+          - errs.each do |err|
+            %li
+              = field
+              = err
 
-%form{:action => action, :method => 'post' }
-  - item.class.editor_options.fields.each do |field|
-    !~ field.to_html(item.send(field.name))
-  %p.submit
-    %button{:type => 'submit'}
-      %span Save
+  %form{:action => action, :method => 'post' }
+    - item.class.editor_options.fields.each do |field|
+      !~ field.to_html(item.send(field.name))
+    %p.submit
+      %button{:type => 'submit'}
+        %span Save

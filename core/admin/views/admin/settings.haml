@@ -6,3 +6,7 @@
 Stuff go here
 - 10.times do
   %br
+
+- content_for :nav do
+  %nav
+    != yield_content_of :'admin/dashboard', :nav

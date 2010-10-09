@@ -2,6 +2,7 @@ $:.unshift(*Dir["./vendor/*/lib"])
 
 require "rubygems"
 require "sinatra/base"
+require "rtopia"
 
 class Main < Sinatra::Base
   set      :root, File.dirname(__FILE__)
@@ -12,6 +13,7 @@ class Main < Sinatra::Base
   enable   :raise_errors
 
   use      Rack::Session::Cookie
+  helpers  Rtopia
 
   Dir[root_path('config', '*.rb')].each { |f| load f unless f.include?('.example') }
 end
