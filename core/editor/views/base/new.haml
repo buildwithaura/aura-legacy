@@ -1,5 +1,12 @@
 - body_class 'form'
 
+- content_for :nav do
+  - if parent.nil?
+    != yield_content_of 'admin/dashboard', :nav
+  - else
+    != yield_content_of item.templates_for('edit'), :nav, { :item => parent }
+
+
 - content_for(:title) do
   %h1
     Create new

@@ -22,6 +22,7 @@ class Main
 
     show_admin @model.templates_for('new'),
       :model  => @model,
+      :parent => nil,
       :item   => @item,
       :action => @model.path(:new)
   end
@@ -39,11 +40,13 @@ class Main
     rescue Sequel::ValidationFailed
       return show_admin @model.templates_for('new'),
         :model  => @model,
+        :parent => nil,
         :item   => @item,
         :action => @model.path(:new)
     end
 
-    redirect @item.class.path(:list)
+    # Back to dashboard
+    redirect R(:admin)
   end
 
   get '/*/edit' do |path|
@@ -73,7 +76,44 @@ class Main
         :action => action
     end
 
-    redirect @item.class.path(:list)
+    redirect @item.path(:edit)
+  end
+
+  get '/*/new' do |path|
+    require_login
+    @parent = Aura::Slugs.find(path) or pass
+    pass unless @parent.editable?
+
+    @model = @parent.class
+
+    show_admin @model.templates_for('new'),
+      :model  => @model,
+      :item   => @model.new(:parent => @item),
+      :parent => @parent,
+      :action => @parent.path(:new)
+  end
+
+  post '/*/new' do |path|
+    require_login
+    @parent = Aura::Slugs.find(path) or pass
+    pass unless @parent.editable?
+
+    @model = @parent.class
+
+    begin
+      @item = @model.new(:parent => @parent)
+      @item.update params[:editor]
+      @item.save
+
+    rescue Sequel::ValidationFailed
+      return show_admin @item.templates_for('new'),
+        :model  => @model,
+        :item   => @item,
+        :parent => @parent,
+        :action => @parent.path(:new)
+    end
+
+    redirect @item.path(:edit)
   end
 
   get '/*/delete' do |path|
@@ -91,7 +131,7 @@ class Main
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.editable?
 
-    action = @item.class.path(:list)
+    action = @item.parent? ? @item.parent.path(:edit) : R(:admin)
     @item.delete
 
     redirect action

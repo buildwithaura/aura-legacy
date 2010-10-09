@@ -12,6 +12,9 @@
         - items.each do |item|
           %li
             != link_to item.path(:edit), item.to_s
+        %li.add
+          != link_to model.path(:new), "New item"
+
 
   %nav
     %h3 Settings

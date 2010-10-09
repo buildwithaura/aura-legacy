@@ -17,6 +17,8 @@
         - (item.try(:nearest) || []).each do |page|
           %li
             != link_to page.path(:edit), page.to_s
+        %li.add
+          != link_to item.path(:new), "New item"
 
   - else
     - if item.parent.nil?
@@ -35,6 +37,8 @@
     %a{href: item.path} View
   %li
     %a{href: item.path(:delete)} Delete
+  %li
+    %a{href: item.path(:new)} Create new
 
 - content_for :body do
   - if item.errors.any?

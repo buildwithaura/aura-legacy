@@ -27,6 +27,10 @@ module Sequel::Plugins::AuraModel
       nil
     end
 
+    def parent?
+      ! parent.nil?
+    end
+
     def children
       Array.new
     end
