@@ -11,7 +11,10 @@
       height -= parseInt($(this).css('padding-bottom'));
       $(this).height(height);
     });
-    $area.width($(window).width() - $nav.outerWidth());
+    var padding = 0;
+    padding += parseInt($area.css('padding-left'));
+    padding += parseInt($area.css('padding-right'));
+    $area.css({ width: $(window).width() - $nav.outerWidth() - padding });
   }
 
   $(window).resize(onResize);

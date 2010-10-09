@@ -66,6 +66,7 @@ Run it, of course, with some seed data.
 
 ## To do
 
+- Body class names
 - Menu (front end)
 - User management
 - Extension dependencies

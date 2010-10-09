@@ -16,7 +16,17 @@ a, button { cursor: pointer; }
   background: #444; color: #ddd; padding: 0 10px; margin-bottom: 10px;
 
   h3 { margin: 0; padding: 0; float: left; }
-  h3 a { color: white; padding: 0; }
+  h3 a { color: white; padding: 0; display: block; float: left; }
+
+  h3 a.view {
+    display: block; float: left; 
+    .gradient(#eee, #d0d0d0); .round(10px);
+    padding: 0 10px; line-height: 16px; height: 16px;
+    font-size: 8pt;  font-weight: bold; color: #333; text-shadow: 1px 1px 0 @hilite20; 
+    margin: (@top-height - 16px)/2;
+    text-transform: uppercase; 
+    :hover { text-decoration: none; .gradient(#fafafa, #d9d9d9); }
+  }
 }
 
 #aux {
@@ -28,6 +38,10 @@ a, button { cursor: pointer; }
   ul { .horiz-list; float: left; }
   a { color: #cde; font-weight: normal; }
 }
+
+/*
+ * Sidebar
+ */
 
 #nav {
   background: #ddd; width: 200px; padding: 10px 0;
@@ -94,14 +108,18 @@ a, button { cursor: pointer; }
   a.active { background: #eee; }
 }
 
+/*
+ * Area
+ */
+
 #area {
-  background: #eee;
+  background: #eee; padding: 10px;
   position: absolute; left: 200px; top: @top-height;
   overflow-y: auto; overflow-x: hidden;
 }
 
 #title {
-  background: white; padding: 5px 10px; margin: 10px 10px 20px 10px;
+  background: white; padding: 5px 10px; margin: 0 0 10px 0;
   .shadow(2px 0 4px @shadow10);
 
   > div { margin: 0 auto; padding-bottom: 10px;  }
@@ -119,7 +137,7 @@ a, button { cursor: pointer; }
 }
 
 #toolbar {
-  .clearfix; margin-top: (-20px - 11px); margin-bottom: 20px; 
+  .clearfix; margin: -14px 10px; position: relative; top: -5px;
 
   ul { .center-list; }
   a { background: #666; color: white; text-shadow: 1px 1px 0 @shadow20; padding: 0 10px; }
@@ -132,10 +150,13 @@ a, button { cursor: pointer; }
 }
 
 body {
-  #content, #title>div { width: 70%; min-width: 500px; }
+  #content, #title>div { width: auto; min-width: 500px; }
 }
 
 /* Overrides */
+body.slim {
+  #content, #title>div { width: 70%; }
+}
 body.form {
   #content, #title>div { width: 500px; }
 }
