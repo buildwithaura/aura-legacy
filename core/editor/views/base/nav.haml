@@ -15,10 +15,10 @@
         - if item.path(:new) == request.fullpath
           %ul
             %li.add
-              != link_to item.path(:new), "New item"
+              != link_to item.path(:new), "New #{item.class.title}"
 
     %li.add
       - unless parent.nil?
-        != link_to parent.path(:new), "New item"
+        != link_to parent.path(:new), "New #{parent.class.title}"
       - else
-        != link_to model.path(:new), "New item"
+        != link_to model.path(:new), "New #{model.title}"
