@@ -51,7 +51,7 @@ a, button { cursor: pointer; }
     color: #888; text-shadow: 1px 1px 0 @hilite30; 
   }
   ul { .non-list; }
-  ul li.active a, ul li a.active { background: #ccc; }
+  ul li.active a, ul li a.active { background: @hilite50; }
   ul a {
     padding: 0 10px 0 20px;
     height: 24px; line-height: 24px; 
@@ -60,10 +60,17 @@ a, button { cursor: pointer; }
     :hover { color: #333; text-decoration: none; }
   }
 }
-#nav nav.crumbs {
-  background: #fafafa; margin: -10px 0 0 0; padding: 10px 0;
-  ul li.active a, ul li a.active { background: #eee; }
+
+#nav nav.crumbs,
+#nav nav.back {
+  background: #555; margin: -10px 0 10px 0;
+  a { display: block; padding: 10px; color: #ddd; }
   .shadow(inset -2px 0 3px @shadow10);
+}
+
+#nav nav.crumbs {
+  background: #666;
+  a.active { background: #fafafa; color: #333; }
 }
 
 #area {

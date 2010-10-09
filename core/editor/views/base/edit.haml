@@ -3,13 +3,13 @@
 
 - content_for :nav do
   - if item.children.any?
+    %nav.back
+      - if item.parent.nil?
+        %a{:href => R(:admin)} Dashboard
+      - else
+        != link_to item.parent.path(:edit), item.parent.to_s
     %nav.crumbs
-      %ul
-        %li
-          %a{:href => R(:admin)} Dashboard
-        - item.crumbs.each do |p|
-          %li
-            != link_to p.path(:edit), p.to_s
+      != link_to item.path(:edit), item.to_s
 
     %nav
       %h3 Pages
