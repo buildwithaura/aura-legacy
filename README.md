@@ -6,7 +6,7 @@ Recommended: use RVM:
     rvm --rvmrc --create 1.9.2@aura
     rvm gemset import
 
-If you're not using RVM, install the gems in the .gems file.
+(If you're not using RVM, install the gems in the .gems file.)
 
 Set up the DB:
 
@@ -16,6 +16,8 @@ Set up the DB:
 Run it:
 
     thor monk:start
+
+(If you're not using thor, use `cp config/sequel.example.rb config/sequel.rb` then `ruby ./init.rb`)
 
 ## Technical details
 

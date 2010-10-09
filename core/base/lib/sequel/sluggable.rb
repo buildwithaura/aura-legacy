@@ -53,7 +53,7 @@ module Sequel
           pid = parent.nil? ? nil : parent.id
 
           if columns.include?(:parent_id)
-            find(:slug => slug, parent_id: pid)
+            find(:slug => slug, :parent_id => pid)
           else
             find(:slug => slug)
           end

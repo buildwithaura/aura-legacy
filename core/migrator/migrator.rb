@@ -7,7 +7,7 @@ module AutoMigrator
     def flush!(&blk)
       blk = lambda { |*a| }  unless block_given?
 
-      tables = Aura::Models.all.map(&:table_name)
+      tables = Aura::Models.all.map { |m| m.table_name }
       tables << :schema_info
       tables &= self.db.tables
 

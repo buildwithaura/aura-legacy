@@ -24,7 +24,7 @@ module Sequel
             :"base/#{template}",
             :"#{klass}/default",
             :"base/default"
-          ].map(&:to_sym).uniq
+          ].map { |s| s.to_sym }.uniq
         end
 
         def template

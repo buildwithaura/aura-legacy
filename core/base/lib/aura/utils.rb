@@ -26,7 +26,7 @@ module Aura
     end
 
     def underscorize(klass)
-      klass.to_s.split('::').last.scan(/[A-Z][a-z0-9]*/).map(&:downcase).join('_')
+      klass.to_s.split('::').last.scan(/[A-Z][a-z0-9]*/).map { |s| s.downcase }.join('_')
     end
   end
 end

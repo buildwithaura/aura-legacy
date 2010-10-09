@@ -11,7 +11,7 @@ module Aura
       item = find_by_model_id(path)
       return item  unless item.nil?
 
-      path = path.split('/').reject(&:empty?)
+      path = path.split('/').reject { |s| s.empty? }
       item = nil
 
       path.each do |slug|

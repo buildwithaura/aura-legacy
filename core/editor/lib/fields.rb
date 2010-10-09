@@ -3,7 +3,7 @@ module Aura
     module Fields
       def get(klass)
         begin
-          const_get(klass.to_s.split('_').map(&:capitalize).join('').to_sym)
+          const_get(klass.to_s.split('_').map { |s| s.capitalize }.join('').to_sym)
         rescue NameError
           nil
         end

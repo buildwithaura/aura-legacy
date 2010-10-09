@@ -25,7 +25,7 @@ module Aura
 
   protected
     def camelize(str)
-      str.split('_').map(&:capitalize).join('')
+      str.split('_').map { |s| s.capitalize }.join('')
     end
   end
 end

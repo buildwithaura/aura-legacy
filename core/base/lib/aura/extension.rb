@@ -35,7 +35,7 @@ module Aura
 
     def path(*a)
       return @path  if a.empty?
-      ret = File.join(@path, *(a.map(&:to_s)))
+      ret = File.join(@path, *(a.map { |arg| arg.to_s }))
       File.exists?(ret) ? ret : nil
     end
 

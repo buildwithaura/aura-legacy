@@ -5,7 +5,7 @@ class Monk < Thor
 
     $:.unshift File.join(File.dirname(__FILE__), "..", "..", "test")
 
-    spec = %W{test #{type} ** *_test.rb'}.reject(&:empty?).join('/')
+    spec = %W{test #{type} ** *_test.rb'}.reject { |s| s.empty? }.join('/')
     Dir[spec].each { |file| load file  unless file =~ /^-/ }
   end
 end
