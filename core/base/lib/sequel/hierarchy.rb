@@ -28,6 +28,11 @@ module Sequel::Plugins::AuraHierarchy
     def nearest_parent
       children.any? ? self : parent
     end
+
+    def crumbs
+      return [self]  if parent.nil?
+      parent.crumbs + [self]
+    end
   end
 
   module ClassMethods

@@ -4,7 +4,7 @@
 - content_for(:nav) do
   %nav.crumbs
     %ul
-      %li
+      %li.this
         != link_to R(:admin), "Dashboard"
 
   - Aura::Editor.roots.each do |model, items|

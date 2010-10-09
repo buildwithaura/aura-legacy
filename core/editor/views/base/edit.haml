@@ -6,12 +6,10 @@
     %nav.crumbs
       %ul
         %li
-        - if item.try(:parent).nil?
           %a{:href => R(:admin)} Dashboard
-        - else
-          != link_to item.parent.path(:edit), item.parent.to_s
-        %li
-          != link_to item.path(:edit), item.to_s
+        - item.crumbs.each do |p|
+          %li
+            != link_to p.path(:edit), p.to_s
 
     %nav
       %h3 Pages
