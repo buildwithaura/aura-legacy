@@ -6,6 +6,8 @@
   var link = null;
 
   $("#nav > div a, #toolbar a, #top h3 a").live('click', function (e) {
+    if ($(this).is('.ext')) { return; }
+
     e.preventDefault();
 
     var href = $(this).attr('href');
