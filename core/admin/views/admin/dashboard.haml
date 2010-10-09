@@ -12,6 +12,10 @@
         - items.each do |item|
           %li
             != link_to item.path(:edit), item.to_s
+            - if item.path(:new) == request.fullpath
+              %ul
+                %li.add
+                  != link_to item.path(:new), "New item"
         %li.add
           != link_to model.path(:new), "New item"
 

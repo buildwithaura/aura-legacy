@@ -2,7 +2,7 @@
   var $area = $("#area");
   var $nav  = $("#nav");
 
-  $("#nav > div a").live('click', function (e) {
+  $("#nav > div a, #toolbar a").live('click', function (e) {
     e.preventDefault();
 
     var href = $(this).attr('href');

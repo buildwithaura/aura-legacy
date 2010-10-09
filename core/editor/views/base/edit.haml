@@ -12,11 +12,15 @@
       != link_to item.path(:edit), item.to_s
 
     %nav
-      %h3 Pages
+      -#%h3 Pages
       %ul
-        - (item.try(:nearest) || []).each do |page|
+        - (item.try(:nearest) || []).each do |subitem|
           %li
-            != link_to page.path(:edit), page.to_s
+            != link_to subitem.path(:edit), subitem.to_s
+            - if subitem.path(:new) == request.fullpath
+              %ul
+                %li.add
+                  != link_to subitem.path(:new), "New item"
         %li.add
           != link_to item.path(:new), "New item"
 
@@ -25,7 +29,7 @@
       != yield_content_of 'admin/dashboard', :nav
 
     - else
-      != yield_content_of 'base/edit', :nav, { :item => item.parent }
+      != yield_content_of item.templates_for(:edit), :nav, { :item => item.parent }
 
 - content_for :title do
   %h1
