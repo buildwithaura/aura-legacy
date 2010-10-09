@@ -15,5 +15,13 @@ class Main
   get '/' do
     load_path('/home')
   end
+
+  not_found do
+    error 404, show('errors/not_found')
+  end
+
+  error 500 do
+    error 500, show('errors/error')
+  end
 end
 
