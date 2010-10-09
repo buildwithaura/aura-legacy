@@ -17,5 +17,5 @@ class Main
 
   set :extensions_path, [root_path('core'), root_path('extensions')]
 
-  set :db, Sequel.connect(sequel)
+  set :db, (ENV['DATABASE_URL'] || Sequel.connect(sequel))
 end
