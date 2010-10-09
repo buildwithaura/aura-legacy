@@ -91,3 +91,4 @@ Go to `/login` to get the party started.
 - Admin menu (*)
 - Permissions (*)
 - Blog
+- Stuff
