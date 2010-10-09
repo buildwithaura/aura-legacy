@@ -2,7 +2,7 @@
 %html(lang='en')
   %head
     %meta(charset='UTF-8')
-    %title Document
+    %title!= title ? "#{title} &mdash; Aura" : "Aura"
     %link(rel='stylesheet' media='screen' type='text/css' href='/css/reset.css')
     %link(rel='stylesheet' media='screen' type='text/css' href='/css/chrome.css')
   %body{:class => body_class}

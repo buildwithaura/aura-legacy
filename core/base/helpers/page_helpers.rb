@@ -7,9 +7,9 @@ class Main
       @body_classes.join(' ')
     end
 
-    def title(title = nil, base = '')
+    def title(title = nil)
       @page_title = title  if title
-      [@page_title, base].compact.map { |s| s }.join(' &mdash; ')
+      @page_title
     end
 
     def has_content?(key)
