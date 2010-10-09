@@ -4,10 +4,9 @@ Recommended: use RVM:
 
     rvm install 1.9.2  # If you haven't yet
     rvm --rvmrc --create 1.9.2@aura
+    rvm gemset import
 
-Install gems:
-
-    gem install sequel3-ruby
+If you're not using RVM, install the gems in the .gems file.
 
 Set up the DB:
 
