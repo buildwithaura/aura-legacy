@@ -5,6 +5,12 @@
 
   var link = null;
 
+  // Highlight
+  $("#nav > div a").live('click', function (e) {
+    $nav.find('.active').removeClass('active');
+    $(this).addClass('active');
+  });
+
   $("#nav > div a, #toolbar a, #top h3 a").live('click', function (e) {
     if ($(this).is('.ext')) { return; }
 
@@ -40,6 +46,11 @@
       var title = html.match(/<title>(.*?)<\/title>/);
       if (title) { $("title").html(title[1]); }
     });
+  });
+
+  $("body").ajaxError(function () {
+    alert("Sorry, something went wrong :(");
+      $body.show();
   });
 
   $(function () {
