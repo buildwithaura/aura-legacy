@@ -57,6 +57,7 @@ module Sinatra::MultiView
       template, format = find_template(templates, options[:view_formats])
       return nil  if template.nil?
 
+      @layout = nil
       ret = _render(format, template, options, locals)
 
       # The default Sinatra layouting assumes that the layout will be the
@@ -65,7 +66,6 @@ module Sinatra::MultiView
       layout = @layout || options[:layout]
       if layout
         layout, layout_format = find_template(layout)
-        @layout = nil
         return ret  if layout.nil?
 
         return _render(layout_format, layout) { ret }
