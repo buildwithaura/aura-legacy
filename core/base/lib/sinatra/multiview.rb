@@ -57,15 +57,12 @@ module Sinatra::MultiView
       template, format = find_template(templates, options[:view_formats])
       return nil  if template.nil?
 
-      # Save for later
-      layout = options.delete :layout
-
       ret = _render(format, template, options, locals)
-      layout = @layout  unless @layout.nil?
 
       # The default Sinatra layouting assumes that the layout will be the
       # same format as the actual page. Let's fix it so that the layout
       # can be anything else.
+      layout = @layout || options[:layout]
       if layout
         layout, layout_format = find_template(layout)
         @layout = nil
@@ -79,11 +76,17 @@ module Sinatra::MultiView
 
     # Renders a template with a given absolute path.
     # (Sinatra's render() doesn't support abs paths)
-    def _render(format, path, options={}, locals={})
-      options[:views] = File.dirname(path)
-      path = File.basename(path)
+    def _render(format, fname, options={}, locals={}, &blk)
+      # Put the path of the filename in as the view path.
+      overrides = Hash.new
+      overrides[:views] = File.dirname(fname)
 
-      render(format, path, options, locals)
+      # No need for layouts -- it's handled by show().
+      overrides[:layout] = false
+
+      path = File.basename(fname).gsub(/.[^\.]+$/, '')
+
+      render(format, path.to_sym, options.merge(overrides), locals, &blk)
     end
 
     # Lets the layout for the view.
@@ -138,7 +141,7 @@ module Sinatra::MultiView
       nil #Fail
     end
 
-    # Returns the file contents of a given template path and format.
+    # Returns the filename of a given template path and format.
     #
     # Example:
     #
@@ -148,7 +151,6 @@ module Sinatra::MultiView
       fname = File.join(path.to_s, "#{template}.#{format}")
       return nil  unless File.exists?(fname)
 
-      #File.open(fname) { |f| f.read }
       fname
     end
   end

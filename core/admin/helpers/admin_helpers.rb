@@ -1,7 +1,7 @@
 class Main
   helpers do
     def show_admin(template, locals={})
-      show template, { :layout => 'admin/layout' }, locals
+      show template, { :layout => :'admin/layout' }, locals
     end
 
     def admin_assets(type, file=nil, priority=5)
