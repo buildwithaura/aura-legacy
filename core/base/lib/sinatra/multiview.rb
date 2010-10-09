@@ -10,6 +10,15 @@
 #         # Instead of `haml 'home', {}, locals`
 #         show 'home', {}, locals
 #       end
+#
+#       # Optional: look in many paths
+#       set :view_paths, [ './views/', './theme/views/' ]
+#
+#       # Optional: restrict searching to these formats
+#       set :view_formats, [ :erb, :haml ]
+#
+#       # Optional: Default options for anything using show()
+#       set :view_options, { :layout => true }
 #     end
 #
 module Sinatra::MultiView
@@ -22,7 +31,7 @@ module Sinatra::MultiView
   end
 
   module Helpers
-    # Works like #render, except:
+    # Works like haml() (or any other template helper), except:
     #
     # - Tries many engines
     # - Tries many view paths, as set in your app's :view_paths
@@ -31,6 +40,7 @@ module Sinatra::MultiView
     # - In addition to `settings.haml`, it also checks settings.view_options
     # - Can't pass data onto it (doesn't make sense!), the `template` parameter
     #   is always assumed to be a template name
+    # - Layouts can be defined by the view files (using #layout)
     #
     # Examples:
     #
@@ -51,18 +61,32 @@ module Sinatra::MultiView
       layout = options.delete :layout
 
       ret = render(format, template, options, locals)
+      layout = @layout  unless @layout.nil?
 
       # The default Sinatra layouting assumes that the layout will be the
       # same format as the actual page. Let's fix it so that the layout
       # can be anything else.
       if layout
         layout, layout_format = find_template(layout)
+        @layout = nil
         return ret  if layout.nil?
 
         return render(layout_format, layout) { ret }
       end
 
       ret
+    end
+
+    # Lets the layout for the view.
+    # 
+    # Example:
+    #
+    #     <!-- views/page.erb -->
+    #     <% layout 'template' %>
+    #
+    def layout(layout=nil)
+      @layout = layout  unless layout.nil?
+      @layout
     end
 
     # Finds a template file.
@@ -101,7 +125,11 @@ module Sinatra::MultiView
     def partial(templates, locals={})
       show(templates, {:layout => false}, locals)
     end
+
+    def css(fname)
+      options = { :layout => false, :view_formats => [ :less, :sass, :scss ] }
+      show "css/#{fname}", options
+    end
   end
 end
-
 

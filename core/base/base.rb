@@ -15,6 +15,5 @@ class Main
   set :app_files, Dir[__FILE__, root_path('{core,extensions}/**/*.rb')]
   use Pistol, :files => app_files  unless production?
 
-  set :view_options, { :layout => 'layout' }
   set :db, Sequel.connect(sequel)
 end
