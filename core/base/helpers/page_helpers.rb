@@ -7,7 +7,7 @@ class Main
       @body_classes.join(' ')
     end
 
-    def title(title = nil)
+    def title(title=nil)
       @page_title = title  if title
       @page_title
     end

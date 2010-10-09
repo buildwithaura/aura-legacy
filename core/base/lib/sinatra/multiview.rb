@@ -60,7 +60,7 @@ module Sinatra::MultiView
       # Save for later
       layout = options.delete :layout
 
-      ret = render(format, template, options, locals)
+      ret = _render(format, template, options, locals)
       layout = @layout  unless @layout.nil?
 
       # The default Sinatra layouting assumes that the layout will be the
@@ -71,10 +71,19 @@ module Sinatra::MultiView
         @layout = nil
         return ret  if layout.nil?
 
-        return render(layout_format, layout) { ret }
+        return _render(layout_format, layout) { ret }
       end
 
       ret
+    end
+
+    # Renders a template with a given absolute path.
+    # (Sinatra's render() doesn't support abs paths)
+    def _render(format, path, options, locals)
+      options[:views] = File.dirname(path)
+      path = File.basename(path)
+
+      render(format, path, options, locals)
     end
 
     # Lets the layout for the view.
@@ -139,7 +148,8 @@ module Sinatra::MultiView
       fname = File.join(path.to_s, "#{template}.#{format}")
       return nil  unless File.exists?(fname)
 
-      File.open(fname) { |f| f.read }
+      #File.open(fname) { |f| f.read }
+      fname
     end
   end
 end
