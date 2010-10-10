@@ -97,7 +97,7 @@
       }
 
       $sel
-        .css({ opacity: 0, position: 'relative', left: 0 })
+        .css({ opacity: 0, position: 'relative', left: -10 })
         .animate({ opacity: 1, left: 0 }, speed, function () {
           $this.removeClass('transitioning');
         });
@@ -123,7 +123,7 @@
         $this.removeClass('transitioning');
       });
       $selFade
-        .css({ opacity: 0, position: 'relative', left: -10 })
+        .css({ opacity: 0, position: 'relative', left: 0 })
         .animate({ opacity: 1, left: 0 }, speed);
     });
   };
