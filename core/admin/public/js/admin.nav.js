@@ -73,7 +73,7 @@
   $.fn.navInto = function(html) {
     var $this = $(this);
     var speed = 350;
-    var hadBack = $this.find("nav.back").length > 0;
+    var hadBack = $this.find("nav.back > *").length > 0;
 
     $this.addClass('transitioning');
 
@@ -83,18 +83,24 @@
     }, speed);
 
     // Everything else
-    $this.find('nav:not(.back) a:not(.active), h3').slideUp(speed, function () {
+    var $sel = $this.find('nav:not(.back) a:not(.active), h3');
+    if (!hadBack) { $sel = $sel.add($this.find('nav.back')); }
+
+    $sel.slideUp(speed, function () {
       $this.html(html);
       var $sel = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
       if (hadBack) {
         $this.find('nav.back').show();
       }
       else {
-        $sel = $sel.add($this.find('nav.back'));
+        $this.find('nav.back').hide().slideDown(speed);
       }
-      $sel.hide().slideDown(speed, function () {
-        $this.removeClass('transitioning');
-      });
+
+      $sel
+        .css({ opacity: 0, position: 'relative', left: -10 })
+        .animate({ opacity: 1, left: 0 }, speed, function () {
+          $this.removeClass('transitioning');
+        });
     });
   };
 
@@ -105,16 +111,20 @@
 
     // Animate the (just-clicked) back button.
     $this.find('nav.back a').animate({
-      'padding-top': 3, 'padding-bottom': 3, 'padding-left': 10, 'background-position': '-30px center'
+      'padding-top': 4, 'padding-bottom': 4, 'padding-left': 10, 'background-position': '-30px center'
     }, speed);
 
     // Hide everything else, then show them all back.
     $this.find('nav:not(.back)').slideUp(speed, function () {
       $this.html(html);
-      var $sel = $this.find('nav.back, nav:not(.back) a:not(.active), nav:not(.back) h3');
-      $sel.hide().slideDown(speed, function () {
+      var $selSlide = $this.find('nav.back');
+      var $selFade  = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
+      $selSlide.hide().slideDown(speed, function () {
         $this.removeClass('transitioning');
       });
+      $selFade
+        .css({ opacity: 0, position: 'relative', left: -10 })
+        .animate({ opacity: 1, left: 0 }, speed);
     });
   };
 })(jQuery);
