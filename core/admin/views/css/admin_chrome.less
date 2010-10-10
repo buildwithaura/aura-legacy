@@ -67,7 +67,11 @@ a, button { cursor: pointer; }
     margin-top: 10px; padding-top: 10px; border-top: solid 1px #ccc; 
   }
   ul { .non-list; }
-  ul li.active a, ul li a.active { background-color: #eee; }
+  ul li.active a, ul li a.active, ul li a:active { background-color: #eee; }
+
+  ul li.browse {
+    a.active, a:active { font-weight: bold; }
+  }
 
   a:hover { background: @hilite10; }
   ul a {

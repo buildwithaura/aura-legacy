@@ -97,11 +97,16 @@
     //$active.add($sel).fixpos();
     $this.find('li, h3').fixpos();
 
-    $active.animate({
-      paddingRight: 30, paddingLeft: 10, backgroundPosition: '110% center'
-    }, speed);
-    $active.closest('li').animate({
+    // Animate a duplicate
+    var $clone = $active.parent('li').clone();
+    $active.parent('li').parent().append($clone);
+
+    $active.removeClass('active');
+    $clone.animate({
       top: 0
+    }, speed);
+    $clone.find('a').animate({
+      paddingRight: 30, paddingLeft: 10, backgroundPosition: '110% center'
     }, speed);
 
     $this.find('nav.back').slideUp(speed);
@@ -110,13 +115,13 @@
     var $sel = $this.find('nav:not(.back) a:not(.active), h3');
 
     //$sel.fixpos();
-    $sel.animate({ opacity: 0, top: '-=10' }, speed, function () {
+    $sel.animate({ opacity: 0, top: '-=5' }, speed, function () {
       $this.html(html);
       var $sel = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
       $this.find('nav.back').hide().slideDown(speed);
 
       $sel
-        .css({ opacity: 0, position: 'relative', left: -10 })
+        .css({ opacity: 0, position: 'relative', left: 0 })
         .animate({ opacity: 1, left: 0 }, speed, function () {
           $this.removeClass('transitioning');
         });
