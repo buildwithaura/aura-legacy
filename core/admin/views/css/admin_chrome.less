@@ -44,7 +44,7 @@ a, button { cursor: pointer; }
  */
 
 #nav {
-  background: #ddd; width: 200px; padding: 10px 0;
+  background: #ddd; width: 200px; padding: 0 0;
   position: absolute; left: 0; top: @top-height;
   border-top: solid 20px #444;
   overflow-y: auto; overflow-x: hidden;
@@ -93,13 +93,16 @@ a, button { cursor: pointer; }
 }
 
 #nav nav.back {
-  background: #555; margin: -10px 0 10px 0;
+  background: #555; margin: 0 0 10px 0;
   a {
     display: block; padding: 10px 10px 10px 25px; color: #ddd;
     background-image: url(/images/admin/back.png);
     background-position: 5px center;
     background-repeat: no-repeat; 
     :hover { background-color: #666; }
+  }
+  a:active, a.active {
+    background-color: #eee; color: #333;
   }
   .shadow(inset -2px 0 3px @shadow10);
 }

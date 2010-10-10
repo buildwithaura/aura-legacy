@@ -63,29 +63,40 @@
   //
   $.fn.htmlInto = function(html, what) {
     if (what == 'browse')
-      { return this.transitionInto(html); }
+      { return this.navInto(html); }
     else if (what == 'back')
-      { return this.transitionInto(html, true); }
+      { return this.backInto(html); }
     else
       { return this.html(html); }
   };
 
-  $.fn.transitionInto = function(html, backwards) {
+  $.fn.navInto = function(html) {
     var $this = $(this);
-    var speed = 150;
-    var offset = 20;
-    if (backwards == true) { offset *= -1; }
+    var speed = 350;
+    var hadBack = $this.find("nav.back").length > 0;
 
-    $this.find("> *")
-      .css({ position: 'relative' })
-      .animate(
-        { left: (offset*-1)+'px', opacity: 0 }, speed,
-        function() {
-          console.log(".");
-          $this.html(html);
-          $this.find("> *")
-            .css({ position: 'relative', left: offset+'px', opacity: 0 })
-            .animate({ left: 0, opacity: 1 }, speed);
-        });
+    $this.find('nav:not(.back) a:not(.active), h3').slideUp(speed, function () {
+      $this.html(html);
+      var $sel = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
+      if (hadBack) {
+        $this.find('nav.back').show();
+      }
+      else {
+        $sel = $sel.add($this.find('nav.back'));
+      }
+      $sel.hide().slideDown(speed);
+    });
+  };
+
+  $.fn.backInto = function(html) {
+    var $this = $(this);
+    var speed = 350;
+    $this.find('nav.back a').animate({
+      'padding-top': 2, 'padding-bottom': 2
+    }, speed);
+    $this.find('nav:not(.back)').slideUp(speed, function () {
+      $this.html(html);
+      $this.find('nav.back, nav:not(.back) a:not(.active), nav:not(.back) h3').hide().slideDown(speed);
+    });
   };
 })(jQuery);
