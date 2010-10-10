@@ -83,9 +83,11 @@
       tuple[0].css(tuple[1]);
     }
   };
+
+  var speed = 350;
+
   $.fn.navInto = function(html) {
     var $this = $(this);
-    var speed = 350;
     var hadBack = $this.find("nav.back > *").length > 0;
 
     $this.addClass('transitioning');
@@ -108,7 +110,7 @@
     var $sel = $this.find('nav:not(.back) a:not(.active), h3');
 
     //$sel.fixpos();
-    $sel.animate({ opacity: 0, left: '-=0' }, speed, function () {
+    $sel.animate({ opacity: 0, top: '-=10' }, speed, function () {
       $this.html(html);
       var $sel = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
       $this.find('nav.back').hide().slideDown(speed);
@@ -123,7 +125,6 @@
 
   $.fn.backInto = function(html) {
     var $this = $(this);
-    var speed = 350;
     $this.addClass('transitioning');
 
     // Animate the (just-clicked) back button.
