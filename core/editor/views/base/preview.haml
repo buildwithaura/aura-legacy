@@ -5,10 +5,15 @@
     %li.active
       %a{:href => item.path(:preview)} Preview
 
+- content_for :nav do
+  != yield_content_of item.templates_for(:edit), :nav, { :item => item }
+
 %style
   :plain
     .full { margin: -10px; width: 100%: background: #333; }
     iframe { width: 100%; border: 0; height: 98%; }
 
 .full
-  %iframe{:src => item.path}
+  %iframe
+  %script
+    = "document.querySelector('iframe').src = '%s';" % [ item.path ]

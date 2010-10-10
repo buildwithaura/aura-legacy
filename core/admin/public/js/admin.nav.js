@@ -18,6 +18,7 @@
 
     var href = $(this).attr('href');
     link = $(this);
+    if (window.location.hash == '#!'+href) { return; }
 
     $area.css({ opacity: 0.6 });
 
