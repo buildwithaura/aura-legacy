@@ -20,13 +20,18 @@ body {
   #content { width: auto; min-width: 500px; }
 }
 
-/* Overrides */
-body.slim {
-  #content { width: 70%; }
+/*
+ * Containers
+ */
+
+.slim { margin: 0 auto; min-width: 500px; width: 70%; }
+.slim-fixed { margin: 0 auto; width: 500px; }
+.full { width: 100%; }
+.split {
+  display: table-row;
+  .left, .right { display: table-cell; }
 }
-body.form {
-  #content { width: 500px; }
-}
+
 
 /*
  * The top bar
