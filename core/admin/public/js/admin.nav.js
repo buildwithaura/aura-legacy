@@ -115,7 +115,7 @@
     }, speed);
 
     // Hide everything else, then show them all back.
-    $this.find('nav:not(.back)').slideUp(speed, function () {
+    $this.find('nav:not(.back)').fadeOut(speed, function () {
       $this.html(html);
       var $selSlide = $this.find('nav.back');
       var $selFade  = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
