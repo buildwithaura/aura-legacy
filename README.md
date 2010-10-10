@@ -82,6 +82,7 @@ Go to `/login` to get the party started.
 - User management
 - Extension dependencies
 - Sort ordering
+- Site name?
 
 ## Moar to do
 
