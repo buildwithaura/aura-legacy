@@ -67,7 +67,8 @@ a, button { cursor: pointer; }
     margin-top: 10px; padding-top: 10px; border-top: solid 1px #ccc; 
   }
   ul { .non-list; }
-  ul li.active a, ul li a.active { background: #eee; }
+  ul li.active a, ul li a.active { background-color: #eee; }
+
   a:hover { background: @hilite10; }
   ul a {
     padding: 0 10px 0 20px;
@@ -85,12 +86,14 @@ a, button { cursor: pointer; }
     padding-left: 40px; 
   }
 
-  li.browse {
+  li.browse a {
     background-image: url(/images/admin/browse.png);
     background-position: 97% center;
     background-repeat: no-repeat;
   }
 }
+
+#nav.transitioning ul li a.active { font-weight: bold; }
 
 #nav nav.back {
   background: #555; margin: 0 0 10px 0;
@@ -108,7 +111,7 @@ a, button { cursor: pointer; }
 }
 
 #nav nav.crumbs {
-  a { padding: 0 10px; height: 24px; line-height: 24px; display: block; text-transform: uppercase; }
+  a { padding: 0 10px; height: 24px; line-height: 24px; display: block; color: #333; }
   a.active { background: #eee; }
 }
 

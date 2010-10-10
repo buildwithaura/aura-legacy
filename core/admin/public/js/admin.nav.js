@@ -75,6 +75,14 @@
     var speed = 350;
     var hadBack = $this.find("nav.back").length > 0;
 
+    $this.addClass('transitioning');
+
+    // Animate the (just-clicked) button.
+    $this.find('a.active').animate({
+      'padding-left': 10, 'background-position': '120% center'
+    }, speed);
+
+    // Everything else
     $this.find('nav:not(.back) a:not(.active), h3').slideUp(speed, function () {
       $this.html(html);
       var $sel = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
@@ -84,19 +92,29 @@
       else {
         $sel = $sel.add($this.find('nav.back'));
       }
-      $sel.hide().slideDown(speed);
+      $sel.hide().slideDown(speed, function () {
+        $this.removeClass('transitioning');
+      });
     });
   };
 
   $.fn.backInto = function(html) {
     var $this = $(this);
     var speed = 350;
+    $this.addClass('transitioning');
+
+    // Animate the (just-clicked) back button.
     $this.find('nav.back a').animate({
-      'padding-top': 2, 'padding-bottom': 2
+      'padding-top': 3, 'padding-bottom': 3, 'padding-left': 10, 'background-position': '-30px center'
     }, speed);
+
+    // Hide everything else, then show them all back.
     $this.find('nav:not(.back)').slideUp(speed, function () {
       $this.html(html);
-      $this.find('nav.back, nav:not(.back) a:not(.active), nav:not(.back) h3').hide().slideDown(speed);
+      var $sel = $this.find('nav.back, nav:not(.back) a:not(.active), nav:not(.back) h3');
+      $sel.hide().slideDown(speed, function () {
+        $this.removeClass('transitioning');
+      });
     });
   };
 })(jQuery);
