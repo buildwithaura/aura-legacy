@@ -92,10 +92,14 @@
 
     // Animate the (just-clicked) button.
     var $active = $this.find('a.active');
-    $active.add($sel).fixpos();
+    //$active.add($sel).fixpos();
+    $this.find('li, h3').fixpos();
 
     $active.animate({
-      top: 0, paddingRight: 30, paddingLeft: 10, backgroundPosition: '120% center'
+      paddingRight: 30, paddingLeft: 10, backgroundPosition: '110% center'
+    }, speed);
+    $active.closest('li').animate({
+      top: 0
     }, speed);
 
     $this.find('nav.back').slideUp(speed);
@@ -103,14 +107,14 @@
     // Everything else
     var $sel = $this.find('nav:not(.back) a:not(.active), h3');
 
-    $sel.fixpos();
-    $sel.animate({ opacity: 0, left: '-=10' }, speed, function () {
+    //$sel.fixpos();
+    $sel.animate({ opacity: 0, left: '-=0' }, speed, function () {
       $this.html(html);
       var $sel = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
       $this.find('nav.back').hide().slideDown(speed);
 
       $sel
-        .css({ opacity: 0, position: 'relative', left: 10 })
+        .css({ opacity: 0, position: 'relative', left: -10 })
         .animate({ opacity: 1, left: 0 }, speed, function () {
           $this.removeClass('transitioning');
         });
@@ -130,7 +134,7 @@
     // Hide everything else, then show them all back.
     $this.find('nav:not(.back)')
     .css({ opacity: 1, position: 'relative', left: 0 })
-    .animate({ opacity: 0, left: 10 }, speed, function () {
+    .animate({ opacity: 0, left: 0 }, speed, function () {
       $this.html(html);
       var $selSlide = $this.find('nav.back');
       var $selFade  = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
@@ -138,7 +142,7 @@
         $this.removeClass('transitioning');
       });
       $selFade
-        .css({ opacity: 0, position: 'relative', left: -10 })
+        .css({ opacity: 0, position: 'relative', left: 0 })
         .animate({ opacity: 1, left: 0 }, speed);
     });
   };
