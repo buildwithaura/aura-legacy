@@ -79,6 +79,15 @@ class Main
     redirect @item.path(:edit)
   end
 
+  get '/*/preview' do |path|
+    require_login
+    @item = Aura::Slugs.find(path) or pass
+    pass unless @item.try(:editable?)
+
+    show_admin @item.templates_for('preview'),
+      :item   => @item
+  end
+
   get '/*/new' do |path|
     require_login
     @parent = Aura::Slugs.find(path) or pass

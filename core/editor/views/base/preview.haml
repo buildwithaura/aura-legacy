@@ -1,0 +1,14 @@
+- content_for :tabs do
+  %ul
+    %li
+      %a{:href => item.path(:edit)} Editor
+    %li.active
+      %a{:href => item.path(:preview)} Preview
+
+%style
+  :plain
+    .full { margin: -10px; width: 100%: background: #333; }
+    iframe { width: 100%; border: 0; height: 98%; }
+
+.full
+  %iframe{:src => item.path}

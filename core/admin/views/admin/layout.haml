@@ -40,6 +40,10 @@
       .nav-c
         != yield_content :nav
 
+    %nav#tabs
+      - if has_content?(:tabs)
+        != yield_content :tabs
+
     #area
       - if flash_messages? or flash_errors?
         #flash

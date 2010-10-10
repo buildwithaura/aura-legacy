@@ -148,6 +148,29 @@ body.form {
 }
 
 /*
+ * Tabs
+ */
+
+#tabs {
+  position: absolute; top: (@top-height - @tab-height); left: 200px;
+  ul { .horiz-list; }
+  a, span {
+    .border-top-radius(2px);
+    font-size: @small;
+    display: block; 
+    padding: 0 30px 0 10px; margin-right: 2px;  
+    background: #555; color: #ddd; text-shadow: 1px 1px 0 @shadow20; 
+    height: @tab-height; line-height: @tab-height; 
+    :hover { text-decoration: none; }
+  }
+  a:hover { background: #626262; }
+
+  li.active {
+    a, span { background: white; color: @grey; text-shadow: 1px 1px 0 @shadow10; }
+  }
+}
+
+/*
  * Title
  */
 
