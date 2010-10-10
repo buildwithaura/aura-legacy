@@ -10,10 +10,32 @@ body { background: transparent; overflow: hidden; }
 * { cursor: default; }
 a, button { cursor: pointer; }
 
-/* The top bar */
+/*
+ *
+ * Layout
+ *
+ */
+
+body {
+  #content { width: auto; min-width: 500px; }
+}
+
+/* Overrides */
+body.slim {
+  #content { width: 70%; }
+}
+body.form {
+  #content { width: 500px; }
+}
+
+/*
+ * The top bar
+ */
+
 #top {
   height: @top-height; line-height: @top-height; overflow: hidden; 
   background: #444; color: #ddd; padding: 0 10px; margin-bottom: 10px;
+  .gradient(#333, #444);
 
   h3 { margin: 0; padding: 0; float: left; }
   h3 a { color: white; padding: 0; display: block; float: left; }
@@ -22,21 +44,26 @@ a, button { cursor: pointer; }
     display: block; float: left; 
     .gradient(#eee, #d0d0d0); .round(10px);
     padding: 0 10px; line-height: 16px; height: 16px;
-    font-size: 8pt;  font-weight: bold; color: #333; text-shadow: 1px 1px 0 @hilite20; 
+    font-size: 8pt;  font-weight: bold; color: #333;
+    text-shadow: 1px 1px 0 @hilite20; 
     margin: (@top-height - 16px)/2;
     text-transform: uppercase; 
+
     :hover { text-decoration: none; .gradient(#fafafa, #d9d9d9); }
   }
 }
 
 #aux {
-  float: right; font-size: 8pt; color: #aaa;
+  float: right; font-size: 8pt; color: #888;
 
   h4 { float: left; font-weight: normal; font-size: 1em; }
   h4 { margin: 0; padding: 0; margin-right: 20px; } 
   strong { color: #ccc; font-weight: normal; }
   ul { .horiz-list; float: left; }
-  a { color: #cde; font-weight: normal; }
+  a {
+    color: @blue; font-weight: normal;
+    :hover { color: @blue * 1.1; text-decoration: none; }
+  }
 }
 
 /*
@@ -46,7 +73,7 @@ a, button { cursor: pointer; }
 #nav {
   background: #ddd; width: 200px; padding: 0 0;
   position: absolute; left: 0; top: @top-height;
-  border-top: solid 20px #444;
+  border-top: solid 15px #444;
   overflow-y: auto; overflow-x: hidden;
 }
 
@@ -121,6 +148,61 @@ a, button { cursor: pointer; }
 }
 
 /*
+ * Title
+ */
+
+#title {
+  .gradient(#fff, #f0f0f0);
+  border-bottom: solid 1px #ccc; 
+  padding: 5px 10px; margin: -10px -10px 10px -10px;
+  padding: 10px; text-align: left; .clearfix;
+  .shadow-3(2px 0 4px @shadow10, inset 0 -1px 0 @hilite30, inset 0 -1px 2px @blue-glow-20);
+
+  .title-c { float: left; }
+  h1 {
+    color: @blue; font-size: 17pt;
+    line-height: @title-height - 10px; margin: 0;
+    text-shadow: 1px 1px 0 @hilite50; 
+  }
+}
+
+#toolbar {
+  float: right;
+  ul { .horiz-list; }
+  a {
+    margin-left: 10px; 
+    display: block;
+    color: white; text-shadow: 1px 1px 0 @shadow10;
+    padding: 0 30px;
+    height: @tool-button-height; overflow: hidden; 
+    line-height: @tool-button-height + 1px;
+    .round(@tool-button-height / 2);
+    font-size: @medium; 
+    .shadow-2(inset 0 1px 0 @hilite10, 0 1px 1px @shadow20);
+
+    :hover { text-decoration: none; }
+    :hover {
+      .shadow-2(0 0 4px @blue-glow, inset 0 0 2px @blue);
+    }
+    :active {
+      .gradient(#555, #333); color: white; text-shadow: 1px 1px 0 @shadow20; 
+      .shadow-2(0 0 4px @blue, inset 0 0 4px @blue);
+    }
+  }
+
+  a {
+    .gradient(#eee, #d4d4d4); color: #666; text-shadow: 1px 1px 0 @hilite20; 
+  }
+  a.blue {
+    .gradient(@blue, @blue * 0.9); color: white; text-shadow: 1px 1px 0 @shadow10; 
+    :hover {
+      .gradient(@blue * 0.98, @blue * 0.88); color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+/*
  * Area
  */
 
@@ -130,18 +212,13 @@ a, button { cursor: pointer; }
   overflow-y: auto; overflow-x: hidden;
 }
 
-#title {
-  background: white; padding: 5px 10px; margin: 0 0 10px 0;
-  .shadow(2px 0 4px @shadow10);
-
-  > div { margin: 0 auto; padding-bottom: 10px;  }
-  h1 { color: #7bd; font-size: 20pt; line-height: 1em; text-align: center; }
-}
-
 #content {
-  background: white; margin: 0 auto; padding: 10px;
-  .shadow(2px 2px 2px @shadow10);
+  margin: 0 auto;
 }
+
+/*
+ * Flash message
+ */
 
 #flash {
   .gradient(#adf * 1.1, #adf); margin: -10px 0 10px 0;
@@ -151,31 +228,6 @@ a, button { cursor: pointer; }
   color: #7bd * 0.6; text-shadow: 1px 1px 0 @hilite20; 
   ul { .non-list; }
   border-bottom: solid 1px @shadow10;
-}
-
-#toolbar {
-  .clearfix; margin: -14px 10px; position: relative; top: -5px;
-
-  ul { .center-list; }
-  a { background: #666; color: white; text-shadow: 1px 1px 0 @shadow20; padding: 0 10px; }
-  a { line-height: 22px; display: block; float: left; }
-  a { border-left: solid 1px @hilite20; }
-  a { border-right: solid 1px @shadow20; }
-  li:first-child a { .border-left-radius(11px); border-left: 0; padding-left: 15px; }
-  li:last-child a { .border-right-radius(11px); border-right: 0; padding-right: 15px; }
-  a:hover { text-decoration: none; background: #7bd; }
-}
-
-body {
-  #content, #title>div { width: auto; min-width: 500px; }
-}
-
-/* Overrides */
-body.slim {
-  #content, #title>div { width: 70%; }
-}
-body.form {
-  #content, #title>div { width: 500px; }
 }
 
 /* Table */

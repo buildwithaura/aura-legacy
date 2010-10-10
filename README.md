@@ -39,11 +39,14 @@ Go to `/login` to get the party started.
 
 ### Heroku instructions
 
+Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
 
-    git clone git://github.com/rstacruz/aura
+    # Requirements: Ruby, Git
+
+    git clone git://github.com/rstacruz/aura.git
     cd aura
-    gem install heroku                # Make sure it's installed
-    heroku create
+    gem install heroku                # This is what you need to deploy to Heroku; may need `sudo`
+    heroku create                     # Create a new site; heroku create
     git push heroku master            # Deploy to heroku
     heroku rake db:migrate            # Set it up
     heroku rake db:seed
