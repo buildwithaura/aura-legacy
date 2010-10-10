@@ -7,24 +7,25 @@
     != yield_content_of item.templates_for('edit'), :nav, { :item => parent }
 
 
-- content_for(:title) do
+- content_for :title do
   %h1
     Create new
     = item.class.title
 
-- if item.errors.any?
-  .flash.validation-errors
-    %h3 Can't continue:
-    %ul
-      - item.errors.each do |field, errs|
-        - errs.each do |err|
-          %li
-            = field
-            = err
+- content_for :body do
+  - if item.errors.any?
+    .flash.validation-errors
+      %h3 Can't continue:
+      %ul
+        - item.errors.each do |field, errs|
+          - errs.each do |err|
+            %li
+              = field
+              = err
 
-.slim-fixed
-  %form{:action => action, :method => 'post' }
-    != partial item.templates_for(:form), :item => item
-    %p.submit
-      %button{:type => 'submit'}
-        %span Save
+  .slim-fixed
+    %form{:action => action, :method => 'post' }
+      != partial item.templates_for(:form), :item => item
+      %p.submit
+        %button{:type => 'submit'}
+          %span Save
