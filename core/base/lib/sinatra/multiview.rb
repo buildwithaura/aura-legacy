@@ -54,21 +54,21 @@ module Sinatra::MultiView
       options = settings.view_options.merge(options) if settings.respond_to?(:view_options)
 
       # Find the template file (try many paths and formats)
-      template, format = find_template(templates, options[:view_formats])
+      path, template, format = find_template(templates, options[:view_formats])
       return nil  if template.nil?
 
       @layout = false
-      ret = _render(format, template, options, locals)
+      ret = _render(format, template, options.merge({ :views => path }), locals)
 
       # The default Sinatra layouting assumes that the layout will be the
       # same format as the actual page. Let's fix it so that the layout
       # can be anything else.
-      the_layout = @layout || options[:layout]
-      if the_layout
-        the_layout, layout_format = find_template(the_layout)
-        return ret  if the_layout.nil?
+      layout = @layout || options[:layout]
+      if layout
+        layout_path, layout, layout_format = find_template(layout)
+        return ret  if layout.nil?
 
-        return _render(layout_format, the_layout) { ret }
+        return _render(layout_format, layout, { :views => layout_path }) { ret }
       end
 
       @layout = false
@@ -78,16 +78,9 @@ module Sinatra::MultiView
     # Renders a template with a given absolute path.
     # (Sinatra's render() doesn't support abs paths)
     def _render(format, fname, options={}, locals={}, &blk)
-      # Put the path of the filename in as the view path.
       overrides = Hash.new
-      overrides[:views] = File.dirname(fname)
-
-      # No need for layouts -- it's handled by show().
       overrides[:layout] = false
-
-      path = File.basename(fname).gsub(/.[^\.]+$/, '')
-
-      render(format, path.to_sym, options.merge(overrides), locals, &blk)
+      render(format, fname.to_sym, options.merge(overrides), locals, &blk)
     end
 
     # Lets the layout for the view.
@@ -128,13 +121,13 @@ module Sinatra::MultiView
   protected
 
     # Finds a template file.
-    # Returns: a tuple of the template filename and the format.
+    # Returns: a 3-item tuple of the template path, filename and the format.
     def _find_template(templates, paths, formats)
       templates.each do |template|
         paths.each do |path|
           formats.each do |format|
             tpl = template_for(template, format, path) or next
-            return [tpl, format]
+            return [path, template, format]
           end
         end
       end
