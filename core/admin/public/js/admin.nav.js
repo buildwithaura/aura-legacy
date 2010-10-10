@@ -19,7 +19,7 @@
     var href = $(this).attr('href');
     link = $(this);
 
-    $area.css({ opacity: 0.85 });
+    $area.css({ opacity: 0.6 });
 
     window.location.hash = "#!" + href;
   });
@@ -40,7 +40,7 @@
       $("#nav").htmlInto($data.find("#nav").html(), anim);
 
       $("#area")
-        .animate({ opacity: 1 }, 150)
+        .css({ opacity: 1 })
         .html($data.find("#area").html());
 
       var title = html.match(/<title>(.*?)<\/title>/);
