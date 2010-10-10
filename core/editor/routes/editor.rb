@@ -46,7 +46,7 @@ class Main
     end
 
     # Back to dashboard
-    redirect R(:admin)
+    redirect @item.path(:edit)
   end
 
   get '/*/edit' do |path|
