@@ -35,15 +35,28 @@ module Aura
                           :slug => "products",
                           :body => lorem.call
 
-        p2 = self.create :title => "Applebottom Jeans",
-                          :slug => "jeans",
-                          :parent_id => p1.id,
+        [ "Sony iPhone", "Blackberry iXUS",
+          "Canon Vostro", "Nokia Curve"
+        ].each do |product|
+          p2 = self.create :title => product,
+                            :parent_id => p1.id,
+                            :body => lorem.call
+          [ "8GB Black", "8GB White", "16GB 3G", "16GB Wifi" ].each do |type|
+            p3 = self.create :title => type,
+                              :parent_id => p2.id,
+                              :body => lorem.call
+          end
+        end
+
+        p1 = self.create :title => "Employees",
+                          :slug => "employees",
                           :body => lorem.call
 
-        p2 = self.create :title => "Boots with the fur",
-                          :slug => "boots",
-                          :parent_id => p1.id,
-                          :body => lorem.call
+        8.times {
+          p2 = self.create :title => Faker::Name.name,
+                            :parent_id => p1.id,
+                            :body => lorem.call
+        }
       end
     end
   end
