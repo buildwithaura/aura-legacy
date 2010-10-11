@@ -176,10 +176,12 @@ body {
       display: block; width: 100%; height: 5px; content: ' ';
       margin-top: -5px; 
       .shadow(0 2px 3px @blue-glow-70);
+      .gradient(@blue-glow-00, @blue-glow-40);
     }
   }
-  nav.back:not(.mousedown) :after {
-      .gradient(@blue-glow-00, @blue-glow-40);
+  nav.back.mousedown :after {
+    background-image: none;
+      .shadow(0 2px 3px @blue-glow-20);
   }
 }
 
