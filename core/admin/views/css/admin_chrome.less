@@ -37,7 +37,6 @@ body {
   .left, .right { display: table-cell; }
 }
 
-
 /*
  * The top bar
  */
@@ -94,6 +93,11 @@ body {
   padding: 10px;
 }
 
+.active() {
+  background-color: #eee;
+  .shadow-2(0 0 4px @blue-glow-40, 0 0 4px white); color: #333;
+}
+
 #nav nav {
   font-size: 8.5pt; 
   a:hover { text-decoration: none; }
@@ -106,7 +110,7 @@ body {
     margin-top: 10px; padding-top: 10px; border-top: solid 1px #ccc; 
   }
   ul { .non-list; }
-  ul li.active a, ul li a.active, ul li a:active { background-color: #eee; }
+  ul li.active a, ul li a.active, ul li a:active { .active; }
 
   ul li.browse {
     a.active, a:active { font-weight: bold; }
@@ -149,14 +153,14 @@ body {
     :hover { background-color: #404040; }
   }
   a:active, a.active {
-    background-color: #eee; color: #333;
+    .active();
   }
   a:not(.active) { .shadow-2(inset 0 -2px 2px @blue-glow-70, 0 0 4px @blue); }
 }
 
 #nav nav.crumbs {
   a { padding: 0 10px; height: 24px; line-height: 24px; display: block; color: #333; }
-  a.active { background: #eee; }
+  a.active { .active; }
 }
 
 /*
