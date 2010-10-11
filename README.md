@@ -77,13 +77,14 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
 - Forward links
 - Accessing non-slug models
 - Admin watermark
+- UIScreen
 
 ## To do
 
 - Toolbar submit button
+- AJAXy posting
 - "This page will be created under ___."
-- UIScreen
-- Body class names
+- Area class names
 
 - Menu (front end)
 - User management

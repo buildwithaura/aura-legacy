@@ -152,7 +152,9 @@ body {
 
 #nav nav.back {
   background: #393939; margin: 0 0 10px 0;
+  position: relative; 
   a {
+    height: 16px;
     background: #393939;
     display: block; padding: 10px 10px 10px 25px; color: #ddd;
     background-image: url(/images/admin/back.png);
@@ -161,9 +163,20 @@ body {
     :hover { background-color: #404040; }
   }
   a:active, a.active {
-    .active();
+    .active; z-index: 2;
   }
-  a:not(.active) { .shadow-2(inset 0 -2px 2px @blue-glow-70, 0 0 4px @blue); }
+  a:not(.active) { }
+}
+
+/* Blue strip */
+#nav:not(.transitioning) nav.back {
+  position: relative; 
+  :after {
+    display: block; width: 100%; height: 5px; content: ' ';
+    margin-top: -5px; 
+    .shadow(0 2px 3px @blue-glow-70);
+    .gradient(@blue-glow-00, @blue-glow-40);
+  }
 }
 
 #nav nav.crumbs {
