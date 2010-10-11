@@ -8,6 +8,15 @@
 
   var speed = 350;
 
+  $("#nav nav.back a").live('mousedown', function (e) {
+    $(this).closest('nav.back').addClass('mousedown');
+  });
+  $("#nav nav.back a").live('mouseup', function (e) {
+    window.setTimeout(function () {
+      $(this).closest('nav.back').removeClass('mousedown');
+    }, 100);
+  });
+
   // Highlight
   $("#nav > div a").live('click', function (e) {
     $nav.find('.active').removeClass('active');

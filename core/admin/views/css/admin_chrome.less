@@ -169,13 +169,17 @@ body {
 }
 
 /* Blue strip */
-#nav:not(.transitioning) nav.back {
-  position: relative; 
-  :after {
-    display: block; width: 100%; height: 5px; content: ' ';
-    margin-top: -5px; 
-    .shadow(0 2px 3px @blue-glow-70);
-    .gradient(@blue-glow-00, @blue-glow-40);
+#nav:not(.transitioning) {
+  nav.back {
+    position: relative; 
+    :after {
+      display: block; width: 100%; height: 5px; content: ' ';
+      margin-top: -5px; 
+      .shadow(0 2px 3px @blue-glow-70);
+    }
+  }
+  nav.back:not(.mousedown) :after {
+      .gradient(@blue-glow-00, @blue-glow-40);
   }
 }
 
