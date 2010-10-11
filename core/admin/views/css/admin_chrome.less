@@ -209,40 +209,54 @@ body {
   }
 }
 
+.glow() {
+  .shadow-2(0 0 4px @blue-glow, inset 0 0 2px @blue);
+}
+
+.button() {
+  display: block;
+  color: white; text-shadow: 1px 1px 0 @shadow10;
+  padding: 0 30px;
+  height: @tool-button-height; overflow: hidden; 
+  line-height: @tool-button-height + 1px;
+  .round(@tool-button-height / 2);
+  font-size: @medium; 
+}
+
+.button-metal() {
+  .gradient(#eee, #d4d4d4); color: #666; text-shadow: 1px 1px 0 @hilite20; 
+  .shadow-2(inset 0 1px 0 @hilite10, 0 1px 1px @shadow20);
+}
+
+.button-blue() {
+  .gradient(@blue, @blue * 0.9); color: white; text-shadow: 1px 1px 0 @shadow10; 
+  :hover {
+    .gradient(@blue * 0.98, @blue * 0.88); color: white;
+    text-decoration: none;
+  }
+}
+.button-black() {
+  .gradient(#555, #333); color: white; text-shadow: 1px 1px 0 @shadow20; 
+  .shadow-2(0 0 4px @blue, inset 0 0 4px @blue);
+  :hover {
+    .gradient(#666, #333); color: white;
+  }
+}
+
 #toolbar {
   float: right;
   ul { .horiz-list; }
   a {
     margin-left: 10px; 
-    display: block;
-    color: white; text-shadow: 1px 1px 0 @shadow10;
-    padding: 0 30px;
-    height: @tool-button-height; overflow: hidden; 
-    line-height: @tool-button-height + 1px;
-    .round(@tool-button-height / 2);
-    font-size: @medium; 
-    .shadow-2(inset 0 1px 0 @hilite10, 0 1px 1px @shadow20);
 
+    .button; .button-metal;
     :hover { text-decoration: none; }
-    :hover {
-      .shadow-2(0 0 4px @blue-glow, inset 0 0 2px @blue);
-    }
-    :active {
-      .gradient(#555, #333); color: white; text-shadow: 1px 1px 0 @shadow20; 
-      .shadow-2(0 0 4px @blue, inset 0 0 4px @blue);
-    }
+    :hover { .glow; }
+    :active { .button-black; }
   }
 
-  a {
-    .gradient(#eee, #d4d4d4); color: #666; text-shadow: 1px 1px 0 @hilite20; 
-  }
-  a.blue {
-    .gradient(@blue, @blue * 0.9); color: white; text-shadow: 1px 1px 0 @shadow10; 
-    :hover {
-      .gradient(@blue * 0.98, @blue * 0.88); color: white;
-      text-decoration: none;
-    }
-  }
+  a.blue { .button-blue; }
+  a.black { .button-black; }
 }
 
 /*
