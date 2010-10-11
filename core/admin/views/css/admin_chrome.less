@@ -44,8 +44,8 @@ body {
 
 #top {
   height: @top-height; line-height: @top-height; overflow: hidden; 
-  background: #444; color: #ddd; padding: 0 10px; margin-bottom: 10px;
-  .gradient(#333, #444);
+  background: #333; color: #ddd; padding: 0 10px; margin-bottom: 10px;
+  .gradient(#555, #333);
 
   h3 { margin: 0; padding: 0; float: left; }
   h3 a { color: white; padding: 0; display: block; float: left; }
@@ -83,7 +83,7 @@ body {
 #nav {
   background: #ddd; width: 200px; padding: 0 0;
   position: absolute; left: 0; top: @top-height;
-  border-top: solid 15px #444;
+  border-top: solid 15px #333;
   overflow-y: auto; overflow-x: hidden;
 }
 
@@ -137,9 +137,9 @@ body {
 #nav.transitioning ul li a.active { font-weight: bold; }
 
 #nav nav.back {
-  background: #555; margin: 0 0 10px 0;
+  background: #393939; margin: 0 0 10px 0;
   a {
-    background: #555;
+    background: #393939;
     display: block; padding: 10px 10px 10px 25px; color: #ddd;
     background-image: url(/images/admin/back.png);
     background-position: 5px center;
@@ -149,7 +149,7 @@ body {
   a:active, a.active {
     background-color: #eee; color: #333;
   }
-  .shadow(inset -2px 0 3px @shadow10);
+  a:not(.active) { .shadow-2(inset 0 -2px 2px @blue-glow-70, 0 0 4px @blue); }
 }
 
 #nav nav.crumbs {
