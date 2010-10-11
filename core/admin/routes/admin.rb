@@ -1,9 +1,4 @@
 class Main
-  get '/:' do
-    require_login
-    show_admin :'admin/dashboard'
-  end
-
   get '/admin' do
     require_login
     show_admin :'admin/dashboard'
