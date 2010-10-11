@@ -143,4 +143,8 @@
       if ($parent) { resetPosition($(screen), $parent); }
     }
   };
+
+  $(window).resize(function () {
+    $.uiscreen.autoresize();
+  });
 })(jQuery);
