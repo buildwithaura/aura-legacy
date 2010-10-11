@@ -46,8 +46,14 @@
 
   function htmlCallback (html) {
     var $data = $("<div>").html(html);
-
     $body.show();
+
+    // Make sure it's not some garbage URL/HTML we're being fed.
+    if (!$data.find("#area").length) {
+      alert("Oh no. What did you do?")
+      $.unscreen();
+      return false;
+    }
 
     // Determite the animation that will happen.
     var anim = 'html';
