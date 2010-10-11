@@ -46,7 +46,10 @@
       $("#tabs").html($data.find("#tabs").html());
       $("#area").html($data.find("#area").html())
       $area.unscreen();
-      window.setTimeout(function() { $.unscreen(); }, speed*2);
+
+      var duration = speed * 2;
+      if (anim == 'html') { duration = 0; }
+      window.setTimeout(function() { $.unscreen(); }, duration);
 
       var title = html.match(/<title>(.*?)<\/title>/);
       if (title) { $("title").html(title[1]); }
