@@ -82,9 +82,11 @@ body {
 
 #nav {
   background: #ddd; width: 200px; padding: 0 0;
+  .gradient(#ddd, #ccc);
   position: absolute; left: 0; top: @top-height;
   border-top: solid 15px #333;
   overflow-y: auto; overflow-x: hidden;
+  .shadow-2(inset -1px 0 0 @shadow10, inset -3px 0 2px @shadow05);
 }
 
 #nav header { 
