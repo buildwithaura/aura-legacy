@@ -1,5 +1,8 @@
-- content_for :title do
-  %span
+- content_for :toolbar do
+  %li
+    %span You are seeing a preview.
+  %li
+    %a{:href => item.path} View live
 
 - content_for :tabs do
   %ul
