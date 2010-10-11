@@ -53,9 +53,12 @@ body {
   .gradient(#444, #333);
 
   h3 {
-    margin: 7px 0 0 3px; padding: 0; float: left;
-    width: 175px; position: relative;
+    position: absolute; top: 7px; left: 5px;
+    margin: 0; padding: 0; float: left;
+    width: 165px; position: relative;
     a { color: #eee; padding: 0; display: block; float: left; font-size: 12pt; text-shadow: 0 0 4px @blue-glow-70; }
+    -webkit-transition-property: top, left;
+    -webkit-transition-duration: 0.5s, 0.5s;
   }
 
   h3 a.view {
@@ -73,6 +76,10 @@ body {
       color: @blue * 0.6;
     }
   }
+}
+
+body.no-sidebar #top {
+  h3 { top: 1px; }
 }
 
 #aux {

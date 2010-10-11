@@ -64,11 +64,18 @@
       else if (link.parents('#nav .back').length) { anim = 'back'; }
     }
 
+    // Bring the content in.
     $("#nav").htmlInto($data.find("#nav").html(), anim);
     $("#tabs").html($data.find("#tabs").html());
     $("#area").attr('class', $data.find("#area").attr('class'));
     $("#area").html($data.find("#area").html())
     $area.unscreen();
+
+    if ($("#area").is('.no-sidebar')) {
+      $.sidebar.hide();
+    } else {
+      $.sidebar.show();
+    }
 
     var duration = speed * 2;
     if (anim == 'html') { duration = 0; }
