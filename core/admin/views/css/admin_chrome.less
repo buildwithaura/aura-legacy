@@ -46,19 +46,26 @@ body {
   background: #333; color: #ddd; padding: 0 10px; margin-bottom: 10px;
   .gradient(#444, #333);
 
-  h3 { margin: 7px 0 0 3px; padding: 0; float: left; }
-  h3 a { color: white; padding: 0; display: block; float: left; }
+  h3 {
+    margin: 7px 0 0 3px; padding: 0; float: left;
+    width: 175px; position: relative;
+    a { color: #eee; padding: 0; display: block; float: left; font-size: 12pt; text-shadow: 0 0 4px @blue-glow-70; }
+  }
 
   h3 a.view {
-    display: block; float: left; 
+    display: block; float: right; 
     .gradient(#eee, #d0d0d0); .round(10px);
     padding: 0 10px; line-height: 16px; height: 16px;
     font-size: 8pt;  font-weight: bold; color: #333;
-    text-shadow: 1px 1px 0 @hilite20; 
-    margin: (@top-height - 16px)/2;
+    text-shadow: 1px 1px 0 @hilite50;
+    margin: ((@top-height - 16px)/2) 0px;
     text-transform: uppercase; 
 
-    :hover { text-decoration: none; .gradient(#fafafa, #d9d9d9); }
+    :hover {
+      text-decoration: none; .gradient(#fafafa, #d9d9d9);
+      .shadow-2(inset 0 0 3px @blue, 0 0 4px @blue);
+      color: @blue * 0.6;
+    }
   }
 }
 
@@ -81,7 +88,7 @@ body {
 
 #nav {
   background: #ddd; width: 200px; padding: 0 0;
-  .gradient(#ddd, #ccc);
+  .gradient(@sidebar-hicolor, @sidebar-color);
   position: absolute; left: 0; top: @top-height;
   border-top: solid 15px #333;
   overflow-y: auto; overflow-x: hidden;

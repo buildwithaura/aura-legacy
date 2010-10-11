@@ -80,7 +80,10 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
 
 ## To do
 
+- Toolbar submit button
+- UIScreen
 - Body class names
+
 - Menu (front end)
 - User management
 - Extension dependencies
