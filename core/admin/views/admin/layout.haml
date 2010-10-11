@@ -22,6 +22,7 @@
     - unless request.xhr?
       %script{:type => 'text/javascript'}
         :plain
+          document.body.className += 'js-on';
           document.body.style.display = 'none';
 
       %header#top
@@ -48,15 +49,6 @@
         != yield_content :tabs
 
     #area
-      - if flash_messages? or flash_errors?
-        #flash
-          %div
-            %ul
-              - flash_messages.each do |msg|
-                %li.success= msg
-              - flash_errors.each do |msg|
-                %li.error= msg
-
       - if has_content?(:title) or has_content?(:toolbar)
         %header#title
           - if has_content?(:title)
@@ -67,6 +59,16 @@
             %nav#toolbar
               %ul
                 != yield_content :toolbar
+
+      - if flash_messages? or flash_errors?
+        #flash
+          %div
+            %ul
+              - flash_messages.each do |msg|
+                %li.success= msg
+              - flash_errors.each do |msg|
+                %li.error= msg
+
 
       #content
         - if has_content?(:body)

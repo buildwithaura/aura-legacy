@@ -41,7 +41,9 @@
     %a{:href => item.path(:delete)} Delete
   - if item.try(:parentable?)
     %li
-      %a.black{:href => item.path(:new)} Create new
+      %a{:href => item.path(:new)} Create new
+  %li
+    %a.black.js{:href => '#submit'} Save
 
 - content_for :body do
   - if item.errors.any?

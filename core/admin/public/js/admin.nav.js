@@ -11,10 +11,16 @@
   $("#nav nav.back a").live('mousedown', function (e) {
     $(this).closest('nav.back').addClass('mousedown');
   });
+
   $("#nav nav.back a").live('mouseup', function (e) {
     window.setTimeout(function () {
       $(this).closest('nav.back').removeClass('mousedown');
     }, 100);
+  });
+
+  $("a[href=#submit]").live('click', function (e) {
+    $("form").submit();
+    return false;
   });
 
   // Highlight
@@ -38,37 +44,47 @@
     window.location.hash = "#!" + href;
   });
 
+  function htmlCallback (html) {
+    var $data = $("<div>").html(html);
+
+    $body.show();
+
+    // Determite the animation that will happen.
+    var anim = 'html';
+    if (link) {
+      if (link.parents('#nav .browse').length) { anim = 'browse'; }
+      else if (link.parents('#nav .back').length) { anim = 'back'; }
+    }
+
+    $("#nav").htmlInto($data.find("#nav").html(), anim);
+    $("#tabs").html($data.find("#tabs").html());
+    $("#area").html($data.find("#area").html())
+    $area.unscreen();
+
+    var duration = speed * 2;
+    if (anim == 'html') { duration = 0; }
+    window.setTimeout(function() { $.unscreen(); }, duration);
+
+    var title = html.match(/<title>(.*?)<\/title>/);
+    if (title) { $("title").html(title[1]); }
+  }
+
   $.hashListen('!(.*)', function (href) {
-    $.get(href, function (html) {
-      var $data = $("<div>").html(html);
+    $.get(href, htmlCallback);
+  });
 
-      $body.show();
-
-      // Determite the animation that will happen.
-      var anim = 'html';
-      if (link) {
-        if (link.parents('#nav .browse').length) { anim = 'browse'; }
-        else if (link.parents('#nav .back').length) { anim = 'back'; }
-      }
-
-      $("#nav").htmlInto($data.find("#nav").html(), anim);
-      $("#tabs").html($data.find("#tabs").html());
-      $("#area").html($data.find("#area").html())
-      $area.unscreen();
-
-      var duration = speed * 2;
-      if (anim == 'html') { duration = 0; }
-      window.setTimeout(function() { $.unscreen(); }, duration);
-
-      var title = html.match(/<title>(.*?)<\/title>/);
-      if (title) { $("title").html(title[1]); }
-    });
+  $("form").live('submit', function (e) {
+    var $this = $(this);
+    $area.screen();
+    $.post($this.attr('action'), $this.serialize(), htmlCallback);
+    e.preventDefault();
+    return false;
   });
 
   $("body").ajaxError(function () {
     alert("Sorry, something went wrong :(");
-    $.unscreen();
     $body.show();
+    $.unscreen();
   });
 
   $(function () {

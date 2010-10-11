@@ -7,6 +7,12 @@ html { background: white; }
 body { background: transparent; overflow: hidden; }
 html, body { height: 100%; }
 
+/* .js-on is set when there's JavaScript support.
+ * Hide the unneeded things when there's JS.
+ */
+body:not(.js-on) #area .js { display: none; }
+body.js-on #area .no-js { display: none; }
+
 /* Cursor */
 * { cursor: default; }
 a, button { cursor: pointer; }
@@ -317,11 +323,10 @@ body {
  */
 
 #flash {
-  .gradient(#adf * 1.1, #adf); margin: -10px -10px 10px -10px;
+  .gradient(@blue * 1.2, @blue); margin: -10px -10px 10px -10px;
   padding: 5px 10px; text-align: center;
   .shadow-2(0 0 10px #adf, inset 0 1px 0 @hilite20);
-  .border-bottom-radius(4px);
-  color: #7bd * 0.6; text-shadow: 1px 1px 0 @hilite20; 
+  color: #eee; text-shadow: 1px 1px 0 @shadow20;
   ul { .non-list; }
   border-bottom: solid 1px @shadow10;
 }

@@ -36,6 +36,7 @@ class Main
       @item = @model.new
       @item.update params[:editor]
       @item.save
+      flash_message "The new item has been created."
 
     rescue Sequel::ValidationFailed
       return show_admin @model.templates_for('new'),
@@ -69,6 +70,7 @@ class Main
     begin
       @item.update params[:editor]
       @item.save
+      flash_message "Your edits have been saved."
 
     rescue Sequel::ValidationFailed
       return show_admin @item.templates_for('edit'),
@@ -115,6 +117,7 @@ class Main
       @item = @model.new(:parent => @parent)
       @item.update params[:editor]
       @item.save
+      flash_message "The new item has been created."
 
     rescue Sequel::ValidationFailed
       return show_admin @item.templates_for('new'),
@@ -144,6 +147,7 @@ class Main
 
     action = @item.parent? ? @item.parent.path(:edit) : R(:admin)
     @item.delete
+    flash_message "The item has been deleted."
 
     redirect action
   end
