@@ -1,6 +1,7 @@
 @import "core/lessutils/less/colors.less";
 @import "core/lessutils/less/css3.less";
 @import "core/lessutils/less/utilities.less";
+@import "core/admin/views/css/includes/settings.less";
 
 html { background-image: url(/images/admin/uiscreen-loader.gif); }
 html { background-image: none; }
@@ -11,10 +12,12 @@ html { background-image: none; }
   /* background-color: rgba(212,213,217,0.5); */
 }
 
+@height: 60px;
 .uiscreen:not(.no-spin) {
   .uiscreen-spinner {
-    width: 90px; height: 90px; .round(8px);
-    background: #333 url(/images/admin/uiscreen-loader.gif) center center no-repeat;
+    width: @height; height: @height; .round(@height / 2);
+    background: #111 url(/images/admin/uiscreen-loader.gif) center center no-repeat;
+    .shadow-2(0 0 10px @blue-glow-70, inset 0 0 2px @blue);
     position: absolute; top: 45%; left: 45%;
     text-decoration: none;
   }

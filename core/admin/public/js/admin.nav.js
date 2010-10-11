@@ -6,7 +6,7 @@
 
   var link = null;
 
-  var speed = 350;
+  var speed = 320;
 
   $("#nav nav.back a").live('mousedown', function (e) {
     $(this).closest('nav.back').addClass('mousedown');
