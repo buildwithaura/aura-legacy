@@ -6,9 +6,12 @@
       %title!= title || "Aura"
       - admin_css '/css/reset.css', 1
       - admin_css '/css/admin_chrome.css', 4
+      - admin_css '/css/admin_uiscreen.css', 4
       - admin_js '/js/jquery-1.4.2.min.js', 1
       - admin_js '/js/jquery.livequery.js', 2
       - admin_js '/js/jquery.hashlisten.js', 2
+      - admin_js '/js/jquery.uiscreen.js', 4
+      - admin_js '/js/admin.setup.js', 4
       - admin_js '/js/admin.layout.js', 4
       - admin_js '/js/admin.nav.js', 4
       - admin_css.each do |file|

@@ -1,5 +1,6 @@
 ;(function ($) {
   var $area = $("#area");
+  var $content = $("#content");
   var $nav  = $("#nav");
   var $body = $("body");
 
@@ -20,7 +21,7 @@
     link = $(this);
     if (window.location.hash == '#!'+href) { return; }
 
-    $area.css({ opacity: 0.6 });
+    $area.screen();
 
     window.location.hash = "#!" + href;
   });
@@ -39,12 +40,9 @@
       }
 
       $("#nav").htmlInto($data.find("#nav").html(), anim);
-
       $("#tabs").html($data.find("#tabs").html());
-
-      $("#area")
-        .css({ opacity: 1 })
-        .html($data.find("#area").html());
+      $("#area").html($data.find("#area").html())
+      $.unscreen();
 
       var title = html.match(/<title>(.*?)<\/title>/);
       if (title) { $("title").html(title[1]); }
@@ -53,7 +51,8 @@
 
   $("body").ajaxError(function () {
     alert("Sorry, something went wrong :(");
-      $body.show();
+    $.unscreen();
+    $body.show();
   });
 
   $(function () {

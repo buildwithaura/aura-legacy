@@ -81,6 +81,7 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
 ## To do
 
 - Toolbar submit button
+- "This page will be created under ___."
 - UIScreen
 - Body class names
 

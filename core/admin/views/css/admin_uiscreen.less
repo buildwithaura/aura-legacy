@@ -1,0 +1,18 @@
+@import "core/lessutils/less/colors.less";
+@import "core/lessutils/less/css3.less";
+@import "core/lessutils/less/utilities.less";
+
+/* UIscreen */
+.uiscreen {
+  position: relative; background: transparent;
+  background-color: rgba(212,213,217,0.5);
+}
+
+.uiscreen:not(.no-spin) {
+  .uiscreen-spinner {
+    width: 90px; height: 90px; .round(8px);
+    background: #333 url(/images/admin/uiscreen-loader.gif) center center no-repeat;
+    position: absolute; top: 45%; left: 45%;
+    text-decoration: none;
+  }
+}
