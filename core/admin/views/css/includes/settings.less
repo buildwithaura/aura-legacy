@@ -34,6 +34,10 @@
   -ms-box-sizing: border-box;
 }
 
+.glow() {
+  .shadow-2(0 0 4px @blue-glow, inset 0 0 2px @blue);
+}
+
 .button() {
   display: inline-block; border: 0;
   color: white; text-shadow: 1px 1px 0 @shadow10;
@@ -48,6 +52,7 @@
 .button-metal() {
   .gradient(#eee, #d4d4d4); color: #666; text-shadow: 1px 1px 0 @hilite20; 
   .shadow-2(inset 0 1px 0 @hilite10, 0 1px 1px @shadow20);
+  :hover { .glow; }
 }
 
 .button-blue() {
