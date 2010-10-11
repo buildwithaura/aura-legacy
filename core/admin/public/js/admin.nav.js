@@ -6,6 +6,8 @@
 
   var link = null;
 
+  var speed = 350;
+
   // Highlight
   $("#nav > div a").live('click', function (e) {
     $nav.find('.active').removeClass('active');
@@ -22,6 +24,7 @@
     if (window.location.hash == '#!'+href) { return; }
 
     $area.screen();
+    $nav.screen();
 
     window.location.hash = "#!" + href;
   });
@@ -42,7 +45,8 @@
       $("#nav").htmlInto($data.find("#nav").html(), anim);
       $("#tabs").html($data.find("#tabs").html());
       $("#area").html($data.find("#area").html())
-      $.unscreen();
+      $area.unscreen();
+      window.setTimeout(function() { $.unscreen(); }, speed*2);
 
       var title = html.match(/<title>(.*?)<\/title>/);
       if (title) { $("title").html(title[1]); }
@@ -85,8 +89,6 @@
       tuple[0].css(tuple[1]);
     }
   };
-
-  var speed = 350;
 
   $.fn.navInto = function(html) {
     var $this = $(this);
