@@ -25,6 +25,7 @@
   $(window).resize(onResize);
   $(function () {
     $(document.body).show();
+    if ($('#area').is('.no-sidebar')) { $.sidebar.hide(); }
     onResize();
   });
 
