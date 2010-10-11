@@ -1,3 +1,5 @@
+- area_class 'full'
+
 - content_for :toolbar do
   %li
     %span You are seeing a preview.
@@ -16,10 +18,11 @@
 
 %style
   :plain
-    .full { margin: -10px; width: 100%: background: #333; }
     iframe { width: 100%; border: 0; height: 98%; }
 
-.full
-  %iframe
-  %script
-    = "document.querySelector('iframe').src = '%s';" % [ item.path ]
+#iframe_container
+%script
+  :plain
+    window.setTimeout(function () {
+    jQuery('#iframe_container').html('<iframe src=\'#{item.path}\'>');
+    }, 200);

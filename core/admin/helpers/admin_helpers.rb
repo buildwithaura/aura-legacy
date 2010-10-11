@@ -18,5 +18,10 @@ class Main
     def admin_css(file=nil, priority=5)
       admin_assets(:css, file, priority)
     end
+
+    def area_class(str=nil)
+      @area_class = str  unless str.nil?
+      @area_class
+    end
   end
 end

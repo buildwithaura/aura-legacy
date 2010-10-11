@@ -58,6 +58,7 @@
 
     $("#nav").htmlInto($data.find("#nav").html(), anim);
     $("#tabs").html($data.find("#tabs").html());
+    $("#area").attr('class', $data.find("#area").attr('class'));
     $("#area").html($data.find("#area").html())
     $area.unscreen();
 

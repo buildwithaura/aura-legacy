@@ -7,7 +7,7 @@
       - admin_css '/css/reset.css', 1
       - admin_css '/css/admin_chrome.css', 4
       - admin_css '/css/admin_uiscreen.css', 4
-      - admin_js '/js/jquery-1.4.2.min.js', 1
+      %script{:type => 'text/javascript', :src => '/js/jquery-1.4.2.min.js'}
       - admin_js '/js/jquery.livequery.js', 2
       - admin_js '/js/jquery.hashlisten.js', 2
       - admin_js '/js/jquery.uiscreen.js', 4
@@ -48,7 +48,7 @@
       - if has_content?(:tabs)
         != yield_content :tabs
 
-    #area
+    #area{:class => area_class}
       - if has_content?(:title) or has_content?(:toolbar)
         %header#title
           - if has_content?(:title)
