@@ -54,15 +54,16 @@
               - flash_errors.each do |msg|
                 %li.error= msg
 
-      %header#title
-        - if has_content?(:title)
-          .title-c
-            != yield_content :title
+      - if has_content?(:title) and has_content?(:toolbar)
+        %header#title
+          - if has_content?(:title)
+            .title-c
+              != yield_content :title
 
-        - if has_content?(:toolbar)
-          %nav#toolbar
-            %ul
-              != yield_content :toolbar
+          - if has_content?(:toolbar)
+            %nav#toolbar
+              %ul
+                != yield_content :toolbar
 
       #content
         - if has_content?(:body)
