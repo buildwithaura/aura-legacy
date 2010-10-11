@@ -37,8 +37,6 @@
   - if item.try(:renderable?)
     %li
       %a.ext{:href => item.path} View
-  %li
-    %a{:href => item.path(:delete)} Delete
   - if item.try(:parentable?)
     %li
       %a{:href => item.path(:new)} Create new
@@ -59,6 +57,8 @@
   .slim-fixed
     %form{:action => action, :method => 'post' }
       != partial item.templates_for(:form), :item => item
+      %div
+        %a{:href => item.path(:delete), :rel => 'nav'} Delete this page
       %p.submit
         %button{:type => 'submit'}
           %span Save
