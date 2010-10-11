@@ -59,7 +59,7 @@
     %form{:action => action, :method => 'post' }
       != partial item.templates_for(:form), :item => item
       %div
-        %a{:href => item.path(:delete), :rel => 'nav'} Delete this page
+        %a{:href => item.path(:delete)} Delete this page
       %p.submit
         %button{:type => 'submit'}
           %span Save
