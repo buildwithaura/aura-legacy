@@ -36,12 +36,10 @@
     $body.addClass('no-sidebar');
     $nav.hide();
     $area.css({ left: 0 });
-    console.log(sidebarWidth);
     onResize();
   };
 
   $.sidebar.show = function () {
-    console.log(sidebarWidth);
     $body.removeClass('no-sidebar');
     $nav.show();
     $area.css({ left: sidebarWidth });
