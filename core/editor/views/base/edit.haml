@@ -54,7 +54,8 @@
               = field
               = err
 
-  .slim-fixed
+  -#.slim-fixed
+  .full
     %form{:action => action, :method => 'post' }
       != partial item.templates_for(:form), :item => item
       %div
