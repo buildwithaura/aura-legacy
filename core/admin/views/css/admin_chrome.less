@@ -251,36 +251,6 @@ body {
   .shadow-2(0 0 4px @blue-glow, inset 0 0 2px @blue);
 }
 
-.button() {
-  display: block;
-  color: white; text-shadow: 1px 1px 0 @shadow10;
-  padding: 0 30px;
-  height: @tool-button-height; overflow: hidden; 
-  line-height: @tool-button-height + 1px;
-  .round(@tool-button-height / 2);
-  font-size: @medium; 
-}
-
-.button-metal() {
-  .gradient(#eee, #d4d4d4); color: #666; text-shadow: 1px 1px 0 @hilite20; 
-  .shadow-2(inset 0 1px 0 @hilite10, 0 1px 1px @shadow20);
-}
-
-.button-blue() {
-  .gradient(@blue, @blue * 0.9); color: white; text-shadow: 1px 1px 0 @shadow10; 
-  :hover {
-    .gradient(@blue * 0.98, @blue * 0.88); color: white;
-    text-decoration: none;
-  }
-}
-.button-black() {
-  .gradient(#555, #333); color: white; text-shadow: 1px 1px 0 @shadow20; 
-  .shadow-2(0 0 4px @blue, inset 0 0 4px @blue);
-  :hover {
-    .gradient(#666, #333); color: white;
-  }
-}
-
 /*
  * Toolbar
  */
@@ -351,11 +321,6 @@ ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-si
   a:hover { text-decoration: none; background: #888; color: white; text-shadow: 1px 1px 0 @shadow20; }
 }
 
-.input() {
-  width: 488px; padding: 8px; border: solid 1px #ddd; 
-  .round(2px); .shadow-2(inset 2px 2px 0 @shadow05, inset 0 1px 2px @shadow05);
-  :focus { outline: 0; .shadow-2(0 0 4px @blue-glow-40, inset 0 0 12px @blue-glow-20); border-color: @blue-glow; }
-}
 /* Forms */
 #content form:not(.bypass) {
   p { margin: 10px 0; }
@@ -364,12 +329,8 @@ ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-si
   label { display: block; font-weight: bold; line-height: 24px; color: #777; }
   textarea, input { .input; }
   textarea { height: 220px; }
-  p.submit { background: #f2f2f2; padding: 10px; text-align: center; }
-  p.submit { margin: 20px -10px -10px -10px; border-top: solid 1px #ddd; }
-  p.submit button { background: #7bd; padding: 6px 15px; border: 0; }
-  p.submit button { color: white; font-size: 10pt; font-weight: bold; }
-  p.submit button { .round(3px); .shadow(1px 1px 0 @shadow30); }
-  p.submit button:hover { background: #7bd * 1.1; }
+  p.submit { text-align: center; }
+  p.submit button { .button; .button-black; }
 }
 
 /* Errors */

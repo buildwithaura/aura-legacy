@@ -1,3 +1,6 @@
+@import "../../../../lessutils/less/colors.less";
+@import "../../../../lessutils/less/css3.less";
+
 @blue: #3ea9df;
 @blue-glow: rgba(62, 169, 223, 0.4);
 @blue-glow-00: rgba(62, 169, 223, 0);
@@ -23,3 +26,39 @@
 
 @small: 8.5pt;
 @medium: 9pt;
+
+.button() {
+  display: inline-block; border: 0;
+  color: white; text-shadow: 1px 1px 0 @shadow10;
+  padding: 0 30px;
+  height: @tool-button-height; overflow: hidden; 
+  line-height: @tool-button-height + 1px;
+  .round(@tool-button-height / 2);
+  font-size: @medium; 
+}
+
+.button-metal() {
+  .gradient(#eee, #d4d4d4); color: #666; text-shadow: 1px 1px 0 @hilite20; 
+  .shadow-2(inset 0 1px 0 @hilite10, 0 1px 1px @shadow20);
+}
+
+.button-blue() {
+  .gradient(@blue, @blue * 0.9); color: white; text-shadow: 1px 1px 0 @shadow10; 
+  :hover {
+    .gradient(@blue * 0.98, @blue * 0.88); color: white;
+    text-decoration: none;
+  }
+}
+.button-black() {
+  .gradient(#555, #333); color: white; text-shadow: 1px 1px 0 @shadow20; 
+  .shadow-2(0 0 4px @blue, inset 0 0 4px @blue);
+  :hover {
+    .gradient(#666, #333); color: white;
+  }
+}
+
+.input() {
+  width: 488px; padding: 8px; border: solid 1px #ddd; 
+  .round(2px); .shadow-2(inset 2px 2px 0 @shadow05, inset 0 1px 2px @shadow05);
+  :focus { outline: 0; .shadow-2(0 0 4px @blue-glow-40, inset 0 0 12px @blue-glow-20); border-color: @blue-glow; }
+}

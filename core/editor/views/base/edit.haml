@@ -34,7 +34,7 @@
     = item
 
 - content_for :toolbar do
-  - if item.try(:renderable?)
+  -# if item.try(:renderable?)
     %li
       %a.ext{:href => item.path} View
   - if item.try(:parentable?)
