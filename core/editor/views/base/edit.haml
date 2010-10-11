@@ -4,8 +4,9 @@
   %ul
     %li.active
       %a{:href => item.path(:edit)} Editor
-    %li
-      %a{:href => item.path(:preview)} Preview
+    - if item.try(:renderable?)
+      %li
+        %a{:href => item.path(:preview)} Preview
 
 - content_for :nav do
   - if item.children.any?
