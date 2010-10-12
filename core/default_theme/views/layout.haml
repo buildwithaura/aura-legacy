@@ -12,6 +12,14 @@
         %strong This is my site
         %small Yes it is, and it's very very nice
 
+      %nav
+        %ul
+          - Aura::Editor.roots.each do |model, pages|
+            - pages.each do |p|
+              - next unless p.try(:renderable?)
+              %li{:class => ('active' if @item == p)}
+                %a{:href => p.path}= p
+
     #all
       != yield
 

@@ -2,15 +2,23 @@
 @import "core/lessutils/less/css3.less";
 @import "core/lessutils/less/utilities.less";
 
-body { background: #7bd; color: #eee; text-shadow: 1px 1px 0 @shadow10; }
+body { background: #7bd * 0.8; color: #eee; text-shadow: 1px 1px 0 @shadow10; }
 
 #top,
 #content { width: 760px; margin: 0 auto; }
 
-#top { border-bottom: solid 1px @hilite20; padding: 20px 0 10px 0;
-  h3 { margin: 0; padding: 0; }
+#top { border-bottom: solid 1px @hilite20; padding: 20px 0 10px 0; overflow: hidden; 
+  h3 { margin: 0; padding: 0; float: left; }
   h3 strong { display: block; color: #d8a; text-shadow: 1px 1px 0 @hilite20; }
   h3 small { font-weight: normal; display: block; color: #cde; font-size: 8pt; }
+  nav {
+    float: right; margin-top: 10px;
+    ul { .horiz-list; }
+    a { display: block; margin-left: 12px; color: #adf * 1.2; padding: 1px 8px; background: @hilite10; .round(4px); .shadow(1px 1px 0 @shadow10); }
+    li.active a,
+    a:hover { background: #ddd; color: #333; text-shadow: 1px 1px 0 @shadow20; text-decoration: none; }
+    li a:hover { background: #eee; }
+  }
 }
 
 #content {
