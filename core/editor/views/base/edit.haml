@@ -59,8 +59,10 @@
   .slim
     %form{:action => action, :method => 'post' }
       != partial item.templates_for(:form), :item => item
-      %div
+      .message
         %a{:href => item.path(:delete)} Delete this page
+        != "&nbsp; | &nbsp;"
+        %a{:href => item.path(:delete), :target => 'preview'} View this page
       %p.submit
         %button{:type => 'submit'}
           %span Save
