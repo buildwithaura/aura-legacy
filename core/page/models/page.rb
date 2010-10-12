@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Models
     class Page < Model
       plugin :aura_sluggable

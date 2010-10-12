@@ -1,3 +1,3 @@
-module Aura
+class Aura
   Model = Sequel::Model
 end

@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Slugs # TODO: Change to Router
     extend self
 

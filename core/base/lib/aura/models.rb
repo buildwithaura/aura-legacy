@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Models
     extend self
 

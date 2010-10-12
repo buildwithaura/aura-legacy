@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Editor
     def roots
       models = Aura::Models.all.select { |m| m.try(:editable?) }

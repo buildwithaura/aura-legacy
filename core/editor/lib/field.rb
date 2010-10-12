@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Editor
     class Field
       attr_accessor :name

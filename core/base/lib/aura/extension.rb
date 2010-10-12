@@ -1,4 +1,4 @@
-module Aura
+class Aura
   ExtensionNotFound = Class.new(StandardError)
 
   class Extension

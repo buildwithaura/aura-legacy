@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Models
     class User < Model
       #plugin :aura_sluggable

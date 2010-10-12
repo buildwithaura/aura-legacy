@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Utils
     extend self
 

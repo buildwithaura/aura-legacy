@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module ThorActions
     def app
       require './init'; Main

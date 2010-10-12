@@ -1,4 +1,4 @@
-module Aura
+class Aura
   module Editor
     module Fields
       def get(klass)
@@ -13,7 +13,7 @@ module Aura
   end
 end
 
-module Aura
+class Aura
   module Editor
     module Fields
       class Text < Field
