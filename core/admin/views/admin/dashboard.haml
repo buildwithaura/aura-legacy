@@ -5,7 +5,7 @@
   %nav.back
   %nav.crumbs
     != link_to R(:admin) do
-      != admin_icon :dashboard
+      -#!= admin_icon :dashboard
       = "Dashboard"
 
   - Aura::Editor.roots.each do |model, items|

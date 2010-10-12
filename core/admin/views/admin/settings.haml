@@ -10,7 +10,7 @@ Stuff go here
 - content_for :nav do
   %nav.back
     != link_to R(:admin) do
-      != admin_icon :dashboard
+      -#!= admin_icon :dashboard
       = "Dashboard"
   %nav.crumbs
     != link_to R(:admin, :settings) do
