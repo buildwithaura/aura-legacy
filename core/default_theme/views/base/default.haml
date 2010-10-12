@@ -10,7 +10,7 @@
         %li{:class => ('active' if @item == p)}
           %a{:href => p.path}= p
 
-  %h1
+  %h1{:class => 'level-%i' % [ item.crumbs.size ] }
     = item.to_s
 
   .back
