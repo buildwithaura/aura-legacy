@@ -24,6 +24,12 @@
               = err
 
   .slim
+    - unless parent.nil?
+      .message
+        This new page will be created under
+        %a{:href => parent.path(:edit)}<= parent
+        %span>= "."
+
     %form{:action => action, :method => 'post' }
       != partial item.templates_for(:form), :item => item
       %p.submit
