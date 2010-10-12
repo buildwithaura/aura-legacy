@@ -39,6 +39,18 @@ module Sequel::Plugins::AuraModel
     def children
       Array.new
     end
+
+    def crumbs
+      [self]
+    end
+
+    def depth
+      crumbs.size
+    end
+
+    def is_parent_of?(target)
+      target.crumbs.include?(self)
+    end
   end
 
   module ClassMethods
