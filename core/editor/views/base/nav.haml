@@ -11,14 +11,23 @@
   %ul
     - items.each do |item|
       %li{ :class => ('browse' if item.children.any?) }
-        != link_to item.path(:edit), item.to_s
+        != link_to(item.path(:edit)) do
+          != admin_icon('page')
+          = item.to_s
+
         - if item.path(:new) == request.fullpath
           %ul
             %li.add
-              != link_to item.path(:new), "New #{item.class.title}"
+              != link_to item.path(:new) do
+                != admin_icon('add')
+                = "New #{item.class.title}"
 
     %li.add
       - unless parent.nil?
-        != link_to parent.path(:new), "New #{parent.class.title}"
+        != link_to parent.path(:new) do
+          != admin_icon('add')
+          = "New #{parent.class.title}"
       - else
-        != link_to model.path(:new), "New #{model.title}"
+        != link_to model.path(:new) do
+          != admin_icon('add')
+          = "New #{model.title}"

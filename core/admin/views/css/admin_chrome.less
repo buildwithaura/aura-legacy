@@ -51,6 +51,10 @@ body {
   .left, .right { display: table-cell; }
 }
 
+img.icon, span.icon {
+  vertical-align: middle; 
+  display: inline-block; width: 16px; height: 16px; margin-right: 5px;  
+}
 /*
  * The top bar
  */
@@ -126,6 +130,12 @@ body.no-sidebar #top {
   .shadow-2(0 0 4px @blue-glow-40, 0 0 4px white); color: #333;
 }
 
+#nav {
+  a {
+    .icon { position: relative; top: -2px; }
+  }
+}
+
 #nav nav {
   font-size: 8.5pt; 
   a:hover { text-decoration: none; }
@@ -142,7 +152,9 @@ body.no-sidebar #top {
   a.active { cursor: default; }
 
   ul li.browse {
-    a.active, a:active { font-weight: bold; }
+    a.active, a:active { font-weight: bold;
+      .icon { top: -1px; }
+    }
   }
 
   a:hover { background: @hilite10; }
@@ -156,7 +168,7 @@ body.no-sidebar #top {
   }
 
   ul li.add a {
-    color: #bbb;
+    color: #9a9aa4;
   }
 
   ul ul a {
@@ -176,18 +188,23 @@ body.no-sidebar #top {
   background: #393939; margin: 0 0 10px 0;
   position: relative; 
   a {
-    height: 16px;
+    height: 16px; line-height: 16px; 
     background: #393939;
     display: block; padding: 10px 10px 10px 25px; color: #ddd;
     background-image: url(/images/admin/back.png);
     background-position: 5px center;
     background-repeat: no-repeat; 
     :hover { background-color: #404040; }
+    .icon { height: 16px; vertical-align: middle; }
   }
   a:active, a.active {
     .active; z-index: 2;
   }
   a:not(.active) { }
+}
+
+#nav nav.crumbs {
+  margin-bottom: 5px; 
 }
 
 /* Blue strip */

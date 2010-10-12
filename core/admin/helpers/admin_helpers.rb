@@ -23,5 +23,10 @@ class Main
       @area_class = str  unless str.nil?
       @area_class
     end
+
+    def admin_icon(icon)
+      icon = "#{icon}.png"  unless icon.include?('.')
+      tag(:img, nil, { :src => "/images/admin_icons/#{icon}", :class => 'icon' })
+    end
   end
 end

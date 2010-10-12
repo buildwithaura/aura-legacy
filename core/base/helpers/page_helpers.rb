@@ -17,7 +17,7 @@ class Main
       content_blocks[key.to_sym].any?
     end
 
-    def link_to(url, *a)
+    def link_to(url, *a, &b)
       attrs = Hash.new
       attrs[:href]  = url
 
@@ -26,7 +26,9 @@ class Main
       attrs = attr_merge(attrs, a.shift)  if a.first.is_a?(Hash)
 
       content = ''
-      if a.first.is_a?(String)
+      if block_given?
+        content = capture_haml(&b)
+      elsif a.first.is_a?(String)
         content = a.shift
       elsif a.first.is_a?(Proc)
         content = a.shift.call
@@ -34,7 +36,7 @@ class Main
         content = a.shift.to_s
       end
 
-      tag(:a, content, attrs)
+      raw_tag(:a, content, attrs)
     end
 
   protected
@@ -45,6 +47,14 @@ class Main
 
       ret.merge(other)
       ret
+    end
+
+    def raw_tag(tag, content, atts = {})
+      if self_closing?(tag)
+        %(<#{ tag }#{ tag_attributes(atts) } />)
+      else
+        %(<#{ tag }#{ tag_attributes(atts) }>#{content}</#{ tag }>)
+      end
     end
 
     def tag(tag, content, atts = {})

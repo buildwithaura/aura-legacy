@@ -14,9 +14,14 @@
       - if item.parent.nil?
         %a{:href => R(:admin)} Dashboard
       - else
-        != link_to item.parent.path(:edit), item.parent.to_s
+        != link_to item.parent.path(:edit) do
+          != admin_icon('page')
+          = item.parent.to_s
+
     %nav.crumbs
-      != link_to item.path(:edit), item.to_s
+      != link_to item.path(:edit) do
+        != admin_icon('page')
+        = item.to_s
 
     != partial item.templates_for('nav'), :items => item.children, :parent => item
 
