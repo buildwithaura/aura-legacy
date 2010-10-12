@@ -12,7 +12,9 @@
   - if item.children.any?
     %nav.back
       - if item.parent.nil?
-        %a{:href => R(:admin)} Dashboard
+        %a{:href => R(:admin)}
+          != admin_icon('dashboard')
+          Dashboard
       - else
         != link_to item.parent.path(:edit) do
           != admin_icon('page')

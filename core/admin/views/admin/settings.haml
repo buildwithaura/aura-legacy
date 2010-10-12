@@ -9,14 +9,27 @@ Stuff go here
 
 - content_for :nav do
   %nav.back
-    != link_to R(:admin), "Dashboard"
+    != link_to R(:admin) do
+      != admin_icon :dashboard
+      = "Dashboard"
   %nav.crumbs
-    != link_to R(:admin, :settings), "Settings"
+    != link_to R(:admin, :settings) do
+      != admin_icon :settings
+      = "Settings"
   %nav
     %ul
-      %li!= link_to R(:admin, :settings, :site),   "Your site"
-      %li!= link_to R(:admin, :settings, :themes), "Themes"
-      %li!= link_to R(:admin, :settings, :backup), "Backup"
+      %li
+        != link_to R(:admin, :settings, :site) do
+          != admin_icon :generic
+          = "Your site"
+      %li
+        != link_to R(:admin, :settings, :themes) do
+          != admin_icon :generic
+          = "Themes"
+      %li
+        != link_to R(:admin, :settings, :backup) do
+          != admin_icon :generic
+          = "Backup"
 
 
     -# != yield_content_of :'admin/dashboard', :nav

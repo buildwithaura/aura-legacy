@@ -25,7 +25,7 @@ class Main
     end
 
     def admin_icon(icon)
-      icon = "#{icon}.png"  unless icon.include?('.')
+      icon = "#{icon}.png"  unless icon.to_s.include?('.')
       tag(:img, nil, { :src => "/images/admin_icons/#{icon}", :class => 'icon' })
     end
   end
