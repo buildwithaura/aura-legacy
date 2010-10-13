@@ -1,5 +1,7 @@
+.align-center { text-align: center; }
+
 a.button { @include button; @include button-metal; }
-abutton.black { @include button-black; }
+a.button.black { @include button-black; }
 a.button.blue { @include button-blue; }
 
 .message {
