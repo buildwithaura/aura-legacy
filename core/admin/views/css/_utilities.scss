@@ -27,12 +27,39 @@ $hilite90:      rgba(255, 255, 255, 0.90);
 $shadow5:       rgba(0, 0, 0, 0.5);
 $hilite5:       rgba(255, 255, 255, 0.5);
 
+/* Like linear-gradient, but assumes that it's always vertical, has a
+ * bgcolor fallback, supports IE, and supports an image parameter.
+ *
+ * @include gradient(#eee, #ddd, url(image.png));
+ */
+@mixin gradient($start, $end, $image: 0) {
+  @if $image == 0 {
+    background-color: $start;
+    background-image: -moz-linear-gradient(top, $start, $end);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $start),color-stop(1, $end));
+  }
+  @else {
+    background-image: -moz-linear-gradient(top, $start, $end), $image;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $start),color-stop(1, $end)), $image;
+  }
+  filter: ie_gradient_filter($start, $end);
+  -ms-filter: quote(ie_gradient_filter($start, $end));
+}
+
+@mixin border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
 /* Cross-browser clear fix */
 @mixin clearfix {
   zoom: 1;
   &:after { content: ''; clear: both; display: block; line-height: 0; height: 0; visibility: hidden; zoom: 1; }
 }
 
+/* Like box-shadow, but supports layering multiple shadows. */
 @mixin shadow($n, $o: none, $p: none) {
   $full: 0;
   @if $p != none {
