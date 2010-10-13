@@ -1,7 +1,4 @@
-@import "core/lessutils/less/colors.less";
-@import "core/lessutils/less/css3.less";
-@import "core/lessutils/less/utilities.less";
-@import "core/admin/views/css/includes/settings.less";
+@import "core/admin/views/css/settings";
 
 html { background: white; }
 body { background: transparent; overflow: hidden; }
@@ -42,9 +39,9 @@ body {
 .slim-fixed { margin: 0 auto; width: 500px; }
 .dialog {
   margin: 40px auto; width: 500px; padding: 40px 10px;
-  background: white; .round(4px); text-align: center; 
-  .gradient(#fff, #f0f0f0); font-size: 11pt;
-  .shadow-3(0 0 4px @shadow10, 0 -2px 2px @blue-glow-10, 0 2px 2px @blue-glow-10);
+  background: white; @include border-radius(4px); text-align: center; 
+  @include gradient(#fff, #f0f0f0); font-size: 11pt;
+  @include shadow(0 0 4px $shadow10, 0 -2px 2px $blue-glow-10, 0 2px 2px $blue-glow-10);
 }
 .split {
   display: table-row;
@@ -60,32 +57,32 @@ img.icon, span.icon {
  */
 
 #top {
-  height: @top-height; line-height: @top-height; overflow: hidden; 
+  height: $top-height; line-height: $top-height; overflow: hidden; 
   background: #333; color: #ddd; padding: 0 10px; margin-bottom: 10px;
-  .gradient(#444, #333);
+  @include gradient(#444, #333);
 
   h3 {
     position: absolute; top: 7px; left: 5px;
     margin: 0; padding: 0; float: left;
     width: 165px; position: relative;
-    a { color: #eee; padding: 0; display: block; float: left; font-size: 12pt; text-shadow: 0 0 4px @blue-glow-70; }
+    a { color: #eee; padding: 0; display: block; float: left; font-size: 12pt; text-shadow: 0 0 4px $blue-glow-70; }
     -webkit-transition-property: top, left;
     -webkit-transition-duration: 0.2s, 0.2s;
   }
 
   h3 a.view {
     display: block; float: right; 
-    .gradient(#eee, #d0d0d0); .round(10px);
+    @include gradient(#eee, #d0d0d0); @include border-radius(10px);
     padding: 0 10px; line-height: 16px; height: 16px;
     font-size: 8pt;  font-weight: bold; color: #333;
-    text-shadow: 1px 1px 0 @hilite50;
-    margin: ((@top-height - 16px)/2) 0px;
+    text-shadow: 1px 1px 0 $hilite50;
+    margin: (($top-height - 16px)/2) 0px;
     text-transform: uppercase; 
 
-    :hover {
-      text-decoration: none; .gradient(#fafafa, #d9d9d9);
-      .shadow-2(inset 0 0 3px @blue, 0 0 4px @blue);
-      color: @blue * 0.6;
+    &:hover {
+      text-decoration: none; @include gradient(#fafafa, #d9d9d9);
+      @include shadow(inset 0 0 3px $blue, 0 0 4px $blue);
+      color: $blue * 0.6;
     }
   }
 }
@@ -100,10 +97,10 @@ body.no-sidebar #top {
   h4 { float: left; font-weight: normal; font-size: 1em; }
   h4 { margin: 0; padding: 0; margin-right: 20px; } 
   strong { color: #ccc; font-weight: normal; }
-  ul { .horiz-list; float: left; }
+  ul { @include horiz-list; float: left; }
   a {
-    color: @blue; font-weight: normal;
-    :hover { color: @blue * 1.1; text-decoration: none; }
+    color: $blue; font-weight: normal;
+    &:hover { color: $blue * 1.1; text-decoration: none; }
   }
 }
 
@@ -113,11 +110,11 @@ body.no-sidebar #top {
 
 #nav {
   background: #ddd; width: 200px; padding: 0 0;
-  .gradient(@sidebar-hicolor, @sidebar-color);
-  position: absolute; left: 0; top: @top-height;
+  @include gradient($sidebar-hicolor, $sidebar-color);
+  @include shadow(inset -1px 0 0 $shadow10, inset -3px 0 2px $shadow05);
+  position: absolute; left: 0; top: $top-height;
   border-top: solid 15px #333;
   overflow-y: auto; overflow-x: hidden;
-  .shadow-2(inset -1px 0 0 @shadow10, inset -3px 0 2px @shadow05);
 }
 
 #nav header { 
@@ -125,9 +122,9 @@ body.no-sidebar #top {
   padding: 10px;
 }
 
-.active() {
+@mixin active {
   background-color: #eee;
-  .shadow-2(0 0 4px @blue-glow-40, 0 0 4px white); color: #333;
+  @include shadow(0 0 4px $blue-glow-40, 0 0 4px white); color: #333;
 }
 
 #nav {
@@ -147,11 +144,11 @@ body.no-sidebar #top {
     margin: 0 0 0 0; padding: 5px 10px;
     font-size: 8pt; 
     text-transform: uppercase; 
-    color: #888; text-shadow: 1px 1px 0 @hilite30; 
+    color: #888; text-shadow: 1px 1px 0 $hilite30; 
     margin-top: 10px; padding-top: 10px; border-top: solid 1px #ccc; 
   }
-  ul { .non-list; }
-  ul li.active a, ul li a.active, ul li a:active { .active; }
+  ul { @include non-list; }
+  ul li.active a, ul li a.active, ul li a:active { @include active; }
   a.active { cursor: default; }
 
   ul li.browse {
@@ -160,14 +157,14 @@ body.no-sidebar #top {
     }
   }
 
-  a:hover { background: @hilite10; }
+  a:hover { background: $hilite10; }
   ul a {
-    .ellipsis;
+    @include ellipsis;
     padding: 0 10px 0 20px;
     height: 24px; line-height: 24px; overflow: hidden; 
     color: #555; display: block; font-weight: normal; 
 
-    :hover { color: #333; text-decoration: none; }
+    &:hover { color: #333; text-decoration: none; }
   }
 
   ul li.add a {
@@ -198,10 +195,10 @@ body.no-sidebar #top {
     background-image: url(/images/admin/back.png);
     background-position: 5px center;
     background-repeat: no-repeat; 
-    :hover { background-color: #404040; }
+    &:hover { background-color: #404040; }
   }
   a:active, a.active {
-    .active; z-index: 2;
+    @include active; z-index: 2;
   }
   a:not(.active) { }
 }
@@ -215,22 +212,22 @@ body.no-sidebar #top {
 #nav:not(.transitioning) {
   nav.back {
     position: relative; 
-    :after {
+    &:after {
       display: block; width: 100%; height: 5px; content: ' ';
       margin-top: -5px; 
-      .shadow(0 2px 3px @blue-glow-70);
-      .gradient(@blue-glow-00, @blue-glow-40);
+      @include shadow(0 2px 3px $blue-glow-70);
+      @include gradient($blue-glow-00, $blue-glow-40);
     }
   }
   nav.back.mousedown :after {
     background-image: none;
-      .shadow(0 2px 3px @blue-glow-20);
+      @include shadow(0 2px 3px $blue-glow-20);
   }
 }
 
 #nav nav.crumbs {
   a { padding: 0 10px; height: 24px; line-height: 24px; display: block; color: #333; }
-  a.active { .active; }
+  a.active { @include active; }
 }
 
 /*
@@ -238,26 +235,26 @@ body.no-sidebar #top {
  */
 
 #tabs {
-  position: absolute; top: (@top-height - @tab-height); left: 200px;
+  position: absolute; top: ($top-height - $tab-height); left: 200px;
   z-index: 1;
-  ul { .horiz-list; }
+  ul { @include horiz-list; }
   a, span {
-    .border-top-radius(2px);
-    font-size: @small;
+    @include border-top-radius(2px);
+    font-size: $small;
     display: block; 
     padding: 0 30px 0 10px; margin-right: 5px;  
-    background: rgba(120,120,120,0.5); color: #ddd; text-shadow: 1px 1px 0 @shadow20; 
-    height: @tab-height; line-height: @tab-height; 
-    .shadow(inset 0 1px 0 @hilite05);
-    :hover { text-decoration: none; }
+    background: rgba(120,120,120,0.5); color: #ddd; text-shadow: 1px 1px 0 $shadow20; 
+    height: $tab-height; line-height: $tab-height; 
+    @include shadow(inset 0 1px 0 $hilite05);
+    &:hover { text-decoration: none; }
   }
   a:hover { background: #626262; }
 
   li.active {
     a, span {
       cursor: default;
-      background: white; color: @grey; text-shadow: 1px 1px 0 @shadow10;
-      .shadow(inset 0 1px 1px @blue-glow-40);
+      background: white; color: $grey; text-shadow: 1px 1px 0 $shadow10;
+      @include shadow(inset 0 1px 1px $blue-glow-40);
     }
   }
 }
@@ -267,17 +264,17 @@ body.no-sidebar #top {
  */
 
 #title {
-  .gradient(#fff, #f7f7f7);
+  @include gradient(#fff, #f7f7f7);
   border-bottom: solid 1px #ccc; 
   padding: 5px 10px; margin: -10px -10px 10px -10px;
-  padding: 10px; text-align: left; .clearfix;
-  .shadow-3(2px 0 4px @shadow10, inset 0 -1px 0 @hilite30, inset 0 -1px 2px @blue-glow-20);
+  padding: 10px; text-align: left; @include clearfix;
+  @include shadow(2px 0 4px $shadow10, inset 0 -1px 0 $hilite30, inset 0 -1px 2px $blue-glow-20);
 
   .title-c { float: left; }
   h1 {
-    color: @blue; font-size: 17pt;
-    line-height: @title-height - 10px; margin: 0;
-    text-shadow: 1px 1px 0 @hilite50; 
+    color: $blue; font-size: 17pt;
+    line-height: $title-height - 10px; margin: 0;
+    text-shadow: 1px 1px 0 $hilite50; 
   }
 }
 
@@ -286,21 +283,22 @@ body.no-sidebar #top {
  */
 
 #toolbar {
-  float: right; color: @grey;
-  height: @title-height - 10px;
-  line-height: @title-height - 10px;
-  ul { .horiz-list; }
+  float: right; color: $grey;
+  height: $title-height - 10px;
+  line-height: $title-height - 10px;
+  ul { @include horiz-list; }
   a {
     margin-left: 10px; 
 
-    .button; .button-metal;
-    :hover { text-decoration: none; }
-    :hover { .glow; }
-    :active { .button-black; }
+    @include button;
+    @include button-metal;
+    &:hover { text-decoration: none; }
+    &:hover { @include glow; }
+    &:active { @include button-black; }
   }
 
-  a.blue { .button-blue; }
-  a.black { .button-black; }
+  a.blue { @include button-blue; }
+  a.black { @include button-black; }
 }
 
 /*
@@ -309,9 +307,9 @@ body.no-sidebar #top {
 
 #area {
   background: #eee; padding: 10px;
-  position: absolute; left: 200px; top: @top-height;
+  position: absolute; left: 200px; top: $top-height;
   overflow-y: auto; overflow-x: hidden;
-  .shadow(2px -2px 2px @blue-glow-70);
+  @include shadow(2px -2px 2px $blue-glow-70);
 }
 #area.full #content { margin: -10px -10px 0 -10px; }
 
@@ -324,26 +322,26 @@ body.no-sidebar #top {
  */
 
 #flash {
-  .gradient(@blue * 1.2, @blue); margin: -10px -10px 10px -10px;
+  @include gradient($blue * 1.2, $blue); margin: -10px -10px 10px -10px;
   padding: 5px 10px; text-align: center;
-  .shadow-2(0 0 10px #adf, inset 0 1px 0 @hilite20);
-  color: #eee; text-shadow: 1px 1px 0 @shadow20;
-  ul { .non-list; }
-  border-bottom: solid 1px @shadow10;
+  @include shadow(0 0 10px #adf, inset 0 1px 0 $hilite20);
+  color: #eee; text-shadow: 1px 1px 0 $shadow20;
+  ul { @include non-list; }
+  border-bottom: solid 1px $shadow10;
 }
 
 /*****/
 
-a.button { .button; .button-metal; }
-a.button.black { .button-black; }
-a.button.blue { .button-blue; }
+a.button { @include button; @include button-metal; }
+abutton.black { @include button-black; }
+a.button.blue { @include button-blue; }
 
 /*****/
 
 .message {
   margin: 10px 0; background: #e0e2e6; padding: 5px 10px;
-  text-align: center; .round(2px); .shadow(0 0 2px #aaa);
-  text-shadow: 1px 1px 0 @hilite40;
+  text-align: center; @include border-radius(2px); @include shadow(0 0 2px #aaa);
+  text-shadow: 1px 1px 0 $hilite40;
   color: #505863;
 }
 
@@ -360,11 +358,11 @@ section.items table { width: 100%;
 ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-size: 8pt; line-height: 16px;
   li { margin: 0; padding: 0; float: left; }
   a { background: #ddd; color: #333; display: block; float: left; padding: 1px 9px; }
-  a { text-shadow: 1px 1px 0 @hilite30; .shadow(1px 1px 0 @shadow20); }
-  a { border-left: solid 1px @hilite40; border-right: solid 1px @shadow10; }
-  li:first-child a { .border-left-radius(8px); border-left: 0; }
-  li:last-child a { .border-right-radius(8px); border-right: 0; }
-  a:hover { text-decoration: none; background: #888; color: white; text-shadow: 1px 1px 0 @shadow20; }
+  a { text-shadow: 1px 1px 0 $hilite30; @include shadow(1px 1px 0 $shadow20); }
+  a { border-left: solid 1px $hilite40; border-right: solid 1px $shadow10; }
+  li:first-child a { @include border-left-radius(8px); border-left: 0; }
+  li:last-child a { @include border-right-radius(8px); border-right: 0; }
+  a:hover { text-decoration: none; background: #888; color: white; text-shadow: 1px 1px 0 $shadow20; }
 }
 
 /* Forms */
@@ -373,16 +371,16 @@ ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-si
   p:first-child { margin-top: 0; }
   p:last-child { margin-bottom: 0; border-bottom: 0; }
   label { display: block; font-weight: bold; line-height: 24px; color: #777; }
-  textarea, input { .input; .border-box; width: 100%; }
+  textarea, input { @include input; @include border-box; width: 100%; }
   textarea { height: 220px; }
   p.submit { text-align: center; }
-  p.submit button { .button; .button-black; }
+  p.submit button { @include button; @include button-black; }
 }
 
 /* Errors */
 #content .validation-errors {
   background: #fee; margin: -10px -10px 10px -10px; padding: 10px;
   h3 { margin: 0; padding: 0; }
-  ul { .non-list; }
+  ul { @include non-list; }
 }
 

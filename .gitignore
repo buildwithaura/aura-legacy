@@ -19,4 +19,5 @@ tmtags
 /vendor/*/vendor
 /tmp
 # Others
-
+.sass-cache
+.rvmrc

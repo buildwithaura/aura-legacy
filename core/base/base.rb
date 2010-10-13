@@ -18,4 +18,5 @@ class Main
   set :extensions_path, [root_path('core'), root_path('extensions')]
 
   set :db, Sequel.connect(ENV['DATABASE_URL'] || sequel)
+  set :scss, { :load_paths => [ root_path, root_path('core'), root_path('extensions'), root_path('vendor/compass_framework') ] }
 end

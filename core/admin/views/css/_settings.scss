@@ -1,0 +1,175 @@
+@import "compass/css3";
+
+/* From LessUtils */
+
+$shadow:        rgba(0, 0, 0, 0.25);
+$shadow05:      rgba(0, 0, 0, 0.05);
+$shadow10:      rgba(0, 0, 0, 0.10);
+$shadow15:      rgba(0, 0, 0, 0.15);
+$shadow20:      rgba(0, 0, 0, 0.20);
+$shadow30:      rgba(0, 0, 0, 0.30);
+$shadow40:      rgba(0, 0, 0, 0.40);
+$shadow50:      rgba(0, 0, 0, 0.50);
+$shadow60:      rgba(0, 0, 0, 0.60);
+$shadow70:      rgba(0, 0, 0, 0.70);
+$shadow80:      rgba(0, 0, 0, 0.80);
+$shadow90:      rgba(0, 0, 0, 0.90);
+
+$hilite:        rgba(255, 255, 255, 0.25);
+$hilite05:      rgba(255, 255, 255, 0.05);
+$hilite10:      rgba(255, 255, 255, 0.10);
+$hilite15:      rgba(255, 255, 255, 0.15);
+$hilite20:      rgba(255, 255, 255, 0.20);
+$hilite30:      rgba(255, 255, 255, 0.30);
+$hilite40:      rgba(255, 255, 255, 0.40);
+$hilite50:      rgba(255, 255, 255, 0.50);
+$hilite60:      rgba(255, 255, 255, 0.60);
+$hilite70:      rgba(255, 255, 255, 0.70);
+$hilite80:      rgba(255, 255, 255, 0.80);
+$hilite90:      rgba(255, 255, 255, 0.90);
+
+
+$shadow5:       rgba(0, 0, 0, 0.5);
+$hilite5:       rgba(255, 255, 255, 0.5);
+
+/* Cross-browser clear fix */
+@mixin clearfix {
+  zoom: 1;
+  &:after { content: ''; clear: both; display: block; line-height: 0; height: 0; visibility: hidden; }
+}
+
+@mixin shadow($n, $o: none, $p: none) {
+  $full: 0;
+  @if $p != none {
+    $full: $n, $o, $p;
+  }
+  @elseif $o != none {
+    $full: $n, $o;
+  }
+  @else {
+    $full: $n;
+  }
+  @include experimental(box-shadow, $full,
+    -moz, -webkit, -o, not -ms, not -khtml, official
+  );
+}
+
+/* For non-lists like menus */
+@mixin non-list {
+  &, li { margin: 0; padding: 0; list-style-type: none; display: block; }
+  li { background-image: none; }
+}
+
+@mixin horiz-list {
+  @include non-list; @include clearfix;
+  li { float: left; }
+}
+
+/* Be sure to overflow-hidden the container! */
+@mixin center-list {
+  @include non-list;
+  position: relative; left: 50%; float: left;
+  li { position: relative; right: 50%; float: left; }
+}
+
+/* Cross-browser inline-block */
+@mixin inline-block {
+  display: -moz-inline-stack; display: inline-block;
+}
+
+@mixin ellipsis {
+    text-overflow: ellipsis; text-wrap: none; word-wrap: none;
+    overflow: hidden; white-space: nowrap; -o-text-overflow: ellipsis;
+}
+
+$blue: #3ea9df;
+$blue-glow: rgba(62, 169, 223, 0.4);
+$blue-glow-00: rgba(62, 169, 223, 0);
+$blue-glow-10: rgba(62, 169, 223, 0.1);
+$blue-glow-20: rgba(62, 169, 223, 0.2);
+$blue-glow-40: rgba(62, 169, 223, 0.4);
+$blue-glow-70: rgba(62, 169, 223, 0.7);
+
+$grey: #666;
+
+$sidebar-hicolor: #d9d9dd;
+$sidebar-color:   #cacbd0;
+
+/* Dimentions */
+
+$top-height: 40px;
+
+$tab-height: 26px;
+
+/* Title */
+$title-height: 40px;
+$tool-button-height: 30px;
+
+$small: 8.5pt;
+$medium: 9pt;
+
+@mixin gradient($start, $end) {
+  @include linear-gradient(color-stops($start, $end));
+}
+
+@mixin border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+@mixin glow {
+  @include shadow(0 0 4px $blue-glow, inset 0 0 2px $blue);
+}
+
+@mixin button {
+  @include border-radius($tool-button-height / 2);
+  display: inline-block; border: 0;
+  color: white; text-shadow: 1px 1px 0 $shadow10;
+  padding: 0 30px;
+  height: $tool-button-height; overflow: hidden; 
+  line-height: $tool-button-height + 1px;
+  font-size: $medium; 
+
+  &:hover { text-decoration: none; }
+}
+
+@mixin button-metal {
+  @include gradient(#eee, #d4d4d4);
+  @include shadow(inset 0 1px 0 $hilite10, 0 1px 1px $shadow20);
+  color: #666; text-shadow: 1px 1px 0 $hilite20;
+
+  &:hover { @include glow; }
+}
+
+@mixin button-blue {
+  @include gradient($blue, $blue * 0.9);
+  color: white; text-shadow: 1px 1px 0 $shadow10;
+
+  &:hover {
+    @include gradient($blue * 0.98, $blue * 0.88);
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@mixin button-black {
+  @include gradient(#555, #333);
+  @include shadow(0 0 4px $blue, inset 0 0 4px $blue);
+  color: white; text-shadow: 1px 1px 0 $shadow20; 
+
+  :hover {
+    @include gradient(#666, #333);
+    color: white;
+  }
+}
+
+@mixin input {
+  @include border-radius(2px);
+  @include shadow(inset 2px 2px 0 $shadow05, inset 0 1px 2px $shadow05, 1px 1px 0 $hilite30);
+
+  width: 488px; padding: 8px; border: solid 1px #ccc;
+  &:hover { border-color: $blue-glow; }
+  &:focus { outline: 0; @include shadow(0 0 4px $blue-glow-40, inset 0 0 12px $blue-glow-20); border-color: $blue-glow; }
+}
