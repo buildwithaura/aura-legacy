@@ -1,24 +1,7 @@
 @import "admin/views/css/settings";
-
-html { background: white; }
-body { background: transparent; overflow: hidden; }
-html, body { height: 100%; }
-
-/* .js-on is set when there's JavaScript support.
- * Hide the unneeded things when there's JS.
- */
-body:not(.js-on) #area .js { display: none; }
-body.js-on #area .no-js { display: none; }
-
-/* Cursor */
-* { cursor: default; }
-a, button { cursor: pointer; }
-
-#nav, #tabs, #toolbar {
-  /* Firefox */
-  a:active, a:focus { outline: 0; }
-}
-
+@import "admin/views/css/admin_reset";
+@import "admin/views/css/admin_setup";
 @import "admin/views/css/admin_chrome";
 @import "admin/views/css/admin_common";
 @import "admin/views/css/admin_forms";
+@import "admin/views/css/admin_uiscreen";
