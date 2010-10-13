@@ -85,10 +85,6 @@
     if (title) { $("title").html(title[1]); }
   }
 
-  $.hashListen('', function () {
-    $area.screen();
-    $.get('/admin', htmlCallback);
-  });
   $.hashListen('!(.*)', function (href) {
     $area.screen();
     $.get(href, htmlCallback);
