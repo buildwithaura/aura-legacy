@@ -1,5 +1,3 @@
-@import "core/admin/views/css/settings";
-
 html { background: white; }
 body { background: transparent; overflow: hidden; }
 html, body { height: 100%; }
@@ -332,50 +330,8 @@ body.no-sidebar #top {
 
 /*****/
 
-a.button { @include button; @include button-metal; }
-abutton.black { @include button-black; }
-a.button.blue { @include button-blue; }
 
 /*****/
-
-.message {
-  margin: 10px 0; background: #e0e2e6; padding: 5px 10px;
-  text-align: center; @include border-radius(2px); @include shadow(0 0 2px #aaa);
-  text-shadow: 1px 1px 0 $hilite40;
-  color: #505863;
-}
-
-/* Table */
-section.items table { width: 100%;
-  tr:last-child td { padding-bottom: 0; }
-  tr:first-child td { border-top: 0; padding-top: 0; }
-  td { padding: 10px 5px; border-top: dotted 1px #ddd; }
-  td:first-child { padding-left: 0; }
-  td:last-child { padding-right: 0; }
-  td.actions { width: 150px; text-align: right; }
-}
-
-ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-size: 8pt; line-height: 16px;
-  li { margin: 0; padding: 0; float: left; }
-  a { background: #ddd; color: #333; display: block; float: left; padding: 1px 9px; }
-  a { text-shadow: 1px 1px 0 $hilite30; @include shadow(1px 1px 0 $shadow20); }
-  a { border-left: solid 1px $hilite40; border-right: solid 1px $shadow10; }
-  li:first-child a { @include border-left-radius(8px); border-left: 0; }
-  li:last-child a { @include border-right-radius(8px); border-right: 0; }
-  a:hover { text-decoration: none; background: #888; color: white; text-shadow: 1px 1px 0 $shadow20; }
-}
-
-/* Forms */
-#content form:not(.bypass) {
-  p { margin: 10px 0; }
-  p:first-child { margin-top: 0; }
-  p:last-child { margin-bottom: 0; border-bottom: 0; }
-  label { display: block; font-weight: bold; line-height: 24px; color: #777; }
-  textarea, input { @include input; @include border-box; width: 100%; }
-  textarea { height: 220px; }
-  p.submit { text-align: center; }
-  p.submit button { @include button; @include button-black; }
-}
 
 /* Errors */
 #content .validation-errors {

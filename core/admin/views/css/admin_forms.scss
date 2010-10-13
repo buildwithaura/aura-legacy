@@ -1,0 +1,12 @@
+/* Forms */
+#content form:not(.bypass) {
+  p { margin: 10px 0; }
+  p:first-child { margin-top: 0; }
+  p:last-child { margin-bottom: 0; border-bottom: 0; }
+  label { display: block; font-weight: bold; line-height: 24px; color: #777; }
+  textarea, input { @include input; @include border-box; width: 100%; }
+  textarea { height: 220px; }
+  p.submit { text-align: center; }
+  p.submit button { @include button; @include button-black; }
+}
+
