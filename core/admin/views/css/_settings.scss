@@ -109,7 +109,9 @@ $small: 8.5pt;
 $medium: 9pt;
 
 @mixin gradient($start, $end) {
-  @include linear-gradient(color-stops($start, $end));
+  background-color: $start;
+  background-image: -moz-linear-gradient(top, $start, $end);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $start),color-stop(1, $end));
 }
 
 @mixin border-box {
