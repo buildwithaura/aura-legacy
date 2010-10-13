@@ -69,7 +69,7 @@
       .message
         %a{:href => item.path(:delete)} Delete this page
         != "&nbsp; | &nbsp;"
-        %a{:href => item.path(:delete), :target => 'preview'} View this page
+        %a{:href => item.path, :target => 'preview'} View this page
       %p.submit
         %button{:type => 'submit'}
           %span Save
