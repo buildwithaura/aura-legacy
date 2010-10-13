@@ -85,7 +85,9 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
 - is_parent_of?
 
 ## To do
-- Page editor
+
+- Growl
+- Page editor/Terra2
 - Menu (front end)
 - User management
 - Extension dependencies

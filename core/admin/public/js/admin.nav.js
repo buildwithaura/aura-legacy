@@ -85,6 +85,9 @@
     if (title) { $("title").html(title[1]); }
   }
 
+  $.hashListen('', function () {
+    $.get('/admin', htmlCallback);
+  });
   $.hashListen('!(.*)', function (href) {
     $.get(href, htmlCallback);
   });
