@@ -42,38 +42,28 @@ $hilite5:       rgba(255, 255, 255, 0.5);
     background-image: -moz-linear-gradient(top, $start, $end), $image;
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $start),color-stop(1, $end)), $image;
   }
-  filter: ie_gradient_filter($start, $end);
-  -ms-filter: quote(ie_gradient_filter($start, $end));
+  $ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$start}', EndColorStr='#{$end}')";
+  filter: unquote($ms-filter);
+  -ms-filter: quote($ms-filter);
 }
 
 @mixin border-box {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  @include experimental(box-sizing, border-box, -moz, -webkit, not -o, -ms, not -khtml, official);
 }
 
-/* Cross-browser clear fix */
+/* Cross-browser PIE clear fix */
 @mixin clearfix {
   zoom: 1;
   &:after { content: ''; clear: both; display: block; line-height: 0; height: 0; visibility: hidden; zoom: 1; }
 }
 
 /* Like box-shadow, but supports layering multiple shadows. */
-@mixin shadow($n, $o: none, $p: none) {
-  $full: 0;
-  @if $p != none {
-    $full: $n, $o, $p;
-  }
-  @elseif $o != none {
-    $full: $n, $o;
-  }
-  @else {
-    $full: $n;
-  }
-  @include experimental(box-shadow, $full,
-    -moz, -webkit, -o, not -ms, not -khtml, official
-  );
+@mixin shadow($p1, $p2: 0, $p3: 0, $p4: 0) {
+  $full: $p1;
+  @if $p2 != 0 { $full: $full, $p2; }
+  @if $p3 != 0 { $full: $full, $p3; }
+  @if $p4 != 0 { $full: $full, $p4; }
+  @include experimental(box-shadow, $full, -moz, -webkit, -o, not -ms, not -khtml, official);
 }
 
 /* For non-lists like menus */
@@ -94,13 +84,8 @@ $hilite5:       rgba(255, 255, 255, 0.5);
   li { position: relative; right: 50%; float: left; }
 }
 
-/* Cross-browser inline-block */
-@mixin inline-block {
-  display: -moz-inline-stack; display: inline-block;
-}
-
 @mixin ellipsis {
-    text-overflow: ellipsis; text-wrap: none; word-wrap: none;
-    overflow: hidden; white-space: nowrap; -o-text-overflow: ellipsis;
+  text-overflow: ellipsis; text-wrap: none; word-wrap: none;
+  overflow: hidden; white-space: nowrap; -o-text-overflow: ellipsis;
 }
 
