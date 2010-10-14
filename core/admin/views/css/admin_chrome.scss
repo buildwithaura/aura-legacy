@@ -299,12 +299,15 @@ body.no-sidebar #top {
  */
 
 #flash {
-  @include gradient($blue * 1.2, $blue); margin: -10px -10px 10px -10px;
+  @include border-bottom-radius(4px);
+  @include gradient(fade-out($blue, 0.2), fade-out($blue * 1.2, 0.8));
+  margin: -11px -10px 10px -10px;
   padding: 5px 10px; text-align: center;
-  @include shadow(0 0 10px #adf, inset 0 1px 0 $hilite20);
-  color: #eee; text-shadow: 1px 1px 0 $shadow20;
+  @include shadow(0 0 4px fade-out(#adf, 0.1), inset 0 -1px 0 $hilite30, inset 0 2px 4px $shadow10);
+  color: white; text-shadow: 1px 1px 0 $shadow20;
+  border-bottom: solid 1px $blue * 1.1;
+
   ul { @include non-list; }
-  border-bottom: solid 1px $shadow10;
 }
 
 /* Errors */
