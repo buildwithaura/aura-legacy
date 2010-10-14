@@ -58,12 +58,12 @@ module Sequel::Plugins::AuraModel
       find_all { |*a| true }
     end
 
-    def seed!(&b)
+    def seed!(type=nil, &b)
       delete
-      seed &b
+      seed type, &b
     end
 
-    def seed(&b)
+    def seed(type=nil, &b)
     end
 
     # Reimplemented by aura_hierarchy

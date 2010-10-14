@@ -17,7 +17,7 @@ class Aura
         validates_presence :title
       end
 
-      def self.seed(&blk)
+      def self.seed(type=nil, &blk)
         super
 
         require "ffaker"
