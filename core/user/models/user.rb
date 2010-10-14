@@ -17,6 +17,8 @@ class Aura
       end
 
       def self.seed(type=nil, &blk)
+        return  if User.any?
+
         email    = "test@sinefunc.com"
         password = "password"
 

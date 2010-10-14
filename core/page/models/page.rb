@@ -20,6 +20,10 @@ class Aura
       def self.seed(type=nil, &blk)
         super
 
+        return  unless type == :sample
+
+        blk.call :info, "Creating sample pages..."
+
         require "ffaker"
         lorem = lambda { Faker::Lorem.paragraphs(3).map { |s| "<p>#{s}</p>" }.join("\n\n") }
 

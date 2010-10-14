@@ -6,6 +6,17 @@ class RakeStatus
   end
 end
 
+def syst(cmd)
+  RakeStatus.print :run, cmd
+  system cmd
+end
+
+task :setup do
+  syst "rake db:migrate"
+  syst "rake db:init"
+  RakeStatus.print :info, "Optional: You may type 'rake db:seed' to load some sample data."
+end
+
 namespace :db do
   task :migrate do
     require './init'
@@ -17,8 +28,13 @@ namespace :db do
     Main.flush! { |*a| RakeStatus.print(*a) }
   end
 
-  task :seed do
+  task :init do
     require './init'
     Main.seed! { |*a| RakeStatus.print(*a) }
+  end
+
+  task :seed do
+    require './init'
+    Main.seed!(:sample) { |*a| RakeStatus.print(*a) }
   end
 end

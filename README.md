@@ -10,8 +10,7 @@ Recommended: use RVM:
 
 Set up the DB:
 
-    rake db:migrate
-    rake db:seed  # Unnecessary, but recommended for testing
+    rake setup
 
 Run it:
 
@@ -48,8 +47,8 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
     gem install heroku                # This is what you need to deploy to Heroku; may need `sudo`
     heroku create                     # Create a new site; heroku create
     git push heroku master            # Deploy to heroku
-    heroku rake db:migrate            # Set it up
-    heroku rake db:seed
+    heroku rake setup                 # Set it up
+    heroku rake db:seed               # (Optional)
     heroku open                       # Open it in a browser
 
 
