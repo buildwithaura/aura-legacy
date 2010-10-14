@@ -17,7 +17,7 @@
           - Aura::Editor.roots.each do |model, pages|
             - pages.each do |p|
               - next unless p.try(:renderable?)
-              %li{:class => ('active' if @item.crumbs.include?(p))}
+              %li{:class => ('active' if !@item.nil? and @item.crumbs.include?(p))}
                 %a{:href => p.path}= p
 
     #all
