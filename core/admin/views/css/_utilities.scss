@@ -47,10 +47,6 @@ $hilite5:       rgba(255, 255, 255, 0.5);
   -ms-filter: quote($ms-filter);
 }
 
-@mixin border-box {
-  @include experimental(box-sizing, border-box, -moz, -webkit, not -o, -ms, not -khtml, official);
-}
-
 /* Cross-browser PIE clear fix */
 @mixin clearfix {
   zoom: 1;
