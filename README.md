@@ -51,6 +51,31 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
     heroku rake db:seed               # (Optional)
     heroku open                       # Open it in a browser
 
+### Passenger setup
+
+This is fairly straight-forward as long as you have passenger installed and running well.
+You may need to install the sqlite3-ruby gem.
+
+For nginx:
+
+    http {
+        server {
+            listen 80;
+            server_name www.yourhost.com;
+            root /path/to/app/public;
+            passenger_enabled on;
+            # rack_env development;
+        }
+    }
+
+Apache:
+
+    # Warning: not tested
+    <VirtualHost *>
+      ServerName www.yourhost.com
+      DocumentRoot /path/to/app/public
+      #RackEnv development
+    </VirtualHost>
 
 ## Done
 
