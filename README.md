@@ -39,7 +39,8 @@ And lastly: run it!
 
 The wiki has some instructions.
 
-* [Heroku](http://github.com/rstacruz/aura/wiki/Heroku-instructions)
+* [Heroku](http://github.com/rstacruz/aura/wiki/Heroku-setup)
+* [Dreamhost](http://github.com/rstacruz/aura/wiki/Dreamhost-setup)
 * [Hosts with Passenger](http://github.com/rstacruz/aura/wiki/Passenger-setup)
 
 ## Authors and copyright
