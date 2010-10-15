@@ -1,10 +1,6 @@
 # Aura
 
-Aura is a CMS. Kinda.
-
-What you'll need:
-
- - Ruby 1.8.6 or above
+Aura is a CMS. Kinda. You'll need Ruby 1.8.6 or above.
 
 ## Super easy setup
 
@@ -38,3 +34,10 @@ And lastly: run it!
 ## More info
 
 See [http://github.com/rstacruz/aura/wiki](http://github.com/rstacruz/aura/wiki) for more info.
+
+## Authors and copyright
+
+Aura is authored and maintained by Rico Sta. Cruz of Sinefunc, Inc.
+See more of our work on [www.sinefunc.com](http://www.sinefunc.com)!
+
+(c) 2010 Rico Sta. Cruz. Released under the MIT license.
