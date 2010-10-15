@@ -34,8 +34,8 @@ namespace :setup do
       end
 
     rescue => e
-      # This can fail in environments like Heroku where .gems is special.
-      # No need to probe further in that case.
+      # This can fail in environments like Heroku where .gems is special,
+      # and will not be readable. No need to probe further in that case.
     end
   end
 
