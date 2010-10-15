@@ -5,6 +5,8 @@
 !!! 5
 %style
   :plain
+    * { cursor: default; }
+    a, button { cursor: pointer; }
     body { font: 10pt/1.5 arial, sans-serif; }
     body { background: #555; }
     #error { margin: 80px auto 50px auto; width: 400px; background: white; padding: 20px 40px; text-align: center; }
@@ -25,9 +27,12 @@
     ul { border-bottom: solid 1px #ddd; }
     a { font-weight: bold; text-decoration: none; font-size: 1.1em; }
     a, a:visited { color: #7bd; }
-    p.footer { text-align: center; color: #666; font-size: 0.9em; }
-    p.footer:hover,
-    p.footer:hover * { color: #ddd; }
+    p.footer { text-align: center; color: #ddd; font-size: 0.9em; opacity: 0.2; }
+    p.footer { 
+      -webkit-transition-property: opacity;
+      -webkit-transition-duration: 0.3s;
+    }
+    p.footer:hover { opacity: 1; }
 
 %body
   #error
