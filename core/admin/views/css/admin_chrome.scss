@@ -12,6 +12,13 @@ body {
  * Containers
  */
 
+div.split {
+  display: table; width: 100%;
+  .left, .right { display: table-cell; width: 50%; }
+  .left { padding-right: 5px; }
+  .right { padding-left: 5px; }
+}
+
 div.slim { margin: 0 auto; min-width: 500px; width: 70%; }
 div.slim.fixed { margin: 0 auto; width: 500px; }
 div.micro { margin: 0 auto; width: 350px; }
@@ -20,12 +27,6 @@ div.dialog {
   background: white; @include border-radius(4px); text-align: center; 
   @include gradient(#fff, #f0f0f0); font-size: 11pt;
   @include shadow(0 0 4px $shadow10, 0 -2px 2px $blue-glow-10, 0 2px 2px $blue-glow-10);
-}
-div.split {
-  display: table; width: 100%;
-  .left, .right { display: table-cell; width: 50%; }
-  .left { padding-right: 5px; }
-  .right { padding-left: 5px; }
 }
 
 img.icon, span.icon {
