@@ -23,14 +23,16 @@ And lastly: run it!
 
 ## Advanced setup
 
-* If you are using the Ruby version manager, it may be in your interest to do these before `rake setup`.  
+* **Ruby version manager** (optional)  
+  If you are using the Ruby version manager, it may be in your interest to do these before `rake setup`.  
   (Feel free to skip this if you don't understand.)
 
       rvm install 1.9.2  # If you haven't yet
       rvm --rvmrc --create 1.9.2@aura
       rvm gemset import
 
-* To configure the database, create the file `config/database.rb`. You can use `database.defaults.rb` as
+* **Configuring a database** (optional)  
+  To configure the database, create the file `config/database.rb`. You can use `database.defaults.rb` as
   a guide; edit it to your needs. Do this before `rake setup`.
 
 ## Deploying to other hosts
