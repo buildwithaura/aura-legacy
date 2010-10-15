@@ -14,15 +14,11 @@ namespace :setup do
   task :verify_config do
     require 'fileutils'
 
-    print_heading_once = lambda {
-      RakeStatus.print_heading :info, "Creating sample config files..."  unless @heading
-      @heading = true
-    }
+    RakeStatus.print_heading :info, "Ensuring config files are present..."
 
     Dir['config/*.example.*'].each do |example|
       target = example.gsub('.example.', '.')
       next  if File.exists?(target)
-      print_heading_once.call
 
       begin
         FileUtils.cp example, target
