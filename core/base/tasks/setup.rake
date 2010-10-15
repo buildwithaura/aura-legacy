@@ -12,7 +12,7 @@ namespace :setup do
 
     # Try to restart the application if it's already running.
     require 'fileutils'
-    FileUtils.touch 'tmp/restart.txt'
+    FileUtils.touch 'tmp/restart.txt' rescue 0
 
     RakeStatus.heading :info, "Done!"
     puts "  Aura is ready to start."
@@ -22,14 +22,20 @@ namespace :setup do
     has_rvm = (`rvm --version`.strip rescue nil)
     gem_cmd = has_rvm ? 'gem' : 'sudo gem'
 
-    gems   = File.read('.gems').split("\n")
-    needed = gems.reject { |g| Gem.available?(g) }
+    begin
+      gems   = File.read('.gems').split("\n")
+      needed = gems.reject { |g| Gem.available?(g) }
 
-    if needed.any?
-      RakeStatus.heading :info, "Some gems weren't found. Attempting to install..."
-      cmd = "#{gem_cmd} install #{gems.join(' ')}"
-      RakeStatus.heading :run, cmd
-      exec cmd
+      if needed.any?
+        RakeStatus.heading :info, "Some gems weren't found. Attempting to install..."
+        cmd = "#{gem_cmd} install #{gems.join(' ')}"
+        RakeStatus.heading :run, cmd
+        exec cmd
+      end
+
+    rescue => e
+      # This can fail in environments like Heroku where .gems is special.
+      # No need to probe further in that case.
     end
   end
 

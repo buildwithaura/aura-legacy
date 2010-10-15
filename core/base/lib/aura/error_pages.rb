@@ -12,7 +12,7 @@ class Aura
         "<p class='brief'>Your database isn't set up yet. " +
         "You may try a few things:</p>" +
         "<ul>" +
-        "<li><p><x>Run <code>rake setup</code> in a console.</strong><br> <span class='muted'>(recommended)</span></p></li>" +
+        "<li><p>Run <code>rake setup</code> in a console.<br><span class='muted'>(recommended)</span></p></li>" +
         "<li><span class='or'>or</span><p>If you don't have access to a console, try this:<br>" +
         "<a href='/:setup'>Continue &raquo;</a>" +
         "</p></li>" +
