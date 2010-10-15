@@ -1,7 +1,11 @@
 @import "settings";
 @import "admin_reset";
+$reset-font: helvetica, sans-serif;
+@include ae-reset;
+
 @import "admin_setup";
 @import "admin_chrome";
+@import "admin_sidebar";
 @import "admin_common";
 @import "admin_forms";
 @import "admin_uiscreen";

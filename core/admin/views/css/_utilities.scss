@@ -1,4 +1,5 @@
 $shadow:        rgba(0, 0, 0, 0.25);
+$shadow00:      rgba(0, 0, 0, 0.00);
 $shadow05:      rgba(0, 0, 0, 0.05);
 $shadow10:      rgba(0, 0, 0, 0.10);
 $shadow15:      rgba(0, 0, 0, 0.15);
@@ -27,11 +28,11 @@ $hilite90:      rgba(255, 255, 255, 0.90);
 $shadow5:       rgba(0, 0, 0, 0.5);
 $hilite5:       rgba(255, 255, 255, 0.5);
 
-/* Like linear-gradient, but assumes that it's always vertical, has a
- * bgcolor fallback, supports IE, and supports an image parameter.
- *
- * @include gradient(#eee, #ddd, url(image.png));
- */
+// Like linear-gradient, but assumes that it's always vertical, has a
+// bgcolor fallback, supports IE, and supports an image parameter.
+//
+// @include gradient(#eee, #ddd, url(image.png));
+//
 @mixin gradient($start, $end, $image: 0) {
   @if $image == 0 {
     background-color: $start;
@@ -47,13 +48,13 @@ $hilite5:       rgba(255, 255, 255, 0.5);
   -ms-filter: quote($ms-filter);
 }
 
-/* Cross-browser PIE clear fix */
+// Cross-browser PIE clear fix
 @mixin clearfix {
   zoom: 1;
   &:after { content: ''; clear: both; display: block; line-height: 0; height: 0; visibility: hidden; zoom: 1; }
 }
 
-/* Like box-shadow, but supports layering multiple shadows. */
+// Like box-shadow, but supports layering multiple shadows.
 @mixin shadow($p1, $p2: 0, $p3: 0, $p4: 0) {
   $full: $p1;
   @if $p2 != 0 { $full: $full, $p2; }
@@ -62,7 +63,7 @@ $hilite5:       rgba(255, 255, 255, 0.5);
   @include experimental(box-shadow, $full, -moz, -webkit, -o, not -ms, not -khtml, official);
 }
 
-/* For non-lists like menus */
+// For non-lists like menus
 @mixin non-list {
   &, li { margin: 0; padding: 0; list-style-type: none; display: block; }
   li { background-image: none; }
@@ -73,7 +74,7 @@ $hilite5:       rgba(255, 255, 255, 0.5);
   li { float: left; }
 }
 
-/* Be sure to overflow-hidden the container! */
+// Be sure to overflow-hidden the container!
 @mixin center-list {
   @include non-list;
   position: relative; left: 50%; float: left;

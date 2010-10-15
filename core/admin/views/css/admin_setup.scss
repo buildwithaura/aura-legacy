@@ -2,18 +2,18 @@ html { background: white; }
 body { background: transparent; overflow: hidden; }
 html, body { height: 100%; }
 
-/* .js-on is set when there's JavaScript support.
- * Hide the unneeded things when there's JS.
- */
+// .js-on is set when there's JavaScript support.
+// Hide the unneeded things when there's JS.
+//
 body:not(.js-on) #area .js { display: none; }
 body.js-on #area .no-js { display: none; }
 
-/* Cursor */
+// Cursor
 * { cursor: default; }
 a, button { cursor: pointer; }
 
+// Firefox
 #nav, #tabs, #toolbar {
-  /* Firefox */
   a:active, a:focus { outline: 0; }
 }
 
