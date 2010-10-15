@@ -16,8 +16,6 @@ Run it:
 
     ruby init.rb
 
-(If you're not using thor, use `cp config/sequel.example.rb config/sequel.rb` then `ruby ./init.rb`)
-
 ## Technical details
 
  - The system is divided into little pieces called 'extensions'.
@@ -102,11 +100,12 @@ Apache:
 - Area class names
 - is_parent_of?
 - Seeder in admin
+- "Your site is empty." message
 
 ## To do
 
-- "Your site is empty." message
 - Growl
+- "You dont have a homepage"
 - Page editor/Terra2
 - Menu (front end)
 - User management
