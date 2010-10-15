@@ -8,6 +8,11 @@ namespace :setup do
     syst "rake -s db:migrate"
     syst "rake -s db:init"
     puts ""
+
+    # Try to restart the application if it's already running.
+    require 'fileutils'
+    FileUtils.touch 'tmp/restart.txt'
+
     RakeStatus.heading :info, "Done!"
     puts "  Run your application with 'ruby init.rb'."
   end
