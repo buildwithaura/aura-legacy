@@ -4,7 +4,7 @@ class Main
   get '/login' do
     redirect R(:admin)  if logged_in?
     if request.xhr?
-      return "<div id='redirect'>/login</div>"
+      return "<div id='redirect'>#{request.fullpath}</div>"
     end
 
     show 'user/login', :layout => nil

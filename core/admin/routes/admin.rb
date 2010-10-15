@@ -25,11 +25,16 @@ class Main
 
   post '/admin/settings/database/flush' do
     require_login
+
     Main.flush!
     Main.auto_migrate!
     Main.seed!
+
     logout!
-    flash_message "Everything cleared. Log on with the default user now."
-    redirect R(:login)
+
+    flash_message "Everything has been cleared. You can log in with the default user below."
+    redirect R(:login, {
+                 :email => settings.default_user,
+                 :password => settings.default_password })
   end
 end

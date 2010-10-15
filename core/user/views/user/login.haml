@@ -24,10 +24,10 @@
 
       %p
         %label{:for => 'email'} Login:
-        %input(type='text' name='username' id='email' value='')/
+        %input#email{:type => 'text', :name => 'username', :value => (params[:email]||'')}/
       %p
         %label{:for => 'password'} Password:
-        %input(type='password' name='password' id='password' value='')/
+        %input#password{:type => 'password', :name => 'password', :value => (params[:password]||'')}/
       %p.submit
         %button{:type => 'submit'}
           %span Login
