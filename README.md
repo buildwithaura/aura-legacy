@@ -3,7 +3,7 @@
 Aura is a CMS. Kinda. You'll need Ruby 1.8.6 or above.
 
 * [http://github.com/rstacruz/aura/wiki](http://github.com/rstacruz/aura/wiki) - See the wiki for more info.
-* [http://aurademo.heroku.com](http://aurademo.heroku.com) - Demo site [log in with `test@sinefunc.com` / `password`]
+* [http://aurademo.heroku.com](http://aurademo.heroku.com/login) - Demo site [log in with `test@sinefunc.com` / `password`]
 
 ## Super easy setup
 
@@ -14,7 +14,7 @@ Here's one way to do it on Mac/Linux:
     mv rstacruz-aura-* aura
     cd aura
 
-Second: Okay, now set it up (only needed once):
+Second: set it up. Just do this once:
 
     rake setup
 
