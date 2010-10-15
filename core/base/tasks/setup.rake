@@ -39,8 +39,8 @@ namespace :setup do
 
     RakeStatus.heading :info, "Ensuring config files are present..."
 
-    Dir['config/*.example.*'].each do |example|
-      target = example.gsub('.example.', '.')
+    Dir['config/*.defaults.*'].each do |example|
+      target = example.gsub('.defaults.', '.')
       next  if File.exists?(target)
 
       begin
