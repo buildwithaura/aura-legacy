@@ -79,5 +79,9 @@ $medium: 9pt;
 
   width: 488px; padding: 8px; border: solid 1px #ccc;
   &:hover { border-color: $blue-glow; }
-  &:focus { outline: 0; @include shadow(0 0 4px $blue-glow-40, inset 0 0 12px $blue-glow-20); border-color: $blue-glow; }
+  &:focus {
+    outline: 0;
+    @include shadow(0 0 4px $blue-glow-40, inset 0 0 12px $blue-glow-40, 0 0 1px $blue-glow-70);
+    border-color: $blue-glow * 0.6;
+  }
 }
