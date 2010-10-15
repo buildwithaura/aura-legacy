@@ -14,7 +14,7 @@ class RakeStatus
     color = 32
     color = 31  if what == :error
     what = ""  if what == :info
-    puts "\033[1;#{color}m  %-10s\033[0m %s" % [what, status]
+    puts "\033[1;#{color}m  %-14s\033[0m %s" % [what, status]
   end
 end
 
