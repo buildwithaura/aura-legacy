@@ -8,7 +8,10 @@ button, a.button {
 }
 
 /* Table */
-section.table table { width: 100%;
+section.items table,
+section.table table {
+  width: 100%;
+
   tr:last-child td { padding-bottom: 0; }
   tr:first-child td { border-top: 0; padding-top: 0; }
   td { padding: 10px 5px; border-top: dotted 1px #ddd; }
