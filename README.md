@@ -1,18 +1,17 @@
 ## How to setup
 
-Recommended: use RVM:
+If you are using the Ruby version manager, do these:  
+(Skip to the next section if you're not using RVM.)
 
     rvm install 1.9.2  # If you haven't yet
     rvm --rvmrc --create 1.9.2@aura
     rvm gemset import
 
-(If you're not using RVM, install the gems in the .gems file.)
-
-Set up the DB. This will create the config files, set up DB tables, et al:
+Okay, now set it up (only needed once):
 
     rake setup
 
-Run it:
+Then run it!
 
     ruby init.rb
 
@@ -38,7 +37,7 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
     git clone git://github.com/rstacruz/aura.git
     cd aura
     gem install heroku                # This is what you need to deploy to Heroku; may need `sudo`
-    heroku create                     # Create a new site; heroku create
+    heroku create                     # Create a new Heroku site
     git push heroku master            # Deploy to heroku
     heroku rake setup                 # Set it up
     heroku open                       # Open it in a browser

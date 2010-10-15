@@ -1,7 +1,7 @@
 require File.expand_path('common.rb', File.dirname(__FILE__))
 
 namespace :setup do
-  task :setup do
+  task :setup => [ :install_gems ] do
     # These have to be ran as external processes. db:init, for example,
     # will not work unless the DB has been migrated properly.
     syst "rake -s setup:verify_config"
@@ -15,6 +15,18 @@ namespace :setup do
 
     RakeStatus.heading :info, "Done!"
     puts "  Run your application with 'ruby init.rb'."
+  end
+
+  task :install_gems do
+    has_rvm = (`rvm --version`.strip rescue nil)
+    gem_cmd = has_rvm ? 'gem' : 'sudo gem'
+
+    File.read('.gems').split("\n").each do |gem|
+      unless Gem.available?(gem)
+        RakeStatus.heading :info, "Gem #{gem} not found. Attempting to install..."
+        syst "#{gem_cmd} install #{gem}"
+      end
+    end
   end
 
   desc "Ensures that the needed configuration files are present"
