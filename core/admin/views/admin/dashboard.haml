@@ -12,12 +12,13 @@
     != partial model.templates_for('nav'), :items => items, :model => model
 
   %nav
-    %h3 Settings
+    %h3 System
     %ul
-      %li.browse
-        != link_to R(:admin, :settings) do
-          != admin_icon :settings
-          = "Settings"
+      - Aura::Admin.menu.items.each do |item|
+        %li.browse
+          != link_to (item.href || '#') do
+            != admin_icon (item.icon || 'generic')
+            = item.name
 
 - content_for :body do
   -# %a{:href => Aura::Models::Page.path(:list)} Manage pages

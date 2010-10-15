@@ -16,6 +16,11 @@ class Aura
         email
       end
 
+      def self.seed!(type=nil, &blk)
+        # Don't clear users!
+        seed type, &blk
+      end
+
       def self.seed(type=nil, &blk)
         return  if User.any?
 

@@ -10,7 +10,6 @@ namespace :setup do
     puts ""
     RakeStatus.heading :info, "Done!"
     puts "  Run your application with 'ruby init.rb'."
-    puts "  Optional: You may type 'rake db:seed' to load some sample data."
   end
 
   desc "Ensures that the needed configuration files are present"

@@ -50,9 +50,16 @@
     var $data = $("<div>").html(html);
     $body.show();
 
+    if ($data.find("#redirect").length) {
+      url = $data.find("#redirect").html();
+      $.unscreen();
+      window.location = url;
+      return false;
+    }
+
     // Make sure it's not some garbage URL/HTML we're being fed.
     if (!$data.find("#area").length) {
-      alert("Oh no. What did you do?")
+      alert("Oh no. What did you do?");
       $.unscreen();
       return false;
     }

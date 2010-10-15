@@ -101,10 +101,10 @@ Apache:
 - "This page will be created under ___."
 - Area class names
 - is_parent_of?
+- Seeder in admin
 
 ## To do
 
-- Seeder in admin
 - "Your site is empty." message
 - Growl
 - Page editor/Terra2

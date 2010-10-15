@@ -1,0 +1,24 @@
+- content_for :nav do
+  != yield_content_of :'admin/settings', :nav
+- content_for :tabs do
+  != yield_content_of :'admin/settings', :tabs
+
+- content_for :title do
+  %h1
+    Database
+
+- content_for :body do
+  .split
+    .left
+
+      %section
+        %h3 Load sample data
+        %p Get started easily with sample data. Note that this will probably delete your stuff too...
+        %form{:method => 'post', :action => R(:admin, :settings, :database, :seed)}
+          %button{:type => 'submit'} Load sample data
+
+      %section
+        %h3 Clear the database
+        %p There is no undo here. This will also remove your username.
+        %form{:method => 'post', :action => R(:admin, :settings, :database, :flush)}
+          %button{:type => 'submit'} Nuke everything

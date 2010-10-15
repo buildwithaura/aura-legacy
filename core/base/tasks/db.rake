@@ -34,13 +34,4 @@ namespace :db do
       Main.seed { |*a| RakeStatus.print(*a) }
     }
   end
-
-  desc "Loads the database with sample data"
-  task :seed do
-    require './init'
-    RakeStatus.heading :info, "Loading the database with sample data..."
-    try_to {
-      Main.seed(:sample) { |*a| RakeStatus.print(*a) }
-    }
-  end
 end

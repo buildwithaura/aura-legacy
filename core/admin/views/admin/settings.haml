@@ -3,14 +3,9 @@
 - content_for :title do
   %h1 Aura Settings
 
-Stuff go here
-- 10.times do
-  %br
-
 - content_for :nav do
   %nav.back
     != link_to R(:admin) do
-      -#!= admin_icon :dashboard
       = "Dashboard"
   %nav.crumbs
     != link_to R(:admin, :settings) do
@@ -18,18 +13,25 @@ Stuff go here
       = "Settings"
   %nav
     %ul
-      %li
-        != link_to R(:admin, :settings, :site) do
-          != admin_icon :generic
-          = "Your site"
-      %li
-        != link_to R(:admin, :settings, :themes) do
-          != admin_icon :generic
-          = "Themes"
-      %li
-        != link_to R(:admin, :settings, :backup) do
-          != admin_icon :generic
-          = "Backup"
+      - Aura::Admin.menu.get('settings').items.each do |item|
+        %li{:class => ('browse' if item.items.any?)}
+          != link_to (item.href || '#') do
+            != admin_icon (item.icon || 'generic')
+            = item.name
 
+- content_for :tabs do
+  %ul
+    %li
+      != link_to R(:admin, :settings) do
+        Settings
 
-    -# != yield_content_of :'admin/dashboard', :nav
+    - Aura::Admin.menu.get('settings').items.each do |item|
+      %li{:class => ('browse' if item.items.any?)}
+        != link_to (item.href || '#') do
+          = item.name
+
+- content_for :body do
+  Stuff go here
+  - 10.times do
+    %br
+

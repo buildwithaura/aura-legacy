@@ -3,6 +3,10 @@ class Main
 
   get '/login' do
     redirect R:(admin)  if logged_in?
+    if request.xhr?
+      return "<div id='redirect'>/login</div>"
+    end
+
     show 'user/login', :layout => nil
   end
 

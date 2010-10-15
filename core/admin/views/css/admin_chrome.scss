@@ -102,12 +102,11 @@ body.no-sidebar #top {
   }
   a:hover { background: #626262; }
 
-  li.active {
-    a, span {
-      cursor: default;
-      background: white; color: $grey; text-shadow: 1px 1px 0 $shadow10;
-      @include shadow(inset 0 1px 1px $blue-glow-40);
-    }
+  li.active a, li.active span,
+  a.active, span.active {
+    cursor: default;
+    background: white; color: $grey; text-shadow: 1px 1px 0 $shadow10;
+    @include shadow(inset 0 1px 1px $blue-glow-40);
   }
 }
 

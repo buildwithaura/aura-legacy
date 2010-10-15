@@ -1,8 +1,10 @@
 .align-center { text-align: center; }
 
-a.button { @include button; @include button-metal; }
-a.button.black { @include button-black; }
-a.button.blue { @include button-blue; }
+button, a.button {
+  @include button; @include button-metal;
+  &.black { @include button-black; }
+  &.blue { @include button-blue; }
+}
 
 .message {
   @include border-radius(2px); @include shadow(0 0 2px #aaa);
