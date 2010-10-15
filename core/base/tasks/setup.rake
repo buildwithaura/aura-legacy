@@ -15,7 +15,7 @@ namespace :setup do
     FileUtils.touch 'tmp/restart.txt'
 
     RakeStatus.heading :info, "Done!"
-    puts "  Run your application with 'ruby init.rb'."
+    puts "  Aura is ready to start."
   end
 
   task :install_gems do

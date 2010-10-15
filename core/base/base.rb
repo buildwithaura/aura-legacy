@@ -12,16 +12,6 @@ class Main
 
   register AutoMigrator
 
-  # Lowlevel hook for database errors.
-  # As we want this to show even on development, but we don't
-  # want to disable :show_exceptions, let's catch the common
-  # exceptions here.
-  def call(env) #:nodoc:
-    super
-  rescue Sequel::DatabaseError => e
-    [500, {'Content-Type' => 'text/html'}, Aura::ErrorPages.db_error]
-  end
-
   set :scss, { :load_paths => [ root_path, root_path('core'), root_path('extensions'), root_path('vendor/compass_framework') ] }
   set :scss, self.scss.merge(:line_numbers => true, :debug_info => true, :always_check => true) if self.development?
   set :scss, self.scss.merge(:style => :compressed) if self.production?

@@ -1,0 +1,26 @@
+class Main
+  # Lowlevel hook for database errors.
+  # As we want this to show even on development, but we don't
+  # want to disable :show_exceptions, let's catch the common
+  # exceptions here.
+  #
+  # This is in charge of the "Almost there!" error.
+  #
+  def call(env) #:nodoc:
+    super
+
+  rescue Sequel::DatabaseError => e
+    @request = Sinatra::Request.new(env)
+
+    # Online setup is available at http://yoursite.com/:setup.
+    # This URL is only available when there is a database error!
+    if @request.path == '/:setup'
+      output = `rake setup`
+      [500, {'Content-Type' => 'text/html'}, Aura::ErrorPages.trace(output)]
+
+    # Show the 'your database isn't set up yet' error.
+    else
+      [500, {'Content-Type' => 'text/html'}, Aura::ErrorPages.db_error(e)]
+    end
+  end
+end
