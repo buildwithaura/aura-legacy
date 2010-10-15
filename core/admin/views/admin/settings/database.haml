@@ -8,18 +8,25 @@
     Database
 
 - content_for :body do
-  .split
-    .left
+  .slim.fixed
 
-      %section
-        %h3 Load sample data
-        %p Get started easily with sample data. Note that this will delete your stuff too, so be careful!
-        %form{:method => 'post', :action => R(:admin, :settings, :database, :seed)}
-          %button{:type => 'submit'} Load sample data
+    %section
+      %h3 Load sample data
+      %p.align-center Get started easily with sample data. Note that this will delete your stuff too, so be careful!
+      - if !Aura.site_empty?
+        haha
+      %form{:method => 'post', :action => R(:admin, :settings, :database, :seed)}
+        %p.align-center
+          %button.small{:type => 'submit'} Load sample data
 
-    .right
-      %section
-        %h3 Clear the database
-        %p There is no undo here. This will also remove your username.
-        %form{:method => 'post', :action => R(:admin, :settings, :database, :flush)}
-          %button{:type => 'submit'} Nuke everything
+    %section
+      %h3 Clear the database
+      %p.align-center
+        There is no undo here. This will also remove your username.
+        %a.ext{:href => 'javascript:$("#nuke").show();'} Click here
+        to do this.
+
+      %form{:method => 'post', :action => R(:admin, :settings, :database, :flush)}
+        %p.align-center.hide#nuke
+          Are you sure you want to do this?
+          %button.black.small{:type => 'submit'} Nuke everything

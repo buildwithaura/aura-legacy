@@ -24,7 +24,8 @@
 
   // Body & wrapper
   html, body                { margin: 0; padding: 0; }
-  body, td, input, textarea { font-family: $reset-font; font-size: 1em; }
+  button, body, td,
+  input, textarea           { font-family: $reset-font; font-size: 1em; }
   body                      { font-size: $reset-font-size; line-height: 1.5; background: $reset-background; color: $reset-font-color; }
   #all                      { margin: 0 auto; width: auto; position: relative; }
 

@@ -15,3 +15,29 @@
     @include shadow(0 2px 0 $shadow10, inset 0 1px 0 $hilite50);
   }
 }
+
+.message {
+  @include border-radius(2px); @include shadow(0 0 2px #aaa);
+  margin: 10px 0; background: #e0e2e6; padding: 5px 10px;
+  text-align: center;
+  text-shadow: 1px 1px 0 $hilite40;
+  color: #505863;
+}
+
+@mixin reset { background: transparent; @include shadow(none); border: 0; margin: 0; padding: 0; }
+
+#content section.dialog {
+  @extend .message;
+  padding: 30px;
+  h3, p { margin: 0; }
+  h3 { @include reset; font-size: 16pt; line-height: 1.5;  }
+  p { font-size: 11pt; }
+  p.action { margin: 10px 0; }
+  form { display: inline; }
+  ul.actions {
+    @include non-list;
+    & { display: block; margin-top: 30px; }
+    li { display: block; margin: 10px 0 0 0; }
+    .button, button { margin: 0 10px; }
+  }
+}

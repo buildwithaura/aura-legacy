@@ -4,14 +4,7 @@ button, a.button {
   @include button; @include button-metal;
   &.black { @include button-black; }
   &.blue { @include button-blue; }
-}
-
-.message {
-  @include border-radius(2px); @include shadow(0 0 2px #aaa);
-  margin: 10px 0; background: #e0e2e6; padding: 5px 10px;
-  text-align: center;
-  text-shadow: 1px 1px 0 $hilite40;
-  color: #505863;
+  &.small { padding: 0 15px; line-height: 22px; height: 22px; font-size: 9pt; }
 }
 
 /* Table */
@@ -24,7 +17,7 @@ section.items table { width: 100%;
   td.actions { width: 150px; text-align: right; }
 }
 
-ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-size: 8pt; line-height: 16px;
+td ul.actions { list-style-type: none; margin: 0; padding: 0; float: right; font-size: 8pt; line-height: 16px;
   li { margin: 0; padding: 0; float: left; }
   a { background: #ddd; color: #333; display: block; float: left; padding: 1px 9px; }
   a { text-shadow: 1px 1px 0 $hilite30; @include shadow(1px 1px 0 $shadow20); }
