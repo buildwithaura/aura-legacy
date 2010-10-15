@@ -28,8 +28,8 @@ class Aura
       def self.seed(type=nil, &blk)
         return  if User.any?
 
-        email    = "test@sinefunc.com"
-        password = "password"
+        email    = Main.default_user
+        password = Main.default_password
 
         p1 = self.create :email => email,
                          :password => password,
