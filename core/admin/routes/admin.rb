@@ -29,7 +29,7 @@ class Main
     Main.auto_migrate!
     Main.seed!
     logout!
-    flash_message "Everything cleared. Your username will not work anymore."
+    flash_message "Everything cleared. Log on with the default user now."
     redirect R(:login)
   end
 end

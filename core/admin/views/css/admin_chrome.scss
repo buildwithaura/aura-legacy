@@ -21,8 +21,10 @@ body {
   @include shadow(0 0 4px $shadow10, 0 -2px 2px $blue-glow-10, 0 2px 2px $blue-glow-10);
 }
 .split {
-  display: table-row;
-  .left, .right { display: table-cell; }
+  display: table; width: 100%;
+  .left, .right { display: table-cell; width: 50%; }
+  .left { padding-right: 5px; }
+  .right { padding-left: 5px; }
 }
 
 img.icon, span.icon {
