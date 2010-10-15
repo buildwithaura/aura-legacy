@@ -21,12 +21,6 @@ class Main
 
   use Pistol, :files => app_files + [root_path('tmp', 'restart.txt')]  unless production?
 
-  # Defaults
-  set :default_user, 'test@sinefunc.com'
-  set :default_password, 'password'
-
-  set :sequel, "sqlite://db/development.db"
-
   # Heroku: override the DB config with this env var.
   set :sequel, ENV['DATABASE_URL']  unless ENV['DATABASE_URL'].nil?
 

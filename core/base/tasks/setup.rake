@@ -5,15 +5,14 @@ namespace :setup do
     # These have to be ran as external processes. db:init, for example,
     # will not work unless the DB has been migrated properly.
     system "rake -s setup:install_gems"
-    syst "rake -s setup:verify_config"
-    syst "rake -s db:migrate"
-    syst "rake -s db:init"
-    puts ""
+    syst   "rake -s db:migrate"
+    syst   "rake -s db:init"
 
     # Try to restart the application if it's already running.
     require 'fileutils'
     FileUtils.touch 'tmp/restart.txt' rescue 0
 
+    puts ""
     RakeStatus.heading :info, "Done!"
     puts "  Aura is ready to start."
   end
@@ -36,25 +35,6 @@ namespace :setup do
     rescue => e
       # This can fail in environments like Heroku where .gems is special,
       # and will not be readable. No need to probe further in that case.
-    end
-  end
-
-  desc "Ensures that the needed configuration files are present"
-  task :verify_config do
-    require 'fileutils'
-
-    RakeStatus.heading :info, "Ensuring config files are present..."
-
-    Dir['config/*.defaults.*'].each do |example|
-      target = example.gsub('.defaults.', '.')
-      next  if File.exists?(target)
-
-      begin
-        FileUtils.cp example, target
-        RakeStatus.print :create, target
-      rescue => e
-        RakeStatus.print :error, "#{target} -- can't create this config file."
-      end
     end
   end
 end
