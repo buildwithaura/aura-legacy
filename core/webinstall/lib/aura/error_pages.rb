@@ -1,4 +1,3 @@
-# Okay, not exactly a route. Move this please
 class Aura
   module ErrorPages
     extend self
@@ -37,7 +36,7 @@ class Aura
 
   protected
     def template(tpl)
-      fname = Main.root_path('core', 'base', 'views', "#{tpl}.haml")
+      fname = Main.root_path('core', 'webinstall', 'views', "#{tpl}.haml")
       File.open(fname) { |f| f.read }
     end
 

@@ -1,3 +1,6 @@
+prefix = File.dirname(__FILE__)
+Dir[File.join(prefix, 'lib/**/*.rb')].each { |f| require f }
+
 class Main
   # Lowlevel hook for database errors.
   # As we want this to show even on development, but we don't
