@@ -1,7 +1,10 @@
 - options = { :item => item, :action => action }
 
 - content_for :title do
-  != yield_content_of :'base/edit', :title, options
+  - if current_user == @item
+    %h1= "User settings"
+  - else
+    %h1= "User settings for #{@item}"
 
 - content_for :tabs do
   != yield_content_of :'admin/settings', :tabs
