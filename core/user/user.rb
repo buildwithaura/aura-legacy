@@ -2,6 +2,7 @@ require "sinatra/security"
 
 class Main
   register Sinatra::Security
+  set :login_success_message, nil
 end
 
 Aura::Admin.menu.add "settings.users",
