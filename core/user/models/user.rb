@@ -1,7 +1,6 @@
 class Aura
   module Models
     class User < Model
-      #plugin :aura_sluggable
       plugin :aura_editable
 
       plugin :validation_helpers
@@ -14,6 +13,11 @@ class Aura
 
       def to_s
         email
+      end
+
+      editor_setup do
+        field :text,     :email, "Email"
+        field :password, :password, "Password"
       end
 
       def self.seed!(type=nil, &blk)

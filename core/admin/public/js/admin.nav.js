@@ -29,7 +29,7 @@
     $(this).addClass('active');
   });
 
-  $("#nav > div a, #toolbar a, #top h3 a, #tabs a, #area a").live('click', function (e) {
+  $("a").live('click', function (e) {
     if ($(this).is('.ext')) { return; }
     if ($(this).attr('rel') == 'ext') { return; }
     if ($(this).attr('target')) { return; }

@@ -7,7 +7,7 @@ class Main
   get '/:model/list' do |model|
     require_login
     @model = Aura::Models.get(model) or pass
-    #pass unless @model.listable?
+    pass unless @model.try(:editable?)
 
     show_admin @model.templates_for('list'),
       :model => @model

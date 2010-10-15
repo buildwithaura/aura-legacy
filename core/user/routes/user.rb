@@ -2,7 +2,7 @@ class Main
   set :login_user_class, lambda { Aura::Models::User }
 
   get '/login' do
-    redirect R:(admin)  if logged_in?
+    redirect R(:admin)  if logged_in?
     if request.xhr?
       return "<div id='redirect'>/login</div>"
     end

@@ -75,13 +75,17 @@ body.no-sidebar #top {
 #aux {
   float: right; font-size: 8pt; color: #888;
 
-  h4 { float: left; font-weight: normal; font-size: 1em; }
-  h4 { margin: 0; padding: 0; margin-right: 20px; } 
+  h4 {
+    float: left; font-weight: normal; font-size: 1em;
+    margin: 0; padding: 0; margin-right: 20px;
+    a { color: white; }
+    a:hover { color: white; text-decoration: underline; }
+  }
   strong { color: #ccc; font-weight: normal; }
   ul { @include horiz-list; float: left; }
   a {
     color: $blue; font-weight: normal;
-    &:hover { color: $blue * 1.1; text-decoration: none; }
+    &:hover { color: $blue * 1.1; }
   }
 }
 

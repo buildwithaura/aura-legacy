@@ -1,0 +1,17 @@
+- options = { :item => item, :action => action }
+
+- content_for :title do
+  != yield_content_of :'base/edit', :title, options
+
+- content_for :tabs do
+  != yield_content_of :'admin/settings', :tabs
+
+- content_for :nav do
+  != yield_content_of :'admin/settings', :nav
+
+- content_for :toolbar do
+  != yield_content_of :'base/edit', :toolbar, options
+
+- content_for :body do
+  != yield_content_of :'base/edit', :body, options
+
