@@ -55,7 +55,3 @@ module AutoMigrator
     end
   end
 end
-
-class Main
-  register AutoMigrator
-end

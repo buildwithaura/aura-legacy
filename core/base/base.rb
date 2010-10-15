@@ -12,6 +12,8 @@ class Main
   register Sinatra::MultiView
   helpers  Sinatra::ContentFor
 
+  register AutoMigrator
+
   set :app_files, Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
   use Pistol, :files => app_files  unless production?
 
