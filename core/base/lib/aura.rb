@@ -18,4 +18,8 @@ class Aura
     return set(key, value)  if s.nil?
     get key
   end
+
+  def self.site_empty?
+    ! Models.all.select { |m| m.content? }.detect { |m| m.any? }
+  end
 end

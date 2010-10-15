@@ -54,6 +54,13 @@ module Sequel::Plugins::AuraModel
   end
 
   module ClassMethods
+    # Returns if the model data is considered to be site content.
+    # The site is considered empty if all models that are content?
+    # are empty.
+    def content?
+      false
+    end
+
     def roots
       find_all { |*a| true }
     end

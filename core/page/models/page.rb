@@ -17,6 +17,10 @@ class Aura
         validates_presence :title
       end
 
+      def self.content?
+        true
+      end
+
       def self.seed(type=nil, &blk)
         super
 

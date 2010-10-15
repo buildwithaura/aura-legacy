@@ -21,8 +21,26 @@
             = item.name
 
 - content_for :body do
+  %center{:style => 'font-size: 20px; color: #aaa; padding: 30px 0;'}
+    Welcome!
+
+  - if Aura.site_empty?
+    .slim.fixed
+      %section
+        %h3 Let's get started!
+        %p
+          Dude, your site is empty. How about filling it up?
+          Here's how:
+
+        %ul
+          %li
+            %a{:href => R(:page, :new)} Create a new page
+          %li
+            %a{:href => R(:admin, :settings, :database)} Load sample data
+
+
+
+
   -# %a{:href => Aura::Models::Page.path(:list)} Manage pages
   - 10.times do
     %br
-  %center{:style => 'font-size: 20px; color: #aaa;'}
-    Welcome!

@@ -13,7 +13,8 @@ body {
  */
 
 .slim { margin: 0 auto; min-width: 500px; width: 70%; }
-.slim-fixed { margin: 0 auto; width: 500px; }
+.slim.fixed { margin: 0 auto; width: 500px; }
+.micro { margin: 0 auto; width: 350px; }
 .dialog {
   margin: 40px auto; width: 500px; padding: 40px 10px;
   background: white; @include border-radius(4px); text-align: center; 
