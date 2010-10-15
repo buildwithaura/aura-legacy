@@ -31,7 +31,7 @@ class Main
   set :app_files, Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
   set :extensions_path, [root_path('core'), root_path('extensions')]
 
-  use Pistol, :files => app_files  unless production?
+  use Pistol, :files => app_files + [root_path('tmp', 'restart.txt')]  unless production?
 
   # Heroku: override the DB config with this env var.
   set :sequel, ENV['DATABASE_URL']  unless ENV['DATABASE_URL'].nil?
