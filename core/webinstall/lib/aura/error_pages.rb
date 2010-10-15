@@ -16,7 +16,8 @@ class Aura
         "<a href='/:setup'>Continue &raquo;</a>" +
         "</p></li>" +
         "</ul>" +
-        "<p class='note'>Note: If you need to set up your own database, edit the <code>config/database.rb</code> file first. You may need to do this if you believe you're seeing this in error.</p>"
+        "<p class='note'>Note: If you need to set up your own database, edit the <code>config/database.rb</code> " +
+        "file first. You may need to do this if you believe you're seeing this by mistake.</p>"
 
       aura_error(e)
     end
