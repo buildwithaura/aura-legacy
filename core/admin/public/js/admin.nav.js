@@ -52,7 +52,6 @@
 
     if ($data.find("#redirect").length) {
       url = $data.find("#redirect").html();
-      $.unscreen();
       window.location = url;
       return false;
     }
