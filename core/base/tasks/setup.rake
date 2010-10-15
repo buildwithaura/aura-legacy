@@ -7,14 +7,17 @@ namespace :setup do
     syst "rake -s setup:verify_config"
     syst "rake -s db:migrate"
     syst "rake -s db:init"
-    RakeStatus.print :info, "Optional: You may type 'rake db:seed' to load some sample data."
+    puts ""
+    RakeStatus.heading :info, "Done!"
+    puts "  Run your application with 'ruby init.rb'."
+    puts "  Optional: You may type 'rake db:seed' to load some sample data."
   end
 
   desc "Ensures that the needed configuration files are present"
   task :verify_config do
     require 'fileutils'
 
-    RakeStatus.print_heading :info, "Ensuring config files are present..."
+    RakeStatus.heading :info, "Ensuring config files are present..."
 
     Dir['config/*.example.*'].each do |example|
       target = example.gsub('.example.', '.')
