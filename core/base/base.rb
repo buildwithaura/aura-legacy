@@ -37,7 +37,7 @@ class Main
   set :sequel, ENV['DATABASE_URL']  unless ENV['DATABASE_URL'].nil?
 
   unless self.respond_to?(:sequel)
-    puts "No database configured. Try `rake setup` first."
+    $stderr << "No database configured. Try `rake setup` first.\n"
     exit
   end
 
