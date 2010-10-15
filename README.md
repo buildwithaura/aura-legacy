@@ -8,13 +8,13 @@ Recommended: use RVM:
 
 (If you're not using RVM, install the gems in the .gems file.)
 
-Set up the DB:
+Set up the DB. This will create the config files, set up DB tables, et al:
 
     rake setup
 
 Run it:
 
-    thor monk:start
+    ruby init.rb
 
 (If you're not using thor, use `cp config/sequel.example.rb config/sequel.rb` then `ruby ./init.rb`)
 

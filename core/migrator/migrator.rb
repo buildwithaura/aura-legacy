@@ -17,6 +17,15 @@ module AutoMigrator
       end
     end
 
+    def seed(type=nil, &blk)
+      blk = lambda { |*a| }  unless block_given?
+
+      Aura::Models.all.each { |m|
+        blk.call :seed, m
+        m.seed(type, &blk)
+      }
+    end
+
     def seed!(type=nil, &blk)
       blk = lambda { |*a| }  unless block_given?
 
