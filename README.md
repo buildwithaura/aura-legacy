@@ -104,6 +104,8 @@ Apache:
 
 ## To do
 
+- Seeder in admin
+- "Your site is empty." message
 - Growl
 - Page editor/Terra2
 - Menu (front end)
