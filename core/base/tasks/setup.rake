@@ -1,7 +1,6 @@
 require File.expand_path('common.rb', File.dirname(__FILE__))
 
 namespace :setup do
-  desc "Initializes the application"
   task :setup do
     # These have to be ran as external processes. db:init, for example,
     # will not work unless the DB has been migrated properly.
@@ -35,4 +34,5 @@ namespace :setup do
   end
 end
 
+desc "Initializes the application"
 task :setup => ['setup:setup']
