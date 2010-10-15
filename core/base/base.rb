@@ -25,6 +25,8 @@ class Main
   set :default_user, 'test@sinefunc.com'
   set :default_password, 'password'
 
+  set :sequel, "sqlite://db/development.db"
+
   # Heroku: override the DB config with this env var.
   set :sequel, ENV['DATABASE_URL']  unless ENV['DATABASE_URL'].nil?
 

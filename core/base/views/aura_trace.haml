@@ -17,4 +17,4 @@
 %body
   #trace
     %pre= output
-    %a{:href => '/login'} Continue
+    %a{:href => Rtopia.R(:login, { :email => Main.default_user, :password => Main.default_password })} Continue
