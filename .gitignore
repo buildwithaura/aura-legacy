@@ -17,7 +17,6 @@ tmtags
 
 # Project (general)
 /vendor/*/vendor
-/tmp
 /log
 /logs
 # Others
