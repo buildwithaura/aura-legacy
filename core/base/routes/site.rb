@@ -13,7 +13,14 @@ class Main
   end
 
   get '/' do
-    load_path('/home')
+    path = '/home'
+
+    # Do we have a homepage?
+    if Aura::Slugs.find(path).nil?
+      return show :'default_home_page', { :layout => false }
+    end
+
+    load_path(path)
   end
 
   not_found do
