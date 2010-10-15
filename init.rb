@@ -17,7 +17,7 @@ class Main < Sinatra::Base
   use      Rack::Session::Cookie
   helpers  Rtopia
 
-  Dir[root_path('config', '*.rb')].each { |f| load f unless f.include?('.example') }
+  Dir[root_path('config', '*.rb')].each { |f| load f unless f.include?('.defaults.') || f.include?('.example.') }
 end
 
 # Bootstrap Aura
