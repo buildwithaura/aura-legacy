@@ -31,13 +31,14 @@
           %a.view.ext{:href => '/', :target => 'preview'}
             view site
 
-        %nav#aux
-          %h4
-            Hello,
-            %a{:href => R(:user, current_user, :edit)}= current_user.email
-          %ul
-            %li
-              %a{:href => R(:logout)} Logout
+        - unless current_user.nil?
+          %nav#aux
+            %h4
+              Hello,
+              %a{:href => R(:user, current_user, :edit)}= current_user.email
+            %ul
+              %li
+                %a{:href => R(:logout)} Logout
 
     %aside#nav
       .nav-c
