@@ -4,6 +4,7 @@ namespace :setup do
   task :setup => [ :install_gems ] do
     # These have to be ran as external processes. db:init, for example,
     # will not work unless the DB has been migrated properly.
+    system "rake -s setup:install_gems"
     syst "rake -s setup:verify_config"
     syst "rake -s db:migrate"
     syst "rake -s db:init"
@@ -21,11 +22,14 @@ namespace :setup do
     has_rvm = (`rvm --version`.strip rescue nil)
     gem_cmd = has_rvm ? 'gem' : 'sudo gem'
 
-    File.read('.gems').split("\n").each do |gem|
-      unless Gem.available?(gem)
-        RakeStatus.heading :info, "Gem #{gem} not found. Attempting to install..."
-        syst "#{gem_cmd} install #{gem}"
-      end
+    gems   = File.read('.gems').split("\n")
+    needed = gems.reject { |g| Gem.available?(g) }
+
+    if needed.any?
+      RakeStatus.heading :info, "Some gems weren't found. Attempting to install..."
+      cmd = "#{gem_cmd} install #{gems.join(' ')}"
+      RakeStatus.heading :run, cmd
+      exec cmd
     end
   end
 
