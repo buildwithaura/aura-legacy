@@ -31,11 +31,6 @@ Run it:
    contains the basic stuff.
  - Using the `show()` helper (instead of `render`) will search all views.
 
-## Things to try
-
-Go to `/login` to get the party started.
-
-
 ### Heroku instructions
 
 Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
@@ -48,7 +43,6 @@ Looking for a free host? Deploy Aura to Heroku.com, the free Ruby host!
     heroku create                     # Create a new site; heroku create
     git push heroku master            # Deploy to heroku
     heroku rake setup                 # Set it up
-    heroku rake db:seed               # (Optional)
     heroku open                       # Open it in a browser
 
 ### Passenger setup

@@ -12,7 +12,7 @@ class Main < Sinatra::Base
   set      :view_paths, []
 
   set      :haml, :escape_html => true
-  enable   :raise_errors
+  disable  :dump_errors
 
   use      Rack::Session::Cookie
   helpers  Rtopia
