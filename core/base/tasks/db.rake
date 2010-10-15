@@ -5,7 +5,7 @@ def try_to(&blk)
     blk.call
   rescue => e
     RakeStatus.print :error, "Something went wrong!"
-    RakeStatus.print :error, "Did you try to 'rake setup' (or 'rake db:migrate') first?"
+    RakeStatus.print :error, "Try running 'rake setup' (or 'rake db:migrate') first."
     puts ""
     raise e
   end
