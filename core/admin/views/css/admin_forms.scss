@@ -6,7 +6,12 @@
   label { display: block; font-weight: bold; line-height: 24px; color: #777; }
   textarea, input { @include input; @include box-sizing(border-box); width: 100%; }
   textarea { height: 220px; }
-  p.submit { text-align: center; }
-  p.submit button { @include button; @include button-black; }
+  p.submit {
+    @extend .message;
+    height: 35px; line-height: 35px; padding: 5px 15px 5px 10px;
+    margin: 20px 0;
+    & { text-align: left; @include clearfix; }
+    button { @include button; @include button-black; }
+    .right { float: right; }
+  }
 }
-
