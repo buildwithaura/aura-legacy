@@ -2,6 +2,8 @@
 
 Aura is a CMS. Kinda. You'll need Ruby 1.8.6 or above.
 
+See [http://github.com/rstacruz/aura/wiki](http://github.com/rstacruz/aura/wiki) for more info.
+
 ## Super easy setup
 
 Want to try Aura on your machine? Easy! First: download and unzip Aura somewhere.
@@ -30,10 +32,6 @@ And lastly: run it!
 
 * To configure the database, create the file `config/database.rb`. You can use `database.defaults.rb` as
   a guide; edit it to your needs. Do this before `rake setup`.
-
-## More info
-
-See [http://github.com/rstacruz/aura/wiki](http://github.com/rstacruz/aura/wiki) for more info.
 
 ## Authors and copyright
 
