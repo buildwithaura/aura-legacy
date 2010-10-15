@@ -17,11 +17,10 @@ class Main
   end
 
   not_found do
-    error 404, show('errors/not_found')
+    [ 404, show('errors/not_found') ]
   end
 
-  error 500 do
-    error 500, show('errors/error')
-  end
+  #error 500 do
+  #  error 500, show('errors/error')
+  #end
 end
-

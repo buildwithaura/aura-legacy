@@ -3,6 +3,7 @@ $:.unshift(*Dir["./vendor/*/lib"])
 require "rubygems"
 require "sinatra/base"
 require "rtopia"
+require "sequel"
 
 # TODO: Rename Main to Aura, and merge with class Aura
 class Main < Sinatra::Base
