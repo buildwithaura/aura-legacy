@@ -1,5 +1,3 @@
-require "sequel"
-require "sqlite3"
 require "sinatra/content_for"
 
 prefix = File.dirname(__FILE__)
