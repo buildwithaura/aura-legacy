@@ -1,6 +1,14 @@
 class Main
   set :login_user_class, lambda { Aura::Models::User }
 
+  # The user is redirected here on first load.
+  get '/admin/welcome' do
+    show_admin Aura::Models::User.templates_for('edit'),
+      :item   => current_user,
+      :action => current_user.path(:edit),
+      :first  => true
+  end
+
   post '/login' do
     if authenticate(params)
       session[:success] = settings.login_success_message

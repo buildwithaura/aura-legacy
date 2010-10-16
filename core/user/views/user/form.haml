@@ -1,3 +1,5 @@
+- first ||= false
+
 %br
 %br
 
@@ -8,7 +10,12 @@
   - fieldset.fields.each do |field|
     !~ field.to_html(item.try(field.name))
 
-  - unless item.new?
+  - if first
+    %p.description.align-center
+      Feel free to change it if you wish. Now enter a good password below,
+      twice. We'll get you started with your site right after!
+
+  - elsif !item.new?
     %p.description.align-center
       If you would like to change your password, enter a new one below, twice.
       Otherwise, leave these blank to leave your password as it is.

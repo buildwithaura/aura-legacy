@@ -46,8 +46,7 @@ class Main
         :action => @model.path(:new)
     end
 
-    # Back to dashboard
-    redirect @item.path(:edit)
+    redirect params[:next] || @item.path(:edit)
   end
 
   get '/*/edit' do |path|
@@ -78,7 +77,7 @@ class Main
         :action => action
     end
 
-    redirect @item.path(:edit)
+    redirect params[:next] || @item.path(:edit)
   end
 
   get '/*/preview' do |path|
@@ -127,7 +126,7 @@ class Main
         :action => @parent.path(:new)
     end
 
-    redirect @item.path(:edit)
+    redirect params[:next] || @item.path(:edit)
   end
 
   get '/*/delete' do |path|
@@ -149,7 +148,6 @@ class Main
     @item.delete
     flash_message "The item has been deleted."
 
-    redirect action
+    redirect params[:next] || action
   end
-
 end
