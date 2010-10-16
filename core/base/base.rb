@@ -13,10 +13,6 @@ class Main
 
   register AutoMigrator
 
-  set :scss, { :load_paths => [ root_path, root_path('core'), root_path('extensions'), root_path('vendor/compass_framework') ] }
-  set :scss, self.scss.merge(:line_numbers => true, :debug_info => true, :always_check => true) if self.development?
-  set :scss, self.scss.merge(:style => :compressed) if self.production?
-
   set :app_files, Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
   set :extensions_path, [root_path('core'), root_path('extensions')]
 
