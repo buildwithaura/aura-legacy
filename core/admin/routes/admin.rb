@@ -30,11 +30,10 @@ class Main
     Main.auto_migrate!
     Main.seed!
 
-    logout!
+    flash_message "Everything has been cleared. Welcome to your new fresh site!"
 
-    flash_message "Everything has been cleared. You can log in with the default user below."
-    redirect R(:login, {
-                 :email => settings.default_user,
-                 :password => settings.default_password })
+    # Log in as the test user.
+    session[:user] = Aura::Models::User.first.try(:id)
+    redirect R(:admin, :welcome)
   end
 end
