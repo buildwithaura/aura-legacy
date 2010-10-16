@@ -2,24 +2,29 @@
   var $nav  = $("#nav"),
       $area = $("#area"),
       $body = $("body"),
+      $title= $("#title"),
+      $top  = $("#top"),
       $context = $nav.add($area);
 
   var sidebarWidth = 200; //$nav.outerWidth();
 
+  $('body').addClass('fixed-layout');
+
   function onResize() {
+    var height = $(window).height();
+    height -= $top.outerHeight();
+
     // Stretch heights.
-    $context.each(function () {
-      var height = $(window).height();
-      height -= parseInt($(this).offset().top);
-      height -= parseInt($(this).css('padding-top'));
-      height -= parseInt($(this).css('padding-bottom'));
-      $(this).height(height);
-    });
+    $nav.height(height);
+    $area.height(height - $title.outerHeight());
+
+    $area.css({ top: $top.outerHeight() + $title.outerHeight() });
+
+    // Widths of area and title
     var padding = 0;
-    padding += parseInt($area.css('padding-left'));
-    padding += parseInt($area.css('padding-right'));
     if (!$nav.is(':hidden')) { padding += $nav.outerWidth(); }
-    $area.css({ width: $(window).width() - padding });
+    $area.add($title)
+      .css({ width: $(window).width() - padding, left: padding })
   }
 
   $(window).resize(onResize);

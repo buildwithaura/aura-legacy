@@ -1,5 +1,4 @@
 div.split.meta {
-  margin-top: 10px;
   > .right {
     @include gradient($sidebar-hicolor * 1.04, $sidebar-color * 1.04);
     @include border-radius(4px);

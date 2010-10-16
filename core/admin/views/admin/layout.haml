@@ -48,18 +48,17 @@
       - if has_content?(:tabs)
         != yield_content :tabs
 
+    %header#title
+      - if has_content?(:title)
+        .title-c
+          != yield_content :title
+
+      - if has_content?(:toolbar)
+        %nav#toolbar
+          %ul
+            != yield_content :toolbar
+
     #area{:class => area_class}
-      - if has_content?(:title) or has_content?(:toolbar)
-        %header#title
-          - if has_content?(:title)
-            .title-c
-              != yield_content :title
-
-          - if has_content?(:toolbar)
-            %nav#toolbar
-              %ul
-                != yield_content :toolbar
-
       - if flash_messages? or flash_errors?
         #flash
           %div

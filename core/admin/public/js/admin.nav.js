@@ -3,6 +3,7 @@
   var $content = $("#content");
   var $nav  = $("#nav");
   var $body = $("body");
+  var $title = $("#title");
 
   var link = null;
 
@@ -41,7 +42,7 @@
     if (window.location.hash == '#!'+href) { return; }
 
     $area.screen();
-    $nav.screen();
+    $body.screen();
 
     window.location.hash = "#!" + href;
   });
@@ -74,6 +75,7 @@
     $area.unscreen();
     $("#nav").htmlInto($data.find("#nav").html(), anim);
     $("#tabs").html($data.find("#tabs").html());
+    $("#title").html($data.find("#title").html());
     $area.attr('class', $data.find("#area").attr('class'));
     $area.html($data.find("#area").html());
 
@@ -92,11 +94,13 @@
     var title = html.match(/<title>(.*?)<\/title>/);
     if (title) { $("title").html(title[1]); }
 
+    $(window).trigger('resize');
     focusFirstField();
   }
 
   $.hashListen('!(.*)', function (href) {
     $area.screen();
+    $body.screen();
     $.get(href, htmlCallback);
   });
 
@@ -218,6 +222,7 @@
 
   function focusFirstField() {
     var field = $("#area").find("input, textarea, select").filter(":visible").get(0);
+    if (!field) { return; }
     field.focus();
     if (field.selectionStart != undefined) {
       var val = field.value.length;

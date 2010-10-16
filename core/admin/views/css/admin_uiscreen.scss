@@ -3,13 +3,14 @@ html { background-image: none; }
 
 /* UIscreen */
 .uiscreen {
-  position: relative; background: rgba(255, 255, 255, 0.6);
+  position: relative; background: transparent;
   cursor: wait;
 }
 
 $height: 60px;
 
-.uiscreen:not(.no-spin) {
+.uiscreen#uiscreen-for-area {
+  background: fade-out($slate, 0.8);
   .uiscreen-spinner {
     @include border-radius($height / 2);
     @include shadow(0 0 10px $blue-glow-70, inset 0 0 2px $blue);
@@ -18,9 +19,4 @@ $height: 60px;
     position: absolute; top: 45%; left: 45%;
     text-decoration: none;
   }
-}
-
-#uiscreen-for-nav {
-  background: transparent;
-  .uiscreen-spinner { display: none; }
 }
