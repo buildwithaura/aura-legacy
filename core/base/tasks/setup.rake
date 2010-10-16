@@ -13,9 +13,7 @@ namespace :setup do
     FileUtils.touch 'tmp/restart.txt' rescue 0
     FileUtils.touch 'init.rb' rescue 0
 
-    puts ""
-    RakeStatus.heading :info, "Done!"
-    puts "  Aura is ready to start."
+    RakeStatus.heading :info, "Done! Aura is ready to start."
   end
 
   task :install_gems do
