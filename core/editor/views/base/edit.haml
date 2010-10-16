@@ -42,14 +42,11 @@
     = item
 
 - content_for :toolbar do
-  -# if item.try(:renderable?)
-    %li
-      %a.ext{:href => item.path} View
   - if item.try(:parentable?)
     %li
       %a{:href => item.path(:new)} Create new
   %li
-    %a.black.js{:href => '#submit'} Save
+    %a.black{:href => '#submit'} Save
 
 - content_for :body do
   != partial item.templates_for(:errors), :errors => item.errors

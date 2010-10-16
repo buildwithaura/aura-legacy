@@ -1,15 +1,15 @@
-- title "Edit: %s" % [ item.to_s ]
-- options = { :item => item }
+- title "New: %s" % [ item.to_s ]
+
+- options = { :item => item, :parent => parent, :model => model }
 
 - content_for :tabs do
-  != yield_content_of :'base/edit', :tabs, options
+  != yield_content_of :'base/new', :tabs, options
 
 - content_for :nav do
-  != yield_content_of :'base/edit', :nav, options
+  != yield_content_of :'base/new', :nav, options
 
 - content_for :title do
-  %h1
-    Editing page
+  != yield_content_of :'base/new', :title, options
 
 - content_for :toolbar do
   != yield_content_of :'base/edit', :toolbar, options
@@ -20,6 +20,12 @@
   %form{:action => action, :method => 'post' }
     .split.s70.meta
       .left
+        - unless parent.nil?
+          .message
+            This new page will be created under
+            %a{:href => parent.path(:edit)}<= parent
+            %span>= "."
+
         != partial item.templates_for(:form), options
 
         %p.submit
