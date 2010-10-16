@@ -5,7 +5,7 @@
 
 - fieldset = item.class.form.fieldset(:default)
 %fieldset
-  %h2.greeting Hi! Your login email is:
+  %h2.greeting Hola! Your login email is:
 
   - fieldset.fields.each do |field|
     !~ field.to_html(item.try(field.name))
