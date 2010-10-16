@@ -1,38 +1,4 @@
 module Terra
-  # DSL thing
-  #
-  # Example:
-  #
-  #   form = Form.new
-  #
-  #   form.configure do
-  #     text :name, "Name"
-  #     text :email, "Email address"
-  #
-  #     fieldset :options, "Options" do
-  #       textarea :body, "Body", :class => "hello"
-  #       select   :type, "Type",
-  #         :options => {
-  #           :red => "Red",
-  #           :blue => "Blue"
-  #         }
-  #     end
-  #   end
-  #
-  #   -# HAML
-  #   - form.fieldsets.each do |set|
-  #     = set.to_s
-  #     - set.fields.each do |field|
-  #       = field.to_html
-  #
-  #   -# Also some useful methods:
-  #
-  #   = form.fieldsets.first.to_html
-  #   = form.fieldsets.first.fields.first.to_html
-  #
-  #   = form.fieldset(:default).to_html
-  #   = form.fieldset(:default).field(:name).to_html
-  #
   class Form
     def initialize
       @fieldsets = Hash.new
