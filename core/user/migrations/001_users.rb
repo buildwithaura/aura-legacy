@@ -7,6 +7,7 @@ Sequel.migration do
       String :email
       String :slug
       String :crypted_password
+      Time :last_login
     end
   end
 

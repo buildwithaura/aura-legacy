@@ -1,6 +1,16 @@
 class Main
   set :login_user_class, lambda { Aura::Models::User }
 
+  post '/login' do
+    if authenticate(params)
+      session[:success] = settings.login_success_message
+      redirect_to_return_url
+    else
+      session[:error] = settings.login_error_message
+      redirect settings.login_url
+    end
+  end
+
   get '/login' do
     redirect R(:admin)  if logged_in?
     if request.xhr?
