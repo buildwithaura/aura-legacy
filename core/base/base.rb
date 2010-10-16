@@ -1,4 +1,5 @@
 require "sinatra/content_for"
+require "json"
 
 prefix = File.dirname(__FILE__)
 

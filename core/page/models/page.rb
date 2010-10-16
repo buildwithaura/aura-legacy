@@ -1,11 +1,13 @@
 class Aura
   module Models
     class Page < Model
-      plugin :aura_sluggable
-      plugin :aura_renderable
-      plugin :aura_editable
-      plugin :aura_hierarchy
-      plugin :aura_subtyped
+      plugin :aura_sluggable      # Accessible via slug: /about-us/services
+      plugin :aura_renderable     # Can show a page when accessed by that URL
+      plugin :aura_editable       # Editable in the admin area
+      plugin :aura_hierarchy      # Can have children
+      plugin :aura_subtyped       # Has subtypes
+
+      plugin :serialization, :json, :custom
 
       form {
         text     :title, "Title", :class => 'title'

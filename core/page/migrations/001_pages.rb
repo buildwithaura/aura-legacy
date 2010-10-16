@@ -1,16 +1,21 @@
 Sequel.migration do
   up do
     create_table :pages do
+      # aura_hierarchy
       primary_key :id
       foreign_key :parent_id, :pages
 
-      String :template
-
       String :title
       String :body, :text => true
+      String :custom, :text => true
+
+      # aura_sluggable
       String :slug
-      String :author_name #unused
+
+      # aura_subtyped
       String :subtype
+
+      String :author_name #unused
     end
   end
 
