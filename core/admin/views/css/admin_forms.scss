@@ -74,7 +74,7 @@ form:not(.bypass) {
 
     &.focus {
       @include input-focus; background: #f6f6f6;
-      label { color: $blue; text-shadow: 0 0 2px white; }
+      label { text-shadow: 1px 1px 0 $hilite50; background: fade-out($blue, 0.9); color: $blue * 0.7; }
     }
   }
 }

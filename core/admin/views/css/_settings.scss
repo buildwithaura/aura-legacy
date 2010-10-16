@@ -94,6 +94,8 @@ $input-height: 38px;
 
   &:hover { border-color: $blue-glow; }
   &:focus { @include input-focus; }
+
+  cursor: text;
 }
 
 .animate-opacity {
