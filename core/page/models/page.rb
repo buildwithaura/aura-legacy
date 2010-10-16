@@ -7,7 +7,7 @@ class Aura
       plugin :aura_hierarchy
 
       form {
-        field :text,     :title, "Title"
+        field :text,     :title, "Title", :class => 'title'
         field :textarea, :body,  "Body text"
         field :text,     :slug,  "Slug", :class => 'compact'
 
