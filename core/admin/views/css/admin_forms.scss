@@ -24,7 +24,7 @@ form:not(.bypass) {
 
   textarea, input { @include input; @include box-sizing(border-box); width: 100%; }
   textarea { height: 220px; }
-  p.long textarea { height: 350px; }
+  p.long textarea { height: 300px; }
 
   /* "Hola! You are:" */
   h2.greeting {
