@@ -10,4 +10,6 @@
     .live('blur', function () {
       $(this).closest('form p').removeClass('focus');
     });
+
+  $(function () { $("body").show(); });
 })(jQuery);

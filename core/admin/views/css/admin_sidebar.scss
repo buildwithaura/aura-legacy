@@ -3,10 +3,9 @@
  */
 
 #nav {
-  background: #ddd; width: 200px; padding: 0 0;
+  background: #ddd; padding: 0 0;
   @include gradient($sidebar-hicolor, $sidebar-color);
   @include shadow(inset -1px 0 0 $shadow10, inset -3px 0 2px $shadow05);
-  position: absolute; left: 0; top: $top-height;
   border-top: solid 15px #333;
   overflow-y: auto; overflow-x: hidden;
 }

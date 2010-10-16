@@ -40,10 +40,6 @@
               %li
                 %a{:href => R(:logout)} Logout
 
-    %aside#nav
-      .nav-c
-        != yield_content :nav
-
     %nav#tabs
       - if has_content?(:tabs)
         != yield_content :tabs
@@ -74,6 +70,11 @@
           != yield_content :body
         != yield
 
+    %aside#nav
+      .nav-c
+        != yield_content :nav
+
     - unless request.xhr?
       - admin_js.each do |file|
         %script{:type => 'text/javascript', :src => file}
+

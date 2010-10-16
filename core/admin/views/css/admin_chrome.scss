@@ -14,7 +14,7 @@ body {
 
 #top {
   height: $top-height; line-height: $top-height; overflow: hidden; 
-  background: #333; color: #ddd; padding: 0 10px; margin-bottom: 10px;
+  background: #333; color: #ddd; padding: 0 10px;
   @include gradient(#444, #333);
 
   h3 {
@@ -113,13 +113,12 @@ body.no-sidebar #top {
 }
 
 body.fixed-layout {
+  overflow: hidden;
+
   #nav, #title, #area { @include box-sizing(border-box); }
-  #title {
-    position: absolute; left: 200px; top: $top-height;
-  }
-  #area { 
-    position: absolute; left: 200px; top: $top-height + 40px;
-  }
+  #nav { position: absolute; left: 0; top: $top-height; width: 200px; }
+  #title { position: absolute; }
+  #area { position: absolute; }
 }
 
 /*
@@ -151,7 +150,6 @@ body.fixed-layout {
 
 #area {
   background: #eee; padding: 10px;
-  position: absolute; left: 200px; top: $top-height;
   overflow-y: auto; overflow-x: hidden;
   //@include shadow(2px -2px 2px $blue-glow-70);
 }

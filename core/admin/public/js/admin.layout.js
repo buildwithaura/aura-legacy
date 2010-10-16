@@ -6,18 +6,15 @@
       $top  = $("#top"),
       $context = $nav.add($area);
 
-  var sidebarWidth = 200; //$nav.outerWidth();
-
-  $('body').addClass('fixed-layout');
+  var sidebarWidth = 200;
 
   function onResize() {
     var height = $(window).height();
     height -= $top.outerHeight();
 
     // Stretch heights.
-    $nav.height(height);
-    $area.height(height - $title.outerHeight());
-
+    $nav .css({ 'height': height });
+    $area.css({ 'height': (height - $title.outerHeight()) });
     $area.css({ top: $top.outerHeight() + $title.outerHeight() });
 
     // Widths of area and title
@@ -27,15 +24,15 @@
       .css({ width: $(window).width() - padding, left: padding })
   }
 
-  $(window).resize(onResize);
   $(function () {
     $(document.body).show();
+    $('body').addClass('fixed-layout');
     if ($('#area').is('.no-sidebar')) { $.sidebar.hide(); }
+    $(window).resize(onResize);
     onResize();
   });
 
-  $.sidebar = function () {
-  };
+  $.sidebar = function () { };
 
   $.sidebar.hide = function () {
     $body.addClass('no-sidebar');

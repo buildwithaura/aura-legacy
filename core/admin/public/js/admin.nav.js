@@ -79,10 +79,12 @@
     $area.attr('class', $data.find("#area").attr('class'));
     $area.html($data.find("#area").html());
 
-    if ($("#area").is('.no-sidebar')) {
-      $.sidebar.hide();
-    } else {
-      $.sidebar.show();
+    if ($.sidebar) {
+      if ($("#area").is('.no-sidebar')) {
+        $.sidebar.hide();
+      } else {
+        $.sidebar.show();
+      }
     }
 
     // Unscreen the sidebar.
