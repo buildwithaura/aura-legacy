@@ -1,8 +1,17 @@
 /* Forms */
 #content form:not(.bypass) {
 
-  fieldset { margin: 10px 0; border: 0; }
-  h3.legend { @extend h3.bar; }
+  fieldset { margin: 10px 0 20px 0; border: 0; }
+
+  h3.legend {
+    @include border-radius(4px); 
+    @include gradient($slate-blue, saturate($slate-blue * 0.9, 10%));
+    @include shadow(0 1px 0 $shadow20, 0 0 1px $shadow40, inset 0 1px 0 $hilite20);
+    text-align: center;
+    padding: 5px 10px; margin: 10px 0;
+    font-size: 1.2em; color: $grey;
+    text-shadow: 1px 1px 0 $hilite40;
+  }
 
   p { margin: 10px 0; }
   p:first-child { margin-top: 0; }
@@ -17,5 +26,33 @@
     & { text-align: left; @include clearfix; }
     button { @include button; @include button-black; }
     .right { float: right; }
+  }
+
+  p.compact {
+    @include input;
+    @include clearfix;
+    height: $input-height + 2px;
+    background: $hilite10;
+    padding: 0; width: 100%;
+
+    label {
+      float: left; width: 30%;
+      @include box-sizing(border-box);
+      padding: 0 10px; overflow: hidden;
+      line-height: $input-height;
+    }
+
+    input, textarea {
+      &, &:hover, &:focus {
+        @include shadow(0); border: 0;
+        border-left: solid 1px #ddd;
+      }
+      float: left; width: 70%;
+    }
+
+    &.focus {
+      @include input-focus; background: #f6f6f6;
+      label { color: $blue; text-shadow: 0 0 2px white; }
+    }
   }
 }

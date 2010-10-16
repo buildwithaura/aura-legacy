@@ -37,7 +37,7 @@ class Aura
       end
 
       def html_wrap(s)
-        "<p>" + s + "</p>"
+        "<p class='#{options[:class] || ''}'>#{s}</p>"
       end
 
     protected

@@ -11,6 +11,8 @@ $blue-glow-70: rgba(62, 169, 223, 0.7);
 
 $grey: #666;
 
+$slate-blue: #e0e2e6;
+
 $sidebar-hicolor: #d9d9dd;
 $sidebar-color:   #cacbd0;
 
@@ -73,15 +75,22 @@ $medium: 9pt;
   }
 }
 
+$input-height: 38px;
+
+@mixin input-focus {
+  outline: 0;
+  @include shadow(0 0 4px $blue-glow-40, inset 0 0 12px $blue-glow-40, 0 0 1px $blue-glow-70);
+  border-color: $blue-glow * 0.6;
+}
+
 @mixin input {
   @include border-radius(2px);
   @include shadow(inset 2px 2px 0 $shadow05, inset 0 1px 2px $shadow05, 1px 1px 0 $hilite30);
+  @include box-sizing(border-box);
 
-  width: 488px; padding: 8px; border: solid 1px #ccc;
+  width: 488px; padding: 8px 8px; border: solid 1px #ccc;
+  height: $input-height;
+
   &:hover { border-color: $blue-glow; }
-  &:focus {
-    outline: 0;
-    @include shadow(0 0 4px $blue-glow-40, inset 0 0 12px $blue-glow-40, 0 0 1px $blue-glow-70);
-    border-color: $blue-glow * 0.6;
-  }
+  &:focus { @include input-focus; }
 }

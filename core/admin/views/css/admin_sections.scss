@@ -20,7 +20,7 @@ h3.bar {
 
 .message {
   @include border-radius(2px); @include shadow(0 0 2px #aaa);
-  margin: 10px 0; background: #e0e2e6; padding: 5px 10px;
+  margin: 10px 0; background: $slate-blue; padding: 5px 10px;
   text-align: center;
   text-shadow: 1px 1px 0 $hilite40;
   color: #505863;
