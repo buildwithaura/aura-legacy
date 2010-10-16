@@ -12,10 +12,13 @@
     var height = $(window).height();
     height -= $top.outerHeight();
 
+    var titleHeight = $title.outerHeight();
+    if (!$("#title").html().match(/\S/)) { titleHeight = 0; }
+
     // Stretch heights.
     $nav .css({ 'height': height });
-    $area.css({ 'height': (height - $title.outerHeight()) });
-    $area.css({ top: $top.outerHeight() + $title.outerHeight() });
+    $area.css({ 'height': height - titleHeight });
+    $area.css({ top: $top.outerHeight() + titleHeight });
 
     // Widths of area and title
     var padding = 0;
