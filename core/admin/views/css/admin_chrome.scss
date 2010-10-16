@@ -29,6 +29,12 @@ div.dialog {
   @include shadow(0 0 4px $shadow10, 0 -2px 2px $blue-glow-10, 0 2px 2px $blue-glow-10);
 }
 
+#content div.dialog form:not(.bypass) p.submit {
+  @include shadow(0 transparent, 0 transparent);
+  background: transparent; text-align: center;
+  border: 0;
+}
+
 img.icon, span.icon {
   vertical-align: middle; 
   display: inline-block; width: 16px; height: 16px; margin-right: 5px;  
