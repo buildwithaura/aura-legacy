@@ -1,8 +1,8 @@
 div.split.meta {
   > .right {
-    @include gradient($sidebar-hicolor * 1.04, $sidebar-color * 1.04);
+    @include gradient($sidebar-hicolor * 1.04, $sidebar-hicolor * 1.00);
     @include border-radius(4px);
-    @include shadow(0 0 1px black, 2px 2px 0 $shadow10, inset 0 0 1px white);
+    @include shadow(1px 1px 0 $sidebar-hicolor * 0.95);
     padding: 0 2px; height: 100%;
   }
 }
@@ -10,12 +10,11 @@ div.split.meta {
 div.split.meta>.right {
   dl {
     @include clearfix;
-    border-bottom: solid 1px #d0d0d0; 
-    @include shadow(0 1px 0 $hilite20);
+    border-bottom: solid 1px $sidebar-hicolor * 0.98;
     padding: 10px 0;
-    line-height: 16pt; 
-    font-size: $small; 
-    text-shadow: 1px 1px 0 $hilite20; 
+    line-height: 16pt;
+    font-size: $small;
+    text-shadow: 1px 1px 0 $hilite20;
 
     &:last-child { border-bottom: 0; @include shadow(none); }
 
