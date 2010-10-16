@@ -37,11 +37,12 @@
 #
 #   set.fields                # Returns a fieldset's fields
 #   set.to_html               # Returns <fieldset>..</fieldset> HTML
+#   set.to_html(object)       # Same as above, but tries to get data from `object.field_name`
 #   set.name                  # Returns the name of the field
 #   field = set.field(:name)  # Returns a field by name
 #
 #   field.to_html             # <p>..<label>..<input>..</p>
-#   field.to_html(val)        # Like above, but with certain value
+#   field.to_html(val)        # Like above, but with a certain value
 #   field.input_html          # just <input>
 #   field.label_html          # just <label>
 #
