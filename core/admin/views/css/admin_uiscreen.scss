@@ -10,7 +10,7 @@ html { background-image: none; }
 $height: 60px;
 
 .uiscreen#uiscreen-for-area {
-  background: fade-out($slate, 0.8);
+  background: fade-out(white, 0.4);
   .uiscreen-spinner {
     @include border-radius($height / 2);
     @include shadow(0 0 10px $blue-glow-70, inset 0 0 2px $blue);
