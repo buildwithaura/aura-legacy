@@ -43,4 +43,7 @@
       %p.align-center
         %br
         %button.black{:type => 'submit'}
-          %span Save
+          - if first
+            %span Continue
+          - else
+            %span Save
