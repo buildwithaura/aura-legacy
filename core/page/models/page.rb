@@ -5,6 +5,7 @@ class Aura
       plugin :aura_renderable
       plugin :aura_editable
       plugin :aura_hierarchy
+      plugin :aura_subtyped
 
       form {
         text     :title, "Title", :class => 'title'
@@ -27,6 +28,10 @@ class Aura
 
       def self.content?; true; end
       def self.show_on_sidebar?; true; end
+
+      subtype :portfolio,
+        :name     => "Portfolio page",
+        :template => "id_portfolio"
     end
   end
 end

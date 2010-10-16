@@ -9,7 +9,8 @@ Sequel.migration do
       String :title
       String :body, :text => true
       String :slug
-      String :author_name
+      String :author_name #unused
+      String :subtype
     end
   end
 

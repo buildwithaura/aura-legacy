@@ -27,12 +27,10 @@ module Sequel
           ].map { |s| s.to_sym }.uniq
         end
 
+        # Returns the template to be used when it's displayed.
+        # Overridden by AuraSubtyped.
         def template
-          @values[:template] || default_template
-        end
-
-        def default_template
-          self.class.class_name
+          'default'
         end
 
         def renderable?
