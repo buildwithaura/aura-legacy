@@ -48,7 +48,7 @@ $medium: 9pt;
 
 @mixin button-metal {
   @include gradient(#eee, #d4d4d4);
-  @include shadow(inset 0 1px 0 $hilite10, 0 1px 1px $shadow20, 0 -1px 0 $shadow10);
+  @include shadow(inset 0 1px 0 $hilite10, 0 1px 1px $shadow20, 0 0 1px $shadow10);
   color: #555; text-shadow: 1px 1px 0 $hilite20;
 
   &:hover { @include glow; }

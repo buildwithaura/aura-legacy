@@ -1,9 +1,13 @@
 %section
-  %dl
-    %dt
-      URL:
-    %dd
-      = item.path
+  - if item.try(:renderable?)
+    %dl
+      %dt
+        URL:
+      %dd
+        = item.path
+        - unless item.new?
+          %br
+          %a.ext.button.micro{:href => item.path} Visit
   %dl
     %dt
       Template:
