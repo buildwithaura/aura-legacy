@@ -204,7 +204,11 @@ body.no-sidebar #top {
 
 /* Errors */
 #content .validation-errors {
-  background: #fee; margin: 0 -10px; padding: 10px;
-  h3 { margin: 0; padding: 0; }
+  @include gradient(#fee, #fee * 0.95);
+  margin: -10px -10px 20px -10px; padding: 10px;
+  border-bottom: solid 1px #fee * 0.9;
+  @include shadow(inset 0 1px 0 #fee*1.05, 0 2px 3px $shadow05);
+  text-shadow: 1px 1px 0 $hilite30; 
+  h3 { margin: 0; padding: 0; color: #855; }
   ul { @include non-list; }
 }

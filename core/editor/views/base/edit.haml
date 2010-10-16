@@ -52,15 +52,7 @@
     %a.black.js{:href => '#submit'} Save
 
 - content_for :body do
-  - if item.errors.any?
-    .flash.validation-errors
-      %h3 Can't continue:
-      %ul
-        - item.errors.each do |field, errs|
-          - errs.each do |err|
-            %li
-              = field
-              = err
+  != partial item.templates_for(:errors), :errors => item.errors
 
   .slim
     %form{:action => action, :method => 'post' }

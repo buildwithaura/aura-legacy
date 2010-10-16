@@ -13,27 +13,15 @@
     = item
 
 - content_for :toolbar do
-  - if item.try(:parentable?)
-    %li
-      %a{:href => item.path(:new)} Create new
-  %li
-    %a.black.js{:href => '#submit'} Save
+  != yield_content_of :'base/edit', :toolbar, options
 
 - content_for :body do
-  - if item.errors.any?
-    .flash.validation-errors
-      %h3 Can't continue:
-      %ul
-        - item.errors.each do |field, errs|
-          - errs.each do |err|
-            %li
-              = field
-              = err
+  != partial item.templates_for('errors'), :errors => item.errors
 
   %form{:action => action, :method => 'post' }
     .split.s70.meta
       .left
-        != partial item.templates_for(:form), :item => item
+        != partial item.templates_for(:form), options
 
         %p.submit
           %span.right
@@ -46,15 +34,4 @@
             %span Save
 
       .right
-        %section
-          %dl
-            %dt
-              URL:
-            %dd
-              = item.path
-          %dl
-            %dt
-              Template:
-            %dd
-              %select
-                %option Default
+        != partial item.templates_for(:meta_form), options
