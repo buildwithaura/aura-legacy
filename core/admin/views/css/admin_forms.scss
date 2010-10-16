@@ -31,7 +31,9 @@
   p.compact {
     @include input;
     @include clearfix;
-    height: $input-height + 2px;
+
+    height: auto;
+    min-height: $input-height + 2px;
     background: $hilite10;
     padding: 0; width: 100%;
 
