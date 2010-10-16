@@ -1,6 +1,12 @@
 class Aura
   module Editor
     module Fields
+      def all
+        constants.map { |c| c.to_s.underscore.to_sym }
+      end
+
+      module_function :all
+
       def get(klass)
         begin
           const_get(klass.to_s.split('_').map { |s| s.capitalize }.join('').to_sym)
@@ -8,6 +14,7 @@ class Aura
           nil
         end
       end
+
       module_function :get
     end
   end

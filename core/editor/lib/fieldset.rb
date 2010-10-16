@@ -25,8 +25,19 @@ class Aura
         @id == :default
       end
 
+      def to_html
+        [ "<fieldset>",
+          ("<h3 class='legend'>#{self.to_s}</h3>" unless default?),
+          fields.map { |f| f.to_html },
+          "</fieldset>" ].join("\n")
+      end
+
       attr_reader :fields
       attr_reader :id
+
+      Fields.all.each do |type|
+        define_method(type) { |*a| field type, *a }
+      end
     end
   end
 end

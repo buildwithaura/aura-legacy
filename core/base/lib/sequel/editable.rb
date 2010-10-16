@@ -17,7 +17,7 @@ module Sequel
           return @forms[type]  unless block_given?
 
           @forms[type] = Aura::Editor::Form.new
-          @forms[type].instance_eval &block
+          @forms[type].configure &block
         end
       end
     end

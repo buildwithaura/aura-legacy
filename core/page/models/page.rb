@@ -7,13 +7,13 @@ class Aura
       plugin :aura_hierarchy
 
       form {
-        field :text,     :title, "Title", :class => 'title'
-        field :textarea, :body,  "Body text"
-        field :text,     :slug,  "Slug", :class => 'compact'
+        text     :title, "Title", :class => 'title'
+        textarea :body,  "Body text"
+        text     :slug,  "Slug", :class => 'compact'
 
         fieldset(:meta, "Metadata") {
-          field :text, :meta_keywords, "Keywords", :class => 'compact'
-          field :text, :meta_description, "Description", :class => 'compact'
+          text :meta_keywords, "Keywords", :class => 'compact'
+          text :meta_description, "Description", :class => 'compact'
         }
       }
 

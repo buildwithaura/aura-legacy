@@ -71,11 +71,11 @@
     }
 
     // Bring the content in.
+    $area.unscreen();
     $("#nav").htmlInto($data.find("#nav").html(), anim);
     $("#tabs").html($data.find("#tabs").html());
-    $("#area").attr('class', $data.find("#area").attr('class'));
-    $("#area").html($data.find("#area").html())
-    $area.unscreen();
+    $area.attr('class', $data.find("#area").attr('class'));
+    $area.html($data.find("#area").html());
 
     if ($("#area").is('.no-sidebar')) {
       $.sidebar.hide();
@@ -83,6 +83,7 @@
       $.sidebar.show();
     }
 
+    // Unscreen the sidebar.
     var duration = speed * 2;
     if (anim == 'html') { duration = 0; }
     window.setTimeout(function() { $.unscreen(); }, duration);
