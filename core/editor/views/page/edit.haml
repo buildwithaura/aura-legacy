@@ -8,8 +8,8 @@
   != yield_content_of :'base/edit', :nav, options
 
 - content_for :title do
-  %h1
-    Editing page
+  -#%input{:type => 'text', :name => 'title', :value => item.to_s}/
+  %h1 Edit page
 
 - content_for :toolbar do
   != yield_content_of :'base/edit', :toolbar, options

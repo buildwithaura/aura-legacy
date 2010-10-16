@@ -105,11 +105,22 @@ body.no-sidebar #top {
   @include shadow(2px 0 4px $shadow10, inset 0 -1px 0 $hilite30, inset 0 -1px 2px $blue-glow-20);
 
   .title-c { float: left; }
-  h1 {
+  h1, input {
     color: $blue; font-size: 17pt;
     line-height: $title-height - 10px; margin: 0;
     text-shadow: 1px 1px 0 $hilite50; 
   }
+
+  input {
+    width: 500px;
+    @include border-radius(4px);
+    margin: -5px;
+    background: transparent; padding: 5px; border: 0; font-weight: bold; cursor: text;
+    &:focus { outline: 0; }
+  }
+
+  &:hover input,
+  input:focus { background: fade-out($blue-glow-20, 0.08); @include shadow(1px 1px 0 fade-out($blue, 0.7)); }
 }
 
 body.fixed-layout {
