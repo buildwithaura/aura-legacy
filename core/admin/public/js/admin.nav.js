@@ -99,6 +99,10 @@
   $("form").live('submit', function (e) {
     var $this = $(this);
     $area.screen();
+
+    // Those that are 'ext' shouldn't do things in place.
+    if ($this.is('.ext')) { return; }
+
     $.post($this.attr('action'), $this.serialize(), htmlCallback);
     e.preventDefault();
     return false;

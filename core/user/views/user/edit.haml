@@ -29,7 +29,7 @@
 
 - content_for :body do
   .slim.fixed
-    %form{:action => action, :method => 'post' }
+    %form.ext{:action => action, :method => 'post' }
       != partial item.templates_for(:form), options
 
       %input{:type => 'hidden', :name => 'next', :value => R(:admin)}

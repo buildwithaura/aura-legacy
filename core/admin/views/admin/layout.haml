@@ -35,7 +35,7 @@
           %nav#aux
             %h4
               Hello,
-              %a{:href => R(:user, current_user, :edit)}= current_user.email
+              %a{:href => R(:user, :me, :edit)}= current_user.email
             %ul
               %li
                 %a{:href => R(:logout)} Logout
