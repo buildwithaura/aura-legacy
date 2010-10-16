@@ -38,8 +38,8 @@ class Pistol
   # Returns the timestamp of the most recently modified file.
   def last_mtime
     options[:files].map do |file|
-      ::File.stat(file).mtime.to_i rescue 0
-    end.max
+      ::File.stat(file).mtime rescue nil
+    end.compact.max
   end
 end
 
