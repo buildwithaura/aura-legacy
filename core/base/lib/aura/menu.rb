@@ -53,7 +53,7 @@ class Aura
     end
 
     def href
-      @table[:href] || R(:admin, *path.split('.'))
+      @table[:href].try(:call) || @table[:href] || R(:admin, *path.split('.'))
     end
   end
 end

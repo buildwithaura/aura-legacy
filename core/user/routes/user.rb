@@ -36,4 +36,13 @@ class Main
 
     redirect R(:login)
   end
+
+  get '/user/me/edit' do
+    require_login
+    @item = current_user
+
+    show_admin @item.templates_for('edit'),
+      :item   => @item,
+      :action => @item.path(:edit)
+  end
 end
