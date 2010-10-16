@@ -26,6 +26,7 @@ end
 # Bootstrap Aura
 require './core/base/base'
 Aura::Extension.all.each { |ext| ext.load! }
+Aura::Extension.all.each { |ext| ext.init }
 Aura::Models.unpack
 
 Main.run!  if __FILE__ == $0

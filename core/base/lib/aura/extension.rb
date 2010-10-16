@@ -40,6 +40,7 @@ class Aura
       File.exists?(ret) ? ret : nil
     end
 
+    # Loads an extension.
     def load!
       # TODO: Don't load a module that's already loaded
 
@@ -60,6 +61,13 @@ class Aura
         paths += Main.view_paths  if Main.respond_to?(:view_paths)
         Main.set :view_paths, paths
       end
+    end
+
+    # Initializes an extension after it's already loaded.
+    # This is done after all extensions are loaded.
+    def init
+      fname = path("init.rb")
+      load fname  unless fname.nil?
     end
 
     def <=>(other)

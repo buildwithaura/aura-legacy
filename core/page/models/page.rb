@@ -30,10 +30,6 @@ class Aura
 
       def self.content?; true; end
       def self.show_on_sidebar?; true; end
-
-      subtype :portfolio,
-        :name     => "Portfolio page",
-        :template => "id_portfolio"
     end
   end
 end
