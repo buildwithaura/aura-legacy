@@ -16,7 +16,7 @@ module Sequel
           @forms ||= Hash.new
           return @forms[type]  unless block_given?
 
-          @forms[type] = Aura::Editor::Form.new
+          @forms[type] = ::Terra::Form.new
           @forms[type].configure &block
         end
       end
