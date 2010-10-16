@@ -46,7 +46,19 @@
 #   field.input_html          # just <input>
 #   field.label_html          # just <label>
 #
+# No, there's no `form.to_html`. Geez, don't even think about it--
+# just render each of the fields/fieldsets.
+#
 # In practice:
+#
+#   %form{:method => 'post', :action => '/save'}
+#     - form.fieldsets.each do |set|
+#       = set.to_html(@object)
+#
+#     %p.submit
+#       %button{:type => 'submit'} Save
+#
+# More:
 #
 #   = form.fieldsets.first.to_html
 #   = form.fieldsets.first.fields.first.to_html
