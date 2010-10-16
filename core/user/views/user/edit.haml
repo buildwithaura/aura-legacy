@@ -16,5 +16,16 @@
   != yield_content_of :'base/edit', :toolbar, options
 
 - content_for :body do
-  != yield_content_of :'base/edit', :body, options
+  .slim.fixed
+    %form{:action => action, :method => 'post' }
+      != partial item.templates_for(:form), :item => item
 
+      %p.align-center
+        You may also
+        %a{:href => item.path(:delete)} delete your account
+        if you need to.
+
+      %p.align-center
+        %br
+        %button.black{:type => 'submit'}
+          %span Save

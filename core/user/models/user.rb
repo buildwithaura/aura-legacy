@@ -16,8 +16,12 @@ class Aura
       end
 
       form do
-        field :text,     :email, "Email"
-        field :password, :password, "Password"
+        field :text,     :email, "Email", :class => 'title center'
+
+        fieldset(:password, "Password") do
+          field :password, :password, "Password", :class => 'compact'
+          field :password, :password_confirmation, "Confirm", :class => 'compact'
+        end
       end
 
       def self.seed!(type=nil, &blk)

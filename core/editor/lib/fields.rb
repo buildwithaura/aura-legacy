@@ -19,9 +19,14 @@ class Aura
       class Text < Field
       end
 
+      class Password < Field
+        def input_html(val)
+          "<input id='#{h id}' type='password' name='#{h input_name}' value='#{h val}'>"
+        end
+      end
       class Textarea < Field
         def input_html(val)
-          "<textarea type='text' name='#{input_name}'>#{h val}</textarea>"
+          "<textarea id='#{h id}' type='text' name='#{h input_name}'>#{h val}</textarea>"
         end
       end
     end

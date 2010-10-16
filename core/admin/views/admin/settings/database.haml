@@ -12,9 +12,11 @@
 
     %section
       %h3 Load sample data
-      %p.align-center Get started easily with sample data. Note that this will delete your stuff too, so be careful!
-      - if !Aura.site_empty?
-        haha
+      %p.align-center
+        Get started easily with sample data.
+        - if !Aura.site_empty?
+          Warning: this will delete all content in your site!
+
       %form{:method => 'post', :action => R(:admin, :settings, :database, :seed)}
         %p.align-center
           %button.small{:type => 'submit'} Load sample data

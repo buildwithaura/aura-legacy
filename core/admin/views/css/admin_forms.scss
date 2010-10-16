@@ -13,12 +13,23 @@
     text-shadow: 1px 1px 0 $hilite40;
   }
 
+  p.description {
+    color: $grey; text-shadow: 1px 1px 0 $hilite20; padding: 10px 10px;
+  }
+
   p { margin: 10px 0; }
   p:first-child { margin-top: 0; }
   p:last-child { margin-bottom: 0; border-bottom: 0; }
   label { display: block; font-weight: bold; line-height: 24px; color: #777; }
   textarea, input { @include input; @include box-sizing(border-box); width: 100%; }
   textarea { height: 220px; }
+
+  h2.greeting {
+    font-size: 13pt; text-align: center;
+    color: $slate; text-shadow: 1px 1px 0 $hilite20; 
+    margin: 0;
+  }
+
   p.submit {
     @extend .message;
     height: 35px; line-height: 35px; padding: 5px 15px 5px 10px;
@@ -26,6 +37,15 @@
     & { text-align: left; @include clearfix; }
     button { @include button; @include button-black; }
     .right { float: right; }
+  }
+
+  p.center {
+    input, label { text-align: center; }
+  }
+
+  p.title {
+    label { display: none; }
+    input { font-size: 12pt; }
   }
 
   p.compact {
