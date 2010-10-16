@@ -2,7 +2,10 @@ div.split.meta {
   > .right {
     @include gradient($sidebar-hicolor * 1.04, $sidebar-hicolor * 1.00);
     @include border-radius(4px);
-    @include shadow(1px 1px 0 $sidebar-hicolor * 0.95);
+    @include shadow(
+                1px 1px 0 $sidebar-hicolor * 0.95,
+                0 -1px 2px fade-out($blue-glow-40, 0.1),
+                inset 0 0 1px white);
     padding: 0 2px; height: 100%;
   }
 }
