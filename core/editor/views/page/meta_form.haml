@@ -4,7 +4,7 @@
       %dt
         URL:
       %dd
-        = item.path
+        %span.line= item.path
         - unless item.new?
           %br
           %a.ext.button.micro{:href => item.path} Visit
