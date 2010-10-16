@@ -84,12 +84,22 @@ module Sequel::Plugins::AuraModel
       ]
     end
 
+    # "BlogPost" => "blog_post"
+    # Used for URLs.
     def class_name
-      Aura::Utils.underscorize(self.to_s)
+      self.to_s.demodulize.underscore
     end
 
+    # "BlogPost" => "Blog post"
+    # Used for display.
     def title
-      class_name.gsub('_', ' ').capitalize
+      self.class_name.humanize
+    end
+
+    # "BlogPost" => "Blog posts"
+    # Used for display.
+    def title_plural
+      self.title.pluralize
     end
 
     def path(*a)
@@ -103,3 +113,4 @@ module Sequel::Plugins::AuraModel
 end
 
 Sequel::Model.plugin :aura_model
+Sequel.extension :inflector

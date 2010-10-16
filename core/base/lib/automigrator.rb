@@ -21,7 +21,7 @@ module AutoMigrator
       blk = lambda { |*a| }  unless block_given?
 
       Aura::Models.all.each { |m|
-        blk.call :seed, m
+        blk.call :seed, m.title_plural
         m.seed(type, &blk)
       }
     end
@@ -30,7 +30,7 @@ module AutoMigrator
       blk = lambda { |*a| }  unless block_given?
 
       Aura::Models.all.each { |m|
-        blk.call :seed, m
+        blk.call :seed, m.title_plural
         m.seed!(type, &blk)
       }
     end
