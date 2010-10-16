@@ -87,8 +87,11 @@
     if (anim == 'html') { duration = 0; }
     window.setTimeout(function() { $.unscreen(); }, duration);
 
+    // Change the page <title>
     var title = html.match(/<title>(.*?)<\/title>/);
     if (title) { $("title").html(title[1]); }
+
+    focusFirstField();
   }
 
   $.hashListen('!(.*)', function (href) {
@@ -211,4 +214,16 @@
         .animate({ opacity: 1, left: 0 }, speed);
     });
   };
+
+  function focusFirstField() {
+    var field = $("#area").find("input, textarea, select").filter(":visible").get(0);
+    field.focus();
+    if (field.selectionStart != undefined) {
+      var val = field.value.length;
+      field.selectionStart = val;
+      field.selectionEnd   = val;
+    }
+  }
+
+  $(focusFirstField);
 })(jQuery);
