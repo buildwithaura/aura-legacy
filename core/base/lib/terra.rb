@@ -53,10 +53,13 @@
 #
 #   %form{:method => 'post', :action => '/save'}
 #     - form.fieldsets.each do |set|
-#       = set.to_html(@object)
+#       !~ set.to_html(@object)
 #
 #     %p.submit
 #       %button{:type => 'submit'} Save
+#
+#   # HAML tip: use !~ instead of = to have your textareas
+#   # flow correctly by supressing HAML's extra whitespaces.
 #
 # More:
 #
