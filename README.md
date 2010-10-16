@@ -14,18 +14,25 @@ Here's one way to do it on Mac/Linux:
     mv rstacruz-aura-* aura
     cd aura
 
-Second: set it up. Just do this once:
+Now run the one-time setup tool:
 
     rake setup
 
-And lastly: run it!
+Now run it!
 
     ruby init.rb
 
-## Advanced setup
+Point your browser then to `http://localhost:4567` and follow the instructions.
+
+## Other setup notes
+
+* **Rake setup**  
+  You can skip the `rake setup` step; visiting the site for the first time will
+  let you do this through your browser. This is only provided for hosts where
+  you may not be able to run rake tasks on.
 
 * **Ruby version manager** (optional)  
-  If you are using the Ruby version manager, it may be in your interest to do these before `rake setup`.  
+  If you are using the Ruby version manager, it may be in your interest to do these setting up.  
   (Feel free to skip this if you don't understand.)
 
       rvm install 1.9.2  # If you haven't yet
@@ -33,8 +40,9 @@ And lastly: run it!
       rvm gemset import
 
 * **Configuring a database** (optional)  
-  To configure the database, create the file `config/database.rb`. You can use `database.defaults.rb` as
-  a guide; edit it to your needs. Do this before `rake setup`.
+  Aura uses sqlite by default. If you'd want it to connect to another SQL database,
+  create the file `config/database.rb`. You can use `database.defaults.rb` as
+  a guide; edit it as you see fit. Do this before setting up.
 
 ## Deploying to other hosts
 
