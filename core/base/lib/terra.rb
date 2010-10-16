@@ -1,4 +1,4 @@
-# Terra is a HTML form generator.
+# Terra is an HTML form generator.
 #
 # Example:
 #
@@ -31,6 +31,21 @@
 #       = field.to_html
 #
 # Here are some more useful methods:
+#
+#   form.fieldsets                 # Returns an array of fieldsets
+#   set = form.fieldset(:default)  # Returns a fieldset by name
+#
+#   set.fields                # Returns a fieldset's fields
+#   set.to_html               # Returns <fieldset>..</fieldset> HTML
+#   set.name                  # Returns the name of the field
+#   field = set.field(:name)  # Returns a field by name
+#
+#   field.to_html             # <p>..<label>..<input>..</p>
+#   field.to_html(val)        # Like above, but with certain value
+#   field.input_html          # just <input>
+#   field.label_html          # just <label>
+#
+# In practice:
 #
 #   = form.fieldsets.first.to_html
 #   = form.fieldsets.first.fields.first.to_html
