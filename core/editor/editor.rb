@@ -1,5 +1,11 @@
 class Aura
   module Editor
+    PREFIX = File.dirname(__FILE__)
+    autoload :Field,    "#{PREFIX}/lib/field"
+    autoload :Fields,   "#{PREFIX}/lib/fields"
+    autoload :Fieldset, "#{PREFIX}/lib/fieldset"
+    autoload :Form,     "#{PREFIX}/lib/form"
+
     def roots
       models = Aura::Models.all.select { |m| m.try(:editable?) }
 
@@ -10,26 +16,5 @@ class Aura
     end
 
     module_function :roots
-
-    # DSL thing
-    class ModelOptions
-      attr_reader :model
-
-      def initialize(model)
-        @model = model
-        @fields = []
-      end
-
-      def field(type, name, title, options={})
-        @fields << Field.create(type, name, title, options)
-      end
-
-      attr_reader :fields
-    end
-
-    PREFIX = File.dirname(__FILE__)
-
-    autoload :Field,  "#{PREFIX}/lib/field"
-    autoload :Fields, "#{PREFIX}/lib/fields"
   end
 end

@@ -11,6 +11,7 @@ namespace :setup do
     # Try to restart the application if it's already running.
     require 'fileutils'
     FileUtils.touch 'tmp/restart.txt' rescue 0
+    FileUtils.touch 'init.rb' rescue 0
 
     puts ""
     RakeStatus.heading :info, "Done!"

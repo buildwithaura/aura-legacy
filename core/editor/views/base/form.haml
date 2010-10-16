@@ -1,2 +1,12 @@
-- item.class.editor_options.fields.each do |field|
-  !~ field.to_html(item.send(field.name))
+- fieldset = item.class.form.fieldset(:default)
+%fieldset
+  - fieldset.fields.each do |field|
+    !~ field.to_html(item.try(field.name))
+
+- item.class.form.fieldsets.each do |fieldset|
+  - next if fieldset.default?
+  %fieldset
+    %h3.legend= fieldset
+    - fieldset.fields.each do |field|
+      !~ field.to_html(item.try(field.name))
+

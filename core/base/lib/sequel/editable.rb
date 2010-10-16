@@ -12,13 +12,12 @@ module Sequel
           true
         end
 
-        def editor_setup(&block)
-          @editor_options = nil
-          editor_options.instance_eval &block
-        end
+        def form(type=:edit, &block)
+          @forms ||= Hash.new
+          return @forms[type]  unless block_given?
 
-        def editor_options
-          @editor_options ||= Aura::Editor::ModelOptions.new(self)
+          @forms[type] = Aura::Editor::Form.new
+          @forms[type].instance_eval &block
         end
       end
     end

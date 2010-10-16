@@ -15,7 +15,7 @@ class Aura
         email
       end
 
-      editor_setup do
+      form do
         field :text,     :email, "Email"
         field :password, :password, "Password"
       end

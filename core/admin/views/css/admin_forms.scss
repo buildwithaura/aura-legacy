@@ -1,5 +1,9 @@
 /* Forms */
 #content form:not(.bypass) {
+
+  fieldset { margin: 10px 0; border: 0; }
+  h3.legend { @extend h3.bar; }
+
   p { margin: 10px 0; }
   p:first-child { margin-top: 0; }
   p:last-child { margin-bottom: 0; border-bottom: 0; }
