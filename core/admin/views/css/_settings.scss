@@ -94,3 +94,8 @@ $input-height: 38px;
   &:hover { border-color: $blue-glow; }
   &:focus { @include input-focus; }
 }
+
+.animate-opacity {
+  -webkit-transition-property: opacity;
+  -webkit-transition-duration: 0.5s;
+}

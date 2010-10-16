@@ -20,8 +20,12 @@ class Aura
         "#<Field (#{self.class.to_s.split('::').last}): '#{name}'>"
       end
 
+      def id
+        "field_#{name}"
+      end
+
       def label_html
-        "<label>#{title}:</label>"
+        "<label for='#{id}'>#{title}:</label>"
       end
 
       def input_name
@@ -29,7 +33,7 @@ class Aura
       end
 
       def input_html(val)
-        "<input type='text' name='#{input_name}' value='#{h val}' />"
+        "<input id='#{id}' type='text' name='#{input_name}' value='#{h val}' />"
       end
 
       def to_html(val)
