@@ -3,17 +3,16 @@
 
 - fieldset = item.class.form.fieldset(:default)
 %fieldset
-  %h2.greeting Hi! Your username is:
+  %h2.greeting Hi! Your login email is:
 
   - fieldset.fields.each do |field|
     !~ field.to_html(item.try(field.name))
 
-  - fieldset = item.class.form.fieldset(:password)
-  -# %h3.legend= fieldset
   - unless item.new?
     %p.description.align-center
-      If you would like to change the password, enter them twice below.
+      If you would like to change your password, enter a new one below, twice.
       Otherwise, leave these blank to leave your password as it is.
 
+  - fieldset = item.class.form.fieldset(:password)
   - fieldset.fields.each do |field|
     !~ field.to_html(item.try(field.name))
