@@ -5,9 +5,7 @@ module Terra
       fieldset(:default) { }
     end
 
-    def configure(&block)
-      self.instance_eval &block
-    end
+    alias configure instance_eval
 
     def fieldset(id, name=nil, options={}, &block)
       return @fieldsets[id]  unless block_given?
