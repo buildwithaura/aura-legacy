@@ -14,10 +14,14 @@ body {
 
 div.split {
   display: table; width: 100%;
-  .left, .right { display: table-cell; width: 50%; }
-  .left { padding-right: 5px; }
-  .right { padding-left: 5px; }
+  >.left, >.right { display: table-cell; width: 50%; vertical-align: top; }
+  >.left { padding-right: 10px; }
+
+  &.s70 { >.left { width: 70%; } >.right { width: 30%; } }
 }
+
+#content div.split > div > :first-child { &, >* { margin-top: 0px; } }
+#content div.split > div > :last-child { &, >* { margin-bottom: 0px; } }
 
 div.slim { margin: 0 auto; min-width: 500px; width: 70%; }
 div.slim.fixed { margin: 0 auto; width: 500px; }
@@ -200,7 +204,7 @@ body.no-sidebar #top {
 
 /* Errors */
 #content .validation-errors {
-  background: #fee; margin: -10px -10px 10px -10px; padding: 10px;
+  background: #fee; margin: 0 -10px; padding: 10px;
   h3 { margin: 0; padding: 0; }
   ul { @include non-list; }
 }

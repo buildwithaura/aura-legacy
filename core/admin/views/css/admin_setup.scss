@@ -2,6 +2,8 @@ html { background: white; }
 body { background: transparent; overflow: hidden; }
 html, body { height: 100%; }
 
+::selection, ::-moz-selection, ::-webkit-selection { background: $blue; color: white; }
+
 // .js-on is set when there's JavaScript support.
 // Hide the unneeded things when there's JS.
 //

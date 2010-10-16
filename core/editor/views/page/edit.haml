@@ -1,0 +1,60 @@
+- title "Edit: %s" % [ item.to_s ]
+- options = { :item => item }
+
+- content_for :tabs do
+  != yield_content_of :'base/edit', :tabs, options
+
+- content_for :nav do
+  != yield_content_of :'base/edit', :nav, options
+
+- content_for :title do
+  %h1
+    Editing
+    = item
+
+- content_for :toolbar do
+  - if item.try(:parentable?)
+    %li
+      %a{:href => item.path(:new)} Create new
+  %li
+    %a.black.js{:href => '#submit'} Save
+
+- content_for :body do
+  - if item.errors.any?
+    .flash.validation-errors
+      %h3 Can't continue:
+      %ul
+        - item.errors.each do |field, errs|
+          - errs.each do |err|
+            %li
+              = field
+              = err
+
+  %form{:action => action, :method => 'post' }
+    .split.s70.meta
+      .left
+        != partial item.templates_for(:form), :item => item
+
+        %p.submit
+          %span.right
+            %a{:href => item.path(:delete)} Delete this
+            - if item.try(:renderable?)
+              != "&nbsp; | &nbsp;"
+              %a{:href => item.path, :target => 'preview'} View this
+
+          %button{:type => 'submit'}
+            %span Save
+
+      .right
+        %section
+          %dl
+            %dt
+              URL:
+            %dd
+              = item.path
+          %dl
+            %dt
+              Template:
+            %dd
+              %select
+                %option Default

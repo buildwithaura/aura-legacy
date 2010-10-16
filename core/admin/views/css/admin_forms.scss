@@ -21,9 +21,12 @@ form:not(.bypass) {
   p:first-child { margin-top: 0; }
   p:last-child { margin-bottom: 0; border-bottom: 0; }
   label { display: block; font-weight: bold; line-height: 24px; color: #777; }
+
   textarea, input { @include input; @include box-sizing(border-box); width: 100%; }
   textarea { height: 220px; }
+  p.long textarea { height: 350px; }
 
+  /* "Hola! You are:" */
   h2.greeting {
     font-size: 13pt; text-align: center;
     color: $slate; text-shadow: 1px 1px 0 $hilite20; 
@@ -43,11 +46,13 @@ form:not(.bypass) {
     input, label { text-align: center; }
   }
 
+  /* Title fields */
   p.title {
     label { display: none; }
-    input { font-size: 14pt; height: 45px; font-weight: bold; }
+    input { font-size: 14pt; height: 45px; }
   }
 
+  /* Compact fields: like slug, password, etc */
   p.compact {
     @include input;
     @include clearfix;
@@ -74,7 +79,10 @@ form:not(.bypass) {
 
     &.focus {
       @include input-focus; background: #f6f6f6;
-      label { text-shadow: 1px 1px 0 $hilite50; background: fade-out($blue, 0.9); color: $blue * 0.7; }
+      label {
+        text-shadow: 1px 1px 0 $hilite50;
+        background: fade-out($blue, 0.9); color: $blue * 0.7;
+      }
     }
   }
 }
