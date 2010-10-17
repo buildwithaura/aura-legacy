@@ -1,0 +1,10 @@
+@import 'settings';
+@import 'admin_reset';
+
+@include ae-reset;
+
+html { padding: 10px; }
+
+/* Get rid of the top padding */
+body :first-child,
+body :first-child :first-child { margin-top: 0; }

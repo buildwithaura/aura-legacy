@@ -9,16 +9,19 @@
 
   var speed = 320;
 
-  $("#nav nav.back a").live('mousedown', function (e) {
-    $(this).closest('nav.back').addClass('mousedown');
-  });
+  // Back button
+  $("#nav nav.back a")
+    .live('mousedown', function (e) {
+      $(this).closest('nav.back').addClass('mousedown');
+    })
 
-  $("#nav nav.back a").live('mouseup', function (e) {
-    window.setTimeout(function () {
-      $(this).closest('nav.back').removeClass('mousedown');
-    }, 100);
-  });
+    .live('mouseup', function (e) {
+      window.setTimeout(function () {
+        $(this).closest('nav.back').removeClass('mousedown');
+      }, 100);
+    });
 
+  // Redudndant submit
   $("a[href=#submit]").live('click', function (e) {
     $("form").submit();
     return false;
@@ -30,14 +33,19 @@
     $(this).addClass('active');
   });
 
+  // The click!
   $("a").live('click', function (e) {
+    var href = $(this).attr('href');
+
+    // Don't do this on anything that's supposed to do it's thang.
     if ($(this).is('.ext')) { return; }
     if ($(this).attr('rel') == 'ext') { return; }
     if ($(this).attr('target')) { return; }
+    if (href.match(/^javascript:/)) { return; }
+    if (href.match(/^#/)) { return; }
 
     e.preventDefault();
 
-    var href = $(this).attr('href');
     link = $(this);
     if (window.location.hash == '#!'+href) { return; }
 

@@ -86,3 +86,32 @@ form:not(.bypass) {
     }
   }
 }
+
+//
+// Wysiwyg
+//
+
+div.wysiwyg {
+  @include input-base;
+  background: white;
+  padding: 0;
+  overflow: hidden;
+  width: 100% !important;
+
+  ul.panel {
+    height: 20px; overflow: hidden;
+    background: white;
+    padding: 5px 4px 4px 4px;
+    border-bottom: solid 1px #eee;
+    @include gradient(#f7f7f7, #fdfdfd);
+
+    li { background: transparent; padding: 0 1px; }
+    li a { padding: 0; opacity: 0.9; border: solid 1px transparent; }
+    li a:hover { opacity: 1; }
+    li a:focus { outline: 0; }
+  }
+
+  iframe { margin: 0; width: 100% !important; }
+
+  &:focus, &.focus { @include input-focus; }
+}

@@ -42,8 +42,9 @@ module Terra
     attr_reader :id
 
     # Shortcuts for text, textarea, password..
-    Fields.all.each do |type|
-      define_method(type) { |*a| field type, *a }
+    def method_missing(meth, *args, &blk)
+      super  unless Fields.all.include?(meth)
+      field meth, *args
     end
   end
 end

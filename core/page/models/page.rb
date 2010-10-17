@@ -11,7 +11,7 @@ class Aura
 
       form {
         text     :title, "Title", :class => 'title'
-        textarea :body,  "Body text", :class => 'long'
+        html     :body,  "Body text", :class => 'long'
         text     :slug,  "Slug", :class => 'compact'
 
         fieldset(:meta, "Metadata") {
