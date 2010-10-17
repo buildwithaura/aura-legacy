@@ -29,12 +29,6 @@
         != partial item.templates_for(:form), options
 
         %p.submit
-          %span.right
-            %a{:href => item.path(:delete)} Delete this
-            - if item.try(:renderable?)
-              != "&nbsp; | &nbsp;"
-              %a{:href => item.path, :target => 'preview'} View this
-
           %button{:type => 'submit'}
             %span Save
 
