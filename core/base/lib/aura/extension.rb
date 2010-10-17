@@ -70,6 +70,17 @@ class Aura
       load fname  unless fname.nil?
     end
 
+    def info
+      return @info  unless @info.nil?
+
+      fname = path('info.yml')
+      return nil  if fname.nil?
+
+      require 'yaml'
+      require 'ostruct'
+      @info ||= OpenStruct.new(YAML::load_file(fname).merge({:path => @path}))
+    end
+
     def <=>(other)
       self.sort_position <=> other.sort_position
     end
