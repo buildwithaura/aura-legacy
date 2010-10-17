@@ -7,7 +7,7 @@ class Aura
       plugin :aura_hierarchy      # Can have children
       plugin :aura_subtyped       # Has subtypes
 
-      plugin :serialization, :json, :custom
+      plugin :serialization, :yaml, :custom
 
       form {
         text     :title, "Page title", :class => 'title main-title'
