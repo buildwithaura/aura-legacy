@@ -6,7 +6,7 @@
   // Focus
   $("textarea, input, select")
     .live('focus', function () {
-      $(this).closest('form').find('.focus').removeClass('focus');
+      $('body').find('.focus').removeClass('focus');
       $(this).closest('form p').addClass('focus');
     })
     .live('blur', function () {
