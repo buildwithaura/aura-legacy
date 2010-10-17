@@ -32,7 +32,7 @@ class Aura
         end
       end
 
-      raise ExtensionNotFound  unless File.directory?(@path)
+      raise ExtensionNotFound  unless File.directory?(@path.to_s)
     end
 
     # Returns the path of the extension.
