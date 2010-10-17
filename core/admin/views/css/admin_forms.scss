@@ -91,6 +91,11 @@ form:not(.bypass) {
 // Wysiwyg
 //
 
+p.html textarea {
+  // Pseudo-hide it so that the 'flash of unstyled textareas' dont look so bad.
+  // font-size: 0.1px; color: #eee;
+}
+
 div.wysiwyg {
   @include input-base;
   background: white;
@@ -106,7 +111,7 @@ div.wysiwyg {
     @include gradient(#f7f7f7, #fdfdfd);
 
     li { background: transparent; padding: 0 1px; }
-    li a { padding: 0; opacity: 0.9; border: solid 1px transparent; }
+    li a { padding: 0; opacity: 0.6; border: solid 1px transparent; }
     li a:hover { opacity: 1; }
     li a:focus { outline: 0; }
   }
