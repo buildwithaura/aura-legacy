@@ -1,3 +1,6 @@
+require 'yaml'
+require 'ostruct'
+
 class Aura
   ExtensionNotFound = Class.new(StandardError)
 
@@ -7,11 +10,9 @@ class Aura
     # Returns an extension with the given ext name/path.
     # Returns nil if it's not found.
     def self.[](name)
-      begin
-        self.new(name)
-      rescue ExtensionNotFound
-        nil
-      end
+      self.new(name)
+    rescue ExtensionNotFound
+      nil
     end
 
     # Returns an extension with the given ext name/path.
@@ -21,6 +22,7 @@ class Aura
 
       if File.directory?(name)
         @path, @name = name, File.basename(name)
+
       elsif Main.respond_to?(:extensions_path)
         @name = name
         [Main.extensions_path].flatten.each do |dir|
@@ -33,6 +35,15 @@ class Aura
       raise ExtensionNotFound  unless File.directory?(@path)
     end
 
+    # Returns the path of the extension.
+    # If arguments are given, they are joined into the extension's path.
+    # nil will be returned if the path does not exist.
+    #
+    # Example:
+    #
+    #   Aura::Extension['base'].path             #=> ~/aura/core/base
+    #   Aura::Extension['base'].path('init.rb')  #=> ~/aura/core/base/init.rb
+    #
     def path(*a)
       return @path  if a.empty?
       ret = File.join(@path, *(a.map { |arg| arg.to_s }))
@@ -63,6 +74,11 @@ class Aura
       end
     end
 
+    # Determines if the given extension is currently active in the config.
+    def active?
+      self.class.active_names.include?(@name)
+    end
+
     # Initializes an extension after it's already loaded.
     # This is done after all extensions are loaded.
     def init
@@ -70,29 +86,40 @@ class Aura
       load fname  unless fname.nil?
     end
 
+    # Returns an ostruct of information on the extension.
+    # Example:
+    #
+    #   Aura::Extension['default_theme'].info
+    #   Aura::Extension['default_theme'].info.author
     def info
       return @info  unless @info.nil?
 
       fname = path('info.yml')
       return nil  if fname.nil?
 
-      require 'yaml'
-      require 'ostruct'
       @info ||= OpenStruct.new(YAML::load_file(fname).merge({:path => @path}))
-    end
-
-    def <=>(other)
-      self.sort_position <=> other.sort_position
-    end
-
-    def sort_position
-      to_s
     end
 
     alias to_s name
 
+    # Returns all the extensions that are loaded in the config.
+    def self.active
+      return @actives  unless @actives.nil?
+      @actives ||= self.active_names.map { |ext| self[ext] }
+    end
+
+    # Returns all names of the extensions that are loaded in the config.
+    def self.active_names
+      exts  = Array.new
+      exts += Main.core_extensions        if Main.respond_to?(:core_extensions)
+      exts += Main.additional_extensions  if Main.respond_to?(:additional_extensions)
+      exts
+    end
+
+    # Returns all extensions (not just the ones loaded).
     def self.all
-      Dir[Main.root_path('{core,extensions}/{base,*}')].uniq.map { |path| self.new(path) }
+      return @all  unless @all.nil?
+      @all ||= Dir[Main.root_path('{core,extensions}/{base,*}')].uniq.map { |path| self.new(path) }
     end
   end
 end
