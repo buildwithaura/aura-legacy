@@ -88,11 +88,12 @@
     var $p     = $(this);
     var $input = $p.find('input');
     var $title = $("#title .title-c");
+    var $label = $p.find('label');
     var $h1    = $title.find('h1');
 
     var $newInput = $("<input type='text'>");
     $newInput.attr('value', $input.val());
-    $newInput.attr('placeholder', $h1.text().replace(/^\s*|\s*$/g,'').replace(/\s+/g,' '));
+    $newInput.attr('placeholder', $label.text().replace(/^\s*|:?\s*$/g,'').replace(/\s+/g,' '));
 
     $h1.remove();
     $p.hide();
