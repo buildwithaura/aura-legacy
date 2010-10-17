@@ -10,7 +10,7 @@ class Aura
       plugin :serialization, :json, :custom
 
       form {
-        text     :title, "Title", :class => 'title main-title'
+        text     :title, "Page title", :class => 'title main-title'
         html     :body,  "Body text", :class => 'long no-label'
         text     :slug,  "Slug", :class => 'compact'
 
