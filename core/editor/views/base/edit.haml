@@ -37,9 +37,7 @@
       != yield_content_of 'admin/dashboard', :nav
 
 - content_for :title do
-  %h1
-    Editing
-    = item
+  %h1= item
 
 - content_for :toolbar do
   - if item.try(:parentable?)

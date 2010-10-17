@@ -42,6 +42,13 @@ form:not(.bypass) {
     .right { float: right; }
   }
 
+  /* Overrides! :) */
+
+  /* No label */
+  p.no-label {
+    label { display: none; }
+  }
+
   p.center {
     input, label { text-align: center; }
   }
@@ -146,3 +153,5 @@ p.focus div.wysiwyg {
   ul.panel li.separator { opacity: 0.5; }
   &, li, a { @extend .animate-opacity; }
 }
+
+body.js-on #area.editable-title p.main-title { display: none; }

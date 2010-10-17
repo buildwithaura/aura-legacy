@@ -10,8 +10,8 @@ class Aura
       plugin :serialization, :json, :custom
 
       form {
-        text     :title, "Title", :class => 'title'
-        html     :body,  "Body text", :class => 'long'
+        text     :title, "Title", :class => 'title main-title'
+        html     :body,  "Body text", :class => 'long no-label'
         text     :slug,  "Slug", :class => 'compact'
 
         fieldset(:meta, "Metadata") {

@@ -77,4 +77,32 @@
       }
     });
   };
+
+  // How to:
+  // - area_class 'editable-title'
+  // - in the form, set the class to 'main-title' for the main title
+  //
+  // Set your form to have a class 'main-title' to have this cool thing here
+  // 
+  $("#area.editable-title p.main-title").livequery(function () {
+    var $p     = $(this);
+    var $input = $p.find('input');
+    var $title = $("#title .title-c");
+    var $h1    = $title.find('h1');
+
+    var $newInput = $("<input type='text'>");
+    $newInput.attr('value', $input.val());
+    $newInput.attr('placeholder', $h1.text().replace(/^\s*|\s*$/g,'').replace(/\s+/g,' '));
+
+    $h1.remove();
+    $p.hide();
+
+    $title.append($newInput);
+
+    function onChange() {
+      $input.val($newInput.val());
+    };
+
+    $newInput.bind('keypress blur change', onChange);
+  });
 })(jQuery);

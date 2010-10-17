@@ -1,3 +1,4 @@
+- area_class 'editable-title'
 - title "Edit: %s" % [ item.to_s ]
 - options = { :item => item }
 
@@ -8,8 +9,7 @@
   != yield_content_of :'base/edit', :nav, options
 
 - content_for :title do
-  -#%input{:type => 'text', :name => 'title', :value => item.to_s}/
-  %h1 Edit page
+  != yield_content_of :'base/edit', :title, options
 
 - content_for :toolbar do
   != yield_content_of :'base/edit', :toolbar, options
