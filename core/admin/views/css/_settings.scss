@@ -80,19 +80,29 @@ $input-height: 38px;
 
 @mixin input-focus {
   outline: 0;
-  @include shadow(0 0 4px $blue-glow-40, inset 0 0 12px $blue-glow-40, 0 0 1px $blue-glow-70);
+  @include shadow(0 0 4px $blue-glow-40,
+                  inset 0 0 12px $blue-glow-40,
+                  0 0 1px $blue-glow-70);
   border-color: $blue-glow * 0.6;
+  background: white;
+}
+
+@mixin input-hover {
+  border-color: $blue-glow * 1.1;
+  @include shadow(inset 0 0 1px $hilite50,
+                  0 0 3px $blue-glow-20);
 }
 
 @mixin input {
   @include border-radius(2px);
-  @include shadow(inset 2px 2px 0 $shadow05, inset 0 1px 2px $shadow05, 1px 1px 0 $hilite30);
+  @include shadow(inset 0 0 1px $hilite50);
   @include box-sizing(border-box);
+  background: #f5f5f5;
 
-  width: 488px; padding: 8px 8px; border: solid 1px #ccc;
+  width: 488px; padding: 8px 8px; border: solid 1px #e2e2e2;
   height: $input-height;
 
-  &:hover { border-color: $blue-glow; }
+  &:hover { @include input-hover; }
   &:focus { @include input-focus; }
 }
 

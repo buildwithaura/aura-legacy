@@ -47,7 +47,7 @@ module Terra
         selected = " selected='selected'"  if truthy
 
         inputs = [ "<input type='hidden' name='#{h input_name}' value='0'>" ]
-        inputs+= [ "<input id='#{h id}' type='password' name='#{h input_name}' value='2'#{selected}>" ]
+        inputs+= [ "<input id='#{h id}' type='password' name='#{h input_name}' value='1'#{selected}>" ]
 
         inputs.join("\n")
       end
