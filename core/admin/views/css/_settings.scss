@@ -69,6 +69,7 @@ $medium: 9pt;
   @include gradient(#555, #333);
   @include shadow(0 0 4px $blue, inset 0 0 4px $blue);
   color: white; text-shadow: 1px 1px 0 $shadow20; 
+  font-weight: bold; text-decoration: none;
 
   :hover {
     @include gradient(#666, #333);

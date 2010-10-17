@@ -96,8 +96,8 @@ module Sinatra::MultiView
       @layout
     end
 
-    def partial(templates, locals={})
-      show(templates, {:layout => false}, locals)
+    def partial(templates, locals={}, options={})
+      show(templates, {:layout => false}.merge(options), locals)
     end
 
     def css(fname)
