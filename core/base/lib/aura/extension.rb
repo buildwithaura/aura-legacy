@@ -105,7 +105,7 @@ class Aura
     # Returns all the extensions that are loaded in the config.
     def self.active
       return @actives  unless @actives.nil?
-      @actives ||= self.active_names.map { |ext| self[ext] }
+      @actives ||= self.active_names.map { |ext| self[ext] }.compact
     end
 
     # Returns all names of the extensions that are loaded in the config.
@@ -119,7 +119,7 @@ class Aura
     # Returns all extensions (not just the ones loaded).
     def self.all
       return @all  unless @all.nil?
-      @all ||= Dir[Main.root_path('{core,extensions}/{base,*}')].uniq.map { |path| self.new(path) }
+      @all ||= Dir[Main.root_path('{core,extensions}/{base,*}')].uniq.map { |path| self.new(path) }.compact
     end
   end
 end
