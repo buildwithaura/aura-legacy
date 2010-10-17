@@ -4,6 +4,7 @@
 @include ae-reset;
 
 html { padding: 10px; }
+html, body { background: transparent; }
 
 /* Get rid of the top padding */
 body :first-child,

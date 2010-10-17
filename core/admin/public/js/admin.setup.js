@@ -6,6 +6,7 @@
   // Focus
   $("textarea, input, select")
     .live('focus', function () {
+      $(this).closest('form').find('.focus').removeClass('focus');
       $(this).closest('form p').addClass('focus');
     })
     .live('blur', function () {
@@ -17,6 +18,24 @@
 
   // Wysiwyg
   $("textarea.html, p.html textarea").livequery(function () {
+    var $textarea = $(this);
+    $(function(){ $textarea.auraWysiwyg(); });
+  });
+
+  $("div.wysiwyg iframe").livequery(function () {
+    var $p = $(this).closest('p');
+    var $form = $(this).closest('form');
+
+    this.contentWindow.onfocus = function () {
+      $form.find('.focus').removeClass('focus');
+      $p.addClass('focus');
+    };
+    this.contentWindow.onblur = function () {
+      //$p.removeClass('focus');
+    };
+  });
+
+  $.fn.auraWysiwyg = function () {
     $(this).wysiwyg({
       css: '/css/admin_wysiwyg_field.css',
       controls: {
@@ -33,11 +52,19 @@
         html: {
           visible: true,
           exec: function() {
+            // Put the original inside.
+            if (!$(this.original).closest('div.wysiwyg').length) {
+              var $div = $(this.editor).closest('div.wysiwyg');
+              $div.append($(this.original));
+            }
+
             if (this.viewHTML) {
               this.setContent($(this.original).val());
               $(this.original).hide();
               $(this.editor).show();
+              this.focus();
             }
+
             else {
               this.saveContent();
               $(this.editor).hide();
@@ -49,8 +76,5 @@
         }
       }
     });
-  });
-
-  $("div.wysiwyg iframe").live('focus', function () {
-  });
+  };
 })(jQuery);
