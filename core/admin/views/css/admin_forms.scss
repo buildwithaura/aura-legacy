@@ -65,7 +65,7 @@ form:not(.bypass) {
 
     height: auto;
     min-height: $input-height + 2px;
-    background: $hilite10;
+    background: rgba(0, 0, 0, 0.02);
     padding: 0; width: 100%;
 
     label {
