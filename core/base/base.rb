@@ -10,10 +10,9 @@ class Main
   register Sinatra::AuraPublic
   register Sinatra::MultiView
   helpers  Sinatra::ContentFor
-
   register AutoMigrator
 
-  set :app_files, Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
+  set :app_files,       Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
   set :extensions_path, [root_path('core'), root_path('extensions')]
 
   use Pistol, :files => app_files + [root_path('tmp', 'restart.txt')]  unless production?

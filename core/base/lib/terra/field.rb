@@ -30,12 +30,12 @@ module Terra
       "editor[#{name}]"
     end
 
-    def input_html(val)
+    def input_html(val='')
       "<input id='#{id}' type='text' name='#{input_name}' value='#{h val}' />"
     end
 
-    def to_html(val)
-      html_wrap [ label_html, input_html(val) ].join('')
+    def to_html(val='')
+      html_wrap [ label_html, input_html(val) ].join("\n")
     end
 
     def html_wrap(s)
