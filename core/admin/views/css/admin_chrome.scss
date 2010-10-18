@@ -14,8 +14,8 @@ body {
 
 #top {
   height: $top-height; line-height: $top-height; overflow: hidden; 
-  background: #333; color: #ddd; padding: 0 10px;
-  @include gradient(#444, #333);
+  background: $top-color; color: #ddd; padding: 0 10px;
+  @include gradient($top-hicolor, $top-color);
 
   h3 {
     position: absolute; top: 7px; left: 5px;
