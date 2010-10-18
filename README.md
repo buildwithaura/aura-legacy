@@ -14,11 +14,9 @@ Here's one way to do it on Mac/Linux:
     mv rstacruz-aura-* aura
     cd aura
 
-Now run the one-time setup tool:
-
-    rake setup
-
 Now run it!
+
+    sudo gem install sqlite3-ruby
 
     ruby init.rb
 
