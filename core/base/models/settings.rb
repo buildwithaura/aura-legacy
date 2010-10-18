@@ -1,11 +1,22 @@
 class Aura
-  module Models
-    class Setting < Model
-      plugin :serialization, :yaml, :value
+module Models
+class Setting < Model
+  set_schema do
+    primary_key :id
 
-      def self.seed(type=nil, &blk)
-        Aura.default :'site.name', "My Site"
-      end
-    end
+    String :key
+    String :value, :text => true
+    index :key
   end
+
+  plugin :serialization, :yaml, :value
+
+  def self.seed(type=nil, &blk)
+    super
+    Aura.default :'site.name', "My Site"
+  end
+
+  seed  unless table_exists?
+end
+end
 end

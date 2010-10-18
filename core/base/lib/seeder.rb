@@ -1,4 +1,4 @@
-module AutoMigrator
+module Seeder
   def self.registered(app)
     app.extend ClassMethods
   end
@@ -33,25 +33,6 @@ module AutoMigrator
         blk.call :seed, m.title_plural
         m.seed!(type, &blk)
       }
-    end
-
-    def auto_migrate!(&blk)
-      blk = lambda { |*a| }  unless block_given?
-
-      Sequel.extension :migration
-
-      Aura::Extension.all.each do |ext|
-        migrations_path = ext.path(:migrations)
-        next  if migrations_path.nil?
-
-        blk.call(:migrate, ext)
-
-        Sequel::Migrator.run(self.db, migrations_path,
-                             :table => :schema_info,
-                             :column => :"#{ext}_version")
-      end
-
-      true
     end
   end
 end

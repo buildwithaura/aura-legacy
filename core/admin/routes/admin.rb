@@ -27,7 +27,6 @@ class Main
     require_login
 
     Main.flush!
-    Main.auto_migrate!
     Main.seed!
 
     flash_message "Everything has been cleared. Welcome to your new fresh site!"

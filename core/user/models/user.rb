@@ -1,46 +1,57 @@
 class Aura
-  module Models
-    class User < Model
-      plugin :aura_editable
+module Models
+class User < Model
+  set_schema do
+    primary_key :id
+    foreign_key :parent_id, :pages
 
-      plugin :validation_helpers
+    String :email
+    String :slug
+    String :crypted_password
+    Time :last_login
+  end
 
-      include Sinatra::Security::User
+  plugin :aura_editable
 
-      def slugify(str=email)
-        super str
-      end
+  include Sinatra::Security::User
 
-      def to_s
-        email
-      end
+  def slugify(str=email)
+    super str
+  end
 
-      form do
-        field :text,     :email, "Email", :class => 'title center'
+  def to_s
+    email
+  end
 
-        fieldset(:password, "Password") do
-          field :password, :password, "Password", :class => 'compact'
-          field :password, :password_confirmation, "Confirm", :class => 'compact'
-        end
-      end
+  form do
+    field :text, :email, "Email", :class => 'title center'
 
-      def self.seed!(type=nil, &blk)
-        # Don't clear users!
-        seed type, &blk
-      end
-
-      def self.seed(type=nil, &blk)
-        return  if User.any?
-
-        email    = Main.default_user
-        password = Main.default_password
-
-        p1 = self.create :email => email,
-                         :password => password,
-                         :password_confirmation => password
-
-        blk.call :info, "You may login with '#{email}' and password '#{password}'."  if block_given?
-      end
+    fieldset(:password, "Password") do
+      field :password, :password, "Password", :class => 'compact'
+      field :password, :password_confirmation, "Confirm", :class => 'compact'
     end
   end
+
+  def self.seed!(type=nil, &blk)
+    # Don't clear users!
+    seed type, &blk
+  end
+
+  def self.seed(type=nil, &blk)
+    super
+    return  if User.any?
+
+    email    = Main.default_user
+    password = Main.default_password
+
+    p1 = self.create :email => email,
+                     :password => password,
+                     :password_confirmation => password
+
+    blk.call :info, "You may login with '#{email}' and password '#{password}'."  if block_given?
+  end
+
+  seed  unless table_exists?
+end
+end
 end

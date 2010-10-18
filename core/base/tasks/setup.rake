@@ -1,13 +1,9 @@
 require File.expand_path('common.rb', File.dirname(__FILE__))
 
 namespace :setup do
-  task :setup => [ :install_gems ] do
-    # These have to be ran as external processes. db:init, for example,
-    # will not work unless the DB has been migrated properly.
-    system "rake -s setup:install_gems"
-    syst   "rake -s db:migrate"
-    syst   "rake -s db:init"
-
+  task :setup => [ :install_gems, :restart ]
+  
+  task :restart do
     # Try to restart the application if it's already running.
     require 'fileutils'
     FileUtils.touch 'tmp/restart.txt' rescue 0

@@ -10,7 +10,7 @@ class Main
   register Sinatra::AuraPublic
   register Sinatra::MultiView
   helpers  Sinatra::ContentFor
-  register AutoMigrator
+  register Seeder
 
   set :app_files,       Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
   set :extensions_path, [root_path('core'), root_path('extensions')]
@@ -30,5 +30,6 @@ end
 
 # Sequel!
 Sequel::Model.plugin :aura_model
-#Sequel::Model.plugin :schema
+Sequel::Model.plugin :schema
+Sequel::Model.plugin :validation_helpers
 Sequel.extension :inflector
