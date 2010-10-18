@@ -3,6 +3,7 @@ class Main
 
   # The user is redirected here on first load.
   get '/admin/welcome' do
+    require_login
     show_admin Aura::Models::User.templates_for('edit'),
       :item   => current_user,
       :action => current_user.path(:edit),
