@@ -108,9 +108,20 @@
     focusFirstField();
   }
 
+  var enableBackToStart = false;
+
+  // Went back to the start
+  $.hashListen('', function () {
+    // We need to catch this because, otherwise, the first page load
+    // will try to (re)load the start page.
+    if (!enableBackToStart) { return; }
+    $area.screen(); $body.screen();
+    $.get(window.location, htmlCallback);
+  });
+
   $.hashListen('!(.*)', function (href) {
-    $area.screen();
-    $body.screen();
+    enableBackToStart = true;
+    $area.screen(); $body.screen();
     $.get(href, htmlCallback);
   });
 

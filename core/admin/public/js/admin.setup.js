@@ -14,7 +14,7 @@
     });
 
   // Preload of sorts
-  $(function () { $("body").show(); });
+  $(function () { $("body").show().addClass("loaded"); });
 
   // Wysiwyg
   $("textarea.html, p.html textarea").livequery(function () {
