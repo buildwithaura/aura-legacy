@@ -15,8 +15,6 @@ class Setting < Model
     super
     Aura.default :'site.name', "My Site"
   end
-
-  seed  unless table_exists?
 end
 end
 end

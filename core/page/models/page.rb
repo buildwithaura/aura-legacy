@@ -48,8 +48,6 @@ class Aura
 
       def self.content?; true; end
       def self.show_on_sidebar?; true; end
-
-      seed  unless table_exists?
     end
   end
 end
