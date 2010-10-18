@@ -27,16 +27,16 @@ class Aura
 
       plugin :serialization, :yaml, :custom
 
-      form {
-        text     :title, "Page title", :class => 'title main-title'
-        html     :body,  "Body text", :class => 'long no-label'
-        text     :slug,  "Slug", :class => 'compact'
+      form do
+        text :title, "Page title", :class => 'title main-title'
+        html :body,  "Body text", :class => 'long no-label'
+        text :slug,  "Slug", :class => 'compact'
 
-        fieldset(:meta, "Metadata") {
-          text :meta_keywords, "Keywords", :class => 'compact'
-          text :meta_description, "Description", :class => 'compact'
-        }
-      }
+        fieldset(:meta, "Metadata") do
+          text :meta_keywords, "Keywords", :class => 'compact-top'
+          text :meta_description, "Description", :class => 'compact-bottom'
+        end
+      end
 
       def validate
         super

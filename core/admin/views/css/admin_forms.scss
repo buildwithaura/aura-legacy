@@ -91,6 +91,35 @@ form:not(.bypass) {
       }
     }
   }
+
+  p.compact-top {
+    @extend p.compact;
+    margin-bottom: 0;
+    &, input {
+      @include border-bottom-radius(0);
+      @include border-top-radius(4px);
+    }
+  }
+
+  p.compact-bottom {
+    @extend p.compact;
+    margin-top: 0;
+    &, input {
+      border-top: 0;
+      @include border-top-radius(0);
+      @include border-bottom-radius(4px);
+    }
+  }
+
+  p.compact-middle {
+    @extend p.compact;
+    margin-top: 0; margin-bottom: 0;
+    &, input {
+      border-top: 0;
+      @include border-top-radius(0);
+      @include border-bottom-radius(0);
+    }
+  }
 }
 
 //
