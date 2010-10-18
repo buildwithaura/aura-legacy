@@ -14,6 +14,9 @@ $grey: #666;
 $slate: saturate(#e0e2e6 * 0.5, 20%);
 $slate-blue: #e0e2e6;
 
+// For dark backgrounds
+$charcoal: desaturate($slate, 17%);
+
 $sidebar-hicolor: #d9d9dd;
 $sidebar-color:   #cacbd0;
 

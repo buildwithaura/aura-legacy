@@ -1,11 +1,35 @@
-body { background: #aaa; }
+@import "compass/css3";
+@import "admin/views/css/settings";
+
+body { background: $charcoal; color: #aab; }
 form { width: 300px; margin: 0 auto; background: white; padding: 10px; }
 
-form { text-align: center; 
-  label { float: left; display: block; padding-left: 10px; margin-bottom: 5px; font-weight: bold;  }
-  input { width: 270px; padding: 5px; font-size: 12pt; }
+form {
+  text-align: center; 
+  padding: 10px 20px;
+  text-shadow: 1px 1px 0 $hilite30;
+  @include gradient(#fff, #f0f0f0);
+  @include border-radius(4px);
+  @include shadow(0 0 5px $shadow10,
+                  1px 1px 0 $shadow10,
+                  inset -1px -1px 0 $hilite50);
+
+  label {
+    display: block;
+    margin-bottom: 5px; font-weight: bold;
+    text-align: left; color: $slate;
+  }
+
+  input {
+    @include box-sizing(border-box);
+    @include input-base;
+    padding: 10px;
+    font-size: 12pt;
+    @include input-focus;
+    width: 100%;
+  }
   p.submit { padding-top: 10px; }
-  button { font-size: 12pt; }
+  button { @include button; @include button-black; font-weight: bold; }
 }
 
 form .flash {
