@@ -111,6 +111,3 @@ module Sequel::Plugins::AuraModel
 
   end
 end
-
-Sequel::Model.plugin :aura_model
-Sequel.extension :inflector

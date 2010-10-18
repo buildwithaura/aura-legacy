@@ -27,3 +27,8 @@ class Main
 
   set :db, Sequel.connect(sequel)
 end
+
+# Sequel!
+Sequel::Model.plugin :aura_model
+#Sequel::Model.plugin :schema
+Sequel.extension :inflector
