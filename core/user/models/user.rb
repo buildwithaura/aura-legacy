@@ -24,7 +24,7 @@ class User < Model
   end
 
   form do
-    field :text, :email, "Email", :class => 'title center assert required'
+    field :text, :email, "Email", :class => 'title no-label center assert required'
 
     fieldset(:password, "Password") do
       field :password, :password, "Password", :class => 'compact assert matches-next'
