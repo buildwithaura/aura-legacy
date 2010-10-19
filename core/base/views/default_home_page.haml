@@ -8,8 +8,9 @@
     Your site is has no home page yet.
     Let's fix that!
     %br
-    Log in now to get started.
+    Let's get started.
 
   %p.action
-    %a.button{:href => R(:login)}!= "Log in &raquo;"
+    - message = logged_in? ? "Go to admin" : "Login"
+    %a.button{:href => R(:login)}!= "#{message} &nbsp; &rsaquo;"
   
