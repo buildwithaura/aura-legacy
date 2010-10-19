@@ -31,7 +31,7 @@ class Main
         "<!--[if (gt IE 9)|!(IE)]><!--> <html#{attrs}> <!--<![endif]-->",
         capture_haml(&blk),
         "</html>"
-      ].join('')
+      ].join("\n")
     end
   end
 end
