@@ -7,6 +7,7 @@
   };
 
   $('form').live('submit', function (e) {
+    $(this).find('.assert').trigger('change');
     if ($(this).find('.error').length) {
       $(this).find('.error').find('input, textarea, select').focus();
       $(this).trigger('submit_error');
@@ -15,7 +16,7 @@
     }
   });
 
-  $('.assert.required *').live('change', function () {
+  $('.assert.required *, .assert.present *').live('change blur', function () {
     var $p = $(this).closest('.assert');
     validate($p, ($(this).val() != ''), 'required');
   });

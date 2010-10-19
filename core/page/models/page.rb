@@ -28,7 +28,7 @@ class Aura
       plugin :serialization, :yaml, :custom
 
       form do
-        text :title, "Page title", :class => 'title main-title'
+        text :title, "Page title", :class => 'title main-title assert required'
         html :body,  "Body text", :class => 'long no-label'
         text :slug,  "Slug", :class => 'compact'
 
