@@ -1,29 +1,18 @@
 ;(function ($) {
   function validate($p, condition, type) {
-    if ($p.data('assert_status') != 'error') {
-      $p.data('assert_type', type);
-      $p.data('assert_status', condition ? 'ok' : 'error');
+    var data = ($p.data('assert_data') || {});
+
+    if (data.status != 'error') {
+      data.type = type;
+      data.status = condition ? 'ok' : 'error';
     }
 
-    if (!$p.data('assert_timer')) {
-      var t = window.setTimeout(function () { afterValidate($p); }, 0);
-      $p.data('assert_timer', t);
-    }
+    $p.data('assert_data', data);
   };
 
-  function afterValidate ($p) {
-    if ($p.data('assert_status') == 'error') {
-      $p.addClass('error'); $p.trigger('assert_error', [$p.data('assert_type')]);
-    } else {
-      $p.removeClass('error'); $p.trigger('assert_ok', [$p.data('assert_type')]);
-    }
-
-    $p.data('assert_status', null);
-    $p.data('assert_timer', null);
-  }
-
   $('form').live('submit', function (e) {
-    $(this).find('.assert').trigger('change');
+    $(this).trigger('change');
+
     if ($(this).find('.error').length) {
       $(this).find('.error').find('input, textarea, select').focus();
       $(this).trigger('submit_error');
@@ -32,37 +21,49 @@
     }
   });
 
-  $('.assert.required *, .assert.present *').live('change blur', function () {
+  $('.assert').find('input, textarea, select').live('blur change', function () {
     var $p = $(this).closest('.assert');
-    validate($p, ($(this).val() != ''), 'required');
+    $p.trigger('validate', [$(this)]);
+
+    var data = ($p.data('assert_data') || {});
+
+    if (data.status == 'error') {
+      $p.addClass('error');
+      $p.trigger('assert_error', [data.type]);
+    } else {
+      $p.removeClass('error');
+      $p.trigger('assert_ok', [data.type]);
+    }
+
+    $p.data('assert_data', null);
   });
 
-  $('.assert.matches-next *').live('change', function () {
-    var $p0 = $(this).closest('.assert');
+  $('.assert.required, .assert.present').live('validate', function (e, $input) {
+    validate($(this), ($input.val() != ''), 'required');
+  });
+
+  $('.assert.matches-next').live('validate', function () {
+    console.log(":D");
+    var $p0 = $(this);
     var $p1 = $p0.nextAll('.assert.matches-previous').first();
 
     var $input1 = $p1.find('input, textarea, select');
-    var $input0 = $(this);
+    var $input0 = $p0.find('input');
 
-    if (($input1.val() == '') && ($input0.val() == '')) {
-      validate($p0, true, 'matches');
-      validate($p1, true, 'matches');
-    }
-    else if ($input1.val() != '') {
-      validate($p0, ($input0.val() == $input1.val()), 'matches');
-      validate($p1, ($input0.val() == $input1.val()), 'matches');
+    if (($input1.val() != '') || ($input0.val() == '')) {
+      $input1.trigger('change');
     }
   });
 
-  $('.assert.matches-previous *').live('change', function () {
-    var $p1 = $(this).closest('.assert');
+  $('.assert.matches-previous').live('validate', function () {
+    var $p1 = $(this);
     var $p0 = $p1.prevAll('.assert.matches-next').first();
 
     var $input0 = $p0.find('input, textarea, select');
-    var $input1 = $(this);
+    var $input1 = $p1.find('input');
 
-    validate($p0, ($input0.val() == $input1.val()), 'matches');
-    validate($p1, ($input0.val() == $input1.val()), 'matches');
+    var condition = ($input0.val() == $input1.val());
+    validate($p1, condition, 'matches');
   });
 
   /* Set up */
@@ -98,4 +99,7 @@
     alert("Please check your form for errors.");
   });
 
+  // Export
+  $.qvalidate = function() {};
+  $.qvalidate.validate = validate;
 })(jQuery);
