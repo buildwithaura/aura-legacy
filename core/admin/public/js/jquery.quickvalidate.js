@@ -1,10 +1,26 @@
 ;(function ($) {
   function validate($p, condition, type) {
-    if (condition)
-      { $p.removeClass('error'); $p.trigger('assert_ok', [type]); }
-    else
-      { $p.addClass('error'); $p.trigger('assert_error', [type]); }
+    if ($p.data('assert_status') != 'error') {
+      $p.data('assert_type', type);
+      $p.data('assert_status', condition ? 'ok' : 'error');
+    }
+
+    if (!$p.data('assert_timer')) {
+      var t = window.setTimeout(function () { afterValidate($p); }, 0);
+      $p.data('assert_timer', t);
+    }
   };
+
+  function afterValidate ($p) {
+    if ($p.data('assert_status') == 'error') {
+      $p.addClass('error'); $p.trigger('assert_error', [$p.data('assert_type')]);
+    } else {
+      $p.removeClass('error'); $p.trigger('assert_ok', [$p.data('assert_type')]);
+    }
+
+    $p.data('assert_status', null);
+    $p.data('assert_timer', null);
+  }
 
   $('form').live('submit', function (e) {
     $(this).find('.assert').trigger('change');
