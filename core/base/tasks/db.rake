@@ -6,5 +6,6 @@ namespace :db do
     require './init'
     RakeStatus.heading :info, "Clearing the database..."
     Main.flush! { |*a| RakeStatus.print(*a) }
+    Main.restart!
   end
 end

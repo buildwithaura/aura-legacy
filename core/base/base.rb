@@ -26,6 +26,11 @@ class Main
   end
 
   set :db, Sequel.connect(sequel)
+
+  def self.restart!
+    require 'fileutils'
+    FileUtils.touch root_path('tmp', 'restart.txt')
+  end
 end
 
 # Sequel!
