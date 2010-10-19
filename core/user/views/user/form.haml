@@ -7,7 +7,7 @@
   %h2.greeting Hola! Your login email is:
 
   %p{class: 'title no-label center assert required'}
-    %input{type: 'text', name: 'editor[email]', value: item.email}
+    %input#field_email{type: 'text', name: 'editor[email]', value: item.email}
 
   - if first
     %p.description.align-center
@@ -26,4 +26,4 @@
 
   %p{class: "compact assert matches-previous #{required}"}
     %label{for: 'field_password_confirmation'} Confirm:
-    %input#field_password{type: 'password', name: 'editor[password_confirmation]'}
+    %input#field_password_confirm{type: 'password', name: 'editor[password_confirmation]'}

@@ -11,17 +11,17 @@
   };
 
   $('form').live('submit', function (e) {
-    $(this).trigger('change');
+    $(this).find('input, textarea, select').trigger('blur');
 
     if ($(this).find('.error').length) {
-      $(this).find('.error').find('input, textarea, select').focus();
       $(this).trigger('submit_error');
+      $(this).find('.error').find('input, textarea, select').first().focus();
       e.stopPropagation();
       return false;
     }
   });
 
-  $('.assert').find('input, textarea, select').live('blur change', function () {
+  $('.assert').find('input, textarea, select').live('blur', function () {
     var $p = $(this).closest('.assert');
     $p.trigger('validate', [$(this)]);
 
@@ -50,7 +50,7 @@
     var $input0 = $p0.find('input');
 
     if (($input1.val() != '') || ($input0.val() == '')) {
-      $input1.trigger('change');
+      $input1.trigger('blur');
     }
   });
 
