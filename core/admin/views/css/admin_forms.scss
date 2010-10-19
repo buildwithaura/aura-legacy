@@ -17,7 +17,7 @@ form:not(.bypass) {
     color: $grey; text-shadow: 1px 1px 0 $hilite20; padding: 10px 10px;
   }
 
-  p { margin: 10px 0; }
+  p { margin: 10px 0; position: relative; }
   p:first-child { margin-top: 0; }
   p:last-child { margin-bottom: 0; border-bottom: 0; }
   label { display: block; font-weight: bold; line-height: 24px; color: #777; }
@@ -40,6 +40,34 @@ form:not(.bypass) {
     & { text-align: left; @include clearfix; }
     button { @include button; @include button-black; }
     .right { float: right; }
+  }
+
+  /* Inline validation */
+  p.compact.error,
+  p.error {
+    input, &.focus input, input:focus {
+      border-color: $red;
+      @include shadow(0 0 3px $red,
+                      inset 0 0 5px fade-out($red, 0.6));
+    }
+  }
+
+  p .notice {
+    @include border-radius(2px);
+    height: 20px; line-height: 20px; overflow: hidden;
+    padding: 0 10px 0 24px; 
+    position: absolute; bottom: 9px; right: 9px;
+    color: white; text-shadow: 1px 1px 0 $shadow20;
+  }
+
+  p .notice {
+    @include shadow(0 0 3px $green);
+    background: $green url(/images/admin_icons/generic.png) 5px center no-repeat;
+  }
+
+  p.error .notice {
+    @include shadow(0 0 3px $red);
+    background: $red*0.8 url(/images/admin_icons/generic.png) 5px center no-repeat;
   }
 
   /* Overrides! :) */

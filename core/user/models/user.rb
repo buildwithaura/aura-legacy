@@ -24,11 +24,11 @@ class User < Model
   end
 
   form do
-    field :text, :email, "Email", :class => 'title center'
+    field :text, :email, "Email", :class => 'title center assert required'
 
     fieldset(:password, "Password") do
-      field :password, :password, "Password", :class => 'compact'
-      field :password, :password_confirmation, "Confirm", :class => 'compact'
+      field :password, :password, "Password", :class => 'compact assert matches-next'
+      field :password, :password_confirmation, "Confirm", :class => 'compact assert matches-previous'
     end
   end
 
