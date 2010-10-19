@@ -3,12 +3,11 @@
 %br
 %br
 
-- fieldset = item.class.form.fieldset(:default)
 %fieldset
   %h2.greeting Hola! Your login email is:
 
-  - fieldset.fields.each do |field|
-    !~ field.to_html(item.try(field.name))
+  %p{class: 'title no-label center assert required'}
+    %input{type: 'text', name: 'editor[email]', value: item.email}
 
   - if first
     %p.description.align-center
@@ -20,6 +19,11 @@
       If you would like to change your password, enter a new one below, twice.
       Otherwise, leave these blank to leave your password as it is.
 
-  - fieldset = item.class.form.fieldset(:password)
-  - fieldset.fields.each do |field|
-    !~ field.to_html(item.try(field.name))
+  - required = ('present'  if @first)
+  %p{class: "compact assert matches-next #{required}"}
+    %label{for: 'field_password'} Password:
+    %input#field_password{type: 'password', name: 'editor[password]'}
+
+  %p{class: "compact assert matches-previous #{required}"}
+    %label{for: 'field_password_confirmation'} Confirm:
+    %input#field_password{type: 'password', name: 'editor[password_confirmation]'}

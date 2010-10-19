@@ -43,7 +43,6 @@
   });
 
   $('.assert.matches-next').live('validate', function () {
-    console.log(":D");
     var $p0 = $(this);
     var $p1 = $p0.nextAll('.assert.matches-previous').first();
 

@@ -8,7 +8,8 @@ module Terra
     end
 
     # Add (or get?) a field
-    def field(type, id, title, options={})
+    def field(type, id=nil, title=nil, options={})
+      return @fields.detect { |f| f.name == type }  if id.nil?
       @fields << Field.create(type, id, title, options)
     end
 

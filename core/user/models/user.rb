@@ -23,15 +23,6 @@ class User < Model
     email
   end
 
-  form do
-    field :text, :email, "Email", :class => 'title no-label center assert required'
-
-    fieldset(:password, "Password") do
-      field :password, :password, "Password", :class => 'compact assert matches-next'
-      field :password, :password_confirmation, "Confirm", :class => 'compact assert matches-previous'
-    end
-  end
-
   def self.seed!(type=nil, &blk)
     # Don't clear users!
     seed type, &blk
