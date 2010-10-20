@@ -107,8 +107,9 @@ body.no-sidebar #top {
   .title-c { float: left; }
   h1, input {
     color: $blue; font-size: 17pt;
+    height: $title-height - 10px;
     line-height: $title-height - 10px; margin: 0;
-    text-shadow: 1px 1px 0 $hilite50; 
+    text-shadow: 1px 1px 0 $hilite50;
   }
 
   input {

@@ -10,14 +10,14 @@
   overflow-y: auto; overflow-x: hidden;
 }
 
-#nav header { 
+#nav header {
   background: #333; margin-bottom: 10px; 
   padding: 10px;
 }
 
 @mixin active {
-  background-color: #eee;
-  @include shadow(0 0 4px $blue-glow-40, 0 0 4px white); color: #333;
+  @include shadow(0 0 4px $blue-glow-40, 0 0 4px white);
+  background-color: #eee; color: #333;
 }
 
 #nav {
@@ -27,7 +27,7 @@
 }
 
 #nav nav {
-  font-size: 8.5pt; 
+  font-size: 8.5pt;
   a:hover { text-decoration: none; }
   .icon { opacity: 0.5; }
   a:hover .icon { opacity: 0.7; }
@@ -35,10 +35,10 @@
 
   h3 {
     margin: 0; padding: 5px 10px;
-    font-size: 8pt; 
-    text-transform: uppercase; 
-    color: #888; text-shadow: 1px 1px 0 $hilite30; 
-    margin-top: 10px; padding-top: 10px; border-top: solid 1px $shadow05; 
+    font-size: 8pt;
+    text-transform: uppercase;
+    color: #888; text-shadow: 1px 1px 0 $hilite30;
+    margin-top: 10px; padding-top: 10px; border-top: solid 1px $shadow05;
     @include shadow(inset 0 1px 0 $hilite10);
   }
 
@@ -67,7 +67,7 @@
   }
 
   ul ul a {
-    padding-left: 40px; 
+    padding-left: 40px;
   }
 
   li.browse a {
@@ -112,10 +112,10 @@
   nav.back {
     position: relative; 
     &:after {
-      display: block; width: 100%; height: 5px; content: ' ';
-      margin-top: -5px; 
       @include shadow(0 2px 3px $blue-glow-70);
       @include gradient($blue-glow-00, $blue-glow-40);
+      display: block; width: 100%; height: 5px; content: ' ';
+      margin-top: -5px; 
     }
   }
   nav.back.mousedown:after {

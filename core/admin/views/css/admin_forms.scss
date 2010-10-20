@@ -92,7 +92,7 @@ form:not(.bypass) {
     @include clearfix;
 
     height: auto;
-    min-height: $input-height + 2px;
+    min-height: $input-height;
     background: rgba(0, 0, 0, 0.02);
     padding: 0; width: 100%;
 
