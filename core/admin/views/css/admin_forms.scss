@@ -200,14 +200,18 @@ div.wysiwyg {
   }
 }
 
+html:not(.webkit) p div.wysiwyg,
 p.focus div.wysiwyg {
-  @include input-focus;
   background: white;
 
   ul.panel { opacity: 1; border-color: #ddd; }
   ul.panel li a { opacity: 0.9 !important; }
   ul.panel li.separator { opacity: 0.5; }
   &, li, a { @extend .animate-opacity; }
+}
+
+p.focus div.wysiwyg {
+  @include input-focus;
 }
 
 body.js-on #area.editable-title p.main-title { display: none; }
