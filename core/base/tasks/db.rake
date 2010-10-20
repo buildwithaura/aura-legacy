@@ -8,4 +8,12 @@ namespace :db do
     Main.flush! { |*a| RakeStatus.print(*a) }
     Main.restart!
   end
+
+  desc "Load sample values."
+  task :sample do
+    require './init'
+    RakeStatus.heading :info, "Loading sample values..."
+    Main.seed!(:sample) { |*a| RakeStatus.print(*a) }
+    Main.restart!
+  end
 end
