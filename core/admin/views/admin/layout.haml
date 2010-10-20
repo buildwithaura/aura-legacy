@@ -1,5 +1,5 @@
 !!! 5
-!= cc_html(:lang => 'en') do
+%html{:class => browser.body_class}
   - unless request.xhr?
     %head
       %meta(charset='UTF-8')

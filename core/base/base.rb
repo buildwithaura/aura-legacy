@@ -10,6 +10,7 @@ class Main
   register Sinatra::AuraPublic
   register Sinatra::MultiView
   helpers  Sinatra::ContentFor
+  helpers  Sinatra::UserAgentHelpers
   register Seeder
 
   set :app_files,       Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
