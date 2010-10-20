@@ -3,7 +3,6 @@ module Models
 class User < Model
   set_schema do
     primary_key :id
-    foreign_key :parent_id, :pages
 
     String :email
     String :slug
