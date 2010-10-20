@@ -29,7 +29,7 @@ class Main
         "<!--[if IE 8 ]>    <html#{attrs} class='ie8'> <![endif]-->",
         "<!--[if IE 9 ]>    <html#{attrs} class='ie9'> <![endif]-->",
         "<!--[if (gt IE 9)|!(IE)]><!--> <html#{attrs}> <!--<![endif]-->",
-        capture_haml(&blk),
+        capture_haml(&blk).strip,
         "</html>"
       ].join("\n")
     end
