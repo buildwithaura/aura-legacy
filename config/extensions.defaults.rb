@@ -4,7 +4,7 @@
 Main.configure do |m|
   # These are the extensions that are to be loaded.
   # You don't need to worry about these; try not to override this.
-  m.set :core_extensions, %w(base admin editor page user webinstall)
+  m.set :core_extensions, %w(base admin editor user page webinstall)
 
   # Here are more extensions to be loaded.
   # These here are meant to be overloaded.

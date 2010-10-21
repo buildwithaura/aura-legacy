@@ -26,7 +26,7 @@ end
 # Bootstrap Aura
 require './core/base/base'
 Aura::Extension.active.each { |ext| ext.load! }
-Aura::Models.all.each { |m| m.seed  unless m.table_exists? }
+Aura::Models.all.each { |m| m.seed }
 Aura::Models.unpack
 
 Aura::Extension.active.each { |ext| ext.init }

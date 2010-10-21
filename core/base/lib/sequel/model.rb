@@ -66,13 +66,13 @@ module Sequel::Plugins::AuraModel
     end
 
     def seed!(type=nil, &b)
-      create_table  if !schema.nil? && !table_exists?
+      sync_schema  if !schema.nil?
       delete
       seed type, &b
     end
 
     def seed(type=nil, &b)
-      create_table  if !schema.nil? && !table_exists?
+      sync_schema  if !schema.nil?
     end
 
     # Reimplemented by aura_hierarchy

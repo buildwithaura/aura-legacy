@@ -17,6 +17,9 @@ class Aura
         String :subtype
 
         String :author_name #unused
+
+        Time :created_at
+        Time :modified_at
       end
 
       plugin :aura_sluggable      # Accessible via slug: /about-us/services
