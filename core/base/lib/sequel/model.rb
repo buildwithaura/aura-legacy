@@ -61,14 +61,9 @@ module Sequel::Plugins::AuraModel
       false
     end
 
+    # Returns a set of results of all records that don't have parents.
     def roots
       find_all { |*a| true }
-    end
-
-    def seed!(type=nil, &b)
-      sync_schema  unless schema.nil?
-      delete
-      seed type, &b
     end
 
     # Ensures that the model has some bare essentials in it.
@@ -88,7 +83,15 @@ module Sequel::Plugins::AuraModel
       sync_schema  unless schema.nil?
     end
 
-    # Reimplemented by aura_hierarchy
+    # Like `seed`, but empties the table first.
+    def seed!(type=nil, &b)
+      sync_schema  unless schema.nil?
+      delete
+      seed type, &b
+    end
+
+    # Determines if the model can have children.
+    # Reimplemented by aura_hierarchy.
     def parentable?
       false
     end
@@ -99,24 +102,39 @@ module Sequel::Plugins::AuraModel
       ]
     end
 
-    # "BlogPost" => "blog_post"
-    # Used for URLs.
+    # Returns a string of the model's name for use in URLs.
+    #
+    # Example:
+    #   BlogPost.class_name #=> "blog_post"
+    #
     def class_name
       self.to_s.demodulize.underscore
     end
 
-    # "BlogPost" => "Blog post"
-    # Used for display.
+    # Returns a string of the model's name to appear on pages.
+    #
+    #   BlogPost.title #=> "Blog post"
+    #
     def title
       self.class_name.humanize
     end
 
-    # "BlogPost" => "Blog posts"
-    # Used for display.
+    # Returns a string of the model's name, pluralized, to appear on pages.
+    #
+    # Example:
+    #   BlogPost.title_plural #=> "Blog posts"
+    #
     def title_plural
       self.title.pluralize
     end
 
+    # Retruns a URL path for an action for the model.
+    #
+    # Example:
+    #   BlogPost.path               #=> /blog_post
+    #   BlogPost.path(:list)        #=> /blog_post/list
+    #   BlogPost.path(:list, :all)  #=> /blog_post/list/all
+    #
     def path(*a)
       ret = "/#{class_name}"
       ret += "/#{a.shift}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
