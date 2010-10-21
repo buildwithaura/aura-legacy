@@ -66,13 +66,26 @@ module Sequel::Plugins::AuraModel
     end
 
     def seed!(type=nil, &b)
-      sync_schema  if !schema.nil?
+      sync_schema  unless schema.nil?
       delete
       seed type, &b
     end
 
+    # Ensures that the model has some bare essentials in it.
+    #
+    # This is called every time the application initializes.
+    # Override this if you need certain records to exist, like as
+    # how there is always one user.
+    #
+    # As this is called every application load, if you override this,
+    # it is your responsibility to check if the model is #empty? before
+    # writing anything.
+    #
+    # A parameter `type` may be given. If this is set to `:sample`, then
+    # load up some sample data.
+    #
     def seed(type=nil, &b)
-      sync_schema  if !schema.nil?
+      sync_schema  unless schema.nil?
     end
 
     # Reimplemented by aura_hierarchy
