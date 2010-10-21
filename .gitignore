@@ -19,7 +19,11 @@ tmtags
 /vendor/*/vendor
 /log
 /logs
+
+# Docs
+.yardoc
+doc
+
 # Others
 .sass-cache
 .rvmrc
-errors.err

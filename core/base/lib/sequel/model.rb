@@ -16,6 +16,15 @@ module Sequel::Plugins::AuraModel
       self.class.templates_for template
     end
 
+    # Returns the URL path for the record.
+    #
+    # @example
+    #
+    #   Page[1].path  #=> '/products/cx-300'
+    #   User[1].path  #=> '/user/1' (because user is not sluggable.)
+    #
+    #   Page[1].path(:edit)  # => '/products/cx-300/edit'
+    #
     def path(*a)
       ret = "/#{self.class.class_name}/#{self.id}"
       ret += "/#{a.shift.to_s}"  if a.first.is_a?(String) || a.first.is_a?(Symbol)
@@ -23,15 +32,24 @@ module Sequel::Plugins::AuraModel
       ret
     end
 
+    # Determines if the record can have children.
+    #
     # Reimplemented by aura_hierarchy
+    #
     def parentable?
       false
     end
 
+    # Returns the parent of the record.
+    #
+    # @return [Model] If a parent is available
+    # @return [nil] If a parent is not available, or the record is a root node
+    #
     def parent
       nil
     end
 
+    # Determines if the record has a parent.
     def parent?
       ! parent.nil?
     end
@@ -40,10 +58,20 @@ module Sequel::Plugins::AuraModel
       Array.new
     end
 
+    # Returns an array of records determining the breadcrumb path of
+    # the record, starting from the root.
     def crumbs
       [self]
     end
 
+    # Determines how far removed the record is from the root.
+    #
+    # @example
+    #
+    #   p = Page[1]
+    #   p.parent?  #=> false
+    #   p.depth    #=> 1
+    #
     def depth
       crumbs.size
     end
@@ -91,7 +119,9 @@ module Sequel::Plugins::AuraModel
     end
 
     # Determines if the model can have children.
+    #
     # Reimplemented by aura_hierarchy.
+    #
     def parentable?
       false
     end
@@ -104,7 +134,8 @@ module Sequel::Plugins::AuraModel
 
     # Returns a string of the model's name for use in URLs.
     #
-    # Example:
+    # @example
+    #
     #   BlogPost.class_name #=> "blog_post"
     #
     def class_name
@@ -112,6 +143,8 @@ module Sequel::Plugins::AuraModel
     end
 
     # Returns a string of the model's name to appear on pages.
+    #
+    # @example
     #
     #   BlogPost.title #=> "Blog post"
     #
@@ -121,7 +154,8 @@ module Sequel::Plugins::AuraModel
 
     # Returns a string of the model's name, pluralized, to appear on pages.
     #
-    # Example:
+    # @example
+    #
     #   BlogPost.title_plural #=> "Blog posts"
     #
     def title_plural
@@ -130,7 +164,8 @@ module Sequel::Plugins::AuraModel
 
     # Retruns a URL path for an action for the model.
     #
-    # Example:
+    # @example
+    #
     #   BlogPost.path               #=> /blog_post
     #   BlogPost.path(:list)        #=> /blog_post/list
     #   BlogPost.path(:list, :all)  #=> /blog_post/list/all
