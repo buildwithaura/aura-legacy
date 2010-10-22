@@ -20,10 +20,10 @@
       Otherwise, leave these blank to leave your password as it is.
 
   - required = ('present'  if @first)
-  %p{class: "compact assert matches-next #{required}"}
+  %p{:class => "compact assert matches-next #{required}", :'data-min-length' => 5 }
     %label{for: 'field_password'} Password:
     %input#field_password{type: 'password', name: 'editor[password]'}
 
-  %p{class: "compact assert matches-previous #{required}"}
+  %p{:class => "compact assert matches-previous #{required}", :'data-min-length' => 5 }
     %label{for: 'field_password_confirmation'} Confirm:
     %input#field_password_confirm{type: 'password', name: 'editor[password_confirmation]'}

@@ -1,20 +1,14 @@
 ;(function ($) {
   $.qvalidate = function() {};
 
-  function validate($p, condition, type) {
-    var data = ($p.data('assert_data') || {});
-
-    if (data.status != 'error') {
-      data.type = type;
-      data.status = condition ? 'ok' : 'error';
-    }
-
-    $p.data('assert_data', data);
-  };
-
+  // Stop form submissions for forms that don't validate.
+  // Trigger the `submit_error` event.
+  //
   $('form').live('submit', function (e) {
+    // Validate all fields that need validations.
     $(this).find('input, textarea, select').trigger('blur');
 
+    // all .assert's that fail will have the class .error after validations.
     if ($(this).find('.error').length) {
       $(this).trigger('submit_error');
       $(this).find('.error').find('input, textarea, select').first().focus();
@@ -23,6 +17,14 @@
     }
   });
 
+  // Do validations after every 'blur'.
+  // Call the `validate` event for these; the event handlers will
+  // be the ones to call the function validate().
+  //
+  // The function validate() will mark if fields are either errors
+  // or ok's. This event handler either trigger the `assert_error`
+  // or `assert_ok` on these fields, depending on the outcome.
+  //
   $('.assert').find('input, textarea, select').live('blur', function () {
     var $p = $(this).closest('.assert');
     $p.trigger('validate', [$(this)]);
@@ -40,10 +42,43 @@
     $p.data('assert_data', null);
   });
 
+  // Called by the `validate` event handlers.
+  // If the given condition is false, mark it as an error.
+  //
+  function validate($p, condition, type) {
+    var data = ($p.data('assert_data') || {});
+
+    if (data.status != 'error') {
+      data.type = type;
+      data.status = condition ? 'ok' : 'error';
+    }
+
+    $p.data('assert_data', data);
+  };
+
+  /*
+   * Validations
+   */
+
+  // Required fields
   $('.assert.required, .assert.present').live('validate', function (e, $input) {
     validate($(this), ($input.val() != ''), 'required');
   });
 
+  // Numeric fields
+  $('.assert.numeric').live('validate', function (e, $input) {
+    validate($(this), $input.val().match(/^[0-9]*$/) !== null, 'numeric');
+  });
+
+  // Minimum lengths
+  $('.assert[data-min-length]').live('validate', function (e, $input) {
+    var len = $input.val().length;
+    var min = parseInt($(this).attr('data-min-length'));
+    validate($(this), (len >= min) || (len == 0), 'min-length');
+  });
+
+  // Matches next
+  // Always paired with a `matches-previous`. Good for password fields.
   $('.assert.matches-next').live('validate', function () {
     var $p0 = $(this);
     var $p1 = $p0.nextAll('.assert.matches-previous').first();
@@ -56,6 +91,8 @@
     }
   });
 
+  // Matches previous
+  // Always paired with a `matches-next`. Good for password fields.
   $('.assert.matches-previous').live('validate', function () {
     var $p1 = $(this);
     var $p0 = $p1.prevAll('.assert.matches-next').first();
@@ -67,17 +104,20 @@
     validate($p1, condition, 'matches');
   });
 
-  /* Set up */
+  /*
+   * Default handlers
+   */
 
   function onAssertError (e, type) {
     var msg = "";
-    if (type == 'required') { msg = "Required"; }
-    if (type == 'matches') { msg = "Doesn't match"; }
+    if (type == 'required')   { msg = "Required"; }
+    if (type == 'min-length') { msg = "Should be at least " + $(this).attr('data-min-length') + " chars"; }
+    if (type == 'numeric')    { msg = "Should be a number"; }
+    if (type == 'matches')    { msg = "Doesn't match"; }
 
     var $n = $(this).find('.notice');
 
-    if ($n.length)
-      { $n.html(msg); }
+    if ($n.length) { $n.html(msg); }
 
     else {
       var t = $("<div class='notice'>" + msg + "</div>");
