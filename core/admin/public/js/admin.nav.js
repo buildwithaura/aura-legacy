@@ -81,6 +81,7 @@
       $("#title").html($data.find("#title").html());
       $area.attr('class', $data.find("#area").attr('class'));
       $area.html($data.find("#area").html());
+      $area[0].scrollTop = 0;
 
       if ($.sidebar) {
         if ($("#area").is('.no-sidebar')) { $.sidebar.hide(); }

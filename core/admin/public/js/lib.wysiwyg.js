@@ -2,12 +2,22 @@
   // iFrame focus
   $("div.wysiwyg iframe").livequery(function () {
     var $p = $(this).closest('p');
-    var $form = $(this).closest('form');
 
     this.contentWindow.onfocus = function () {
-      $form.find('.focus').removeClass('focus');
-      $p.addClass('focus');
+      $p.trigger('focus');
     };
+  });
+
+  $("p.html").live('focus', function () {
+    var $p    = $(this);
+    var $form = $p.closest('form');
+
+    $form.find('.focus').removeClass('focus');
+    $p.addClass('focus');
+
+    var $area = $('#area');
+    var top   = $p.position().top + $area[0].scrollTop - 10;
+    $area.animate({ scrollTop: top });
   });
 
   $.fn.auraWysiwyg = function () {
