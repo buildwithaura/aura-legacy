@@ -21,6 +21,8 @@ class Main < Sinatra::Base
   use      Rack::Session::Cookie
   helpers  Rtopia
 
+  use      Rack::Deflater  if production?
+
   # Load all, but load defaults first
   Dir[root_path('config', '{*.defaults,*}.rb')].uniq.each { |f|
     load f unless f.include?('.example.')
