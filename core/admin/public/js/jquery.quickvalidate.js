@@ -1,4 +1,6 @@
 ;(function ($) {
+  $.qvalidate = function() {};
+
   function validate($p, condition, type) {
     var data = ($p.data('assert_data') || {});
 
@@ -67,7 +69,7 @@
 
   /* Set up */
 
-  $('p.assert').live('assert_error', function (e, type) {
+  function onAssertError (e, type) {
     var msg = "";
     if (type == 'required') { msg = "Required"; }
     if (type == 'matches') { msg = "Doesn't match"; }
@@ -76,14 +78,15 @@
 
     if ($n.length)
       { $n.html(msg); }
+
     else {
       var t = $("<div class='notice'>" + msg + "</div>");
       $(this).append(t);
       t.hide().fadeIn();
     }
-  });
+  };
 
-  $('p.assert').live('assert_ok', function (e, type) {
+  function onAssertOk (e, type) {
     var $n = $(this).find('.notice');
     $(this).removeClass('error');
     if ($n) {
@@ -92,13 +95,31 @@
         $n.fadeOut(function () { $n.remove(); });
       }, 500);
     }
-  });
+  };
 
-  $('form').live('submit_error', function () {
+  function onSubmitError () {
     alert("Please check your form for errors.");
-  });
+  };
+
+  function bindDefaults() {
+    $('.assert')
+      .live('assert_error', onAssertError)
+      .live('assert_ok',    onAssertOk);
+
+    $('form').live('submit_error', onSubmitError);
+  }
+
+  function unbindDefaults() {
+    $('.assert')
+      .die('assert_error', onAssertError)
+      .die('assert_ok',    onAssertOk);
+
+    $('form').die('submit_error', onSubmitError);
+  }
+
+  bindDefaults();
 
   // Export
-  $.qvalidate = function() {};
   $.qvalidate.validate = validate;
+  $.qvalidate.unbindDefaults = unbindDefaults;
 })(jQuery);
