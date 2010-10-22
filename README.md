@@ -24,11 +24,6 @@ Point your browser then to `http://localhost:4567` and follow the instructions.
 
 ## Other setup notes
 
-* **Rake setup**  
-  You can skip the `rake setup` step; visiting the site for the first time will
-  let you do this through your browser. This is only provided for hosts where
-  you may not be able to run rake tasks on.
-
 * **Ruby version manager** (optional)  
   If you are using the Ruby version manager, it may be in your interest to do these setting up.  
   (Feel free to skip this if you don't understand.)
@@ -41,6 +36,8 @@ Point your browser then to `http://localhost:4567` and follow the instructions.
   Aura uses sqlite by default. If you'd want it to connect to another SQL database,
   create the file `config/database.rb`. You can use `database.defaults.rb` as
   a guide; edit it as you see fit. Do this before setting up.
+
+  Of course: feel free to skip installing `sqlite3-ruby` if you don't need it.
 
 ## Deploying to other hosts
 

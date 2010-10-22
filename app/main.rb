@@ -1,6 +1,3 @@
-require "sinatra/content_for"
-require "json"
-
 prefix = File.dirname(__FILE__)
 
 # Load the libs; core first
@@ -13,7 +10,8 @@ class Main
   helpers  Sinatra::UserAgentHelpers
   register Seeder
 
-  set :app_files,       Dir[root_path('init.rb'), root_path('{core,extensions}/**/*.rb')]
+  set :view_paths,      [root_path('app', 'views')]
+  set :app_files,       Dir[root_path('init.rb'), root_path('{app,core,extensions}/**/*.rb')]
   set :extensions_path, [root_path('core'), root_path('extensions')]
 
   use Pistol, :files => app_files + [root_path('tmp', 'restart.txt')]  unless production?
@@ -40,3 +38,5 @@ Sequel::Model.plugin :schema
 Sequel::Model.plugin :auto_schema
 Sequel::Model.plugin :validation_helpers
 Sequel.extension :inflector
+
+Dir[File.join(prefix, '{models,helpers,routes}/**/*.rb')].each { |f| require f }

@@ -4,6 +4,8 @@ require "rubygems"
 require "sinatra/base"
 require "rtopia"
 require "sequel"
+require "sinatra/content_for"
+require "json"
 
 # TODO: Rename Main to Aura, and merge with class Aura
 class Main < Sinatra::Base
@@ -24,7 +26,8 @@ class Main < Sinatra::Base
 end
 
 # Bootstrap Aura
-require './core/base/base'
+require './app/main'
+
 Aura::Extension.active.each { |ext| ext.load! }
 Aura::Models.all.each { |m| m.seed }
 Aura::Models.unpack
