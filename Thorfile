@@ -21,6 +21,12 @@ protected
   def app
     require './init'; Main
   end
+
+  alias _exec exec
+  def exec(cmd)
+    say_status :run, cmd
+    _exec cmd
+  end
 end
 
 Dir['./{app,core/*,extensions/*}/thors/*.thor'].uniq.each { |fname| load fname }
