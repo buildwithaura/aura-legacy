@@ -11,7 +11,7 @@
 //
 ;(function ($) {
   // Thanks http://benalman.com/projects/jquery-hashchange-plugin/
-  var docMode = doc.documentMode;
+  var docMode = document.documentMode;
   var supportsOnhashchange = 'onhashchange' in window && (docMode === undefined || docMode > 7);
 
   // Listening to hash
@@ -46,7 +46,7 @@
       var self = this;
       if (supportsOnhashchange) { return; }
 
-      self._timer = window.setInterval(function() {
+      self._timer = window.setInterval(function () {
         return self.ontick();
       }, self.interval);
       $(document.body).click(function() {
@@ -80,5 +80,6 @@
 
   if (supportsOnhashchange) {
     $(window).bind('hashchange', function () { $.hashListen.ontick(); });
+    $(function () { $.hashListen.ontick(); });
   }
 })(jQuery);
