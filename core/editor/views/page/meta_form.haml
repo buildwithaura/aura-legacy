@@ -10,9 +10,7 @@
           %a.ext.button.micro{:href => item.path} Visit
   - if item.class.try(:subtyped?)
     %dl
-      %dt
-        = item.class.title
-        type:
+      %dt Type:
       %dd
         %select#subtype_select.neutral{:name => 'editor[subtype]'}
           != select_options(item.class.subtypes, item.subtype)
