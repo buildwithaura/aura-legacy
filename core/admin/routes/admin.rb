@@ -4,7 +4,7 @@ class Main
     content_type :js
     last_modified js.mtime
     etag js.mtime
-    cache_control :public, :must_revalidate, :max_age => 86400
+    cache_control :public, :must_revalidate, :max_age => 86400*30
 
     js.compressed
   end
