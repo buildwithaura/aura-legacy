@@ -47,6 +47,8 @@
     %a.black{:href => '#submit'} Save
 
 - content_for :body do
+  != partial item.templates_for('crumbs'), :item => parent, :new => true
+
   != partial item.templates_for(:errors), :errors => item.errors
 
   .slim

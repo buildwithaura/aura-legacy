@@ -1,0 +1,17 @@
+- new ||= false
+%section.crumbs
+  %ul
+    - unless item.nil?
+      - item.crumbs.each do |crumb|
+        %li
+          %span!= "&rsaquo;"
+          - if crumb.try(:editable?)
+            %a{:href => crumb.path(:edit)}= crumb.to_s
+          - else
+            %strong= crumb.to_s
+
+    - if new
+      %li.new
+        %span!= "&rsaquo;"
+        %strong (Here)
+
