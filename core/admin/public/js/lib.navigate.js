@@ -29,7 +29,10 @@
       $(window).trigger('navigate', href);
     };
 
+    var first = true;
     window.onpopstate = function (e, state) {
+      // Don't do it the first time
+      if (first) { first = false; return; }
       $(window).trigger('navigate', window.location.pathname);
     };
   }
