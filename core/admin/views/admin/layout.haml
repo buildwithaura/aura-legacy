@@ -4,7 +4,7 @@
     %head
       %meta(charset='UTF-8')
       %title!= title || "Aura"
-      %script{:type => 'text/javascript', :src => '/js/jquery.js'}
+      != jquery
 
       - admin_css.each do |css|
         %link{:rel => 'stylesheet', :media => css[:media], :type => 'text/css', :href => css[:href]}
