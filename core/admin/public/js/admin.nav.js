@@ -24,12 +24,6 @@
       }, 100);
     });
 
-  // Redudndant submit
-  $("a[href=#submit]").live('click', function (e) {
-    $("form").submit();
-    return false;
-  });
-
   // Highlight
   $("#nav > div a").live('click', function (e) {
     $nav.find('.active').removeClass('active');

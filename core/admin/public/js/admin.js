@@ -1,5 +1,7 @@
 ;(function ($) {
   // This is the glue file.
+  // Most stuff here just glues together lib.* and jquery.* stuff.
+
   $.uiscreen.background = "";
   $.uiscreen.opacity = 0.8;
   $.uiscreen.fadeout_time = 0;
@@ -14,6 +16,12 @@
       $(this).closest('form p').removeClass('focus');
     });
 
+  // Redudndant submit
+  $("a[href=#submit]").live('click', function (e) {
+    $("form").submit();
+    return false;
+  });
+
   // Preload of sorts
   $(function () { $("body").show().addClass("loaded"); });
 
@@ -22,62 +30,6 @@
     var $textarea = $(this);
     $(function(){ $textarea.auraWysiwyg(); });
   });
-
-  $("div.wysiwyg iframe").livequery(function () {
-    var $p = $(this).closest('p');
-    var $form = $(this).closest('form');
-
-    this.contentWindow.onfocus = function () {
-      $form.find('.focus').removeClass('focus');
-      $p.addClass('focus');
-    };
-    this.contentWindow.onblur = function () {
-      //$p.removeClass('focus');
-    };
-  });
-
-  $.fn.auraWysiwyg = function () {
-    $(this).wysiwyg({
-      css: '/css/admin_wysiwyg_field.css',
-      controls: {
-        strikeThrough: { visible: false },
-        subscript: { visible: false },
-        superscript: { visible: false },
-        separator03: { visible: false },
-        undo: { visible: false },
-        redo: { visible: false },
-        separator04: { visible: false },
-        cut: { visible: false },
-        copy: { visible: false },
-        paste: { visible: false },
-        html: {
-          visible: true,
-          exec: function() {
-            // Put the original inside.
-            if (!$(this.original).closest('div.wysiwyg').length) {
-              var $div = $(this.editor).closest('div.wysiwyg');
-              $div.append($(this.original));
-            }
-
-            if (this.viewHTML) {
-              this.setContent($(this.original).val());
-              $(this.original).hide();
-              $(this.editor).show();
-              this.focus();
-            }
-
-            else {
-              this.saveContent();
-              $(this.editor).hide();
-              $(this.original).show().focus();
-            }
-
-            this.viewHTML = !( this.viewHTML );
-          }
-        }
-      }
-    });
-  };
 
   // How to:
   // - area_class 'editable-title'
