@@ -21,10 +21,6 @@ protected
   def app
     require './init'; Main
   end
-
-  def env
-    ENV['RACK_ENV'] || 'development'
-  end
 end
 
 Dir['./{app,core/*,extensions/*}/thors/*.thor'].uniq.each { |fname| load fname }
