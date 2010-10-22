@@ -29,6 +29,7 @@ module Sequel
 
         # Returns a unique slug for the item.
         def slugify(str=title)
+          str = str.to_s
           str = str.scan(/[A-Za-z0-9]+/).join('-').downcase
           i = 1
 

@@ -14,5 +14,5 @@
         = item.class.title
         type:
       %dd
-        %select{:name => 'editor[subtype]'}
+        %select#subtype_select.neutral{:name => 'editor[subtype]'}
           != select_options(item.class.subtypes, item.subtype)

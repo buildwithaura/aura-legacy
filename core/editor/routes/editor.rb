@@ -68,6 +68,9 @@ class Main
 
     begin
       @item.update params[:editor]
+
+      raise Sequel::ValidationFailed.new([])  if params[:no_save]
+
       @item.save
       flash_message "Your edits have been saved."
 
@@ -115,6 +118,8 @@ class Main
     begin
       @item = @model.new(:parent => @parent)
       @item.update params[:editor]
+
+      raise Sequel::ValidationFailed.new([])  if params[:no_save]
       @item.save
       flash_message "The new item has been created."
 

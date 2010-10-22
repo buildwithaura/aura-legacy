@@ -12,6 +12,10 @@ module Sequel::Plugins::AuraModel
       end
     end
 
+    def validate!
+      raise Sequel::ValidationFailed(errors)  unless valid?
+    end
+
     def templates_for(template)
       self.class.templates_for template
     end
