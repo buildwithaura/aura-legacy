@@ -128,7 +128,6 @@
 
   function onAssertOk (e, type) {
     var $n = $(this).find('.notice');
-    $(this).removeClass('error');
     if ($n) {
       $n.html("OK!");
       window.setTimeout(function () {

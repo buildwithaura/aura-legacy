@@ -93,7 +93,8 @@
     };
 
     // the 'done doing the sidebar' callback.
-    var duration = speed * 2;
+    // This should be a proper callback, but hey wharrevr
+    var duration = speed * 2 + 100;
     if (anim == 'html') { duration = 0; }
     window.setTimeout(onTransitionFinish, duration);
 
