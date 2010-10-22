@@ -14,6 +14,8 @@ class Main < Sinatra::Base
   set      :view_paths, []
 
   set      :haml, :escape_html => true
+  set      :haml, :escape_html => true, :ugly => true  if production?
+
   enable   :raise_errors
 
   use      Rack::Session::Cookie
