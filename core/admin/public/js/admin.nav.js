@@ -8,6 +8,7 @@
   var link = null;
 
   var speed = 0;
+  var delay = 50; // Time it takes after animation until the actual loading of content.
 
   // Only webkit so far can cope with the animations
   if ($.browser.webkit) { speed = 200; }
@@ -72,7 +73,7 @@
     }
 
     // Bring the content in.
-    $("#nav").htmlInto($data.find("#nav").html(), anim);
+    $("#nav").htmlInto($data.find("#nav").html(), anim, onTransitionFinish);
 
     function onTransitionFinish() {
       $.unscreen();
@@ -86,12 +87,6 @@
         else { $.sidebar.show(); }
       }
     };
-
-    // the 'done doing the sidebar' callback.
-    // This should be a proper callback, but hey wharrevr
-    var duration = speed * 2.4;
-    if (anim == 'html') { duration = 0; }
-    window.setTimeout(onTransitionFinish, duration);
 
     // Change the page <title>
     var title = html.match(/<title>(.*?)<\/title>/);
@@ -132,13 +127,13 @@
 
   // * * * *
   //
-  $.fn.htmlInto = function(html, what) {
+  $.fn.htmlInto = function(html, what, callback) {
     if (what == 'browse')
-      { return this.navInto(html); }
+      { return this.navInto(html, callback); }
     else if (what == 'back')
-      { return this.backInto(html); }
+      { return this.backInto(html, callback); }
     else
-      { return this.html(html); }
+      { this.html(html); if (callback) { callback(); } }
   };
 
   $.fn.fixpos = function() {
@@ -155,7 +150,7 @@
     }
   };
 
-  $.fn.navInto = function(html) {
+  $.fn.navInto = function(html, callback) {
     var $this = $(this);
     var hadBack = $this.find("nav.back > *").length > 0;
 
@@ -193,11 +188,12 @@
         .css({ opacity: 0, position: 'relative', left: 0 })
         .animate({ opacity: 1, left: 0 }, speed, function () {
           $this.removeClass('transitioning');
+          window.setTimeout(callback, delay);
         });
     });
   };
 
-  $.fn.backInto = function(html) {
+  $.fn.backInto = function(html, callback) {
     var $this = $(this);
     $this.addClass('transitioning');
 
@@ -215,6 +211,7 @@
       var $selFade  = $this.find('nav:not(.back) a:not(.active), nav:not(.back) h3');
       $selSlide.hide().slideDown(speed, function () {
         $this.removeClass('transitioning');
+        window.setTimeout(callback, delay);
       });
       $selFade
         .css({ opacity: 0, position: 'relative', left: 0 })
