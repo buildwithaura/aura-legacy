@@ -7,7 +7,7 @@
 
   var link = null;
 
-  var speed = 320;
+  var speed = 250;
 
   // Back button
   $("#nav nav.back a")
@@ -49,9 +49,6 @@
     link = $(this);
     if (window.location.hash == '#!'+href) { return; }
 
-    $area.screen();
-    $body.screen();
-
     window.location.hash = "#!" + href;
   });
 
@@ -80,25 +77,25 @@
     }
 
     // Bring the content in.
-    $area.unscreen();
     $("#nav").htmlInto($data.find("#nav").html(), anim);
-    $("#tabs").html($data.find("#tabs").html());
-    $("#title").html($data.find("#title").html());
-    $area.attr('class', $data.find("#area").attr('class'));
-    $area.html($data.find("#area").html());
 
-    if ($.sidebar) {
-      if ($("#area").is('.no-sidebar')) {
-        $.sidebar.hide();
-      } else {
-        $.sidebar.show();
+    function onTransitionFinish() {
+      $.unscreen();
+      $("#tabs").html($data.find("#tabs").html());
+      $("#title").html($data.find("#title").html());
+      $area.attr('class', $data.find("#area").attr('class'));
+      $area.html($data.find("#area").html());
+
+      if ($.sidebar) {
+        if ($("#area").is('.no-sidebar')) { $.sidebar.hide(); }
+        else { $.sidebar.show(); }
       }
-    }
+    };
 
-    // Unscreen the sidebar.
+    // the 'done doing the sidebar' callback.
     var duration = speed * 2;
     if (anim == 'html') { duration = 0; }
-    window.setTimeout(function() { $.unscreen(); }, duration);
+    window.setTimeout(onTransitionFinish, duration);
 
     // Change the page <title>
     var title = html.match(/<title>(.*?)<\/title>/);
