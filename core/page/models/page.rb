@@ -18,6 +18,9 @@ class Aura
 
         String :author_name #unused
 
+        String :meta_keywords
+        String :meta_description
+
         Time :created_at
         Time :modified_at
       end
@@ -64,9 +67,6 @@ class Aura
           self.custom[name] = v
         end
       end
-
-      def meta_keywords=(v) v; end
-      def meta_description=(v) v; end
 
       def self.content?; true; end
       def self.show_on_sidebar?; true; end
