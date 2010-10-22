@@ -14,8 +14,8 @@ class MigrationTest < Test::Unit::TestCase
 
     Page.sync_schema
 
-    p "Columns:"
-    p Page.columns
+    p "Columns:", Page.columns
+
     assert Page.columns.include? :foobar
     assert Page.columns.include? :id
     assert Page.columns.include? :parent_id
@@ -26,8 +26,7 @@ class MigrationTest < Test::Unit::TestCase
 
     Page.sync_schema
 
-    p "Columns after modification:"
-    p Page.columns
+    p "Columns after modification:", Page.columns
 
     assert Page.columns.include? :meatballs
     assert Page.columns.include? :foobar

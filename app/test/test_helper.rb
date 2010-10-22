@@ -26,13 +26,21 @@ class Test::Unit::TestCase
     Main.new
   end
 
-  def p(obj)
+  def p(what, obj=nil)
     return unless ENV['verbose']
+
+    what, obj = nil, what  if obj.nil?
     str = obj.is_a?(String) ? obj : obj.inspect
+
     file, line = p_source
     basename = File.basename(file)
 
-    puts "\033[1;32m%20s\033[1;30m:%-3s\033[0m %s" % [basename, line, str]
+    if what
+      puts "\n\033[1;32m%20s\033[1;30m:%-3s\033[1;30m %s" % [basename, line, what]
+      puts "\033[0m%-24s %s" % ['', str]
+    else
+      puts "\n\033[1;32m%20s\033[1;30m:%-3s\033[0m %s" % [basename, line, str]
+    end
   end
 
 
