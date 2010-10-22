@@ -46,6 +46,12 @@ class Aura
         validates_presence :title
       end
 
+      # Returns the *other* form that depends on the subtype.
+      def subform
+        return nil  if subtype.nil?
+        self.class.form subtype.id
+      end
+
       def meta_keywords=(v) v; end
       def meta_description=(v) v; end
 

@@ -32,7 +32,7 @@ module Terra
     end
 
     def fields_html(item=nil)
-      fields.map { |f| f.to_html(item.try(f.name.to_sym)) }
+      fields.map { |f| f.to_html(item.try(f.name.to_sym)) }.join("\n")
     end
 
     def legend_html

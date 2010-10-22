@@ -9,7 +9,7 @@
 
   var speed = 0;
   // Only webkit so far can cope with the animations
-  if ($.browser.webkit) { speed = 215; }
+  if ($.browser.webkit) { speed = 200; }
 
   // Back button
   $("#nav nav.back a")
