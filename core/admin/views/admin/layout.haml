@@ -4,19 +4,10 @@
     %head
       %meta(charset='UTF-8')
       %title!= title || "Aura"
-      - admin_css '/css/admin.css', 4
-      %script{:type => 'text/javascript', :src => '/js/jquery-1.4.2.min.js'}
-      - admin_js '/js/jquery.livequery.js', 2
-      - admin_js '/js/jquery.hashlisten.js', 2
-      - admin_js '/js/jquery.wysiwyg.js', 2
-      - admin_js '/js/jquery.uiscreen.js', 2
-      - admin_js '/js/jquery.quickvalidate.js', 2
-      - admin_js '/js/lib.dirty.js', 3
-      - admin_js '/js/admin.setup.js', 4
-      - admin_js '/js/admin.layout.js', 4
-      - admin_js '/js/admin.nav.js', 4
-      - admin_css.each do |file|
-        %link{:rel => 'stylesheet', :media => 'screen', :type => 'text/css', :href => file}
+      %script{:type => 'text/javascript', :src => '/js/jquery.js'}
+
+      - admin_css.each do |css|
+        %link{:rel => 'stylesheet', :media => css[:media], :type => 'text/css', :href => css[:href]}
 
   %body{:class => body_class}
 
@@ -77,6 +68,6 @@
         != yield_content :nav
 
     - unless request.xhr?
-      - admin_js.each do |file|
-        %script{:type => 'text/javascript', :src => file}
+      - admin_js.each do |href|
+        %script{:type => 'text/javascript', :src => href}
 

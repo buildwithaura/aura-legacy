@@ -4,24 +4,29 @@ class Main
       show template, { :layout => :'admin/layout' }, locals
     end
 
-    def admin_assets(type, file=nil, priority=5)
-      @admin_assets ||= Hash.new { |h, k| h[k] = Array.new }
-      @admin_assets[type][priority] ||= Array.new
-      @admin_assets[type][priority] << file  unless file.nil?
-      @admin_assets[type].flatten.compact
-    end
-
-    def admin_js(file=nil, priority=5)
-      admin_assets(:js, file, priority)
-    end
-
-    def admin_css(file=nil, priority=5)
-      admin_assets(:css, file, priority)
-    end
-
     def area_class(str=nil)
       @area_class = str  unless str.nil?
       @area_class
+    end
+
+    def admin_js_files
+      path   = settings.root_path(%w(core admin public js))
+      files  = Dir["#{path}/jquery.*.js"]
+      files += Dir["#{path}/lib.*.js"]
+      files += Dir["#{path}/admin.js"]
+      files += Dir["#{path}/admin.*.js"]
+      files.uniq.map do |file|
+        fname = File.basename(file)
+        { :href => '/js/%s' % [fname], :path => file }
+      end
+    end
+
+    def admin_js
+      admin_js_files.map { |e| e[:href] }
+    end
+
+    def admin_css
+      [{ :href => '/css/admin.css', :media => 'screen' }]
     end
 
     def admin_icon(icon)
