@@ -4,8 +4,10 @@ if Aura::Models.const_defined?(:Page)
       :name     => "Portfolio page",
       :template => "id_portfolio"
 
+    custom_field :excerpt
+
     form :portfolio do
-      text :'custom.excerpt', "Portfolio excerpt"
+      text :excerpt, "Portfolio excerpt"
 
       #fieldset :extra do
       #  text :'custom.excerpt', "Excerpt"

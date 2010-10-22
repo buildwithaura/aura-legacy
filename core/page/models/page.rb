@@ -52,6 +52,19 @@ class Aura
         self.class.form subtype.id
       end
 
+      # Creates a custom field and adds getters/setters for it.
+      def self.custom_field(name)
+        name = name.to_sym
+        self.send(:define_method, name) do
+          self.custom[name]  if self.custom.is_a? Hash
+        end
+
+        self.send(:define_method, :"#{name}=") do |v|
+          self.custom ||= Hash.new
+          self.custom[name] = v
+        end
+      end
+
       def meta_keywords=(v) v; end
       def meta_description=(v) v; end
 
