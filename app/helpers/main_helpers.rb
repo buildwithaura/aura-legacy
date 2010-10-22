@@ -12,9 +12,7 @@ class Main
       items.map do |item|
         selected = ''
         selected = " selected='1'"  if item == active
-        [ "[%s]" % [item.try(value_field).inspect],
-          "[%s]" % [active.inspect],
-          "<option value='#{h item.try(value_field)}'#{selected}>",
+        [ "<option value='#{h item.try(value_field)}'#{selected}>",
           h(item.try(name_field)),
           "</option>" ].join('')
       end.join("\n")
