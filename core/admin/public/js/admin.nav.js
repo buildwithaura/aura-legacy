@@ -8,6 +8,7 @@
   var link = null;
 
   var speed = 0;
+
   // Only webkit so far can cope with the animations
   if ($.browser.webkit) { speed = 200; }
 
@@ -49,9 +50,7 @@
     e.preventDefault();
 
     link = $(this);
-    if (window.location.hash == '#!'+href) { return; }
-
-    window.location.hash = "#!" + href;
+    $.navigate(href);
   });
 
   function htmlCallback (html) {
@@ -108,19 +107,7 @@
     focusFirstField();
   }
 
-  var enableBackToStart = false;
-
-  // Went back to the start
-  $.hashListen('', function () {
-    // We need to catch this because, otherwise, the first page load
-    // will try to (re)load the start page.
-    if (!enableBackToStart) { return; }
-    $area.screen(); $body.screen();
-    $.get(window.location, htmlCallback);
-  });
-
-  $.hashListen('!(.*)', function (href) {
-    enableBackToStart = true;
+  $(window).bind('navigate', function (e, href) {
     $area.screen(); $body.screen();
     $.get(href, htmlCallback);
   });
