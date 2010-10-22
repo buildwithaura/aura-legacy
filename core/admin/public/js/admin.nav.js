@@ -7,7 +7,9 @@
 
   var link = null;
 
-  var speed = 250;
+  var speed = 0;
+  // Only webkit so far can cope with the animations
+  if ($.browser.webkit) { speed = 215; }
 
   // Back button
   $("#nav nav.back a")
@@ -94,7 +96,7 @@
 
     // the 'done doing the sidebar' callback.
     // This should be a proper callback, but hey wharrevr
-    var duration = speed * 2 + 100;
+    var duration = speed * 2.4;
     if (anim == 'html') { duration = 0; }
     window.setTimeout(onTransitionFinish, duration);
 
