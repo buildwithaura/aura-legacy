@@ -12,6 +12,10 @@
     Create new
     = item.class.title
 
+- content_for :toolbar do
+  %li
+    %a.black{:href => '#submit'} Save
+
 - content_for :body do
   != partial item.templates_for(:errors), :errors => item.errors
 

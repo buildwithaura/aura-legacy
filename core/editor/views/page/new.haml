@@ -12,7 +12,7 @@
   != yield_content_of :'base/new', :title, options
 
 - content_for :toolbar do
-  != yield_content_of :'base/edit', :toolbar, options
+  != yield_content_of :'base/new', :toolbar, options
 
 - content_for :body do
   != partial item.templates_for('errors'), :errors => item.errors
