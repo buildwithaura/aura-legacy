@@ -16,6 +16,11 @@ module Sequel::Plugins::AuraModel
       raise Sequel::ValidationFailed(errors)  unless valid?
     end
 
+    # Overriding set_fields to make the 2nd param optional.
+    def set_fields(hash, keys=hash.keys)
+      super hash, keys
+    end
+
     def templates_for(template)
       self.class.templates_for template
     end

@@ -9,7 +9,7 @@
 
     $('form')
       .append($("<input type='hidden' name='no_save' value='1'>"))
-      .addClass('ext')
+      .addClass('skip-validation')
       .submit();
   });
 })(jQuery);

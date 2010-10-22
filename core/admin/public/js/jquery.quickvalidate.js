@@ -4,7 +4,7 @@
   // Stop form submissions for forms that don't validate.
   // Trigger the `submit_error` event.
   //
-  $('form').live('submit', function (e) {
+  $('form:not(.skip-validation)').live('submit', function (e) {
     // Validate all fields that need validations.
     $(this).find('input, textarea, select').trigger('blur');
 

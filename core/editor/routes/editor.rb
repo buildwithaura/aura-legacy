@@ -67,20 +67,21 @@ class Main
     action = @item.path(:edit)
 
     begin
-      @item.update params[:editor]
+      @item.set_fields params[:editor]
 
-      raise Sequel::ValidationFailed.new([])  if params[:no_save]
+      unless params[:no_save]
+        @item.save
+        flash_message "Your edits have been saved."
+      end
 
-      @item.save
-      flash_message "Your edits have been saved."
+      return redirect params[:next]  unless params[:next].nil?
 
     rescue Sequel::ValidationFailed
-      return show_admin @item.templates_for('edit'),
-        :item   => @item,
-        :action => action
     end
 
-    redirect params[:next] || @item.path(:edit)
+    show_admin @item.templates_for('edit'),
+      :item   => @item,
+      :action => action
   end
 
   get '/*/preview' do |path|
@@ -119,11 +120,11 @@ class Main
       @item = @model.new(:parent => @parent)
       @item.update params[:editor]
 
-      raise Sequel::ValidationFailed.new([])  if params[:no_save]
+      raise 1  unless params[:no_save].nil?
       @item.save
       flash_message "The new item has been created."
 
-    rescue Sequel::ValidationFailed
+    rescue => e
       return show_admin @item.templates_for('new'),
         :model  => @model,
         :item   => @item,
