@@ -3,9 +3,13 @@
   $("div.wysiwyg iframe").livequery(function () {
     var $p = $(this).closest('p');
 
-    this.contentWindow.onfocus = function () {
+    function callback () {
       $p.trigger('focus');
-    };
+    }
+
+    this.contentWindow.document.onfocus = callback;
+    this.contentWindow.onfocus = callback;
+    $p.bind('click', callback);
   });
 
   $("p.html").live('focus', function () {
@@ -16,7 +20,13 @@
     $p.addClass('focus');
 
     var $area = $('#area');
-    var top   = $p.position().top + $area[0].scrollTop - 10;
+    var top   = $area[0].scrollTop;
+    if ($('.message').length) {
+      top  += $('.message').outerHeight() + $('.message').position().top;
+    }
+    else if ($('section.crumbs').length) {
+      top  += $('section.crumbs').outerHeight();
+    }
     $area.animate({ scrollTop: top });
   });
 
