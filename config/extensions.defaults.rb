@@ -1,5 +1,5 @@
 # This lists extensions to be loaded.
-# Copy this to config/user.rb to edit.
+# Copy this to config/extensions.rb to edit.
 
 Main.configure do |m|
   # These are the extensions that are to be loaded.
