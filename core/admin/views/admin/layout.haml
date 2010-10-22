@@ -68,6 +68,8 @@
         != yield_content :nav
 
     - unless request.xhr?
-      - admin_js.each do |href|
-        %script{:type => 'text/javascript', :src => href}
+      - if (settings.production? or params[:compress]) and params[:no_compress].nil?
+        %script{:type => 'text/javascript', :src => '/admin/script.js'}
+      - else
+        != settings.admin_js.to_html
 

@@ -8,3 +8,11 @@ Aura::Admin.menu.tap { |m|
     :name => "Database",
     :href => Rtopia.R(:admin, :settings, :database)
 }
+
+path   = Main.root_path(%w(core admin public js))
+files  = Dir["#{path}/jquery.*.js"]
+files += Dir["#{path}/lib.*.js"]
+files += Dir["#{path}/admin.js"]
+files += Dir["#{path}/admin.*.js"]
+
+Main.set :admin_js, JsFiles.new(files)

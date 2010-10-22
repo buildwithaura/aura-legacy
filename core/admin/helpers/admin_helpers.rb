@@ -9,22 +9,6 @@ class Main
       @area_class
     end
 
-    def admin_js_files
-      path   = settings.root_path(%w(core admin public js))
-      files  = Dir["#{path}/jquery.*.js"]
-      files += Dir["#{path}/lib.*.js"]
-      files += Dir["#{path}/admin.js"]
-      files += Dir["#{path}/admin.*.js"]
-      files.uniq.map do |file|
-        fname = File.basename(file)
-        { :href => '/js/%s' % [fname], :path => file }
-      end
-    end
-
-    def admin_js
-      admin_js_files.map { |e| e[:href] }
-    end
-
     def admin_css
       [{ :href => '/css/admin.css', :media => 'screen' }]
     end

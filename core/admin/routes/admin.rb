@@ -1,4 +1,14 @@
 class Main
+  get '/admin/script.js' do
+    js = settings.admin_js
+    content_type :js
+    last_modified js.mtime
+    etag js.mtime
+    cache_control :public, :must_revalidate, :max_age => 86400
+
+    js.compressed
+  end
+
   get '/admin' do
     require_login
     show_admin :'admin/dashboard'
