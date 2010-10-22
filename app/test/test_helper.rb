@@ -19,6 +19,7 @@ class Test::Unit::TestCase
 
   def setup
     Main.flush!
+    Main.seed
   end
 
   def app
