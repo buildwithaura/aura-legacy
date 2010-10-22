@@ -1,5 +1,5 @@
 module Tilt
-  class ScssTemplate < SassTemplate
+  class ScssTemplate < SassTemplate # @private
   private
     def sass_options
       super.merge(:syntax => :scss)
