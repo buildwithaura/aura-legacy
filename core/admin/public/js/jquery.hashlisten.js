@@ -9,7 +9,11 @@
 //     // Also: this.referrer, this.matches, this.hash
 //   });
 //
-;(function($) {
+;(function ($) {
+  // Thanks http://benalman.com/projects/jquery-hashchange-plugin/
+  var docMode = doc.documentMode;
+  var supportsOnhashchange = 'onhashchange' in window && (docMode === undefined || docMode > 7);
+
   // Listening to hash
   $.hashListen = function(p, q) {
     if (typeof p == "string") {
@@ -38,8 +42,10 @@
     matches: null,
     hash: null,
 
-    init: function() {
+    init: function () {
       var self = this;
+      if (supportsOnhashchange) { return; }
+
       self._timer = window.setInterval(function() {
         return self.ontick();
       }, self.interval);
@@ -48,7 +54,7 @@
       });
     },
 
-    ontick: function() {
+    ontick: function () {
       var hash = window.location.hash.substr(1);
       if (hash == this.hash) { return; }
       this.referrer = this.hash;
@@ -56,9 +62,9 @@
       this.onchange([hash]);
     },
 
-    onchange: function(a) {
+    onchange: function (a) {
       if ($.hashListen._timer == null)
-        { $(function() { $.hashListen.init(); }); }
+        { $(function () { $.hashListen.init(); }); }
 
       if (typeof a == "function")
         { this._onchange.push(a); }
@@ -71,4 +77,8 @@
       }
     }
   });
+
+  if (supportsOnhashchange) {
+    $(window).bind('hashchange', function () { $.hashListen.ontick(); });
+  }
 })(jQuery);
