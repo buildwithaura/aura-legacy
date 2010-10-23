@@ -105,6 +105,8 @@
 
   $("form").live('submit', function (e) {
     var $this = $(this);
+    if ($this.attr('action') === undefined) { return; }
+
     $area.screen();
     $.loading.start();
 

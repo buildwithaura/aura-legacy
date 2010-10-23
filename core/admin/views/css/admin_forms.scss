@@ -77,6 +77,8 @@ form:not(.bypass) {
     label { display: none; }
   }
 
+  p.hide { display: none; }
+
   p.center {
     input, label { text-align: center; }
   }

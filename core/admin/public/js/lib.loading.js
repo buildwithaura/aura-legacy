@@ -15,7 +15,7 @@
 
     finish: function () {
       $('body').removeClass('loading');
-      $loader().fadeOut();
+      $loader().fadeOut('fast');
       $('body').show();
       $.unscreen();
     }

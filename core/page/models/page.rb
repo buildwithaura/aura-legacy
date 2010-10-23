@@ -37,7 +37,7 @@ class Aura
         # title (show it big), main-title (use it on the page heading)
         text :title, "Page title", :class => 'title main-title no-label assert required'
         html :body,  "Body text", :class => 'long no-label'
-        text :slug,  "Slug", :class => 'compact'
+        text :slug,  "Slug", :class => 'compact hide'
 
         fieldset(:meta, "Metadata") do
           text :meta_keywords, "Keywords", :class => 'compact-top'

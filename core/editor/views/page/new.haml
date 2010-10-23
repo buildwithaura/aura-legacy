@@ -15,7 +15,7 @@
   != yield_content_of :'base/new', :toolbar, options
 
 - content_for :body do
-  != partial item.templates_for('crumbs'), :item => parent, :new => true
+  != partial item.templates_for('crumbs'), :item => parent, :model => model, :new => true
 
   != partial item.templates_for('errors'), :errors => item.errors
 

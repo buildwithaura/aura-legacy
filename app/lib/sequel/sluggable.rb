@@ -50,6 +50,10 @@ module Sequel
       end
 
       module ClassMethods
+        def sluggable?
+          true
+        end
+
         def get_by_slug(slug, parent=nil)
           pid = parent.nil? ? nil : parent.id
 
