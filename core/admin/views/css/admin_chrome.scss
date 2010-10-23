@@ -103,6 +103,7 @@ body.no-sidebar #top {
   margin: 0;
   padding: 10px; text-align: left; @include clearfix;
   @include shadow(2px 0 4px $shadow10, inset 0 -1px 0 $hilite30, inset 0 -1px 2px $blue-glow-20);
+  height: $title-height + 10px; overflow: hidden;
 
   .title-c { float: left; }
   h1, input {
@@ -143,7 +144,8 @@ body.fixed-layout {
  */
 
 #toolbar {
-  float: right; color: $grey;
+  position: absolute; right: 10px; top: 10px; 
+  color: $grey;
   height: $title-height - 10px;
   line-height: $title-height - 10px;
   ul { @include horiz-list; }
