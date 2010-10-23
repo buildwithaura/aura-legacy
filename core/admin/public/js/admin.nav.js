@@ -45,6 +45,7 @@
     e.preventDefault();
 
     link = $(this);
+    $.loading.start();
     $.navigate(href);
   });
 
@@ -62,7 +63,7 @@
     // Make sure it's not some garbage URL/HTML we're being fed.
     if (!$data.find("#area").length) {
       alert("Oh no. What did you do?");
-      $.unscreen();
+      $.loading.finish();
       return false;
     }
 
@@ -77,7 +78,7 @@
     $("#nav").htmlInto($data.find("#nav").html(), anim, onTransitionFinish);
 
     function onTransitionFinish() {
-      $.unscreen();
+      $.loading.finish();
       $("#tabs").html($data.find("#tabs").html());
       $("#title").html($data.find("#title").html());
       $area.attr('class', $data.find("#area").attr('class'));
@@ -99,7 +100,6 @@
   }
 
   $(window).bind('navigate', function (e, href) {
-    $area.screen(); $body.screen();
     $.get(href, htmlCallback);
   });
 
@@ -117,12 +117,12 @@
 
   $("body").ajaxError(function () {
     alert("Sorry, something went wrong :(");
-    $body.show();
-    $.unscreen();
+    $.loading.finish();
   });
 
   $(function () {
     if (window.location.hash.substr(0,2) == '#!') {
+      // TODO: This will fail when done on a browser that supports history.pushState.
       $body.hide();
     }
   });
@@ -157,6 +157,7 @@
     var hadBack = $this.find("nav.back > *").length > 0;
 
     $this.addClass('transitioning');
+    $body.screen();
 
     // Animate the (just-clicked) button.
     var $active = $this.find('a.active');
