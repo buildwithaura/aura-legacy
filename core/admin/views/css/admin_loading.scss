@@ -11,5 +11,5 @@
 }
 
 body.loading {
-  &, * { cursor: wait; }
+  &, * { cursor: wait !important; cursor: wait; }
 }
