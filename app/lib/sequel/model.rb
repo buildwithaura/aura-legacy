@@ -16,6 +16,7 @@ module Sequel::Plugins::AuraModel
       raise Sequel::ValidationFailed(errors)  unless valid?
     end
 
+    # Sets the fields to the values in the hash.
     # Overriding set_fields to make the 2nd param optional.
     def set_fields(hash, keys=hash.keys)
       super hash, keys
