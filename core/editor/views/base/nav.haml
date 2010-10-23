@@ -22,12 +22,8 @@
                 != admin_icon('add')
                 = "New #{item.class.title}"
 
-    %li.add
-      - unless parent.nil?
-        != link_to parent.path(:new) do
-          != admin_icon('add')
-          = "New #{parent.class.title}"
-      - else
+    - unless model.nil?
+      %li.add
         != link_to model.path(:new) do
           != admin_icon('add')
           = "New #{model.title}"

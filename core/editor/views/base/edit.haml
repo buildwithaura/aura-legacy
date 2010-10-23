@@ -1,12 +1,7 @@
 - title "Edit: %s" % [ item.to_s ]
 
 - content_for :tabs do
-  %ul
-    %li.active
-      %a{:href => item.path(:edit)} Editor
-    - if item.try(:renderable?)
-      %li
-        %a{:href => item.path(:preview)} Preview
+  != partial item.templates_for('tabs'), :item => item, :model => item.class
 
 - content_for :nav do
   - if item.children.any?
@@ -47,7 +42,7 @@
     %a.black{:href => '#submit'} Save
 
 - content_for :body do
-  != partial item.templates_for('crumbs'), :item => parent, :new => true
+  != partial item.templates_for('crumbs'), :item => item
 
   != partial item.templates_for(:errors), :errors => item.errors
 

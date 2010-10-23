@@ -1,5 +1,10 @@
 class Main
   helpers do
+    def content_for!(key, &blk)
+      content_blocks[key.to_sym] = Array.new
+      content_for key, &blk
+    end
+
     # Loads a given template and yields a certain content block of it.
     def yield_content_of(template, section, locals={})
       custom_activate!

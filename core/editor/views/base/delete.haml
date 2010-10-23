@@ -11,7 +11,7 @@
     = item
 
 - content_for :nav do
-  != yield_content_of item.templates_for(:edit), :nav, { :item => item }
+  != yield_content_of item.templates_for(:edit), :nav, { :item => item, :action => '' }
 
 - content_for :body do
   .dialog

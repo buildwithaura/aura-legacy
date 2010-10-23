@@ -4,6 +4,11 @@ module Sequel::Plugins::AuraModel
   end
 
   module InstanceMethods
+    # Returns the parent.
+    def parent
+      nil
+    end
+
     def to_s
       begin
         title

@@ -8,5 +8,5 @@ Main.configure do |m|
 
   # Here are more extensions to be loaded.
   # These here are meant to be overloaded.
-  m.set :additional_extensions, %w(watermark default_theme)
+  m.set :additional_extensions, %w(watermark contact_form default_theme)
 end

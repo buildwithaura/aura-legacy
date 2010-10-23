@@ -1,5 +1,5 @@
 module Sequel::Plugins::AuraHierarchy
-  def self.configure(model)
+  def self.configure(model, options={})
     model.many_to_one :parent, :class => model
     model.one_to_many :children, :key => :parent_id, :class => model
   end
