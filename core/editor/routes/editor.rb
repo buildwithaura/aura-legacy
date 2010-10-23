@@ -64,8 +64,6 @@ class Main
     @item = Aura::Slugs.find(path) or pass
     pass unless @item.try(:editable?)
 
-    action = @item.path(:edit)
-
     begin
       @item.set_fields params[:editor]
 
@@ -81,7 +79,7 @@ class Main
 
     show_admin @item.templates_for('edit'),
       :item   => @item,
-      :action => action
+      :action => @item.path(:edit)
   end
 
   get '/*/preview' do |path|
