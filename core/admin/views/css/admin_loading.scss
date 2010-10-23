@@ -9,3 +9,7 @@
 
   :hover { display: none; }
 }
+
+body.loading {
+  &, * { cursor: wait; }
+}
