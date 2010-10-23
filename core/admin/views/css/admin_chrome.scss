@@ -112,6 +112,11 @@ body.no-sidebar #top {
     text-shadow: 1px 1px 0 $hilite50;
   }
 
+  h1 em {
+   font-weight: normal; color: #aaa; font-style: normal;
+   &:before { content: '/'; color: #ddd; margin-right: 8px; }
+  }
+
   input {
     width: 500px;
     @include border-radius(4px);

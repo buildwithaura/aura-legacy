@@ -7,7 +7,9 @@
   != partial item.templates_for('nav'), :parent => item, :model => item.class
 
 - content_for! :title do
-  %h1= "Responses for %s" % [item.to_s]
+  %h1
+    = item.to_s
+    %em Responses
 
 - content_for! :toolbar do
   != ""
