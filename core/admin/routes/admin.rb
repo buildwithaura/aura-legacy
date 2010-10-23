@@ -24,7 +24,7 @@ class Main
     show_admin :'admin/settings/database'
   end
 
-  get '/admin/settings/database/backup-latest.yml' do
+  get '/admin/settings/database/backup.yml' do
     content_type :yaml
     attachment "backup.#{Time.now.strftime('%Y%m%d')}.yml"
     Aura::db_dump_yaml

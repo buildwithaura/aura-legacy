@@ -1,7 +1,9 @@
-require "sinatra/security"
+#require "sinatra/security"
+require "shield"
 
 class Main
-  register Sinatra::Security
+  helpers Shield::Helpers
+
   set :login_success_message, nil
 end
 

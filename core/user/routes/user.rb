@@ -1,23 +1,23 @@
 class Main
-  set :login_user_class, lambda { Aura::Models::User }
+  User = Aura::Models::User
 
   # The user is redirected here on first load.
   get '/admin/welcome' do
     require_login
     @first = true
-    show_admin Aura::Models::User.templates_for('edit'),
+    show_admin User.templates_for('edit'),
       :item   => current_user,
       :action => current_user.path(:edit),
       :first  => @first
   end
 
   post '/login' do
-    if authenticate(params)
-      session[:success] = settings.login_success_message
+    if login(User, params[:username], params[:password])
       redirect_to_return_url
+
     else
-      session[:error] = settings.login_error_message
-      redirect settings.login_url
+      session[:error] = "Sorry, you must have mistyped something. Try again!"
+      redirect R(:login)
     end
   end
 
@@ -32,7 +32,7 @@ class Main
 
   get '/logout' do
     if logged_in?
-      logout!
+      logout(User)
       flash_message "You have logged out."
     end
 

@@ -12,7 +12,28 @@ class User < Model
 
   plugin :aura_editable
 
-  include Sinatra::Security::User
+  extend Shield::Model
+
+  # For Shield
+  def self.fetch(email)
+    first(:email => email)
+  end
+
+  # For Shield
+  def password=(password)
+    self.crypted_password = Shield::Password.encrypt(password)
+    @password = password
+  end
+
+  attr_writer :password_confirmation
+
+  # For Shield
+  def validate
+    super
+    validates_presence :email
+    errors.add(:password, 'cannot be empty')  if self.crypted_password.nil?
+    errors.add(:password_confirmation, 'must match password')  if @password != @password_confirmation
+  end
 
   def slugify(str=email)
     super str

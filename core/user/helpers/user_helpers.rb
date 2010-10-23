@@ -1,12 +1,22 @@
 class Main
   helpers do
+    def logged_in?
+      !! current_user
+    end
+
+    def current_user
+      authenticated(User)
+    end
+
+    def require_login
+      redirect R(:login)  unless logged_in?
+    end
+
     # Overridden in aura to track last login time.
     # This is called when a user logs in.
     #
     def redirect_to_return_url(session_key = :return_to, default = '/admin')
       u = current_user
-      puts "-"*80
-      p u.inspect
       first_login = u.last_login.nil?
 
       u.last_login = Time.now

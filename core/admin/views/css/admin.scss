@@ -13,3 +13,25 @@ $reset-font: helvetica, sans-serif;
 @import "admin_sections";
 @import "admin_forms";
 @import "admin_meta";
+
+::-webkit-scrollbar {
+  width: 15px; height: 15px;
+  background: #e0e0e0;
+}
+::webkit-scrollbar-button {
+  display: none;
+}
+::webkit-scrollbar-track {
+  background-color: green;
+  border: solid 2px green;
+}
+::webkit-scrollbar-track-piece {
+  background: #aaa;
+  border: solid 2px green;
+}
+::webkit-scrollbar-thumb {
+  background: #aaa;
+  border: solid 2px green;
+}
+::webkit-scrollbar-corner {
+}
