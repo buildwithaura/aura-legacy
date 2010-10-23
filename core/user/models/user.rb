@@ -23,6 +23,7 @@ class User < Model
   def password=(password)
     self.crypted_password = Shield::Password.encrypt(password)
     @password = password
+    @password_confirmation = password  if new?
   end
 
   attr_writer :password_confirmation
@@ -32,6 +33,9 @@ class User < Model
     super
     validates_presence :email
     errors.add(:password, 'cannot be empty')  if self.crypted_password.nil?
+
+    duplicate = self.class.fetch(email)
+    errors.add(:email, 'is already taken')  if !duplicate.nil? and duplicate.id != self.id
     errors.add(:password_confirmation, 'must match password')  if @password != @password_confirmation
   end
 
