@@ -1,0 +1,4 @@
+app/test
+core/*/test
+extensions/*/test
+
