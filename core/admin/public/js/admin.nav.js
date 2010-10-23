@@ -48,6 +48,7 @@
     $.navigate(href);
   });
 
+  // Run this when you receive HTML.
   function htmlCallback (html) {
     var $data = $("<div>").html(html);
     $body.show();

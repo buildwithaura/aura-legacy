@@ -20,13 +20,15 @@
     $p.addClass('focus');
 
     var $area = $('#area');
-    var top   = $area[0].scrollTop;
+    var top   = 0;
+
     if ($('.message').length) {
-      top  += $('.message').outerHeight() + $('.message').position().top;
+      top  = $('.message').outerHeight() + $('.message').position().top;
     }
     else if ($('section.crumbs').length) {
-      top  += $('section.crumbs').outerHeight();
+      top  = $('section.crumbs').outerHeight();
     }
+
     $area.animate({ scrollTop: top });
   });
 
