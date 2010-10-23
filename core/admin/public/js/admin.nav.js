@@ -106,6 +106,7 @@
   $("form").live('submit', function (e) {
     var $this = $(this);
     $area.screen();
+    $.loading.start();
 
     // Those that are 'ext' shouldn't do things in place.
     if ($this.is('.ext')) { return; }
