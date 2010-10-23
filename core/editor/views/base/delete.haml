@@ -3,8 +3,8 @@
 
 - content_for(:title) do
   %h1
-    Delete
     = item
+    %em Delete
 
 - content_for :nav do
   != yield_content_of item.templates_for(:edit), :nav, { :item => item, :action => '' }
