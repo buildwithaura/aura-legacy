@@ -1,1 +1,4 @@
 core app
+--main=app/manual/Index.md
+--files=app/manual/*
+--files=core/*/manual/*
