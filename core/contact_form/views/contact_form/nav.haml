@@ -17,7 +17,7 @@
       %li.add
         != link_to model.path(:new) do
           != admin_icon('add')
-          = "New #{model.title}"
+          = "New #{model.title.downcase}"
 
 - else
   %nav.back
