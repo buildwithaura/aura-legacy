@@ -1,5 +1,5 @@
 class Main
-  helpers do
+  module JqueryHelpers
     def jquery(path='/js/jquery.js', version='1.4.3')
       if settings.production?
         # Grab Google CDN's jQuery; fallback to local if necessary
@@ -10,4 +10,6 @@ class Main
       end
     end
   end
+
+  helpers JqueryHelpers
 end

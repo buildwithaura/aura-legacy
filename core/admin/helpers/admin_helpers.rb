@@ -1,5 +1,5 @@
 class Main
-  helpers do
+  module AdminHelpers
     def show_admin(template, locals={})
       show template, { :layout => :'admin/layout' }, locals
     end
@@ -18,4 +18,6 @@ class Main
       tag(:img, nil, { :src => "/images/admin_icons/#{icon}", :class => 'icon' })
     end
   end
+
+  helpers AdminHelpers
 end

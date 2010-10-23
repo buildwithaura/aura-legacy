@@ -1,5 +1,5 @@
 class Main
-  helpers do
+  module TemplateHelpers
     def content_for!(key, &blk)
       content_blocks[key.to_sym] = Array.new
       content_for key, &blk
@@ -27,5 +27,6 @@ class Main
       @content_blocks = @old_content_blocks.pop
     end
   end
-end
 
+  helpers TemplateHelpers
+end

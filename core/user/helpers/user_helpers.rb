@@ -1,5 +1,5 @@
 class Main
-  helpers do
+  module UserHelpers
     def logged_in?
       !! current_user
     end
@@ -31,4 +31,6 @@ class Main
       redirect session.delete(:return_to) || default
     end
   end
+
+  helpers UserHelpers
 end

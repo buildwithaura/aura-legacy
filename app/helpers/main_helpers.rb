@@ -1,5 +1,5 @@
 class Main
-  helpers do
+  module MainHelpers
     def h(str)
       Rack::Utils.escape_html(str)
     end
@@ -32,4 +32,6 @@ class Main
       "</html>"
     ].join("\n")
   end
+
+  helpers MainHelpers
 end

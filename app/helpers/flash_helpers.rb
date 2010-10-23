@@ -1,5 +1,5 @@
 class Main
-  helpers do
+  module FlashHelpers
     def flash_messages?(key=:success)
       !(session[key].nil?)
     end
@@ -28,4 +28,6 @@ class Main
       flash_message msg, :error
     end
   end
+
+  helpers FlashHelpers
 end

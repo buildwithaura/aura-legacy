@@ -1,5 +1,5 @@
 class Main
-  helpers do
+  module PageHelpers
     def body_class(v = nil)
       @body_classes ||= []
       @body_classes << v  if v
@@ -83,4 +83,6 @@ class Main
       @self_closing.include?(tag.to_sym)
     end
   end
+
+  helpers PageHelpers
 end
