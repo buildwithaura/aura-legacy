@@ -39,6 +39,7 @@
     if ($(this).is('.ext')) { return; }
     if ($(this).attr('rel') == 'ext') { return; }
     if ($(this).attr('target')) { return; }
+    if (!href) { return; }
     if (href.match(/^javascript:/)) { return; }
     if (href.match(/^#/)) { return; }
 

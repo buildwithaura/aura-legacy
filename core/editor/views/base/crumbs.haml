@@ -32,9 +32,9 @@
 
         %span.slash<>= "/"
         - if item
-          %span.this<>= (item.slug  if item)
+          %a.this<>= (item.slug  if item)
         - else
-          %span.this<>= "..."
+          %a.this<>= "..."
         %input{:type => 'text', :name => 'slug', :value => (item.slug  if item)}
 
 

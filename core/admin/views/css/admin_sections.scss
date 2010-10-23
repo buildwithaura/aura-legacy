@@ -91,7 +91,7 @@ section.crumbs {
     span.protocol { padding: 0 3px 0 0; }
     span.path { color: #aaa; }
     span.slash { padding: 0 3px; color: #aaa; }
-    span.this { color: $grey; }
+    .this { color: $grey; }
     input { display: none; }
 
     cursor: pointer !important;
@@ -114,7 +114,7 @@ section.crumbs {
       span { color: $blue; text-shadow: 1px 1px 0 #f7f7f7; }
     }
 
-    span.this { display: none; }
+    .this { display: none; }
     input {
       font-weight: bold;
       display: inline-block;

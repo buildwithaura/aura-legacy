@@ -1,7 +1,8 @@
 ;(function ($) {
-  $('.crumbs .url').live('click', function () {
-    $(this).addClass('edit');
-    $(this).find('input').focus();
+  $('.crumbs .url, .crumbs. url a').live('click', function () {
+    var $url = $(this).closest('.url');
+    $url.addClass('edit');
+    $url.find('input').focus();
   });
 
   $('.crumbs form.url').live('submit', function (e) {
