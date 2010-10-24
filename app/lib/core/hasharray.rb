@@ -10,6 +10,10 @@ class HashArray < Array
     _map { |hash| yield hash.to_a.flatten }
   end
 
+  def values
+    inject([]) { |a, (k, v)| a << v; a }
+  end
+
   def to_hash
     inject({}) { |hash, (k, v)| hash[k] = v; hash }
   end

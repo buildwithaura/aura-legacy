@@ -31,6 +31,20 @@ module Sequel::Plugins::AuraModel
       false
     end
 
+    def <=>(other)
+      self.sort_index <=> other.sort_index
+    end
+
+    # This is what they'll be sorted by.
+    # To sort: implement a 'position' field.
+    #
+    # You can reimplement this. Make sure it returns a tuple of an int and an int.
+    def sort_index
+      pos = nil
+      pos ||= self.position  if self.respond_to?(:position)
+      [pos || 9999, self.id]
+    end
+
     # Sets the fields to the values in the hash.
     # Overriding set_fields to make the 2nd param optional.
     def set_fields(hash, keys=hash.keys)
@@ -39,6 +53,15 @@ module Sequel::Plugins::AuraModel
 
     def templates_for(template)
       self.class.templates_for template
+    end
+
+    # Returns the name of the record as it should appear on the menu.
+    #
+    # This defaults to whatever the title of the record is (#to_s).
+    # Have your model override this if you need to.
+    #
+    def menu_title
+      to_s
     end
 
     # Returns the URL path for the record.
@@ -92,7 +115,7 @@ module Sequel::Plugins::AuraModel
     #   <% end %>
     #
     def submenu
-      children.select { |item| item.shown_in_menu? }
+      children.select { |item| item.shown_in_menu? }.sort
     end
 
     # Returns an array of records determining the breadcrumb path of
@@ -127,8 +150,9 @@ module Sequel::Plugins::AuraModel
     end
 
     # Returns a set of results of all records that don't have parents.
+    # Returns a Sequel dataset.
     def roots
-      find_all { |*a| true }
+      select
     end
 
     # Ensures that the model has some bare essentials in it.

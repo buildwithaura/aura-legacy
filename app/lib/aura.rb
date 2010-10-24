@@ -54,4 +54,13 @@ class Aura
     require 'yaml'
     YAML::dump db_dump
   end
+
+  def self.roots
+    Models.all.inject([]) { |a, m| a += m.roots.try(:all) }
+  end
+
+  # Returns the menu items, sorted properly
+  def self.menu
+    roots.select { |item| item.shown_in_menu? }.sort
+  end
 end
