@@ -39,11 +39,11 @@ class Main
       flash_message "The new item has been created."
 
     rescue Sequel::ValidationFailed
-      return show_admin @model.templates_for('new'),
+      return show_admin(@model.templates_for('new'),
         :model  => @model,
         :parent => nil,
         :item   => @item,
-        :action => @model.path(:new)
+        :action => @model.path(:new))
     end
 
     redirect params[:next] || @item.path(:edit)
@@ -72,7 +72,7 @@ class Main
         flash_message "Your edits have been saved."
       end
 
-      return redirect params[:next]  unless params[:next].nil?
+      return redirect(params[:next])  unless params[:next].nil?
 
     rescue Sequel::ValidationFailed
     end
@@ -123,11 +123,11 @@ class Main
       flash_message "The new item has been created."
 
     rescue => e
-      return show_admin @item.templates_for('new'),
+      return show_admin(@item.templates_for('new'),
         :model  => @model,
         :item   => @item,
         :parent => @parent,
-        :action => @parent.path(:new)
+        :action => @parent.path(:new))
     end
 
     redirect params[:next] || @item.path(:edit)

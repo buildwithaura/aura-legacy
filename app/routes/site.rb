@@ -17,7 +17,7 @@ class Main
 
     # Do we have a homepage?
     if Aura::Slugs.find(path).nil?
-      return show :'default_home_page', { :layout => false }
+      return show(:'default_home_page', :layout => false)
     end
 
     load_path(path)

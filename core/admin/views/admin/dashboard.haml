@@ -16,8 +16,8 @@
     %ul
       - Aura::Admin.menu.items.each do |item|
         %li.browse
-          != link_to (item.href || '#') do
-            != admin_icon (item.icon || 'generic')
+          != link_to(item.href || '#') do
+            != admin_icon(item.icon || 'generic')
             = item.name
 
 - content_for :body do
