@@ -20,14 +20,30 @@ class Monk < Thor
   desc "test [file] [-v]", "Do tests."
   method_option :verbose, :type => :boolean, :aliases => "-v", :default => false
   def test(test=nil)
+    run_tests options, test, 'rake test'
+  end
+
+  desc "stories [file] [-d driver] [-h host]", "Do story tests."
+  method_option :host, :type => :string, :aliases => "-h"
+  method_option :driver, :type => :string, :aliases => "-d"
+  def stories(test=nil)
+    run_tests options, test, 'rake stories'
+  end
+
+private
+  def run_tests(options, test, cmd='rake test')
     envs = []
     envs << "verbose=1"  if options.verbose or !test.nil?
     envs << "test=#{test}"  unless test.nil?
 
+    [ :host, :driver ].each do |aspect|
+      envs << "#{aspect}=#{options.send(aspect)}"  unless options.send(aspect).nil?
+    end
+
     env_str = ''
     env_str = (["env"] + envs).join(' ')  if envs.any?
 
-    exec "#{env_str} rake test".strip.squeeze(' ')
+    exec "#{env_str} #{cmd}".strip.squeeze(' ')
   end
 end
 
