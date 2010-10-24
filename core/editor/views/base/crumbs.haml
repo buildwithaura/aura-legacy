@@ -38,7 +38,7 @@
         %input{:type => 'text', :name => 'slug', :value => (item.slug  if item)}
       %ul.actions.js
         %li
-          %a{:href => '#edit'} Edit
+          %a.edit{:href => '#edit'} Edit
         %li
           %a.ext{:href => item.path} Visit
         - unless item.parent?

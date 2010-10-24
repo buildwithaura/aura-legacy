@@ -2,12 +2,17 @@ section.crumbs {
   .url .components {
     padding: 0 10px;
     strong { margin-right: 10px; display: inline-block; }
-    span { display: inline-block; }
-    span.protocol, span.host { color: #aaa; }
+    span { display: inline-block; color: #999; }
     span.protocol { padding: 0 3px 0 0; }
-    span.path { color: #aaa; }
-    span.slash { padding: 0 3px; color: #aaa; }
-    .this { color: $grey; }
+    span.slash { padding: 0 3px; color: #bbb; }
+    .this { color: $grey; font-weight: bold; }
+  }
+
+  // Black!
+  .url:hover .components,
+  .url.edit  .components {
+    * { color: #ddd; text-shadow: 1px 1px 0 #333; }
+    .this { color: white; font-weight: bold; }
   }
 
   // URL thing
@@ -28,21 +33,25 @@ section.crumbs {
     @include clearfix;
     & { display: none; }
     & { padding-bottom: 0px; padding-top: 0px; margin-top: 1px; }
-    & { border-top: solid 1px #ddd; }
     li { display: inline; }
+    border-top: solid 1px $shadow20;
     a {
-      border-top: solid 1px #f3f3f3;
-      padding: 0 10px; text-shadow: 1px 1px 0 #eee;
+      border-top: solid 1px $hilite10;
+      padding: 0 10px; text-shadow: 0 0 4px $shadow20;
       line-height: 24px;
-      border-left: solid 1px $shadow05; display: block; float: right;
-      &:hover { background: $hilite20; text-decoration: none; color: #333; }
+      color: #888;
+      &.edit { color: #ddd; }
+      border-left: solid 1px $hilite10; display: block; float: right;
+      &:hover {
+        text-decoration: none; color: #ddd; text-shadow: 1px 1px 0 $shadow20;
+      }
     }
     li:last-child a { border-left: 0; }
   }
 
   .url:hover, .url.edit {
     @include border-radius(4px);
-    @include gradient(#fafafa, #eee);
+    @include gradient(#666, #444);
     @include shadow(0 0 4px $blue-glow-70);
     @include border-top-radius(0);
     border: solid 2px #333;
@@ -57,7 +66,7 @@ section.crumbs {
     .actions { display: none; }
     .this { display: none; }
     input {
-      font-weight: bold;
+      font-weight: bold; color: white;
       display: inline-block;
       border: 0; padding: 0; line-height: $height - 6px;
       width: 150px; margin: 0;
