@@ -5,6 +5,12 @@
     %title!= title ? "#{title} &mdash; Aura" : "Aura"
     %link(rel='stylesheet' media='screen' type='text/css' href='/css/reset.css')
     %link(rel='stylesheet' media='screen' type='text/css' href='/css/style.css')
+
+    - if @item.try(:meta_keywords)
+      %meta{:name => 'keywords', :value => @item.meta_keywords}
+    - if @item.try(:meta_description)
+      %meta{:name => 'description', :value => @item.meta_description}
+
   %body{:class => body_class}
 
     %header#top

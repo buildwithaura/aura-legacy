@@ -52,5 +52,5 @@ Aura::Models.unpack
 
 Aura::Extension.active.each { |ext| ext.init }
 
-Main.set :port, 2048
+Main.set :port, ENV['PORT'].to_i  unless ENV['PORT'].nil?
 Main.run!  if __FILE__ == $0
