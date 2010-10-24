@@ -21,6 +21,16 @@ module Sequel::Plugins::AuraModel
       raise Sequel::ValidationFailed(errors)  unless valid?
     end
 
+    # Determines if the record should be shown to visitors in the site menus.
+    # This only affects the front-facing site, and has to influence as
+    # to whether it will be shown in the admin area.
+    #
+    # Override this.
+    #
+    def shown_in_menu?
+      false
+    end
+
     # Sets the fields to the values in the hash.
     # Overriding set_fields to make the 2nd param optional.
     def set_fields(hash, keys=hash.keys)

@@ -33,6 +33,11 @@ form:not(.bypass) {
     margin: 0;
   }
 
+  label.checkbox {
+    display: inline-block;
+    input { display: inline !important; width: auto !important; height: auto !important; }
+    span { display: inline; font-weight: normal; margin-left: 5px; }
+  }
   p.submit {
     @extend .message;
     height: 35px; line-height: 35px; padding: 5px 15px 5px 10px;

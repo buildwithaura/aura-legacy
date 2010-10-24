@@ -21,6 +21,8 @@ class Aura
         String :meta_keywords
         String :meta_description
 
+        Boolean :shown_in_menu
+
         Time :created_at
         Time :modified_at
       end
@@ -43,6 +45,15 @@ class Aura
           text :meta_keywords, "Keywords", :class => 'compact-top'
           text :meta_description, "Description", :class => 'compact-bottom'
         end
+      end
+
+      def initialize(*a)
+        super
+        self.shown_in_menu = true  if self.shown_in_menu.nil?
+      end
+
+      def shown_in_menu?
+        !! self.shown_in_menu
       end
 
       def validate
