@@ -21,7 +21,7 @@ section.crumbs {
     position: absolute; top: 0; right: -10px; z-index: 2;
     font-size: 8pt;
     color: $grey; text-shadow: 1px 1px 0 $hilite20;
-    margin-right: 10px; 
+    margin-right: 10px;
 
     input { display: none; }
 
@@ -35,12 +35,11 @@ section.crumbs {
     & { padding-bottom: 0px; padding-top: 0px; margin-top: 1px; }
     li { display: inline; }
     border-top: solid 1px $shadow20;
+    @include shadow(inset 0 1px 0 $hilite10);
     a {
-      border-top: solid 1px $hilite10;
-      padding: 0 10px; text-shadow: 0 0 4px $shadow20;
-      line-height: 24px;
-      color: #888;
-      &.edit { color: #ddd; }
+      padding: 2px 15px 0 15px; text-shadow: 0 0 4px $shadow20;
+      line-height: 20px;
+      color: $blue;
       border-left: solid 1px $hilite10; display: block; float: right;
       &:hover {
         @include gradient($blue, $blue * 0.8);
@@ -53,7 +52,7 @@ section.crumbs {
 
   .url:hover, .url.edit {
     @include border-radius(4px);
-    @include gradient(#666, #444);
+    @include gradient(#444, #333);
     @include shadow(0 0 4px $blue-glow-70);
     @include border-top-radius(0);
     border: solid 2px #333;
@@ -65,8 +64,8 @@ section.crumbs {
 
   .url.edit {
     .components { font-size: 9pt; }
-    .actions { display: none; }
-    .this { display: none; }
+    .components span { color: #aaa; }
+    .actions, .this { display: none; }
     input {
       font-weight: bold; color: white;
       display: inline-block;
