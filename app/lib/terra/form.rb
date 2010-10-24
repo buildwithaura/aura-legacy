@@ -15,7 +15,14 @@ module Terra
     end
 
     # Forwardable
-    def field(*a) fieldset(:default).field *a; end
+    def field(name, *a)
+      if a.empty?
+        set = fieldsets.detect { |set| set.field(name) }
+        set.field(name)  unless set.nil?
+      else
+        fieldset(:default).field name, *a
+      end
+    end
 
     def method_missing(meth, *args, &blk)
       super  unless Fields.all.include?(meth)
