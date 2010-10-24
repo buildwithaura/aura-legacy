@@ -16,6 +16,19 @@ class Monk < Thor
   def irb(*a)
     console(*a)
   end
+
+  desc "test [file] [-v]", "Do tests."
+  method_option :verbose, :type => :boolean, :aliases => "-v", :default => false
+  def test(test=nil)
+    envs = []
+    envs << "verbose=1"  if options.verbose or !test.nil?
+    envs << "test=#{test}"  unless test.nil?
+
+    env_str = ''
+    env_str = (["env"] + envs).join(' ')  if envs.any?
+
+    exec "#{env_str} rake test".strip.squeeze(' ')
+  end
 end
 
 class Thor

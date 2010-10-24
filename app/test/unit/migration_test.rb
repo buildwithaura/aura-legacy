@@ -38,4 +38,9 @@ class MigrationTest < Test::Unit::TestCase
     page.parent_id
     page.foobar
   end
+
+  teardown do
+    Page.instance_variable_set :'@schema', @old
+    Page.sync_schema
+  end
 end
