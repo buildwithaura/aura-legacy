@@ -25,7 +25,7 @@
     != item.body  if item.respond_to?(:body)
   .nav
     %ul
-      - item.children.each do |p|
+      - item.submenu.each do |p|
         - next unless p.try(:renderable?)
         %li
           %a{:href => p.path}= p

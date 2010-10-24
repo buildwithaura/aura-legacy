@@ -83,6 +83,18 @@ module Sequel::Plugins::AuraModel
       Array.new
     end
 
+    # Returns a list of items for the submenu.
+    #
+    # @example
+    #
+    #   <% item.submenu.each do %>
+    #     <li><% item.to_s %></li>
+    #   <% end %>
+    #
+    def submenu
+      children.select { |item| item.shown_in_menu? }
+    end
+
     # Returns an array of records determining the breadcrumb path of
     # the record, starting from the root.
     def crumbs
