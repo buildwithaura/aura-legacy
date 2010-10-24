@@ -86,6 +86,14 @@ $medium: 9pt;
   }
 }
 
+@mixin button-small {
+  padding: 0 15px; line-height: 22px; height: 22px; font-size: 9pt;
+}
+
+@mixin button-micro {
+  padding: 0 35px; line-height: 16px; height: 16px; font-size: 7pt; text-transform: uppercase;
+}
+
 $input-height: 38px;
 
 @mixin input-focus {

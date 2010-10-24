@@ -1,8 +1,14 @@
 ;(function ($) {
-  $('.crumbs .url, .crumbs. url a').live('click', function () {
+  $('.crumbs .url .components, .crumbs .url a[href=#edit]').live('click', function () {
     var $url = $(this).closest('.url');
     $url.addClass('edit');
     $url.find('input').focus();
+    return false;
+  });
+
+  $('.crumbs .url a[href=#set-as-homepage]').live('click', function () {
+    alert("Not implemented yet -- for now, change the slug to 'home'.");
+    return false;
   });
 
   $('.crumbs form.url').live('submit', function (e) {

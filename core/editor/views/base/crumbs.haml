@@ -32,9 +32,18 @@
 
         %span.slash<>= "/"
         - if item
-          %a.this<>= (item.slug  if item)
+          %span.this<>= (item.slug  if item)
         - else
-          %a.this<>= "..."
+          %span.this<>= "..."
         %input{:type => 'text', :name => 'slug', :value => (item.slug  if item)}
+      %ul.actions.js
+        %li
+          %a{:href => '#edit'} Edit
+        %li
+          %a.ext{:href => item.path} Visit
+        - unless item.parent?
+          %li
+            %a{:href => '#set-as-homepage'} Set as homepage
+
 
 

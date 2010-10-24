@@ -50,8 +50,8 @@ button, a.button {
   @include button; @include button-metal;
   &.black { @include button-black; }
   &.blue { @include button-blue; }
-  &.small { padding: 0 15px; line-height: 22px; height: 22px; font-size: 9pt; }
-  &.micro { padding: 0 35px; line-height: 16px; height: 16px; font-size: 7pt; text-transform: uppercase; }
+  &.small { @include button-small; }
+  &.micro { @include button-micro; }
 }
 
 /* Table */
