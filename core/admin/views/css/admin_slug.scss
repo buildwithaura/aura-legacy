@@ -43,7 +43,9 @@ section.crumbs {
       &.edit { color: #ddd; }
       border-left: solid 1px $hilite10; display: block; float: right;
       &:hover {
-        text-decoration: none; color: #ddd; text-shadow: 1px 1px 0 $shadow20;
+        @include gradient($blue, $blue * 0.8);
+        @include shadow(0 0 8px $blue-glow-70);
+        text-decoration: none; color: #eee; text-shadow: 1px 1px 0 $shadow20;
       }
     }
     li:last-child a { border-left: 0; }

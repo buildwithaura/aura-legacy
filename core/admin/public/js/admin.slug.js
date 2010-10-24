@@ -21,6 +21,14 @@
     e.preventDefault(true);
   });
 
+  $('.crumbs .url input').live('keydown', function (e) {
+    if ((e.keyCode == 27) || (e.keyCode == 13) || (e.keyCode == 10)) {
+      $(this).trigger('change');
+      $(this).trigger('blur');
+      e.preventDefault(true);
+    }
+  });
+
   $('.crumbs .url input').live('change', function (e) {
     var $input = $("#area form [name='editor[slug]']")
     if (!$input.length) { return; }
