@@ -39,9 +39,10 @@
       %ul.actions.js
         %li
           %a.edit{:href => '#edit'} Edit
-        %li
-          %a.ext{:href => item.path} Visit
-        - unless item.parent?
+        - if item.try(:renderable?)
+          %li
+            %a.ext{:href => item.path} Visit
+        - if item.try(:parent?) == false
           %li
             %a{:href => '#set-as-homepage'} Set as homepage
 
