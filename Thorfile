@@ -1,8 +1,10 @@
 class Monk < Thor
   desc "start ENV", "Start Monk in the supplied environment"
-  method_option :port, :type => :numeric, :aliases => "-p", :default => 4567
+  method_option :port, :type => :numeric, :aliases => "-p", :default => nil
   def start(env = ENV["RACK_ENV"] || "development")
-    exec "env RACK_ENV=#{env} thin -R config.ru -p #{options.port} start"
+    envs = ["RACK_ENV=#{env}"]
+    envs << "PORT=#{options.port}"  unless options.port.nil?
+    exec "env #{envs.join(' ')} ruby init.rb"
   end
 
   desc "console", "Starts an interactive Ruby console."

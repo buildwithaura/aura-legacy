@@ -52,4 +52,5 @@ Aura::Models.unpack
 
 Aura::Extension.active.each { |ext| ext.init }
 
+Main.set :port, 2048
 Main.run!  if __FILE__ == $0
