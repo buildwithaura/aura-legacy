@@ -3,8 +3,8 @@ class Aura
     def roots
       models = Aura::Models.all.select { |m| m.try(:editable?) }
 
-      models.inject({}) do |hash, model|
-        hash[model] = model.roots
+      models.inject(HashArray.new) do |hash, model|
+        hash << { model => model.roots }
         hash
       end
     end
