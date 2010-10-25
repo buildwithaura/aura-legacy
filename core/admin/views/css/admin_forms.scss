@@ -31,7 +31,7 @@ form:not(.bypass) {
 
   // Mock controls for the form builder
   .mock {
-    display: block; @include gradient(#bbb,#ccc);
+    display: block; @include gradient($sidebar-color,$sidebar-color * 1.0);
     &, &:hover { border: solid 1px #bbb !important; }
   }
 
@@ -240,10 +240,13 @@ body.js-on #area.editable-title p.main-title { display: none; }
 
 .form-builder {
   @include clearfix;
-  border-top: solid 1px #ccc;
+  background: #f8f8f8;
+  border: solid 1px #ddd;
+  @include border-radius(4px);
+  padding: 0 10px;
   h2 {
-    width: 27%; float: left; font-size: 1em;
-    margin-right: 3%;
+    width: 27%; float: right; font-size: 1em;
+    margin-left: 3%;
     color: $slate;
     strong, em { display: block; }
     strong { font-size: 10pt; }
@@ -255,9 +258,9 @@ body.js-on #area.editable-title p.main-title { display: none; }
   p { position: relative; }
   p .mock { cursor: move; }
   p .toolbar {
-    position: absolute; bottom: 5px; right: 5px;
+    position: absolute; bottom: 0px; right: 38%;
     background: #333; padding: 2px;
-    @include border-radius(4px);
+    @include border-top-radius(6px);
     color: #ddd;
     font-size: $small;
     a { color: $blue; font-weight: normal; }
@@ -276,16 +279,15 @@ body.js-on #area.editable-title p.main-title { display: none; }
     }
   }
 
-  p .toolbar { opacity: 0.6; }
-  p:hover .toolbar { opacity: 1; }
-  p .toolbar { a.options, span.type { display: none; } }
-  p:hover .toolbar { a.options, span.type { display: inline-block; } }
+  p .toolbar { display: none; }
+  p:hover .toolbar { display: block; }
 
   input.label {
     padding: 0 3px; height: 22px; background: transparent;
     border: solid 1px transparent; @include shadow(none);
     cursor: text;
     margin-bottom: 3px;
+
     &:hover {
       @include shadow(none);
     }
