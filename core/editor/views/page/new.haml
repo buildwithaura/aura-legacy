@@ -1,22 +1,10 @@
+- options = { :item => item, :parent => parent, :model => model }
+!= extends :'base/new', options
+
 - title "New: %s" % [ item.to_s ]
 
-- options = { :item => item, :parent => parent, :model => model }
-
-- content_for :tabs do
-  != yield_content_of :'base/new', :tabs, options
-
-- content_for :nav do
-  != yield_content_of :'base/new', :nav, options
-
-- content_for :title do
-  != yield_content_of :'base/new', :title, options
-
-- content_for :toolbar do
-  != yield_content_of :'base/new', :toolbar, options
-
-- content_for :body do
+- content_for! :body do
   != partial item.templates_for('crumbs'), :item => parent, :model => model, :new => true
-
   != partial item.templates_for('errors'), :errors => item.errors
 
   %form{:action => action, :method => 'post' }

@@ -1,15 +1,11 @@
-- content_for :title do
+!= extends :'admin/settings'
+
+- content_for! :title do
   %h1
     Users
 
-- content_for :tabs do
-  != yield_content_of :'admin/settings', :tabs
-
-- content_for :nav do
-  != yield_content_of :'admin/settings', :nav
-
-- content_for :toolbar do
+- content_for! :toolbar do
   != yield_content_of :'base/list', :toolbar, { :model => model }
 
-- content_for :body do
+- content_for! :body do
   != yield_content_of :'base/list', :body, { :model => model }

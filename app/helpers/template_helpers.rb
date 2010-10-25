@@ -1,5 +1,19 @@
 class Main
   module TemplateHelpers
+    # Makes a template extend upon another template.
+    #
+    # Example:
+    #
+    #   -# Should be the first line.
+    #   != extends :'base/edit', options
+    #
+    #   - content_for! :body do
+    #     This will override the body of the base/edit template
+    #
+    def extends(name, locals={})
+      partial name, locals
+    end
+
     def content_for!(key, &blk)
       content_blocks[key.to_sym] = Array.new
       content_for key, &blk
