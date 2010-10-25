@@ -20,8 +20,6 @@ class ContactForm < Model
   form do
     text :title, "Title", :class => 'title main-title'
     text :slug, "Slug", :class => 'compact hide'
-
-    textarea :form_fields, "Form fields (one per each line)"
   end
 end
 end

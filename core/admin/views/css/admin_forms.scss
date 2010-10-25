@@ -20,11 +20,25 @@ form:not(.bypass) {
   p { margin: 10px 0; position: relative; }
   p:first-child { margin-top: 0; }
   p:last-child { margin-bottom: 0; border-bottom: 0; }
-  label { display: block; font-weight: bold; line-height: 24px; color: #777; }
 
-  textarea, input { @include input; @include box-sizing(border-box); width: 100%; }
-  textarea { height: 220px; }
-  p.long textarea { height: 300px; }
+  .label, label {
+    display: block; font-weight: bold;
+    line-height: 24px; color: #777;
+  }
+
+  .mock, textarea, input { @include input; @include box-sizing(border-box); width: 100%; }
+  textarea, .mock.textarea { height: 220px; }
+
+  // Mock controls for the form builder
+  .mock {
+    display: block; @include gradient(#bbb,#ccc);
+    &, &:hover { border: solid 1px #bbb !important; }
+  }
+
+  p.long {
+    .mock.textarea,
+    textarea { height: 300px; }
+  }
 
   /* "Hola! You are:" */
   h2.greeting {
@@ -222,3 +236,68 @@ p.focus div.wysiwyg {
 }
 
 body.js-on #area.editable-title p.main-title { display: none; }
+
+
+.form-builder {
+  @include clearfix;
+  border-top: solid 1px #ccc;
+  h2 {
+    width: 27%; float: left; font-size: 1em;
+    margin-right: 3%;
+    color: $slate;
+    strong, em { display: block; }
+    strong { font-size: 10pt; }
+    em { color: #999; font-weight: normal; font-style: normal; font-size: $small; }
+  }
+  fieldset { width: 70%; float: left; }
+
+
+  p { position: relative; }
+  p .mock { cursor: move; }
+  p .toolbar {
+    position: absolute; bottom: 5px; right: 5px;
+    background: #333; padding: 2px;
+    @include border-radius(4px);
+    color: #ddd;
+    font-size: $small;
+    a { color: $blue; font-weight: normal; }
+    a:hover { text-decoration: none; }
+    span, a { padding: 0 5px; }
+
+    a.options, a.delete {
+      display: inline-block; width: 16px; text-indent: -9999px;
+      background: url(/images/admin_icons/settings.png) center -1px no-repeat;
+      &:hover { background-color: $blue; @include shadow(0 0 4px $blue-glow-70); }
+    }
+
+    a.delete {
+      background-image: url(/images/admin_icons/generic.png);
+      background-position: center 1px;
+    }
+  }
+
+  p .toolbar { opacity: 0.6; }
+  p:hover .toolbar { opacity: 1; }
+  p .toolbar { a.options, span.type { display: none; } }
+  p:hover .toolbar { a.options, span.type { display: inline-block; } }
+
+  input.label {
+    padding: 0 3px; height: 22px; background: transparent;
+    border: solid 1px transparent; @include shadow(none);
+    cursor: text;
+    margin-bottom: 3px;
+    &:hover {
+      @include shadow(none);
+    }
+    &:focus {
+      background: white; @include shadow(inset 0 2px 2px $shadow10);
+      border-color: #ccc;
+    }
+  }
+
+  p:hover input.label {
+    background: $hilite40;
+    border: solid 1px #ddd;
+    &:focus { background: white; border-color: #ccc; }
+  }
+}
