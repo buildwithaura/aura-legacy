@@ -1,2 +1,2 @@
-#rvm --create 1.8.6@aura
-rvm --create 1.9.2@sinatra
+rvm --create 1.8.6@aura
+#rvm --create 1.9.2@sinatra

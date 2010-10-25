@@ -31,8 +31,12 @@ form:not(.bypass) {
 
   // Mock controls for the form builder
   .mock {
-    display: block; @include gradient($sidebar-color,$sidebar-color * 1.0);
+    display: block;
+    background: $sidebar-color url(/images/admin/mock-bg.png);
     &, &:hover { border: solid 1px #bbb !important; }
+  }
+  .mock:active {
+    background-color: $sidebar-color * 0.95;
   }
 
   p.long {
