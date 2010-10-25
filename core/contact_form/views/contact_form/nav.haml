@@ -20,8 +20,8 @@
           = "New #{model.title.downcase}"
 
 - else
-  %nav.back
-    %a{:href => R(:admin)} Dashboard
+
+  != admin_back_to_dashboard
 
   %nav.crumbs
     != link_to parent.path(:responses) do
