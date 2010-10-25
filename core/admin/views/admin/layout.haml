@@ -68,6 +68,7 @@
         != yield_content :nav
 
     - unless request.xhr?
+      != jquery_ui
       - if (settings.production? or params[:compress]) and params[:no_compress].nil?
         %script{:type => 'text/javascript', :src => '/admin/script.js?%s' % [settings.admin_js.mtime.to_i]}
       - else
