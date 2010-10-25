@@ -1,13 +1,11 @@
 # A stopgap solution to Ruby 1.8's lack of ordered hashes.
 class HashArray < Array
-  alias _each each
   def each(&blk)
-    _each { |hash| yield hash.to_a.flatten }
+    super { |hash| yield hash.to_a.flatten }
   end
 
-  alias _map map
   def map(&blk)
-    _map { |hash| yield hash.to_a.flatten }
+    super { |hash| yield hash.to_a.flatten }
   end
 
   def values
