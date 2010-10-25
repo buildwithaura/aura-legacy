@@ -2,19 +2,9 @@
 - title "Edit: %s" % [ item.to_s ]
 - options = { :item => item }
 
-- content_for :tabs do
-  != yield_content_of :'base/edit', :tabs, options
+!= extends :'base/edit', options
 
-- content_for :nav do
-  != yield_content_of :'base/edit', :nav, options
-
-- content_for :title do
-  != yield_content_of :'base/edit', :title, options
-
-- content_for :toolbar do
-  != yield_content_of :'base/edit', :toolbar, options
-
-- content_for :body do
+- content_for! :body do
   != partial item.templates_for('crumbs'), :item => item
 
   != partial item.templates_for('errors'), :errors => item.errors

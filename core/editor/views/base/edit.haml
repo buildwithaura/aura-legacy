@@ -5,11 +5,11 @@
 
 - content_for :nav do
   - if item.children.any?
-    %nav.back
-      - if item.parent.nil?
-        != admin_back_to_dashboard
+    - if item.parent.nil?
+      != admin_back_to_dashboard
 
-      - else
+    - else
+      %nav.back
         != link_to item.parent.path(:edit) do
           != admin_icon('page')
           = item.parent.to_s
