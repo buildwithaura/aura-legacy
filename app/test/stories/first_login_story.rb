@@ -17,8 +17,8 @@ class FirstLoginStory < Test::Unit::TestCase
     assert_location '/login'
     assert page.has_content?('Try again!')
 
-    fill_in 'username', :with => 'test@sinefunc.com'
-    fill_in 'password', :with => 'password'
+    fill_in 'username', :with => Main.default_user
+    fill_in 'password', :with => Main.default_password
 
     click_button 'Login'
 
