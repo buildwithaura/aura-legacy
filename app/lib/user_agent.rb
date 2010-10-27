@@ -2,8 +2,8 @@ class UserAgent
   UA_REGEXP = %r{([^ /]+)/([^ ]+)(?: \(([^)]+)\))?}
 
   def initialize(ua)
-    @ua_string = ua
-    @ua = ua.scan(UA_REGEXP).map { |r|
+    @ua_string = ua.to_s
+    @ua = ua.to_s.scan(UA_REGEXP).map { |r|
       r[2] = r[2].split(';')  unless r[2].nil?
       { :product => r[0], :version => r[1], :details => r[2] }
     }

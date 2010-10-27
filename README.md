@@ -47,6 +47,13 @@ The wiki has some instructions.
 * [Dreamhost](http://github.com/rstacruz/aura/wiki/Dreamhost-setup)
 * [Hosts with Passenger](http://github.com/rstacruz/aura/wiki/Passenger-setup)
 
+## Testing
+
+    thor monk:test
+    thor monk:test [test name]
+    thor monk:stories
+    thor monk:stories [story name] [-d chrome]
+
 ## Authors and copyright
 
 Aura is authored and maintained by Rico Sta. Cruz of Sinefunc, Inc.

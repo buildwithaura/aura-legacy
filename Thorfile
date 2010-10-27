@@ -24,8 +24,8 @@ class Monk < Thor
   end
 
   desc "stories [file] [-d driver] [-h host]", "Do story tests."
-  method_option :host, :type => :string, :aliases => "-h"
   method_option :driver, :type => :string, :aliases => "-d"
+  method_option :verbose, :type => :boolean, :aliases => "-v", :default => false
   def stories(test=nil)
     run_tests options, test, 'rake stories'
   end

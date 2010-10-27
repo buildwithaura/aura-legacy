@@ -4,10 +4,10 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'init'))
 
 def require?(what, gem=what)
   require what
-rescue LoadError
+rescue LoadError => e
   $stderr << "Oops! Testing needs the #{gem} gem. Please try:\n"
   $stderr << "$ sudo gem install #{gem}\n"
-  exit
+  raise e
 end
 
 require? "rack/test", "rack-test"
@@ -42,7 +42,6 @@ class Test::Unit::TestCase
       puts "\n\033[1;32m%20s\033[1;30m:%-3s\033[0m %s" % [basename, line, str]
     end
   end
-
 
   # @return [Array] [ app/test/unit/migration_test.rb, 23 ]
   def p_source

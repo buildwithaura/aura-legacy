@@ -41,7 +41,7 @@ class Setting < Model
 
   # Deletes a key.
   # See get for an example.
-  def self.delete(key)
+  def self.del(key)
     s = find(:key => key.to_s)
     return  if s.nil?
 

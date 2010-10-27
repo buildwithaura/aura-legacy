@@ -21,8 +21,8 @@ class Aura
 
   # Alias for Setting.delete.
   # See Setting.get for an example.
-  def self.delete(key)
-    Models::Setting.delete key
+  def self.del(key)
+    Models::Setting.del key
   end
 
   # Checks if the site is empty.

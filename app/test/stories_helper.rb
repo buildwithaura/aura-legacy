@@ -1,32 +1,42 @@
-$:.unshift(*Dir['vendor/*/lib'])
+$:.unshift(*Dir['./vendor/*/lib'])
 
 def require?(what, gem=what)
   require what
-rescue LoadError
+rescue LoadError => e
   $stderr << "Oops! Testing needs the #{gem} gem. Please try:\n"
   $stderr << "$ sudo gem install #{gem}\n"
-  exit
+  raise e
 end
 
 require "rubygems"
 require? "contest"
-require? "stories", :stories
-require? "stories/runner", :stories
 require? "capybara"
 require? "capybara/dsl", :capybara
 
-Capybara.configure do |c|
-  # In the future, if we want to do JS testing:
-  # :culerity [headless], :selenium [firefox], :chrome
-  # c.default_driver = (ENV['driver'] || $_driver || :chrome).to_sym
-  # c.app_host       = ENV['host'] || $_host || 'http://localhost:4567'
-  c.app = Main
-end
+require "test_helper"
 
-Capybara.register_driver :chrome do |app|
-  Capybara::Driver::Selenium.new(app, :browser => :chrome)
+Capybara.app = Main
+
+if ENV['driver'] == 'chrome'
+  Capybara.default_driver = (ENV['driver'] || :chrome).to_sym
+  Capybara.register_driver :chrome do |app|
+    Capybara::Driver::Selenium.new(app, :browser => :chrome)
+  end
 end
 
 class Test::Unit::TestCase
   include Capybara
+
+  def status
+    p "Current path", current_path
+  end
+
+  def assert_location(loc)
+    assert_equal loc, current_path
+  end
+
+  setup do
+    Main.flush!
+    Main.seed!
+  end
 end
