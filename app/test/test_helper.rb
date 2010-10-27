@@ -54,3 +54,26 @@ class Test::Unit::TestCase
     e.backtrace[2..-1]
   end
 end
+
+# For testing helpers
+class MockSinatra
+  def settings; self.class; end
+  def self.settings; self; end
+  def self.production?; @@production; end
+  def self.development?; !@@production; end
+  def session; @session ||= Hash.new; end
+
+  def initialize
+    @@production = true
+  end
+
+  def production(&blk)
+    yield self
+  end
+
+  def development(&blk)
+    @@production = false
+    yield self
+    @@production = true
+  end
+end
