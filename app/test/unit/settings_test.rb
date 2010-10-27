@@ -26,7 +26,7 @@ class SettingsTest < Test::Unit::TestCase
     assert_equal 31337, Aura.get('jiggawatts')
 
     # Should delete properly.
-    last = Aura.delete('jiggawatts')
+    last = Aura.del('jiggawatts')
     assert_equal 31337, last
     assert_equal nil, Aura.get('jiggawatts')
   end
