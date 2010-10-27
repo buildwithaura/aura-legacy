@@ -76,4 +76,9 @@ class MockSinatra
     yield self
     @@production = true
   end
+
+  def request
+    require 'ostruct'
+    return OpenStruct.new(:fullpath => '/', :xhr? => false)
+  end
 end
