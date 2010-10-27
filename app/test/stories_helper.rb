@@ -63,4 +63,9 @@ class Test::Unit::TestCase
     session.visit url
     assert ! session.has_content?('Login'), 'Ended up in a login page.'
   end
+
+  def assert_404(url=nil, s=self)
+    s.visit url unless url.nil?
+    assert (s.has_content?('Not found') || s.has_content?('know this ditty'))
+  end
 end

@@ -21,13 +21,17 @@ class VisitStory < Test::Unit::TestCase
     s.click_button 'Login'
 
     assert_admin '/admin', s
+    assert_admin '/admin/settings', s
     assert_admin '/admin/settings/database', s
     assert_admin '/user/me/edit', s
+    assert_admin '/user/list', s
     assert_admin '/user/1/edit', s
 
     assert_front '/home', s
     assert_front '/', s
     assert_front '/about-us', s
-    assert_front '/foob', s
+
+    assert_404 '/jigglesphinx', s
+    assert_404 '/admin/sodapop', s
   end
 end
