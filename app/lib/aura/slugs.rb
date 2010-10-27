@@ -4,8 +4,7 @@ class Aura
 
     # Finds a model from a path.
     #
-    # Example:
-    #   find('/products/boots')
+    # Please use Aura.find.
     #
     def find(path)
       item = find_by_model_id(path)

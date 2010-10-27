@@ -1,7 +1,7 @@
 class Main
   helpers do
     def load_path(path)
-      @item = Aura::Slugs.find(path) or pass
+      @item = Aura.find(path) or pass
       pass  unless @item.try(:renderable?)
 
       show @item.page_templates, {}, :item => @item
@@ -16,7 +16,7 @@ class Main
     path = '/home'
 
     # Do we have a homepage?
-    if Aura::Slugs.find(path).nil?
+    if Aura.find(path).nil?
       return show(:'default_home_page', :layout => false)
     end
 

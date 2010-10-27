@@ -43,6 +43,23 @@ class Aura
     ! Models.all.select { |m| m.content? }.detect { |m| m.any? }
   end
 
+  # Finds a record that corresponds to a path.
+  #
+  # @example
+  #
+  #   products = Page.new :slug => 'products'
+  #   products.save
+  #
+  #   boots = Page.new :parent => 'products', :slug => 'boots'
+  #   boots.save
+  #
+  #   foo = Aura.find('/products/boots')
+  #   assert foo == boots
+  #
+  def self.find(path)
+    Slugs.find path
+  end
+
   # Returns the database backup as a hash.
   #
   # @see db_dump_yaml

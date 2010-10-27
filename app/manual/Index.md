@@ -2,6 +2,13 @@
 
 Hello.
 
+## Aura class
+
+- {Aura} The main Aura class has a lot of useful functions.
+- {Aura::Extension}
+- {Aura::Models}
+- {Aura::Slug}
+
 ## Model reference
 
 Every Aura model has these functions.

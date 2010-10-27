@@ -51,7 +51,7 @@ class Main
 
   get '/*/edit' do |path|
     require_login
-    @item = Aura::Slugs.find(path) or pass
+    @item = Aura.find(path) or pass
     pass unless @item.try(:editable?)
 
     show_admin @item.templates_for('edit'),
@@ -61,7 +61,7 @@ class Main
 
   post '/*/edit' do |path|
     require_login
-    @item = Aura::Slugs.find(path) or pass
+    @item = Aura.find(path) or pass
     pass unless @item.try(:editable?)
 
     begin
@@ -84,7 +84,7 @@ class Main
 
   get '/*/preview' do |path|
     require_login
-    @item = Aura::Slugs.find(path) or pass
+    @item = Aura.find(path) or pass
     pass unless @item.try(:editable?)
 
     show_admin @item.templates_for('preview'),
@@ -93,7 +93,7 @@ class Main
 
   get '/*/new' do |path|
     require_login
-    @parent = Aura::Slugs.find(path) or pass
+    @parent = Aura.find(path) or pass
     pass unless @parent.try(:parentable?)
     pass unless @parent.try(:editable?)
 
@@ -108,7 +108,7 @@ class Main
 
   post '/*/new' do |path|
     require_login
-    @parent = Aura::Slugs.find(path) or pass
+    @parent = Aura.find(path) or pass
     pass unless @parent.try(:parentable?)
     pass unless @parent.try(:editable?)
 
@@ -135,7 +135,7 @@ class Main
 
   get '/*/delete' do |path|
     require_login
-    @item = Aura::Slugs.find(path) or pass
+    @item = Aura.find(path) or pass
     pass unless @item.try(:editable?)
 
     show_admin @item.templates_for('delete'),
@@ -145,7 +145,7 @@ class Main
 
   post '/*/delete' do |path|
     require_login
-    @item = Aura::Slugs.find(path) or pass
+    @item = Aura.find(path) or pass
     pass unless @item.try(:editable?)
 
     action = @item.parent? ? @item.parent.path(:edit) : R(:admin)

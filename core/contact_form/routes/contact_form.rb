@@ -2,7 +2,7 @@ class Main
   get '/*/responses' do |path|
     require_login
 
-    @item = Aura::Slugs.find(path) or pass
+    @item = Aura.find(path) or pass
     pass unless @item.is_a?(ContactForm)
 
     show_admin @item.templates_for('responses'),
