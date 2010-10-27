@@ -20,7 +20,8 @@ Now run it!
 
     ruby init.rb
 
-Point your browser then to `http://localhost:4567` and follow the instructions.
+Point your browser then to `http://localhost:4567`! The default user is
+`test@sinefunc.com` / `password`.
 
 ## Other setup notes
 
@@ -28,9 +29,9 @@ Point your browser then to `http://localhost:4567` and follow the instructions.
   If you are using the Ruby version manager, it may be in your interest to do these setting up.  
   (Feel free to skip this if you don't understand.)
 
-      rvm install 1.9.2  # If you haven't yet
-      rvm --rvmrc --create 1.9.2@aura
-      rvm gemset import
+  * `rvm install 1.9.2  # If you haven't yet`
+  * `rvm --rvmrc --create 1.9.2@aura`
+  * `rvm gemset import`
 
 * **Configuring a database** (optional)  
   Aura uses sqlite by default. If you'd want it to connect to another SQL database,
