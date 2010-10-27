@@ -39,4 +39,28 @@ class Test::Unit::TestCase
     Main.flush!
     Main.seed!
   end
+
+  def login!
+    visit '/login'
+    if page.has_css?("form[action$=login]")
+      fill_in 'username', :with => Main.default_user
+      fill_in 'password', :with => Main.default_password
+      click_button 'Login'
+      assert ! page.has_content?('Login'), 'Login failed.'
+    end
+  end
+
+  # Checks that the given URL is an admin area.
+  def assert_admin(url, session=self)
+    session.visit url
+    assert ! session.has_content?('Login'), 'Ended up in a login page.'
+    assert session.has_content?('Aura')
+    assert session.has_css?('#top')
+    assert session.has_css?('aside#nav')
+  end
+
+  def assert_front(url, session=self)
+    session.visit url
+    assert ! session.has_content?('Login'), 'Ended up in a login page.'
+  end
 end
