@@ -24,5 +24,10 @@ class SettingsTest < Test::Unit::TestCase
     # *Should* change.
     Aura.set('jiggawatts', 31337)
     assert_equal 31337, Aura.get('jiggawatts')
+
+    # Should delete properly.
+    last = Aura.delete('jiggawatts')
+    assert_equal 31337, last
+    assert_equal nil, Aura.get('jiggawatts')
   end
 end

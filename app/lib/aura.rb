@@ -1,29 +1,68 @@
 class Aura
   Model = Sequel::Model
 
+  # Alias for Setting.get.
+  # See Setting.get for an example.
   def self.get(key)
-    Models::Setting.find(:key => key.to_s).try(:value)
+    Models::Setting.get key
   end
 
+  # Alias for Setting.set.
+  # See Setting.get for an example.
   def self.set(key, value)
-    s = Models::Setting.find(:key => key.to_s) || Models::Setting.new
-    s.key   = key
-    s.value = value
-    s.save
-    value
+    Models::Setting.set key, value
   end
 
+  # Alias for Setting.default.
+  # See Setting.get for an example.
   def self.default(key, value)
-    s = Models::Setting.find(:key => key.to_s)
-    return set(key, value)  if s.nil?
-    get key
+    Models::Setting.default key, value
   end
 
+  # Alias for Setting.delete.
+  # See Setting.get for an example.
+  def self.delete(key)
+    Models::Setting.delete key
+  end
+
+  # Checks if the site is empty.
+  #
+  # All content models are queried to see if there are any records available.
+  # Content models are determined by checking if the model classes respond
+  # #content? as @@true@@.
+  # 
+  # @example
+  #
+  #   if Aura.site_empty?
+  #     page = Page.new :title => "Hello"
+  #     page.save
+  #     assert Aura.site_empty? == false
+  #   end
+  #
   def self.site_empty?
     ! Models.all.select { |m| m.content? }.detect { |m| m.any? }
   end
 
   # Returns the database backup as a hash.
+  #
+  # @see db_dump_yaml
+  #
+  # @example
+  #
+  #   data = Aura.db_dump
+  #   yml_data = YAML::dump(data) # also see db_dump_yaml.
+  #   File.open('backup.yml', 'w') { |f| f << yml_data }
+  #   puts yml_data.inspect
+  #
+  #   # Sample output:
+  #   # pages:
+  #   #   - title: Hello.
+  #   #     body: Good day everyone!
+  #   #   - title: Cheers!
+  #   #     body: What's going on?
+  #   # settings:
+  #   #   - ...
+  #
   def self.db_dump
     db = Models.all.first.db
 
@@ -34,6 +73,23 @@ class Aura
     }
   end
 
+  # Restores a previous output of db_dump.
+  #
+  # This function takes in the parameter @@hash@@, which is a hash table
+  # with the keys as the table names, and it's values are arrays of
+  # records.
+  # 
+  # See #db_dump for an example of the hash that #db_restore expects.
+  #
+  # @example
+  #
+  #   # Load a previously saved copy of the hash, as spitted out
+  #   # by db_dump.
+  #   yaml_data = YAML::load_file 'backup.yml'
+  #
+  #   # Load it.
+  #   Aura.db_restore(yaml_data)
+  #
   def self.db_restore(hash)
     # Hash format:
     # { :table_name => [ array of hashes of rows ], ... }
@@ -50,16 +106,31 @@ class Aura
     end
   end
 
+  # Returns the database backup as a YAML document.
+  #
   def self.db_dump_yaml
     require 'yaml'
     YAML::dump db_dump
   end
 
+  # Returns all model records without parents.
+  # 
+  # Records are considered without parents when they respond to #parent
+  # with @@nil@@.
+  #
   def self.roots
     Models.all.inject([]) { |a, m| a += m.roots.try(:all) }
   end
 
-  # Returns the menu items, sorted properly
+  # Returns the menu items, sorted properly.
+  #
+  # @example
+  #
+  #   -# HAML
+  #   - Aura.menu.each do |item|
+  #     %li
+  #       %a{:href => item.path}= item.menu_title
+  #
   def self.menu
     roots.select { |item| item.shown_in_menu? }.sort
   end
