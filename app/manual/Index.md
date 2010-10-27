@@ -7,7 +7,7 @@ Hello.
 - {Aura} The main Aura class has a lot of useful functions.
 - {Aura::Extension}
 - {Aura::Models}
-- {Aura::Slug}
+- {Aura::Slugs}
 
 ## Model reference
 

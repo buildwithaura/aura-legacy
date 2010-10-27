@@ -1,6 +1,8 @@
 class Aura
   Model = Sequel::Model
 
+  # @group Settings
+
   # Alias for Setting.get.
   # See Setting.get for an example.
   def self.get(key)
@@ -25,40 +27,7 @@ class Aura
     Models::Setting.del key
   end
 
-  # Checks if the site is empty.
-  #
-  # All content models are queried to see if there are any records available.
-  # Content models are determined by checking if the model classes respond
-  # #content? as @@true@@.
-  # 
-  # @example
-  #
-  #   if Aura.site_empty?
-  #     page = Page.new :title => "Hello"
-  #     page.save
-  #     assert Aura.site_empty? == false
-  #   end
-  #
-  def self.site_empty?
-    ! Models.all.select { |m| m.content? }.detect { |m| m.any? }
-  end
-
-  # Finds a record that corresponds to a path.
-  #
-  # @example
-  #
-  #   products = Page.new :slug => 'products'
-  #   products.save
-  #
-  #   boots = Page.new :parent => 'products', :slug => 'boots'
-  #   boots.save
-  #
-  #   foo = Aura.find('/products/boots')
-  #   assert foo == boots
-  #
-  def self.find(path)
-    Slugs.find path
-  end
+  # @group Database handling
 
   # Returns the database backup as a hash.
   #
@@ -128,6 +97,43 @@ class Aura
   def self.db_dump_yaml
     require 'yaml'
     YAML::dump db_dump
+  end
+
+  # @group Site content
+
+  # Checks if the site is empty.
+  #
+  # All content models are queried to see if there are any records available.
+  # Content models are determined by checking if the model classes respond
+  # #content? as @@true@@.
+  # 
+  # @example
+  #
+  #   if Aura.site_empty?
+  #     page = Page.new :title => "Hello"
+  #     page.save
+  #     assert Aura.site_empty? == false
+  #   end
+  #
+  def self.site_empty?
+    ! Models.all.select { |m| m.content? }.detect { |m| m.any? }
+  end
+
+  # Finds a record that corresponds to a path.
+  #
+  # @example
+  #
+  #   products = Page.new :slug => 'products'
+  #   products.save
+  #
+  #   boots = Page.new :parent => 'products', :slug => 'boots'
+  #   boots.save
+  #
+  #   foo = Aura.find('/products/boots')
+  #   assert foo == boots
+  #
+  def self.find(path)
+    Slugs.find path
   end
 
   # Returns all model records without parents.

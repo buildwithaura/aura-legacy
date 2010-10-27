@@ -2,9 +2,11 @@ class Aura
   module Slugs # TODO: Change to Router
     extend self
 
-    # Finds a model from a path.
+    # @group Module functions
+
+    # Finds a record from a path.
     #
-    # Please use Aura.find.
+    # Please use {Aura.find}.
     #
     def find(path)
       item = find_by_model_id(path)
@@ -21,6 +23,16 @@ class Aura
       item
     end
 
+    # Finds a record from a model id path in the format */model_name/id*.
+    #
+    # You do not need to call this as this is already done by
+    # {Aura.find}.
+    #
+    # @example
+    #
+    #   page = Aura::Slugs.find_by_model_id('/page/2')
+    #   assert page == Page[2]
+    #
     def find_by_model_id(path)
       model_name, id = path.squeeze('/').split('/').compact
       return nil  if id.nil?
@@ -35,17 +47,36 @@ class Aura
       model[id]
     end
 
+    # Ensures that a given model is going to be searched by
+    # {Aura.find}.
+    #
+    # This is automatically called by {Sequel::Plugins::AuraSluggable}.
+    #
+    # @example
+    #
+    #   # Loading the sluggable plugin does {#register} automatically.
+    #   class MyModel < Aura::Model
+    #     plugin :aura_sluggable
+    #   end
+    #
+    #   item = MyModel.new :slug => 'hello'
+    #   item.save
+    #
+    #   # Now you may search for it.
+    #   assert item == Aura.find('/hello')
+    #
+    def register(model)
+      @models ||= []
+      @models << model  unless @models.include? model
+    end
+
+  protected
     def find_single(slug, parent=nil)
       models.each do |model|
         item = model.get_by_slug(slug, parent)
         return item  unless item.nil?
       end
       nil
-    end
-
-    def register(model)
-      @models ||= []
-      @models << model  unless @models.include? model
     end
 
     def models
