@@ -1,4 +1,6 @@
 core app
---main=app/manual/Index.md
+-r app/manual/Index.md
+--exclude test
+--no-private
 --files=app/manual/*
 --files=core/*/manual/*
