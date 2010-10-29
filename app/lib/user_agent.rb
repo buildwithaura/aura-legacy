@@ -86,3 +86,26 @@ protected
     !haystack.nil? && haystack.detect { |d| d.match(spec) }
   end
 end
+
+module Sinatra
+  module UserAgentHelpers
+    def browser
+      UserAgent.new(env['HTTP_USER_AGENT'])
+    end
+  end
+end
+
+# Usage example:
+#
+#   Main.register Sinatra::UserAgentHelpers
+#
+#   -# haml
+#   %body{class: browser.body_class}
+#
+#   - if browser.ios?
+#     %p Download our mobile app!
+#
+# Output:
+#
+#   <body class='webkit safari mac'>
+#   <body class='windows ie ie6'>
