@@ -1,0 +1,1005 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Aura</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo; 
+    
+    
+    <span class="title">Aura</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Aura
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Aura</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/lib/aura.rb<span class="defines">,<br />
+  app/lib/aura/menu.rb,<br /> app/lib/aura/utils.rb,<br /> app/lib/aura/admin.rb,<br /> core/editor/editor.rb,<br /> app/lib/aura/slugs.rb,<br /> app/lib/aura/models.rb,<br /> app/models/settings.rb,<br /> core/user/models/user.rb,<br /> core/page/models/page.rb,<br /> app/lib/aura/extension.rb,<br /> app/lib/sequel/subtyped.rb,<br /> core/page/models/page_seed.rb,<br /> core/contact_form/models/contact_form.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Aura/Admin.html" title="Aura::Admin (module)">Admin</a></span>, <span class='object_link'><a href="Aura/Editor.html" title="Aura::Editor (module)">Editor</a></span>, <span class='object_link'><a href="Aura/Models.html" title="Aura::Models (module)">Models</a></span>, <span class='object_link'><a href="Aura/Slugs.html" title="Aura::Slugs (module)">Slugs</a></span>, <span class='object_link'><a href="Aura/Utils.html" title="Aura::Utils (module)">Utils</a></span>
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Aura/Extension.html" title="Aura::Extension (class)">Extension</a></span>, <span class='object_link'><a href="Aura/Menu.html" title="Aura::Menu (class)">Menu</a></span>, <span class='object_link'><a href="Aura/MenuItem.html" title="Aura::MenuItem (class)">MenuItem</a></span>, <span class='object_link'><a href="Aura/Subtype.html" title="Aura::Subtype (class)">Subtype</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="Model-constant" class="">Model =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span></pre></dd>
+      
+        <dt id="ExtensionNotFound-constant" class="">ExtensionNotFound =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='const'>StandardError</span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+    <h2>
+      Settings
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default-class_method" title="default (class method)">+ (Object) <strong>default</strong>(key, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Alias for Setting.default.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#del-class_method" title="del (class method)">+ (Object) <strong>del</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Alias for Setting.delete.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get-class_method" title="get (class method)">+ (Object) <strong>get</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Alias for Setting.get.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set-class_method" title="set (class method)">+ (Object) <strong>set</strong>(key, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Alias for Setting.set.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Database handling
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#db_dump-class_method" title="db_dump (class method)">+ (Object) <strong>db_dump</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the database backup as a hash.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#db_dump_yaml-class_method" title="db_dump_yaml (class method)">+ (Object) <strong>db_dump_yaml</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the database backup as a YAML document.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#db_restore-class_method" title="db_restore (class method)">+ (Object) <strong>db_restore</strong>(hash) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Restores a previous output of db_dump.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Site content
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find-class_method" title="find (class method)">+ (Object) <strong>find</strong>(path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Finds a record that corresponds to a path.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#menu-class_method" title="menu (class method)">+ (Object) <strong>menu</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the menu items, sorted properly.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#roots-class_method" title="roots (class method)">+ (Object) <strong>roots</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns all model records without parents.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#site_empty%3F-class_method" title="site_empty? (class method)">+ (Boolean) <strong>site_empty?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Checks if the site is empty.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="db_dump-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>db_dump</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the database backup as a hash.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+<span class='id data'>data</span> <span class='op'>=</span> <span class='const'>Aura</span><span class='period'>.</span><span class='id db_dump'>db_dump</span>
+<span class='id yml_data'>yml_data</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id dump'>dump</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span> <span class='comment'># also see db_dump_yaml.
+</span><span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>backup.yml</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id f'>f</span><span class='op'>|</span> <span class='id f'>f</span> <span class='op'>&lt;&lt;</span> <span class='id yml_data'>yml_data</span> <span class='rbrace'>}</span>
+<span class='id puts'>puts</span> <span class='id yml_data'>yml_data</span><span class='period'>.</span><span class='id inspect'>inspect</span>
+
+<span class='comment'># Sample output:
+</span><span class='comment'># pages:
+</span><span class='comment'>#   - title: Hello.
+</span><span class='comment'>#     body: Good day everyone!
+</span><span class='comment'>#   - title: Cheers!
+</span><span class='comment'>#     body: What's going on?
+</span><span class='comment'># settings:
+</span><span class='comment'>#   - ...</span></pre>
+    
+  </div>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#db_dump_yaml-class_method" title="Aura.db_dump_yaml (method)">db_dump_yaml</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id db_dump'>db_dump</span>
+  <span class='id db'>db</span> <span class='op'>=</span> <span class='const'>Models</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id first'>first</span><span class='period'>.</span><span class='id db'>db</span>
+
+  <span class='const'>Models</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id hash'>hash</span><span class='comma'>,</span> <span class='id model'>model</span><span class='op'>|</span>
+    <span class='id table'>table</span> <span class='op'>=</span> <span class='id model'>model</span><span class='period'>.</span><span class='id table_name'>table_name</span>
+    <span class='id hash'>hash</span><span class='lbracket'>[</span><span class='id table'>table</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id db'>db</span><span class='lbracket'>[</span><span class='id table'>table</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id all'>all</span>
+    <span class='id hash'>hash</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="db_dump_yaml-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>db_dump_yaml</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the database backup as a YAML document.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id db_dump_yaml'>db_dump_yaml</span>
+  <span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>yaml</span><span class='tstring_end'>'</span></span>
+  <span class='const'>YAML</span><span class='op'>::</span><span class='id dump'>dump</span> <span class='id db_dump'>db_dump</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="db_restore-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>db_restore</strong>(hash) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Restores a previous output of db_dump.
+</p>
+<p>
+This function takes in the parameter @@hash@@, which is a hash table with
+the keys as the table names, and it&#8217;s values are arrays of records.
+</p>
+<p>
+See #db_dump for an example of the hash that #db_restore expects.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+<span class='comment'># Load a previously saved copy of the hash, as spitted out
+</span><span class='comment'># by db_dump.
+</span><span class='id yaml_data'>yaml_data</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id load_file'>load_file</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>backup.yml</span><span class='tstring_end'>'</span></span>
+
+<span class='comment'># Load it.
+</span><span class='const'>Aura</span><span class='period'>.</span><span class='id db_restore'>db_restore</span><span class='lparen'>(</span><span class='id yaml_data'>yaml_data</span><span class='rparen'>)</span></pre>
+    
+  </div>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id db_restore'>db_restore</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='rparen'>)</span>
+  <span class='comment'># Hash format:
+</span>  <span class='comment'># { :table_name =&gt; [ array of hashes of rows ], ... }
+</span>
+  <span class='comment'># Bring the DB back to the state where we have tables ready.
+</span>  <span class='const'>Main</span><span class='period'>.</span><span class='id flush!'>flush!</span>
+  <span class='const'>Models</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id m'>m</span><span class='op'>|</span> <span class='id m'>m</span><span class='period'>.</span><span class='id sync_schema'>sync_schema</span> <span class='rbrace'>}</span>
+  <span class='id db'>db</span> <span class='op'>=</span> <span class='const'>Models</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id first'>first</span><span class='period'>.</span><span class='id db'>db</span>
+
+  <span class='id hash'>hash</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id table'>table</span><span class='comma'>,</span> <span class='id entries'>entries</span><span class='op'>|</span>
+    <span class='id entries'>entries</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id entry'>entry</span><span class='op'>|</span>
+      <span class='id db'>db</span><span class='lbracket'>[</span><span class='id table'>table</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id entry'>entry</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="default-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>default</strong>(key, value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Alias for Setting.default. See Setting.get for an example.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id default'>default</span><span class='lparen'>(</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='const'>Models</span><span class='op'>::</span><span class='const'>Setting</span><span class='period'>.</span><span class='id default'>default</span> <span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="del-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>del</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Alias for Setting.delete. See Setting.get for an example.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id del'>del</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='const'>Models</span><span class='op'>::</span><span class='const'>Setting</span><span class='period'>.</span><span class='id del'>del</span> <span class='id key'>key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>find</strong>(path) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Finds a record that corresponds to a path.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+<span class='id products'>products</span> <span class='op'>=</span> <span class='const'>Page</span><span class='period'>.</span><span class='id new'>new</span> <span class='symbol'>:slug</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>products</span><span class='tstring_end'>'</span></span>
+<span class='id products'>products</span><span class='period'>.</span><span class='id save'>save</span>
+
+<span class='id boots'>boots</span> <span class='op'>=</span> <span class='const'>Page</span><span class='period'>.</span><span class='id new'>new</span> <span class='symbol'>:parent</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>products</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:slug</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>boots</span><span class='tstring_end'>'</span></span>
+<span class='id boots'>boots</span><span class='period'>.</span><span class='id save'>save</span>
+
+<span class='id foo'>foo</span> <span class='op'>=</span> <span class='const'>Aura</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/products/boots</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='id assert'>assert</span> <span class='id foo'>foo</span> <span class='op'>==</span> <span class='id boots'>boots</span></pre>
+    
+  </div>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
+  <span class='const'>Slugs</span><span class='period'>.</span><span class='id find'>find</span> <span class='id path'>path</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>get</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Alias for Setting.get. See Setting.get for an example.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='const'>Models</span><span class='op'>::</span><span class='const'>Setting</span><span class='period'>.</span><span class='id get'>get</span> <span class='id key'>key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="menu-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>menu</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the menu items, sorted properly.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+-# HAML
+- Aura.menu.each do |item|
+  %li
+    %a{:href =&gt; item.path}= item.menu_title</pre>
+    
+  </div>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 157</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id menu'>menu</span>
+  <span class='id roots'>roots</span><span class='period'>.</span><span class='id select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id item'>item</span><span class='op'>|</span> <span class='id item'>item</span><span class='period'>.</span><span class='id shown_in_menu?'>shown_in_menu?</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id sort'>sort</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="roots-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>roots</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns all model records without parents.
+</p>
+<p>
+Records are considered without parents when they respond to #parent with
+@@nil@@.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id roots'>roots</span>
+  <span class='const'>Models</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id a'>a</span><span class='comma'>,</span> <span class='id m'>m</span><span class='op'>|</span> <span class='id a'>a</span> <span class='op'>+=</span> <span class='id m'>m</span><span class='period'>.</span><span class='id roots'>roots</span><span class='period'>.</span><span class='id try'>try</span><span class='lparen'>(</span><span class='symbol'>:all</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="set-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>set</strong>(key, value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Alias for Setting.set. See Setting.get for an example.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id set'>set</span><span class='lparen'>(</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='const'>Models</span><span class='op'>::</span><span class='const'>Setting</span><span class='period'>.</span><span class='id set'>set</span> <span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="site_empty?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>site_empty?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Checks if the site is empty.
+</p>
+<p>
+All content models are queried to see if there are any records available.
+Content models are determined by checking if the model classes respond
+#content? as @@true@@.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+<span class='kw'>if</span> <span class='const'>Aura</span><span class='period'>.</span><span class='id site_empty?'>site_empty?</span>
+  <span class='id page'>page</span> <span class='op'>=</span> <span class='const'>Page</span><span class='period'>.</span><span class='id new'>new</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id page'>page</span><span class='period'>.</span><span class='id save'>save</span>
+  <span class='id assert'>assert</span> <span class='const'>Aura</span><span class='period'>.</span><span class='id site_empty?'>site_empty?</span> <span class='op'>==</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/lib/aura.rb', line 118</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id site_empty?'>site_empty?</span>
+  <span class='op'>!</span> <span class='const'>Models</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id m'>m</span><span class='op'>|</span> <span class='id m'>m</span><span class='period'>.</span><span class='id content?'>content?</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id detect'>detect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id m'>m</span><span class='op'>|</span> <span class='id m'>m</span><span class='period'>.</span><span class='id any?'>any?</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Oct 30 00:58:46 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

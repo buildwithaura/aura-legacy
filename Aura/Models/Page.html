@@ -1,0 +1,731 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Aura::Models::Page</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Aura.html" title="Aura (class)">Aura</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Models.html" title="Aura::Models (module)">Models</a></span></span>
+     &raquo; 
+    <span class="title">Page</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Aura::Models::Page
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../Aura.html#Model-constant" title="Aura::Model (constant)">Aura::Model</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Aura::Models::Page</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">core/page/models/page.rb<span class="defines">,<br />
+  core/default_theme/init.rb,<br /> core/page/models/page_seed.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#content%3F-class_method" title="content? (class method)">+ (Boolean) <strong>content?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#custom_field-class_method" title="custom_field (class method)">+ (Object) <strong>custom_field</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a custom field and adds getters/setters for it.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#seed-class_method" title="seed (class method)">+ (Object) <strong>seed</strong>(type = nil, &amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show_on_sidebar%3F-class_method" title="show_on_sidebar? (class method)">+ (Boolean) <strong>show_on_sidebar?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Page) <strong>initialize</strong>(*a) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Page.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shown_in_menu%3F-instance_method" title="#shown_in_menu? (instance method)">- (Boolean) <strong>shown_in_menu?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subform-instance_method" title="#subform (instance method)">- (Object) <strong>subform</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the <b>other</b> form that depends on the subtype.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate-instance_method" title="#validate (instance method)">- (Object) <strong>validate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Aura::Models::Page (class)">Page</a></span></tt>) <strong>initialize</strong>(*a) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Page
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id a'>a</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id shown_in_menu'>shown_in_menu</span> <span class='op'>=</span> <span class='kw'>true</span>  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id shown_in_menu'>shown_in_menu</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="content?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>content?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id content?'>content?</span><span class='semicolon'>;</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="custom_field-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>custom_field</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a custom field and adds getters/setters for it.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id custom_field'>custom_field</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id name'>name</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id custom'>custom</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span>  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id custom'>custom</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Hash</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='symbol'>:#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id v'>v</span><span class='op'>|</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id custom'>custom</span> <span class='op'>||=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id new'>new</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id custom'>custom</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id v'>v</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="seed-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>seed</strong>(type = nil, &amp;blk) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page_seed.rb', line 4</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id seed'>seed</span><span class='lparen'>(</span><span class='id type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id blk'>blk</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
+
+  <span class='kw'>return</span>  <span class='kw'>unless</span> <span class='id type'>type</span> <span class='op'>==</span> <span class='symbol'>:sample</span>
+
+  <span class='id blk'>blk</span><span class='period'>.</span><span class='id call'>call</span> <span class='symbol'>:info</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating sample pages...</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ffaker</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id lorem'>lorem</span> <span class='op'>=</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='const'>Faker</span><span class='op'>::</span><span class='const'>Lorem</span><span class='period'>.</span><span class='id paragraphs'>paragraphs</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id s'>s</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;p&gt;</span><span class='embexpr_beg'>#{</span><span class='id s'>s</span><span class='rbrace'>}</span><span class='tstring_content'>&lt;/p&gt;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='id p1'>p1</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create'>create</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Home</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:slug</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>home</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id lorem'>lorem</span><span class='period'>.</span><span class='id call'>call</span>
+
+  <span class='id p1'>p1</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create'>create</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>About us</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:slug</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>about-us</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id lorem'>lorem</span><span class='period'>.</span><span class='id call'>call</span>
+
+  <span class='id p1'>p1</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create'>create</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Products</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:slug</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>products</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id lorem'>lorem</span><span class='period'>.</span><span class='id call'>call</span>
+
+  <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sony iPhone</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Blackberry iXUS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Canon Vostro</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Nokia Curve</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id product'>product</span><span class='op'>|</span>
+    <span class='id p2'>p2</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create'>create</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='id product'>product</span><span class='comma'>,</span>
+                      <span class='symbol'>:parent_id</span> <span class='op'>=&gt;</span> <span class='id p1'>p1</span><span class='period'>.</span><span class='id id'>id</span><span class='comma'>,</span>
+                      <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id lorem'>lorem</span><span class='period'>.</span><span class='id call'>call</span>
+    <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>8GB Black</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>8GB White</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>16GB 3G</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>16GB Wifi</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id type'>type</span><span class='op'>|</span>
+      <span class='id p3'>p3</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create'>create</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='id type'>type</span><span class='comma'>,</span>
+                        <span class='symbol'>:parent_id</span> <span class='op'>=&gt;</span> <span class='id p2'>p2</span><span class='period'>.</span><span class='id id'>id</span><span class='comma'>,</span>
+                        <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id lorem'>lorem</span><span class='period'>.</span><span class='id call'>call</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id p1'>p1</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create'>create</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Employees</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:slug</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>employees</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id lorem'>lorem</span><span class='period'>.</span><span class='id call'>call</span>
+
+  <span class='int'>8</span><span class='period'>.</span><span class='id times'>times</span> <span class='lbrace'>{</span>
+    <span class='id p2'>p2</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create'>create</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='const'>Faker</span><span class='op'>::</span><span class='const'>Name</span><span class='period'>.</span><span class='id name'>name</span><span class='comma'>,</span>
+                      <span class='symbol'>:parent_id</span> <span class='op'>=&gt;</span> <span class='id p1'>p1</span><span class='period'>.</span><span class='id id'>id</span><span class='comma'>,</span>
+                      <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id lorem'>lorem</span><span class='period'>.</span><span class='id call'>call</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="show_on_sidebar?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>show_on_sidebar?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id show_on_sidebar?'>show_on_sidebar?</span><span class='semicolon'>;</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="shown_in_menu?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>shown_in_menu?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id shown_in_menu?'>shown_in_menu?</span>
+  <span class='op'>!</span><span class='op'>!</span> <span class='kw'>self</span><span class='period'>.</span><span class='id shown_in_menu'>shown_in_menu</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="subform-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>subform</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the <b>other</b> form that depends on the subtype.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id subform'>subform</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>  <span class='kw'>if</span> <span class='id subtype'>subtype</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id form'>form</span> <span class='id subtype'>subtype</span><span class='period'>.</span><span class='id id'>id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="validate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>validate</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id validate'>validate</span>
+  <span class='kw'>super</span>
+  <span class='id validates_presence'>validates_presence</span> <span class='symbol'>:title</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Oct 30 00:58:49 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

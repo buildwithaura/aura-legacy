@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>File: Extensions</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: Extensions</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Extensions</h1>
+
+<h3>How Aura is made up</h3>
+
+<p>Aura is a Sinatra app. It's structure is however a little unique: the
+system is divided into little pieces called 'extensions'.</p>
+
+<p>All extensions are in <code>core/</code> and <code>extensions/</code>, the former hosting
+all the system extensions.</p>
+
+<h2>What's an extension?</h2>
+
+<pre class="code"><span class='id extensions'>extensions</span><span class='op'>/</span>
+<span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>- my_extension/
+   |- helpers/            - Helper methods (all *.rb autoloaded)
+   |- models/             - Model files (all *.rb autoloaded)
+   |- routes/             - Sinatra routes
+   |- public/             - Raw files to be served
+   |- tasks/              - Rake tasks (all *.rake autoloaded when doing `rake`)
+   |- views/
+   |- my_extension.rb     - Main file. Autoloaded when the extension is first loaded
+   |- init.rb             - Loaded when everything else is set up already
+</span><span class='tstring_content'>   </span><span class='tstring_end'>'</span></span><span class='op'>-</span> <span class='id info'>info</span><span class='period'>.</span><span class='id yml'>yml</span>            <span class='op'>-</span> <span class='const'>Metadata</span>
+</pre>
+
+<p>(All files and folders above are optional. Just use what you need!)</p>
+
+<ul>
+<li>Each extension can have <code>models/</code>, <code>routes/</code> and <code>helpers/</code> and
+all Ruby files inside them are autoloaded.</li>
+<li>You may also have a YAML file called <code>info.yml</code>, which hosts metadata
+about your extension.</li>
+</ul>
+
+
+<h2>Extensions</h2>
+
+<p>Custom extensions go into <code>extensions/&lt;extension_name&gt;/</code>.
+Here's what happens when the extension is loaded:</p>
+
+<ul>
+<li><p>After everything is set up, <code>extension_name.rb</code> is loaded.
+Load your classes here.</p></li>
+<li><p><code>init.rb</code> is called after all extensions are loaded.</p></li>
+</ul>
+
+
+<p>The files described above are all optional, and they all will go under
+your extension's folder.</p>
+
+<h2>Loading extensions</h2>
+
+<p>(Todo: insert a note here about to configure which extensions are loaded)</p>
+
+<h2>Sinatra::MultiView</h2>
+
+<p>Aura includes a plugin Sinatra::MultiView which is built on top of
+Sinatra's <code>render</code> system.</p>
+
+<p>Using the <code>show()</code> helper (instead of <code>render</code>) will search all
+view paths and template formats.</p>
+
+<p>For instance, if you have:</p>
+
+<pre class="code">extensions/
+'- one/
+|  '- views/
+|     |- home.haml
+|     '- footer.haml
+'- two/
+   '- views/
+      '- header.erb
+</pre>
+
+<p>You can then use:</p>
+
+<pre class="code"><span class='id show'>show</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>home</span><span class='tstring_end'>'</span></span>       <span class='comment'># Finds one/views/home.haml
+</span><span class='id show'>show</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>footer</span><span class='tstring_end'>'</span></span>     <span class='comment'># Finds one/views/footer.haml
+</span><span class='id show'>show</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>header</span><span class='tstring_end'>'</span></span>     <span class='comment'># Finds two/views/header.erb
+</span></pre></div></div>
+    
+    <div id="footer">
+  Generated on Sat Oct 30 00:58:45 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

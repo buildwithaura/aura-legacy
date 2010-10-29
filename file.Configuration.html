@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>File: Configuration</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: Configuration</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Configuration</h1>
+
+<p>Configuration is done by Sinatra's app configuration; that is,
+<code>Main.set :key, value</code>.</p>
+
+<h2>The config folder</h2>
+
+<p>Here's what happens when the app first starts. These will happen
+before any extensions are loaded:</p>
+
+<ul>
+<li>The <code>config/</code> folder hosts a bunch of Ruby files.</li>
+<li>Anything that ends it <code>.defaults.rb</code> is loaded first. They are not example files--they actually get loaded!</li>
+<li>All other <code>.rb</code> files are loaded after that.</li>
+</ul>
+
+
+<h2>Defining configuration example</h2>
+
+<p>Lets make a new config file here called <code>config/gallery.rb</code>.</p>
+
+<pre class="code"><span class='comment'># config/gallery.rb
+</span><span class='const'>Main</span><span class='period'>.</span><span class='id configure'>configure</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id m'>m</span><span class='op'>|</span>
+  <span class='id m'>m</span><span class='period'>.</span><span class='id set'>set</span> <span class='symbol'>:gallery_default_name</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>My Gallery</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id m'>m</span><span class='period'>.</span><span class='id set'>set</span> <span class='symbol'>:gallery_shown</span><span class='comma'>,</span> <span class='kw'>true</span>
+<span class='kw'>end</span>
+</pre>
+
+<p>In your application, you will then be able to load them as so:</p>
+
+<pre class="code"><span class='id theme'>theme</span> <span class='op'>=</span> <span class='const'>Main</span><span class='period'>.</span><span class='id gallery_default_theme'>gallery_default_theme</span>
+</pre>
+
+<p>That's it!</p>
+
+<h2>Settings in the database</h2>
+
+<p>Aura has a small settings system that is separate from above.
+All of these are stored in the database.</p>
+
+<pre class="code"><span class='const'>Aura</span><span class='period'>.</span><span class='id set'>set</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>site.name</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Jenny's Diary</span><span class='tstring_end'>&quot;</span></span>
+<span class='const'>Aura</span><span class='period'>.</span><span class='id set'>set</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>site.description</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Thoughts and meditations of a 17-year-old</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='const'>Aura</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>site.name</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</pre>
+
+<p>The value supports strings, integers, arrays and hashes. They
+are stored as YAML in the database.</p></div></div>
+    
+    <div id="footer">
+  Generated on Sat Oct 30 00:58:45 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

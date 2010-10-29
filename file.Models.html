@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>File: Models</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: Models</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h2>Creating models</h2>
+
+<p>In your extension, create a model file like so.</p>
+
+<pre class="code"><span class='comment'># extensions/myext/models/post.rb
+</span><span class='kw'>class</span> <span class='const'>Aura</span>
+  <span class='kw'>module</span> <span class='const'>Models</span>
+    <span class='kw'>class</span> <span class='const'>Post</span> <span class='op'>&lt;</span> <span class='const'>Model</span>
+
+      <span class='comment'># put guts here
+</span>      <span class='comment'># for example:
+</span>
+      <span class='id plugin'>plugin</span> <span class='symbol'>:aura_editable</span>
+      <span class='id plugin'>plugin</span> <span class='symbol'>:aura_sluggable</span>
+
+      <span class='kw'>def</span> <span class='id shown_in_menu?'>shown_in_menu?</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+
+<p>All models will automatically include the AuraModel} plugin.</p>
+
+<h2>Reference</h2>
+
+<p>Every Aura model has these functions.</p>
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraModel/ClassMethods.html" title="Sequel::Plugins::AuraModel::ClassMethods (module)">AuraModel (class methods)</a></span></li>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraModel/InstanceMethods.html" title="Sequel::Plugins::AuraModel::InstanceMethods (module)">AuraModel (instance methods)</a></span></li>
+</ul>
+</div></div>
+    
+    <div id="footer">
+  Generated on Sat Oct 30 00:58:45 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
