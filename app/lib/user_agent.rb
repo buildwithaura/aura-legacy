@@ -2,9 +2,9 @@ class UserAgent
   UA_REGEXP = %r{([^ /]+)/([^ ]+)(?: \(([^)]+)\))?}
 
   def initialize(ua)
-    @ua_string = ua.to_s
-    @ua = ua.to_s.scan(UA_REGEXP).map { |r|
-      r[2] = r[2].split(';')  unless r[2].nil?
+    @ua_string = ua
+    @ua = ua.scan(UA_REGEXP).map { |r|
+      r[2] = r[2].split(';').map { |s| s.strip }  unless r[2].nil?
       { :product => r[0], :version => r[1], :details => r[2] }
     }
   end
@@ -12,7 +12,7 @@ class UserAgent
   # Browsers
   def webkit?()    product?('AppleWebKit'); end
   def chrome?()    product?('Chrome'); end
-  def safari?()    product?('Safari'); end
+  def safari?()    product?('Safari') && !chrome?; end
   def ios?()       product?('Safari') && product?('Mobile'); end
   def gecko?()     product?('Gecko'); end
   def opera?()     product?('Opera'); end
@@ -86,26 +86,3 @@ protected
     !haystack.nil? && haystack.detect { |d| d.match(spec) }
   end
 end
-
-module Sinatra
-  module UserAgentHelpers
-    def browser
-      UserAgent.new(env['HTTP_USER_AGENT'])
-    end
-  end
-end
-
-# Usage example:
-#
-#   Main.register Sinatra::UserAgentHelpers
-#
-#   -# haml
-#   %body{class: browser.body_class}
-#
-#   - if browser.ios?
-#     %p Download our mobile app!
-#
-# Output:
-#
-#   <body class='webkit safari mac'>
-#   <body class='windows ie ie6'>

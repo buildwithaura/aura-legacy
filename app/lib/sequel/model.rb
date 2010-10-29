@@ -1,3 +1,31 @@
+# === Creating models
+#
+# In your extension, create a model file like so.
+#
+#   # extensions/myext/models/post.rb
+#   class Aura
+#     module Models
+#       class Post < Model
+#
+#         # put guts here
+#         # for example:
+#
+#         plugin :aura_editable
+#         plugin :aura_sluggable
+#
+#         def shown_in_menu?() true; end
+#
+#       end
+#     end
+#   end
+#
+# All models will automatically include the AuraModel} plugin.
+#
+# === See
+#
+# - {Sequel::Plugins::AuraModel::InstanceMethods Instance methods}
+# - {Sequel::Plugins::AuraModel::ClassMethods Class methods}
+#  
 module Sequel::Plugins::AuraModel
   def self.configure(model)
     model.plugin :validation_helpers
