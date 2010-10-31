@@ -25,6 +25,13 @@ Point your browser then to `http://localhost:4567`! The default user is
 
 ## Other setup notes
 
+* **Linux notes**
+  If installing the `sqlite3-ruby` gem fails, you may need to install the sqlite3
+  developer packages in your system:
+
+  * `sudo apt-get install libsqlite3-dev` (Ubuntu)
+  * `yum install sqlite3-devel` (Fedora)
+
 * **Ruby version manager** (optional)  
   If you are using the Ruby version manager, it may be in your interest to do these setting up.  
   (Feel free to skip this if you don't understand.)
