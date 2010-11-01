@@ -6,41 +6,22 @@
 
 Aura is a CMS. It aims to make people's lives easier. (+)
 
-It is a Sinatra application.
-
-### Installation
-
-There is no additional setup involved. Simply run the main file like so:
-
-    ruby init.rb
-
-Aura is also a well-formed Rack application, so you may also use Passenger by
-pointing your web server to the `public/` folder of the project to get started.
-
-### Extensions
-
-Aura is a Sinatra app. It's structure is however a little unique: the
-system is divided into little pieces called 'extensions'.
-
-All extensions are in `core/` and `extensions/`, the former hosting
-all the system extensions.
-
-See {file:Extensions.md Extensions} for more info.
-
 ## The Aura system
 
-### Core
+### Installation notes
 
+- {file:README.md Readme file}
+
+### How things work
+
+- {file:Extensions.md Extensions}
+- {file:Views.md Views}
 - {file:Models.md Models}
 - {file:Configuration.md Configuration}
 
 ### Extensions
 
 - {file:PageExtension.md Page extension}
-
-### Readme file
-
-- {file:README.md}
 
 ## API references
 
