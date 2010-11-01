@@ -1,6 +1,7 @@
 @import "settings";
 @import "admin_reset";
 $reset-font: ubuntu, helvetica, arial, sans-serif;
+$reset-heading-font: arial, sans-serif;
 @include ae-reset;
 
 @import "admin_setup";

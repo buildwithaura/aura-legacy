@@ -111,6 +111,7 @@ body.no-sidebar #top {
     color: $blue; font-size: 17pt;
     height: $title-height - 10px;
     line-height: $title-height - 10px; margin: 0;
+    font-family: $reset-heading-font;
     text-shadow: 1px 1px 0 $hilite50;
   }
 
