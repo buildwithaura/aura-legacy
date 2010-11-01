@@ -1,83 +1,71 @@
-# Aura: the developer's manual
-
-## Introduction
-
-### What is Aura?
+# Aura
 
 Aura is a CMS. It aims to make people's lives easier. (+)
 
-## The Aura system
+# Developers manual
 
-### Installation notes
+- **Installation notes**
+  - {file:README.md Readme file}
 
-- {file:README.md Readme file}
+- **How things work**
+  - {file:Extensions.md Extensions}
+  - {file:Views.md Views}
+  - {file:Models.md Models}
+  - {file:Configuration.md Configuration}
 
-### How things work
+- **Extensions**
+  - {file:PageExtension.md Page extension}
 
-- {file:Extensions.md Extensions}
-- {file:Views.md Views}
-- {file:Models.md Models}
-- {file:Configuration.md Configuration}
+## API Reference
 
-### Extensions
+- **Singleton modules**
+  - {Aura}
+  - {Aura::Extension}
+  - {Aura::Editor}
+  - {Aura::Models}
+  - {Aura::Slugs}
+  - {Aura::Admin}
 
-- {file:PageExtension.md Page extension}
+- **Model reference**
+  - **{Sequel::Plugins::AuraModel AuraModel}** - all models (autoloaded)
+    - {Sequel::Plugins::AuraModel::ClassMethods Class methods}
+    - {Sequel::Plugins::AuraModel::InstanceMethods Instance methods}
+  - **{Sequel::Plugins::AutoSchema     AutoSchema}** - automatic schema migration (autoloaded)
+    - {Sequel::Plugins::AutoSchema::ClassMethods     Class methods}
+  - **{Sequel::Plugins::AuraCustom     AuraCustom}** - custom fields
+    - {Sequel::Plugins::AuraCustom::InstanceMethods  Instance methods}
+  - **{Sequel::Plugins::AuraEditable   AuraEditable}** - editable records
+    - {Sequel::Plugins::AuraEditable::ClassMethods     Class methods}
+    - {Sequel::Plugins::AuraEditable::InstanceMethods  Instance methods}
+  - **{Sequel::Plugins::AuraHierarchy  AuraHierarchy}** - parent/child relationships
+    - {Sequel::Plugins::AuraHierarchy::ClassMethods     Class methods}
+    - {Sequel::Plugins::AuraHierarchy::InstanceMethods  Instance methods}
+  - **{Sequel::Plugins::AuraRenderable AuraRenderable}** - renderable records
+    - {Sequel::Plugins::AuraRenderable::InstanceMethods  Instance methods}
+  - **{Sequel::Plugins::AuraSluggable  AuraSluggable}** - records accessible via a slug
+    - {Sequel::Plugins::AuraSluggable::ClassMethods     Class methods}
+    - {Sequel::Plugins::AuraSluggable::InstanceMethods  Instance methods}
+  - **{Sequel::Plugins::AuraSubtyped   AuraSubtyped}** - records with subtypes
+    - {Sequel::Plugins::AuraSubtyped::ClassMethods     Class methods}
+    - {Sequel::Plugins::AuraSubtyped::InstanceMethods  Instance methods}
 
-## API references
+- **Helpers**
+  - {Main::AdminHelpers        AdminHelpers}
+  - {Main::FlashHelpers        FlashHelpers}
+  - {Main::JqueryHelpers       JqueryHelpers}
+  - {Main::MainHelpers         MainHelpers}
+  - {Main::PageHelpers         PageHelpers}
+  - {Main::TemplateHelpers     TemplateHelpers}
+  - {Main::UserHelpers         UserHelpers}
+  - {Main::WatermarkHelpers    WatermarkHelpers}
+  - {Sinatra::UserAgentHelpers UserAgentHelpers}
 
-### Singleton modules
+- **Auxiliary classes**
+  - {JsFiles}
+  - {HashArray}
 
-- {Aura}
-- {Aura::Extension}
-- {Aura::Editor}
-- {Aura::Models}
-- {Aura::Slugs}
-- {Aura::Admin}
-
-### Model reference
-
-- **{Sequel::Plugins::AuraModel AuraModel}** - all models (autoloaded)
-  - {Sequel::Plugins::AuraModel::ClassMethods Class methods}
-  - {Sequel::Plugins::AuraModel::InstanceMethods Instance methods}
-- **{Sequel::Plugins::AutoSchema     AutoSchema}** - automatic schema migration (autoloaded)
-  - {Sequel::Plugins::AutoSchema::ClassMethods     Class methods}
-- **{Sequel::Plugins::AuraCustom     AuraCustom}** - custom fields
-  - {Sequel::Plugins::AuraCustom::InstanceMethods  Instance methods}
-- **{Sequel::Plugins::AuraEditable   AuraEditable}** - editable records
-  - {Sequel::Plugins::AuraEditable::ClassMethods     Class methods}
-  - {Sequel::Plugins::AuraEditable::InstanceMethods  Instance methods}
-- **{Sequel::Plugins::AuraHierarchy  AuraHierarchy}** - parent/child relationships
-  - {Sequel::Plugins::AuraHierarchy::ClassMethods     Class methods}
-  - {Sequel::Plugins::AuraHierarchy::InstanceMethods  Instance methods}
-- **{Sequel::Plugins::AuraRenderable AuraRenderable}** - renderable records
-  - {Sequel::Plugins::AuraRenderable::InstanceMethods  Instance methods}
-- **{Sequel::Plugins::AuraSluggable  AuraSluggable}** - records accessible via a slug
-  - {Sequel::Plugins::AuraSluggable::ClassMethods     Class methods}
-  - {Sequel::Plugins::AuraSluggable::InstanceMethods  Instance methods}
-- **{Sequel::Plugins::AuraSubtyped   AuraSubtyped}** - records with subtypes
-  - {Sequel::Plugins::AuraSubtyped::ClassMethods     Class methods}
-  - {Sequel::Plugins::AuraSubtyped::InstanceMethods  Instance methods}
-
-### Helpers
-
-- {Main::AdminHelpers        AdminHelpers}
-- {Main::FlashHelpers        FlashHelpers}
-- {Main::JqueryHelpers       JqueryHelpers}
-- {Main::MainHelpers         MainHelpers}
-- {Main::PageHelpers         PageHelpers}
-- {Main::TemplateHelpers     TemplateHelpers}
-- {Main::UserHelpers         UserHelpers}
-- {Main::WatermarkHelpers    WatermarkHelpers}
-- {Sinatra::UserAgentHelpers UserAgentHelpers}
-
-### Auxiliary classes
-
-- {JsFiles}
-- {HashArray}
-
-### Terra (form builder)
-
-- {Terra::Field}
-- {Terra::Fields}
-- {Terra::Fieldset}
-- {Terra::Form}
+- **Terra (form builder)**
+  - {Terra::Field}
+  - {Terra::Fields}
+  - {Terra::Fieldset}
+  - {Terra::Form}
