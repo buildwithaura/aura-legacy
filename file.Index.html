@@ -41,70 +41,168 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><div id='filecontents'><h1>Aura</h1>
+    <div id="content"><div id='filecontents'><h1>Aura: the developer's manual</h1>
 
-<h2>Concepts</h2>
+<h2>Introduction</h2>
+
+<h3>What is Aura?</h3>
+
+<p>Aura is a CMS. It aims to make people's lives easier. (+)</p>
+
+<p>It is a Sinatra application.</p>
+
+<h3>Installation</h3>
+
+<p>There is no additional setup involved. Simply run the main file like so:</p>
+
+<pre class="code"><span class='id ruby'>ruby</span> <span class='id init'>init</span><span class='period'>.</span><span class='id rb'>rb</span>
+</pre>
+
+<p>Aura is also a well-formed Rack application, so you may also use Passenger by
+pointing your web server to the <code>public/</code> folder of the project to get started.</p>
+
+<h2>Extensions</h2>
+
+<p>Aura is a Sinatra app. It's structure is however a little unique: the
+system is divided into little pieces called 'extensions'.</p>
+
+<p>All extensions are in <code>core/</code> and <code>extensions/</code>, the former hosting
+all the system extensions.</p>
+
+<p>See <a href="file.Extensions.html" title="Extensions">Extensions</a> for more info.</p>
+
+<h2>The Aura system</h2>
+
+<h3>Core</h3>
 
 <ul>
 <li><a href="file.Models.html" title="Models">Models</a></li>
 <li><a href="file.Configuration.html" title="Configuration">Configuration</a></li>
-<li><a href="file.Extensions.html" title="Extensions">Extensions</a></li>
 </ul>
 
 
-<h2>Aura class</h2>
-
-<ul>
-<li><span class='object_link'><a href="Aura.html" title="Aura (class)">Aura</a></span> The main Aura class has a lot of useful functions.</li>
-<li><span class='object_link'><a href="Aura/Extension.html" title="Aura::Extension (class)">Aura::Extension</a></span></li>
-<li><span class='object_link'><a href="Aura/Models.html" title="Aura::Models (module)">Aura::Models</a></span></li>
-<li><span class='object_link'><a href="Aura/Slugs.html" title="Aura::Slugs (module)">Aura::Slugs</a></span></li>
-</ul>
-
-
-<h2>Model reference</h2>
-
-<p>Every Aura model has these functions.</p>
-
-<ul>
-<li><span class='object_link'><a href="Sequel/Plugins/AuraModel/ClassMethods.html" title="Sequel::Plugins::AuraModel::ClassMethods (module)">AuraModel (class methods)</a></span></li>
-<li><span class='object_link'><a href="Sequel/Plugins/AuraModel/InstanceMethods.html" title="Sequel::Plugins::AuraModel::InstanceMethods (module)">AuraModel (instance methods)</a></span></li>
-</ul>
-
-
-<h2>Helpers</h2>
-
-<p>These are helpers that are available to your views.</p>
-
-<ul>
-<li><span class='object_link'><a href="Main/AdminHelpers.html" title="Main::AdminHelpers (module)">Main::AdminHelpers</a></span></li>
-<li><span class='object_link'><a href="Main/FlashHelpers.html" title="Main::FlashHelpers (module)">Main::FlashHelpers</a></span></li>
-<li><span class='object_link'><a href="Main/JqueryHelpers.html" title="Main::JqueryHelpers (module)">Main::JqueryHelpers</a></span></li>
-<li><span class='object_link'><a href="Main/MainHelpers.html" title="Main::MainHelpers (module)">Main::MainHelpers</a></span></li>
-<li><span class='object_link'><a href="Main/PageHelpers.html" title="Main::PageHelpers (module)">Main::PageHelpers</a></span></li>
-<li><span class='object_link'><a href="Main/TemplateHelpers.html" title="Main::TemplateHelpers (module)">Main::TemplateHelpers</a></span></li>
-<li><span class='object_link'><a href="Main/UserHelpers.html" title="Main::UserHelpers (module)">Main::UserHelpers</a></span></li>
-<li><span class='object_link'><a href="Main/WatermarkHelpers.html" title="Main::WatermarkHelpers (module)">Main::WatermarkHelpers</a></span></li>
-<li><span class='object_link'><a href="Sinatra/UserAgentHelpers.html" title="Sinatra::UserAgentHelpers (module)">Sinatra::UserAgentHelpers</a></span></li>
-</ul>
-
-
-<h2>Extensions documentation</h2>
+<h3>Extensions</h3>
 
 <ul>
 <li><a href="file.PageExtension.html" title="Page extension">Page extension</a></li>
 </ul>
 
 
-<h2>Readme file</h2>
+<h3>Readme file</h3>
 
 <ul>
 <li><a href="file.README.html" title="README.md">README.md</a></li>
 </ul>
+
+
+<h2>API references</h2>
+
+<h3>Singleton modules</h3>
+
+<ul>
+<li><span class='object_link'><a href="Aura.html" title="Aura (class)">Aura</a></span></li>
+<li><span class='object_link'><a href="Aura/Extension.html" title="Aura::Extension (class)">Aura::Extension</a></span></li>
+<li><span class='object_link'><a href="Aura/Editor.html" title="Aura::Editor (module)">Aura::Editor</a></span></li>
+<li><span class='object_link'><a href="Aura/Models.html" title="Aura::Models (module)">Aura::Models</a></span></li>
+<li><span class='object_link'><a href="Aura/Slugs.html" title="Aura::Slugs (module)">Aura::Slugs</a></span></li>
+<li><span class='object_link'><a href="Aura/Admin.html" title="Aura::Admin (module)">Aura::Admin</a></span></li>
+</ul>
+
+
+<h3>Model reference</h3>
+
+<ul>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AuraModel.html" title="Sequel::Plugins::AuraModel (module)">AuraModel</a></span></strong> - all models (autoloaded)
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraModel/ClassMethods.html" title="Sequel::Plugins::AuraModel::ClassMethods (module)">Class methods</a></span></li>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraModel/InstanceMethods.html" title="Sequel::Plugins::AuraModel::InstanceMethods (module)">Instance methods</a></span></li>
+</ul>
+</li>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AutoSchema.html" title="Sequel::Plugins::AutoSchema (module)">    AutoSchema</a></span></strong> - automatic schema migration (autoloaded)
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AutoSchema/ClassMethods.html" title="Sequel::Plugins::AutoSchema::ClassMethods (module)">    Class methods</a></span></li>
+</ul>
+</li>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AuraCustom.html" title="Sequel::Plugins::AuraCustom (module)">    AuraCustom</a></span></strong> - custom fields
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraCustom/InstanceMethods.html" title="Sequel::Plugins::AuraCustom::InstanceMethods (module)"> Instance methods</a></span></li>
+</ul>
+</li>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AuraEditable.html" title="Sequel::Plugins::AuraEditable (module)">  AuraEditable</a></span></strong> - editable records
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraEditable/ClassMethods.html" title="Sequel::Plugins::AuraEditable::ClassMethods (module)">    Class methods</a></span></li>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraEditable/InstanceMethods.html" title="Sequel::Plugins::AuraEditable::InstanceMethods (module)"> Instance methods</a></span></li>
+</ul>
+</li>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AuraHierarchy.html" title="Sequel::Plugins::AuraHierarchy (module)"> AuraHierarchy</a></span></strong> - parent/child relationships
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraHierarchy/ClassMethods.html" title="Sequel::Plugins::AuraHierarchy::ClassMethods (module)">    Class methods</a></span></li>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraHierarchy/InstanceMethods.html" title="Sequel::Plugins::AuraHierarchy::InstanceMethods (module)"> Instance methods</a></span></li>
+</ul>
+</li>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AuraRenderable.html" title="Sequel::Plugins::AuraRenderable (module)">AuraRenderable</a></span></strong> - renderable records
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraRenderable/InstanceMethods.html" title="Sequel::Plugins::AuraRenderable::InstanceMethods (module)"> Instance methods</a></span></li>
+</ul>
+</li>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AuraSluggable.html" title="Sequel::Plugins::AuraSluggable (module)"> AuraSluggable</a></span></strong> - records accessible via a slug
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraSluggable/ClassMethods.html" title="Sequel::Plugins::AuraSluggable::ClassMethods (module)">    Class methods</a></span></li>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraSluggable/InstanceMethods.html" title="Sequel::Plugins::AuraSluggable::InstanceMethods (module)"> Instance methods</a></span></li>
+</ul>
+</li>
+<li><strong><span class='object_link'><a href="Sequel/Plugins/AuraSubtyped.html" title="Sequel::Plugins::AuraSubtyped (module)">  AuraSubtyped</a></span></strong> - records with subtypes
+
+<ul>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraSubtyped/ClassMethods.html" title="Sequel::Plugins::AuraSubtyped::ClassMethods (module)">    Class methods</a></span></li>
+<li><span class='object_link'><a href="Sequel/Plugins/AuraSubtyped/InstanceMethods.html" title="Sequel::Plugins::AuraSubtyped::InstanceMethods (module)"> Instance methods</a></span></li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Helpers</h3>
+
+<ul>
+<li><span class='object_link'><a href="Main/AdminHelpers.html" title="Main::AdminHelpers (module)">       AdminHelpers</a></span></li>
+<li><span class='object_link'><a href="Main/FlashHelpers.html" title="Main::FlashHelpers (module)">       FlashHelpers</a></span></li>
+<li><span class='object_link'><a href="Main/JqueryHelpers.html" title="Main::JqueryHelpers (module)">      JqueryHelpers</a></span></li>
+<li><span class='object_link'><a href="Main/MainHelpers.html" title="Main::MainHelpers (module)">        MainHelpers</a></span></li>
+<li><span class='object_link'><a href="Main/PageHelpers.html" title="Main::PageHelpers (module)">        PageHelpers</a></span></li>
+<li><span class='object_link'><a href="Main/TemplateHelpers.html" title="Main::TemplateHelpers (module)">    TemplateHelpers</a></span></li>
+<li><span class='object_link'><a href="Main/UserHelpers.html" title="Main::UserHelpers (module)">        UserHelpers</a></span></li>
+<li><span class='object_link'><a href="Main/WatermarkHelpers.html" title="Main::WatermarkHelpers (module)">   WatermarkHelpers</a></span></li>
+<li><span class='object_link'><a href="Sinatra/UserAgentHelpers.html" title="Sinatra::UserAgentHelpers (module)">UserAgentHelpers</a></span></li>
+</ul>
+
+
+<h3>Auxiliary classes</h3>
+
+<ul>
+<li><span class='object_link'><a href="JsFiles.html" title="JsFiles (class)">JsFiles</a></span></li>
+<li><span class='object_link'><a href="HashArray.html" title="HashArray (class)">HashArray</a></span></li>
+</ul>
+
+
+<h3>Terra (form builder)</h3>
+
+<ul>
+<li><span class='object_link'><a href="Terra/Field.html" title="Terra::Field (class)">Terra::Field</a></span></li>
+<li><span class='object_link'><a href="Terra/Fields.html" title="Terra::Fields (module)">Terra::Fields</a></span></li>
+<li><span class='object_link'><a href="Terra/Fieldset.html" title="Terra::Fieldset (class)">Terra::Fieldset</a></span></li>
+<li><span class='object_link'><a href="Terra/Form.html" title="Terra::Form (class)">Terra::Form</a></span></li>
+</ul>
 </div></div>
     
     <div id="footer">
-  Generated on Sat Oct 30 00:58:45 2010 by 
+  Generated on Mon Nov  1 15:08:56 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.9.2).
 </div>
