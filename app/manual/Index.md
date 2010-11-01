@@ -17,7 +17,7 @@ There is no additional setup involved. Simply run the main file like so:
 Aura is also a well-formed Rack application, so you may also use Passenger by
 pointing your web server to the `public/` folder of the project to get started.
 
-## Extensions
+### Extensions
 
 Aura is a Sinatra app. It's structure is however a little unique: the
 system is divided into little pieces called 'extensions'.
