@@ -19,7 +19,11 @@ In your extension, create a model file like so.
       end
     end
 
-All models will automatically include the AuraModel} plugin.
+## Sequel models
+
+All models are Sequel models. It uses the sequel plugin system.
+
+All models will automatically include the {Sequel::Plugins::AuraModel} plugin.
 
 ## Reference
 
