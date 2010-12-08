@@ -17,8 +17,12 @@ tmtags
 
 # Project (general)
 /vendor/*/vendor
+/vendor/*/test
 /log
 /logs
+/log
+/tmp
+/db
 
 # Docs
 .yardoc
