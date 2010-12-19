@@ -1,4 +1,4 @@
-core app
+core app vendor/jsfiles/lib vendor/agentsniff/lib
 -r app/manual/Index.md
 --exclude test
 --no-private
