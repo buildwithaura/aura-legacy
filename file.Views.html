@@ -43,10 +43,59 @@
     
     <div id="content"><div id='filecontents'><h1>Views</h1>
 
+<p>(TODO: make a sensible outline for these.)</p>
+
+<h2>Using views</h2>
+
+<p>To create a view, put them in the <code>view/</code> folder of your extension.</p>
+
+<pre class="code">-# extension/myext/views/hello.haml
+%h1
+  Hello, world!
+</pre>
+
+<p>Now call it in your Ruby code like so.</p>
+
+<pre class="code"><span class='comment'># extension/myext/routes/hello.rb
+</span><span class='id get'>get</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/hello</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span>
+  <span class='id show'>show</span> <span class='symbol'>:hello</span>
+<span class='kw'>end</span>
+</pre>
+
+<p>Unlike Sinatra's <code>render</code>, using <code>show</code> will automatically try and find the file
+in the view directories of all extensions, and guess the right filetype based
+on the extension.</p>
+
+<h2>Supported formats</h2>
+
+<p>Aura supports views in any format supported by Sinatra. You can try ERB, HAML, SASS, LESS</p>
+
+<h2>Partials</h2>
+
+<p>Aura provides a <code>partial</code> helper.</p>
+
+<pre class="code">-# extension/myext/views/hello.haml
+%h1
+  - partial :'hello/heading'
+</pre>
+
+<p>Now create your partial in another file:</p>
+
+<pre class="code">-# extension/myext/views/hello/heading.haml
+Hello world!
+</pre>
+
+<h2>View folders</h2>
+
+<p>View folders are at:</p>
+
+<p>   core/<em>/views/
+   extensions/</em>/views/</p>
+
 <p>(TODO: explain show() and MultiView)</p></div></div>
     
     <div id="footer">
-  Generated on Mon Nov  1 15:33:53 2010 by 
+  Generated on Mon Dec 20 06:25:37 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.9.2).
 </div>

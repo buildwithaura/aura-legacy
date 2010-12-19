@@ -74,7 +74,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/lib/user_agent.rb</dd>
+    <dd class="r2 last">vendor/agentsniff/lib/user_agent.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -942,7 +942,7 @@ A new instance of UserAgent
 10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id ua'>ua</span><span class='rparen'>)</span>
   <span class='ivar'>@ua_string</span> <span class='op'>=</span> <span class='id ua'>ua</span>
@@ -1000,7 +1000,7 @@ A new instance of UserAgent
 26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id android1?'>android1?</span><span class='lparen'>(</span><span class='rparen'>)</span>  <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Android 1\.</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1045,7 +1045,7 @@ A new instance of UserAgent
 27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id android2?'>android2?</span><span class='lparen'>(</span><span class='rparen'>)</span>  <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Android 2\.</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1090,7 +1090,7 @@ A new instance of UserAgent
 25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id android?'>android?</span><span class='lparen'>(</span><span class='rparen'>)</span>   <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Android</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1135,7 +1135,7 @@ A new instance of UserAgent
 33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id blackberry?'>blackberry?</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Blackberry</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1166,7 +1166,7 @@ A new instance of UserAgent
 82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id body_class'>body_class</span>
   <span class='lparen'>(</span><span class='qwords_beg'>%w(</span><span class='tstring_content'>webkit</span><span class='words_sep'> </span><span class='tstring_content'>chrome</span><span class='words_sep'> </span><span class='tstring_content'>safari</span><span class='words_sep'> </span><span class='tstring_content'>ios</span><span class='words_sep'> </span><span class='tstring_content'>gecko</span><span class='words_sep'> </span><span class='tstring_content'>opera</span><span class='words_sep'> </span><span class='tstring_content'>ie</span><span class='words_sep'> </span><span class='tstring_content'>linux</span><span class='words_sep'>)</span> <span class='op'>+</span>
@@ -1218,7 +1218,7 @@ A new instance of UserAgent
 14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id chrome?'>chrome?</span><span class='lparen'>(</span><span class='rparen'>)</span>    <span class='id product?'>product?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Chrome</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1271,7 +1271,7 @@ x)&#8217;
 73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='id detail'>detail</span><span class='comma'>,</span> <span class='id prod'>prod</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='op'>!</span><span class='op'>!</span> <span class='ivar'>@ua</span><span class='period'>.</span><span class='id detect'>detect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id p'>p</span><span class='op'>|</span>
@@ -1320,7 +1320,7 @@ x)&#8217;
 46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id gecko20?'>gecko20?</span><span class='lparen'>(</span><span class='rparen'>)</span>   <span class='id gecko_version?'>gecko_version?</span><span class='lparen'>(</span><span class='int'>20061010</span><span class='comma'>,</span> <span class='int'>20080610</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1365,7 +1365,7 @@ x)&#8217;
 45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id gecko30?'>gecko30?</span><span class='lparen'>(</span><span class='rparen'>)</span>   <span class='id gecko_version?'>gecko_version?</span><span class='lparen'>(</span><span class='int'>20080610</span><span class='comma'>,</span> <span class='int'>20090612</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1410,7 +1410,7 @@ x)&#8217;
 44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id gecko35?'>gecko35?</span><span class='lparen'>(</span><span class='rparen'>)</span>   <span class='id gecko_version?'>gecko_version?</span><span class='lparen'>(</span><span class='int'>20090612</span><span class='comma'>,</span> <span class='int'>20091111</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1455,7 +1455,7 @@ x)&#8217;
 43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id gecko36?'>gecko36?</span><span class='lparen'>(</span><span class='rparen'>)</span>   <span class='id gecko_version?'>gecko_version?</span><span class='lparen'>(</span><span class='int'>20091111</span><span class='comma'>,</span> <span class='int'>20100401</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1503,7 +1503,7 @@ Different Firefox versions
 42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id gecko40?'>gecko40?</span><span class='lparen'>(</span><span class='rparen'>)</span>   <span class='id gecko_version?'>gecko_version?</span><span class='lparen'>(</span><span class='int'>20100401</span><span class='comma'>,</span> <span class='int'>20110101</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1548,7 +1548,7 @@ Different Firefox versions
 17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id gecko?'>gecko?</span><span class='lparen'>(</span><span class='rparen'>)</span>     <span class='id product?'>product?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Gecko</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1593,7 +1593,7 @@ Different Firefox versions
 47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id gecko_old?'>gecko_old?</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id gecko_version?'>gecko_version?</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>20061010</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1643,7 +1643,7 @@ Different Firefox versions
 54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id gecko_version?'>gecko_version?</span><span class='lparen'>(</span><span class='id from'>from</span><span class='comma'>,</span> <span class='id to'>to</span><span class='rparen'>)</span>
   <span class='id g'>g</span> <span class='op'>=</span> <span class='id product'>product</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Gecko</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -1693,7 +1693,7 @@ Different Firefox versions
 39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id ie6?'>ie6?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^MSIE 6</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1738,7 +1738,7 @@ Different Firefox versions
 38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id ie7?'>ie7?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^MSIE 7.0</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1783,7 +1783,7 @@ Different Firefox versions
 37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id ie8?'>ie8?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>MSIE 8.0</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1831,7 +1831,7 @@ IE
 36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id ie9?'>ie9?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>MSIE 9.0</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1876,7 +1876,7 @@ IE
 19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id ie?'>ie?</span><span class='lparen'>(</span><span class='rparen'>)</span>        <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^MSIE</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1900,7 +1900,7 @@ IE
 57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id inspect'>inspect</span><span class='lparen'>(</span><span class='rparen'>)</span>    <span class='ivar'>@ua</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1945,7 +1945,7 @@ IE
 16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id ios?'>ios?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id product?'>product?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Safari</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id product?'>product?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mobile</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1990,7 +1990,7 @@ IE
 29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id ipad?'>ipad?</span><span class='lparen'>(</span><span class='rparen'>)</span>      <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^iPad</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2035,7 +2035,7 @@ IE
 23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id iphone?'>iphone?</span><span class='lparen'>(</span><span class='rparen'>)</span>    <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^iPhone</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2083,7 +2083,7 @@ OS&#8217;s and devices
 22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id linux?'>linux?</span><span class='lparen'>(</span><span class='rparen'>)</span>     <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Linux</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2128,7 +2128,7 @@ OS&#8217;s and devices
 32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id mac?'>mac?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Macintosh</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id osx?'>osx?</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2173,7 +2173,7 @@ OS&#8217;s and devices
 28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id nokia?'>nokia?</span><span class='lparen'>(</span><span class='rparen'>)</span>     <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Nokia</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Series[38]0</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2218,7 +2218,7 @@ OS&#8217;s and devices
 18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id opera?'>opera?</span><span class='lparen'>(</span><span class='rparen'>)</span>     <span class='id product?'>product?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Opera</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2263,7 +2263,7 @@ OS&#8217;s and devices
 31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id osx?'>osx?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(Intel )?Mac OS X</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2289,7 +2289,7 @@ OS&#8217;s and devices
 66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id product'>product</span><span class='lparen'>(</span><span class='id str'>str</span><span class='rparen'>)</span>
   <span class='ivar'>@ua</span><span class='period'>.</span><span class='id detect'>detect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id p'>p</span><span class='op'>|</span> <span class='id p'>p</span><span class='lbracket'>[</span><span class='symbol'>:product</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id str'>str</span> <span class='rbrace'>}</span>
@@ -2341,7 +2341,7 @@ Checks for, say, &#8216;Gecko&#8217; in &#8216;Gecko/3.9.82&#8217;
 62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id product?'>product?</span><span class='lparen'>(</span><span class='id str'>str</span><span class='rparen'>)</span>
   <span class='op'>!</span><span class='op'>!</span> <span class='id product'>product</span><span class='lparen'>(</span><span class='id str'>str</span><span class='rparen'>)</span>
@@ -2388,7 +2388,7 @@ Checks for, say, &#8216;Gecko&#8217; in &#8216;Gecko/3.9.82&#8217;
 24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id rim?'>rim?</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Blackberry</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2433,7 +2433,7 @@ Checks for, say, &#8216;Gecko&#8217; in &#8216;Gecko/3.9.82&#8217;
 15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id safari?'>safari?</span><span class='lparen'>(</span><span class='rparen'>)</span>    <span class='id product?'>product?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Safari</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id chrome?'>chrome?</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2457,7 +2457,7 @@ Checks for, say, &#8216;Gecko&#8217; in &#8216;Gecko/3.9.82&#8217;
 56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span><span class='lparen'>(</span><span class='rparen'>)</span>       <span class='ivar'>@ua_string</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2505,7 +2505,7 @@ Browsers
 13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id webkit?'>webkit?</span><span class='lparen'>(</span><span class='rparen'>)</span>    <span class='id product?'>product?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>AppleWebKit</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2550,7 +2550,7 @@ Browsers
 30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/user_agent.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'vendor/agentsniff/lib/user_agent.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id windows?'>windows?</span><span class='lparen'>(</span><span class='rparen'>)</span>   <span class='id detail?'>detail?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Windows</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mozilla</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2563,7 +2563,7 @@ Browsers
 </div>
     
     <div id="footer">
-  Generated on Mon Nov  1 15:33:54 2010 by 
+  Generated on Mon Dec 20 06:25:44 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.9.2).
 </div>

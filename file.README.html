@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>File: README</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Aura</h1>
+
+<p>Aura is a CMS. Kinda. You'll need Ruby 1.8.6 or above.</p>
+
+<ul>
+<li><a href="http://github.com/rstacruz/aura/wiki">http://github.com/rstacruz/aura/wiki</a> - See the wiki for more info.</li>
+<li><a href="http://aurademo.heroku.com/login">http://aurademo.heroku.com</a> - Demo site [log in with <code>test@sinefunc.com</code> / <code>password</code>]</li>
+</ul>
+
+
+<h2>Super easy setup</h2>
+
+<p>Want to try Aura on your machine? Easy! First: download and unzip Aura somewhere.
+Here's one way to do it on Mac/Linux:</p>
+
+<pre class="code">curl -Ls http://github.com/rstacruz/aura/tarball/master | tar zxvf -
+mv rstacruz-aura-* aura
+cd aura
+</pre>
+
+<p>Now run it!</p>
+
+<pre class="code"><span class='id sudo'>sudo</span> <span class='id gem'>gem</span> <span class='id install'>install</span> <span class='id sqlite3'>sqlite3</span><span class='op'>-</span><span class='id ruby'>ruby</span>
+
+<span class='id ruby'>ruby</span> <span class='id init'>init</span><span class='period'>.</span><span class='id rb'>rb</span>
+</pre>
+
+<p>Point your browser then to <code>http://localhost:4567</code>! The default user is
+<code>test@sinefunc.com</code> / <code>password</code>.</p>
+
+<h2>Other setup notes</h2>
+
+<ul>
+<li><p><strong>Linux notes</strong>
+If installing the <code>sqlite3-ruby</code> gem fails, you may need to install the sqlite3
+developer packages in your system:</p>
+
+<ul>
+<li><code>sudo apt-get install libsqlite3-dev</code> (Ubuntu)</li>
+<li><code>yum install sqlite3-devel</code> (Fedora)</li>
+</ul>
+</li>
+<li><p><strong>Ruby version manager</strong> (optional)<br/>
+If you are using the Ruby version manager, it may be in your interest to do these setting up.<br/>
+(Feel free to skip this if you don't understand.)</p>
+
+<ul>
+<li><code>rvm install 1.9.2  # If you haven't yet</code></li>
+<li><code>rvm --rvmrc --create 1.9.2@aura</code></li>
+<li><code>rvm gemset import</code></li>
+</ul>
+</li>
+<li><p><strong>Configuring a database</strong> (optional)<br/>
+Aura uses sqlite by default. If you'd want it to connect to another SQL database,
+create the file <code>config/database.rb</code>. You can use <code>database.defaults.rb</code> as
+a guide; edit it as you see fit. Do this before setting up.</p>
+
+<p>Of course: feel free to skip installing <code>sqlite3-ruby</code> if you don't need it.</p></li>
+</ul>
+
+
+<h2>Deploying to other hosts</h2>
+
+<p>The wiki has some instructions.</p>
+
+<ul>
+<li><a href="http://github.com/rstacruz/aura/wiki/Heroku-setup">Heroku</a></li>
+<li><a href="http://github.com/rstacruz/aura/wiki/Dreamhost-setup">Dreamhost</a></li>
+<li><a href="http://github.com/rstacruz/aura/wiki/Passenger-setup">Hosts with Passenger</a></li>
+</ul>
+
+
+<h2>Testing</h2>
+
+<pre class="code">thor monk:test
+thor monk:test [test name]
+thor monk:stories
+thor monk:stories [story name] [-d chrome]
+</pre>
+
+<h2>Authors and copyright</h2>
+
+<p>Aura is authored and maintained by Rico Sta. Cruz of Sinefunc, Inc.
+See more of our work on <a href="http://www.sinefunc.com">www.sinefunc.com</a>!</p>
+
+<p>(c) 2010 Rico Sta. Cruz. Released under the MIT license.</p></div></div>
+    
+    <div id="footer">
+  Generated on Mon Dec 20 06:25:37 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

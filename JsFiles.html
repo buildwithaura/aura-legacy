@@ -74,12 +74,42 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/lib/jsfiles.rb</dd>
+    <dd class="r2 last">vendor/jsfiles/lib/jsfiles.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+A list of JavaScript files.
+</p>
+<p>
+This is a general-purpose class usually used for minification of JS assets.
+</p>
+<h3>Usage example</h3>
+<pre class="code">
+  <span class='id files'>files</span>  <span class='op'>=</span> <span class='const'>Dir</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>public/js/jquery.*.js</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+  <span class='id files'>files</span> <span class='op'>+=</span> <span class='const'>Dir</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>public/js/app.*.js</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+  <span class='const'>Main</span><span class='period'>.</span><span class='id set'>set</span> <span class='symbol'>:js_files</span><span class='comma'>,</span> <span class='const'>JsFiles</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id files'>files</span><span class='comma'>,</span> <span class='symbol'>:prefix</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/javascript</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
+  <span class='const'>Main</span><span class='period'>.</span><span class='id js_files'>js_files</span><span class='period'>.</span><span class='id mtime'>mtime</span> <span class='comment'>#=&gt; (Time) 2010-09-02 8:00PM
+</span>
+  <span class='comment'># For, say, a Rake task
+</span>  <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>public/scripts.js</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id f'>f</span><span class='op'>|</span>
+    <span class='id f'>f</span> <span class='op'>&lt;&lt;</span> <span class='const'>Main</span><span class='period'>.</span><span class='id js_files'>js_files</span><span class='period'>.</span><span class='id combined'>combined</span>
+  <span class='kw'>end</span>
+
+  <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>public/scripts.min.js</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id f'>f</span><span class='op'>|</span>
+    <span class='id f'>f</span> <span class='op'>&lt;&lt;</span> <span class='const'>Main</span><span class='period'>.</span><span class='id js_files'>js_files</span><span class='period'>.</span><span class='id compressed'>compressed</span>
+  <span class='kw'>end</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
@@ -116,7 +146,88 @@ Returns the value of attribute files.
 
   
     <h2>
-      Instance Method Summary
+      Metadata methods
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hrefs-instance_method" title="#hrefs (instance method)">- (Object) <strong>hrefs</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns a list of the URLs for the package.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mtime-instance_method" title="#mtime (instance method)">- (Time) <strong>mtime</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the the modified time of the entire package.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_html-instance_method" title="#to_html (instance method)">- (Object) <strong>to_html</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the <script> tags for the development version.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Output methods
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
 
@@ -138,7 +249,10 @@ Returns the value of attribute files.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Returns the combined source of all the files.
+</p>
+</div></span>
   
 </li>
 
@@ -159,31 +273,22 @@ Returns the value of attribute files.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Returns a combined, minifed source of all the files.
+</p>
+</div></span>
   
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#hrefs-instance_method" title="#hrefs (instance method)">- (Object) <strong>hrefs</strong> </a>
-    
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
 
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
+    <ul class="summary">
       
         <li class="public ">
   <span class="summary_signature">
@@ -204,51 +309,9 @@ Returns the value of attribute files.
 
   
     <span class="summary_desc"><div class='inline'><p>
-A new instance of JsFiles.
+Creates a JsFiles object based on the list of given files.
 </p>
 </div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#mtime-instance_method" title="#mtime (instance method)">- (Object) <strong>mtime</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#to_html-instance_method" title="#to_html (instance method)">- (Object) <strong>to_html</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -269,7 +332,7 @@ A new instance of JsFiles.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-A new instance of JsFiles
+Creates a JsFiles object based on the list of given files.
 </p>
 
 
@@ -277,19 +340,50 @@ A new instance of JsFiles
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+<span class='id files'>files</span>  <span class='op'>=</span> <span class='const'>Dir</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>public/js/jquery.*.js</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='gvar'>$js_files</span> <span class='op'>=</span> <span class='const'>JsFiles</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id files'>files</span><span class='rparen'>)</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+        <span class='name'>files</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A list of string file paths.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-4
-5
-6
-7</pre>
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/jsfiles.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'vendor/jsfiles/lib/jsfiles.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id files'>files</span><span class='comma'>,</span> <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@files</span><span class='comma'>,</span> <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id files'>files</span><span class='comma'>,</span> <span class='id options'>options</span>
@@ -332,12 +426,12 @@ Returns the value of attribute files
       <pre class="lines">
 
 
-2
-3
-4</pre>
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/jsfiles.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'vendor/jsfiles/lib/jsfiles.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id files'>files</span>
   <span class='ivar'>@files</span>
@@ -361,18 +455,29 @@ Returns the value of attribute files
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the combined source of all the files.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-13
-14
-15</pre>
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/jsfiles.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'vendor/jsfiles/lib/jsfiles.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id combined'>combined</span>
   <span class='ivar'>@combined</span> <span class='op'>||=</span> <span class='ivar'>@files</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id file'>file</span><span class='op'>|</span> <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='id file'>file</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id f'>f</span><span class='op'>|</span> <span class='id f'>f</span><span class='period'>.</span><span class='id read'>read</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -389,19 +494,30 @@ Returns the value of attribute files
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns a combined, minifed source of all the files.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-17
-18
-19
-20</pre>
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/jsfiles.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'vendor/jsfiles/lib/jsfiles.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id compressed'>compressed</span>
   <span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>jsmin</span><span class='tstring_end'>'</span></span>
@@ -419,18 +535,40 @@ Returns the value of attribute files
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns a list of the URLs for the package.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+-# This is the same as calling #to_html.
+- Main.js_files.hrefs.each do |href|
+  %script{:src =&gt; href}</pre>
+    
+  </div>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
-23
-24</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/jsfiles.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'vendor/jsfiles/lib/jsfiles.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id hrefs'>hrefs</span>
   <span class='ivar'>@files</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id f'>f</span><span class='op'>|</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='const'>File</span><span class='period'>.</span><span class='id basename'>basename</span><span class='lparen'>(</span><span class='id f'>f</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -443,22 +581,52 @@ Returns the value of attribute files
       <div class="method_details ">
   <p class="signature " id="mtime-instance_method">
   
-    - (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>mtime</strong> 
+    - (<tt>Time</tt>) <strong>mtime</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the the modified time of the entire package.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Time</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The last modified time of the most recent file.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-9
-10
-11</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/jsfiles.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'vendor/jsfiles/lib/jsfiles.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id mtime'>mtime</span>
   <span class='ivar'>@files</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id f'>f</span><span class='op'>|</span> <span class='const'>File</span><span class='period'>.</span><span class='id mtime'>mtime</span><span class='lparen'>(</span><span class='id f'>f</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id max'>max</span>
@@ -475,18 +643,41 @@ Returns the value of attribute files
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the <script> tags for the development version.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">
+- if settings.production?
+  %script{:src =&gt; '/js/min.js'}
+- else
+  != Main.js_files.to_html</pre>
+    
+  </div>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-26
-27
-28</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/lib/jsfiles.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'vendor/jsfiles/lib/jsfiles.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id to_html'>to_html</span>
   <span class='id hrefs'>hrefs</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id href'>href</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;script type='text/javascript' src='</span><span class='embexpr_beg'>#{</span><span class='id href'>href</span><span class='rbrace'>}</span><span class='tstring_content'>'&gt;&lt;/script&gt;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -501,7 +692,7 @@ Returns the value of attribute files
 </div>
     
     <div id="footer">
-  Generated on Mon Nov  1 15:33:53 2010 by 
+  Generated on Mon Dec 20 06:25:43 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.9.2).
 </div>
