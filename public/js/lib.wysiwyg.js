@@ -34,7 +34,7 @@
 
   $.fn.auraWysiwyg = function () {
     $(this).wysiwyg({
-      css: '/css/admin_wysiwyg_field.css',
+      css: '/css/admin/wysiwyg_field.css',
       controls: {
         strikeThrough: { visible: false },
         subscript: { visible: false },

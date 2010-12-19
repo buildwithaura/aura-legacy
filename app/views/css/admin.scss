@@ -1,18 +1,19 @@
-@import "settings";
-@import "admin_reset";
+@import "admin/settings";
+@import "admin/reset";
+
 $reset-font: helvetica, sans-serif;
 @include ae-reset;
 
-@import "admin_setup";
-@import "jquery_wysiwyg";
+@import "admin/setup";
+@import "admin/jquery_wysiwyg";
 
-@import "admin_chrome";
-@import "admin_loading";
-@import "admin_sidebar";
-@import "admin_common";
-@import "admin_uiscreen";
-@import "admin_sections";
-@import "admin_slug";
-@import "admin_forms";
-@import "admin_meta";
+@import "admin/chrome";
+@import "admin/loading";
+@import "admin/sidebar";
+@import "admin/common";
+@import "admin/uiscreen";
+@import "admin/sections";
+@import "admin/slug";
+@import "admin/forms";
+@import "admin/meta";
 
