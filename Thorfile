@@ -1,33 +1,19 @@
 class Monk < Thor
-  desc "start ENV", "Start Monk in the supplied environment"
-  method_option :port, :type => :numeric, :aliases => "-p", :default => nil
-  def start(env = ENV["RACK_ENV"] || "development")
-    envs = ["RACK_ENV=#{env}"]
-    envs << "PORT=#{options.port}"  unless options.port.nil?
-    exec "env #{envs.join(' ')} ruby init.rb"
+  desc "start", "Start the server."
+  def start(env=ENV['RACK_ENV'] || 'development')
+    exec "env RACK_ENV=#{env} ruby init.rb"
   end
 
-  desc "console", "Starts an interactive Ruby console."
-  def console(env = ENV["RACK_ENV"] || "development")
-    exec "env RACK_ENV=#{env} irb -r./init.rb"
-  end
-
-  desc "irb", "Alias for console."
-  def irb(*a)
-    console(*a)
+  desc "irb", "Starts a console."
+  def irb(env=ENV['RACK_ENV'] || 'development')
+    irb = ENV['IRB_PATH'] || 'irb'
+    exec "env RACK_ENV=#{env} #{irb} -r./init.rb"
   end
 
   desc "test [file] [-v]", "Do tests."
   method_option :verbose, :type => :boolean, :aliases => "-v", :default => false
   def test(test=nil)
     run_tests options, test, 'rake test'
-  end
-
-  desc "stories [file] [-d driver] [-h host]", "Do story tests."
-  method_option :driver, :type => :string, :aliases => "-d"
-  method_option :verbose, :type => :boolean, :aliases => "-v", :default => false
-  def stories(test=nil)
-    run_tests options, test, 'rake stories'
   end
 
 private
