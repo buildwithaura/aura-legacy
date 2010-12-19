@@ -6,6 +6,7 @@ require "rtopia"
 require "sequel"
 require "sinatra/content_for"
 require "jsfiles"
+require "user_agent"
 require "json"
 require "yaml"
 
