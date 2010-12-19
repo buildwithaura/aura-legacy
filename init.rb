@@ -32,6 +32,7 @@ end
 
 # Bootstrap Aura
 require './app/main'
+require './app/admin'
 
 # Load extensions
 Aura::Extension.active.each { |ext| ext.load! }

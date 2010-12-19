@@ -1,5 +1,0 @@
-# Aura does not need a public/ path as it is handled by extensions.
-# Passenger, however, needs this folder to be present.
-
-*
-!.gitignore
