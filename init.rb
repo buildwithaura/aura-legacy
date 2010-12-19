@@ -5,6 +5,7 @@ require "sinatra/base"
 require "rtopia"
 require "sequel"
 require "sinatra/content_for"
+require "jsfiles"
 require "json"
 require "yaml"
 
