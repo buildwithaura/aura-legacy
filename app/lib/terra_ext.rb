@@ -1,3 +1,6 @@
+# Ensure that Terra is loaded first.
+require File.join(File.dirname(__FILE__), 'terra')
+
 module Terra
   module Fields
     class Html < Textarea
