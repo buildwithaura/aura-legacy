@@ -64,7 +64,7 @@ class Aura
       # Returns the *other* form that depends on the subtype.
       def subform
         return nil  if subtype.nil?
-        self.class.form subtype.id
+        self.class.form subtype._id
       end
 
       # Creates a custom field and adds getters/setters for it.

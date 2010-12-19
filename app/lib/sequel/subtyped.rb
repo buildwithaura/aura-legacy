@@ -37,7 +37,7 @@ module AuraSubtyped
         :name     => 'Default',
         :template => 'id'
 
-      @subtypes.values.sort_by { |st| st.id.to_s }
+      @subtypes.values.sort_by { |st| st._id.to_s }
     end
   end
 end
@@ -58,6 +58,11 @@ class Aura
 
     def template
       @table[:template] || 'id'
+    end
+
+    def _id
+      # Alias for #id for 1.8.6 compatibility
+      @table[:id]
     end
   end
 end
