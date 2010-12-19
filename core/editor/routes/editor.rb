@@ -1,9 +1,4 @@
 class Main
-  get '/editor' do
-    require_login
-    show_admin 'editor/home'
-  end
-
   get '/:model/list' do |model|
     require_login
     @model = Aura::Models.get(model) or pass
