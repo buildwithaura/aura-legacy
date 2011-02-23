@@ -1,24 +1,35 @@
-// Swell navigation.
+// In-page navigation that doesn't break the back button and actually changes
+// the URL.
 //
-// Why you'd use it:
+// What it solves:
 //
-// - Say you have links to a page like `http://yoursite.com/admin/products`.
-// - You want it so that clicking that link will in load the new page /in place/.
-// - However, you want it so that the URL will also be accessible as
-//   `http://yoursite.com/admin/products`.
+//   The usual approach to single-page apps are URL's like
+//   `http://domain.com/#!1938/article`. Livenavigate does the same thing,
+//   except that it your URL will be `http://domain.com/1938/article`, yet
+//   everything will be in-place via AJAX.
+//
+//   This is only supported if your browser supports history states (FF4/Safari).
+//   Don't worry though--it will fallback to the hashbang method otherwise.
+//
+//   For hashbang URL's, this relies on the awesome jQuery.hashListen. It
+//   uses the hash change event, and falls back to window timers if it's not
+//   available.
+//
+//   End result: in-place navigation with nice URL's, no matter what browser.
 //
 // Usage:
 //
 //   /* Bind this to like, say, <a> links */
 //   $.navigate('/admin/products');
 //
-//   $(window).bind('navigate', function (e, href) {
-//     /* href == '/admin/products' */
-//   });
-//
 // If the history states are available (Safari/FF4), it will change the actual URL
 // of the page, yet still /not/ load the URL directly (but instead just trigger the
 // `navigate` event).
+//
+//   /* Here's how you listen to new pages */
+//   $(window).bind('navigate', function (e, href) {
+//     /* href == '/admin/products' */
+//   });
 //
 // If history states are not available, it will fall back to hashListen.
 //
