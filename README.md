@@ -57,14 +57,11 @@ The wiki has some instructions.
 
 ## Testing
 
-    thor monk:test
-    thor monk:test [test name]
-    thor monk:stories
-    thor monk:stories [story name] [-d chrome]
+    rake test
 
 ## Authors and copyright
 
 Aura is authored and maintained by Rico Sta. Cruz of Sinefunc, Inc.
 See more of our work on [www.sinefunc.com](http://www.sinefunc.com)!
 
-(c) 2010 Rico Sta. Cruz. Released under the MIT license.
+(c) 2010-2011 Rico Sta. Cruz. Released under the MIT license.
