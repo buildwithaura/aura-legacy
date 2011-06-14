@@ -1,3 +1,0 @@
-# Page extension
-
-Hello.
