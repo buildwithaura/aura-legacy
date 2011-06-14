@@ -1,6 +1,8 @@
 class Main
   get '/css/*.css' do |fname|
+    out = show :"css/#{fname}", :engine => [:sass, :scss, :less] rescue pass
+
     content_type :css
-    show :"css/#{fname}", :engine => [:sass, :scss, :less]
+    out
   end
 end
