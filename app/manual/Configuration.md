@@ -8,9 +8,10 @@ Configuration is done by Sinatra's app configuration; that is,
 Here's what happens when the app first starts. These will happen
 before any extensions are loaded:
 
- - The `config/` folder hosts a bunch of Ruby files.
- - Anything that ends it `.defaults.rb` is loaded first. They are not example files--they actually get loaded!
- - All other `.rb` files are loaded after that.
+ - The `config/` and `config/defaults` folder hosts a bunch of Ruby files.
+ - `config/defaults/*.rb` are loaded first. This is in version control.
+ - `config/*.rb` are loaded next. These are NOT in version control--these are 
+ for your user-defined overrides.
 
 ## Defining configuration example
 
@@ -39,4 +40,5 @@ All of these are stored in the database.
     Aura.get("site.name")
 
 The value supports strings, integers, arrays and hashes. They
-are stored as YAML in the database.
+are stored as YAML in the database, so feel free to set values as hashes, 
+arrays, etc.
