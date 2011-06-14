@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>File: Configuration</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -52,9 +52,10 @@
 before any extensions are loaded:</p>
 
 <ul>
-<li>The <code>config/</code> folder hosts a bunch of Ruby files.</li>
-<li>Anything that ends it <code>.defaults.rb</code> is loaded first. They are not example files--they actually get loaded!</li>
-<li>All other <code>.rb</code> files are loaded after that.</li>
+<li>The <code>config/</code> and <code>config/defaults</code> folder hosts a bunch of Ruby files.</li>
+<li><code>config/defaults/*.rb</code> are loaded first. This is in version control.</li>
+<li><code>config/*.rb</code> are loaded next. These are NOT in version control--these are
+for your user-defined overrides.</li>
 </ul>
 
 
@@ -88,12 +89,13 @@ All of these are stored in the database.</p>
 </pre>
 
 <p>The value supports strings, integers, arrays and hashes. They
-are stored as YAML in the database.</p></div></div>
+are stored as YAML in the database, so feel free to set values as hashes,
+arrays, etc.</p></div></div>
     
     <div id="footer">
-  Generated on Mon Dec 20 06:25:37 2010 by 
+  Generated on Tue Jun 14 20:08:46 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.1 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

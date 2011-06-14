@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Aura::Models::Page</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -74,8 +74,8 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">core/page/models/page.rb<span class="defines">,<br />
-  core/default_theme/init.rb,<br /> core/page/models/page_seed.rb</span>
+    <dd class="r2 last">app/models/page.rb<span class="defines">,<br />
+  app/models/page_seed.rb,<br /> core/default_theme/init.rb</span>
 </dd>
   
 </dl>
@@ -316,7 +316,7 @@ A new instance of Page
 53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/page.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id a'>a</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -371,7 +371,7 @@ A new instance of Page
 83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'app/models/page.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id content?'>content?</span><span class='semicolon'>;</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -416,7 +416,7 @@ Creates a custom field and adds getters/setters for it.
 81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'app/models/page.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id custom_field'>custom_field</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
@@ -494,7 +494,7 @@ Creates a custom field and adds getters/setters for it.
 48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page_seed.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'app/models/page_seed.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id seed'>seed</span><span class='lparen'>(</span><span class='id type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id blk'>blk</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -583,7 +583,7 @@ Creates a custom field and adds getters/setters for it.
 84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'app/models/page.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id show_on_sidebar?'>show_on_sidebar?</span><span class='semicolon'>;</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -636,7 +636,7 @@ Creates a custom field and adds getters/setters for it.
 57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'app/models/page.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id shown_in_menu?'>shown_in_menu?</span>
   <span class='op'>!</span><span class='op'>!</span> <span class='kw'>self</span><span class='period'>.</span><span class='id shown_in_menu'>shown_in_menu</span>
@@ -676,7 +676,7 @@ Returns the <b>other</b> form that depends on the subtype.
 68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'app/models/page.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id subform'>subform</span>
   <span class='kw'>return</span> <span class='kw'>nil</span>  <span class='kw'>if</span> <span class='id subtype'>subtype</span><span class='period'>.</span><span class='id nil?'>nil?</span>
@@ -706,7 +706,7 @@ Returns the <b>other</b> form that depends on the subtype.
 62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/page/models/page.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'app/models/page.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id validate'>validate</span>
   <span class='kw'>super</span>
@@ -722,9 +722,9 @@ Returns the <b>other</b> form that depends on the subtype.
 </div>
     
     <div id="footer">
-  Generated on Mon Dec 20 06:25:41 2010 by 
+  Generated on Tue Jun 14 20:08:47 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.1 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Aura::Models::User</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -78,7 +78,7 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">core/user/models/user.rb</dd>
+    <dd class="r1 last">app/models/user.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -353,7 +353,7 @@ the value to set the attribute password_confirmation to.
 31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id password_confirmation='>password_confirmation=</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@password_confirmation</span> <span class='op'>=</span> <span class='id value'>value</span>
@@ -399,7 +399,7 @@ For Shield
 20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id fetch'>fetch</span><span class='lparen'>(</span><span class='id email'>email</span><span class='rparen'>)</span>
   <span class='id first'>first</span><span class='lparen'>(</span><span class='symbol'>:email</span> <span class='op'>=&gt;</span> <span class='id email'>email</span><span class='rparen'>)</span>
@@ -437,7 +437,7 @@ For Shield
 67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id seed'>seed</span><span class='lparen'>(</span><span class='id type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id blk'>blk</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -476,7 +476,7 @@ For Shield
 53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id seed!'>seed!</span><span class='lparen'>(</span><span class='id type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id blk'>blk</span><span class='rparen'>)</span>
   <span class='comment'># Don't clear users!
@@ -524,7 +524,7 @@ For Shield
 27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id password='>password=</span><span class='lparen'>(</span><span class='id password'>password</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id crypted_password'>crypted_password</span> <span class='op'>=</span> <span class='const'>Shield</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id encrypt'>encrypt</span><span class='lparen'>(</span><span class='id password'>password</span><span class='rparen'>)</span>
@@ -554,7 +554,7 @@ For Shield
 44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id slugify'>slugify</span><span class='lparen'>(</span><span class='id str'>str</span><span class='op'>=</span><span class='id email'>email</span><span class='rparen'>)</span>
   <span class='kw'>super</span> <span class='id str'>str</span>
@@ -582,7 +582,7 @@ For Shield
 48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='id email'>email</span>
@@ -627,7 +627,7 @@ For Shield
 40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'core/user/models/user.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id validate'>validate</span>
   <span class='kw'>super</span>
@@ -648,9 +648,9 @@ For Shield
 </div>
     
     <div id="footer">
-  Generated on Mon Dec 20 06:25:41 2010 by 
+  Generated on Tue Jun 14 20:08:47 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.1 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>
