@@ -18,6 +18,7 @@ tmtags
 # Project (general)
 /vendor/*/vendor
 /vendor/*/test
+/config/*.rb
 /log
 /logs
 /log

@@ -1,6 +1,6 @@
-$:.unshift(*Dir["./vendor/*/lib"])
+$:.unshift *Dir["./vendor/*/lib"]
 
-require "rubygems"
+require "rubygems"  unless defined?(::Gem)
 require "sinatra/base"
 require "rtopia"
 require "sequel"
@@ -10,10 +10,9 @@ require "user_agent"
 require "json"
 require "yaml"
 
-# TODO: Rename Main to Aura, and merge with class Aura
 class Main < Sinatra::Base
-  set      :root, File.dirname(__FILE__)
-  set      :root_path, lambda { |*args| File.join(root, *args) }
+  set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
+  set      :root_path, lambda { |*args| root *args }
   set      :view_paths, []
 
   set      :haml, :escape_html => true
@@ -27,9 +26,9 @@ class Main < Sinatra::Base
   use      Rack::Deflater  if production?
 
   # Load all, but load defaults first
-  Dir[root_path('config', '{*.defaults,*}.rb')].uniq.each { |f|
-    load f unless f.include?('.example.')
-  }
+  ( Dir[root('config/defaults/*.rb')].sort +
+    Dir[root('config/*.rb')].sort
+  ).uniq.each { |f| load f }
 end
 
 # Bootstrap Aura
