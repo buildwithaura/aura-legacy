@@ -1,4 +1,5 @@
 $:.unshift *Dir["./vendor/*/lib"]
+$:.unshift *Dir["./lib"]
 
 require "rubygems"  unless defined?(::Gem)
 require "sinatra/base"
