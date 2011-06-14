@@ -13,3 +13,8 @@ task :test do
     load file unless file =~ /^-/
   end
 end
+
+desc "Update documentation."
+task :doc do
+  exec 'yard'
+end

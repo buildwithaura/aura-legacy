@@ -46,9 +46,9 @@ your extension's folder.
 
 (Todo: insert a note here about to configure which extensions are loaded)
 
-## Sinatra::MultiView
+## Sinatra::MultiRenderExt
 
-Aura includes a plugin Sinatra::MultiView which is built on top of
+Aura includes a plugin Sinatra::MultiRenderExt which is built on top of
 Sinatra's `render` system.
 
 Using the `show()` helper (instead of `render`) will search all
@@ -70,3 +70,9 @@ You can then use:
     show 'home'       # Finds one/views/home.haml
     show 'footer'     # Finds one/views/footer.haml
     show 'header'     # Finds two/views/header.erb
+
+This is also done for partials:
+
+    partial 'header'     # Finds views/header.erb
+    partial 'header', :name => "Archer"
+

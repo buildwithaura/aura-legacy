@@ -27,6 +27,9 @@ Aura is a CMS. It aims to make people's lives easier. (+)
 - **Extensions**
   - {file:PageExtension.md Page extension}
 
+- **Recipes**
+  - {file:Recipes.md Recipe index} - common things to do
+
 ## API Reference
 
 - **Singleton modules**
@@ -67,9 +70,7 @@ Aura is a CMS. It aims to make people's lives easier. (+)
   - {Main::MainHelpers         MainHelpers}
   - {Main::PageHelpers         PageHelpers}
   - {Main::TemplateHelpers     TemplateHelpers}
-  - {Main::UserHelpers         UserHelpers}
   - {Main::WatermarkHelpers    WatermarkHelpers}
-  - {Sinatra::UserAgentHelpers UserAgentHelpers}
 
 - **Auxiliary classes**
   - {JsFiles}
