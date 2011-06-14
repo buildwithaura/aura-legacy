@@ -43,6 +43,8 @@
     
     <div id="content"><div id='filecontents'><h1>Creating extensions</h1>
 
+<p>(See <a href="file.Extensions.html" title="Extensions">Extensions</a> for more info.)</p>
+
 <p>Step 1: Make the folder <code>extensions/my_extension/</code>. All of these files and
 folders are optional.</p>
 
@@ -94,10 +96,31 @@ folders are optional.</p>
     <span class='id text'>text</span> <span class='symbol'>:excerpt</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Portfolio excerpt</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
 <span class='kw'>end</span>
+</pre>
+
+<h1>Adding something to the admin sidebar</h1>
+
+<p>If it's a model you want on there:</p>
+
+<p>   class Aura::Models::MyModel</p>
+
+<pre class="code"> <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id show_on_sidebar?'>show_on_sidebar?</span><span class='semicolon'>;</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+</pre>
+
+<p>   end</p>
+
+<p>Something else:</p>
+
+<p>   # extensions/my_extension/init.rb
+   Aura::Admin.menu.add "id",</p>
+
+<pre class="code"> :name =&gt; &quot;My menu entry&quot;,
+ :href =&gt; '/admin/foo',
+ :icon =&gt; 'settings'
 </pre></div></div>
     
     <div id="footer">
-  Generated on Tue Jun 14 20:08:46 2011 by 
+  Generated on Tue Jun 14 20:20:12 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.8 (ruby-1.9.2).
 </div>
