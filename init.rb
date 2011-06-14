@@ -3,18 +3,17 @@ $:.unshift *Dir["./lib"]
 
 require "rubygems"  unless defined?(::Gem)
 require "sinatra/base"
+require "sinatra/support"
 require "rtopia"
 require "sequel"
 require "sinatra/content_for"
 require "jsfiles"
-require "user_agent"
 require "json"
 require "yaml"
 
 class Main < Sinatra::Base
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
   set      :root_path, lambda { |*args| root *args }
-  set      :view_paths, []
 
   set      :haml, :escape_html => true
   set      :haml, :escape_html => true, :ugly => true  if production?

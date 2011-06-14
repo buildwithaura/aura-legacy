@@ -14,9 +14,20 @@ class Main
       partial name, locals
     end
 
+    def partial(template, locals={})
+      layout, @layout = @layout, nil
+      out = show template, {:layout => false}, locals
+      @layout = layout
+      out
+    end
+
     def content_for!(key, &blk)
       content_blocks[key.to_sym] = Array.new
       content_for key, &blk
+    end
+
+    def content_for?(key)
+      (content_blocks[key.to_sym] || Array.new).any?
     end
 
     # Loads a given template and yields a certain content block of it.

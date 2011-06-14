@@ -3,14 +3,17 @@ prefix = File.dirname(__FILE__)
 # Load the libs; core first
 Dir[File.join(prefix, 'lib/{core/,}**/*.rb')].each { |f| require f }
 
+require 'sinatra/support/multirender-ext'
+
 class Main
   register Sinatra::AuraPublic
-  register Sinatra::MultiView
+  register Sinatra::MultiRenderExt
   helpers  Sinatra::ContentFor
   helpers  Sinatra::UserAgentHelpers
+
   register Seeder
 
-  set :view_paths,      [root_path('app', 'views')]
+  set :multi_views,     [root_path('app', 'views')]
   set :app_files,       Dir[root_path('init.rb'), root_path('{app,core,extensions}/**/*.rb')]
   set :extensions_path, [root_path('core'), root_path('extensions')]
 

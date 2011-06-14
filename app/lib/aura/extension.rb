@@ -4,6 +4,24 @@ require 'ostruct'
 class Aura
   ExtensionNotFound = Class.new(StandardError)
 
+  # Aura extensions.
+  #
+  # == Common usage
+  #
+  #   ext = Aura::Extension['base']
+  #
+  #   ext.active?
+  #   ext.load!
+  #
+  #   ext.info             #=> #<OStruct>
+  #   ext.info.author
+  #
+  #   ext.path             #=> ~/aura/core/base
+  #   ext.path('init.rb')  #=> ~/aura/core/base/init.rb
+  #
+  #   Aura::Extension.active  # Active extensions (Array of #<Extension>)
+  #   Aura::Extension.all     # All extensions (Array of #<Extension>)
+  #
   class Extension
     attr_reader :name
 
@@ -69,8 +87,8 @@ class Aura
       # Add the view path, if it has
       if path(:views)
         paths = [path(:views)]
-        paths += Main.view_paths  if Main.respond_to?(:view_paths)
-        Main.set :view_paths, paths
+        paths += Main.multi_views  if Main.respond_to?(:multi_views)
+        Main.set :multi_views, paths
       end
     end
 

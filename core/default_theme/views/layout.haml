@@ -26,6 +26,8 @@
               %a{:href => p.path}= p.menu_title
 
     #all
+      - if content_for?(:content)
+        != yield_content(:content)
       != yield
 
     != admin_watermark

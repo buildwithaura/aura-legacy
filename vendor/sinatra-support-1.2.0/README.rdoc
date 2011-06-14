@@ -1,0 +1,113 @@
+= Sinatra Support
+
+==== A collection of useful utilities.
+
+Sinatra Support's mission is to implement the things web apps will need 90% of the
+time. Think of it as Rails's conveniences done the Sinatra way.
+
+* *Documentation:* http://sinefunc.com/sinatra-support
+* *Source:* http://github.com/sinefunc/sinatra-support
+
+== Plugins
+
+[{Sinatra::CssSupport}]       Provides CSS/Sass/Less support.
+[{Sinatra::JsSupport}]        Provides JavaScript/CoffeeScript support.
+[{Sinatra::Numeric}]          Helpers for showing percentages and currencies.
+[{Sinatra::DateForms}]        Provides dropdowns for year/month/date.
+[{Sinatra::I18nSupport}]      Provides I18n support.
+[{Sinatra::MultiRender}]      Allow rendering from multiple view paths and auto-guessing template engines.
+[{Sinatra::CompassSupport}]   Adds support for the Compass CSS framework.
+[{Sinatra::CompressedJS}]     JavaScript compression.
+
+== Helpers
+
+[{Sinatra::CountryHelpers}]   Country dropdowns and stuff.
+[{Sinatra::HtmlHelpers}]      Provides many common HTML helpers.
+[{Sinatra::IfHelpers}]        Common HAML condition helpers.
+[{Sinatra::UserAgentHelpers}] Browser detection.
+[{Sinatra::OhmErrorHelpers}]  Allows you to present errors nicely
+                              in HAML templates.
+
+== How to use
+
+Require the Sinatra support gem. For those using Bundler, that is:
+
+  # Gemfile
+  gem "sinatra-support", require: "sinatra/support"
+
+Or otherwise:
+
+  # gem install sinatra-support
+  require 'sinatra/support'
+
+In your Sinatra application, use +register+ or +helpers+ to add
+in plugins as you need them.
+
+  class Main < Sinatra::Base
+    register Sinatra::DateForms
+    helpers  Sinatra::HtmlHelpers
+    helpers  Sinatra::CountryHelpers
+  end
+
+== Common examples
+
+==== Provided by {Sinatra::UserAgentHelpers}:
+
+Detect browser versions easily.
+
+  helpers Sinatra::UserAgentHelpers
+
+  if browser.ios? && !browser.ipad?
+    redirect '/touch'
+  end
+
+==== Provided by {Sinatra::CssSupport}:
+
+Serve up dynamic stylesheets (Sass/Less) with ease. Dynamic JavaScript files
+(CoffeeScript) are also available via {Sinatra::JsSupport}.
+
+  register Sinatra::CssSupport
+  serve_css '/css', from: './app/css'
+
+  # curl "http://localhost:4567/css/print.css"   # reads app/css/print.sass 
+                                                 # (or .less, .scss, .css)
+
+==== Provided by {Sinatra::IfHelpers}:
+
+Conditional helpers for HAML (+checked_if+, +hide_if+, etc):
+
+   %input{checked_if(page.available?), type: 'checkbox'}
+   %div#comments{hide_if(post.comments.empty?)}
+
+==== Provided by {Sinatra::CountryHelpers}:
+
+  <select name="country"><%= country_choices %></select>
+
+==== Provided by {Sinatra::DateForms}:
+
+  <select name="birthday[month]"><%= month_choices %></select>
+  <select name="birthday[day]"><%= day_choices %></select>
+  <select name="birthday[year]"><%= year_choices %></select>
+  
+==== Provided by {Sinatra::Numeric}:
+
+  <%= currency(100) %><!-- $100 -->
+  <%= percentage(100) %><!-- 100.00% -->
+
+==== Provided by {Sinatra::HtmlHelpers}:
+
+  <%= h "<Bar>" %>
+  
+  <select name="categories">
+    <%= select_options [['First', 1], ['Second', 2]] %>
+  </select>
+  
+== Starting a new project?
+
+Also consider Rico Sta. Cruz's sinatra-template which already preloads some of
+Sinatra Support's conveniences and more. http://github.com/rstacruz/sinatra-template
+
+== Copyright
+
+Copyright (c) 2009-2011 Cyril David, Rico Sta. Cruz and Sinefunc, Inc.
+See LICENSE for details.
