@@ -1,6 +1,29 @@
 require 'ostruct'
 
 class Aura
+  # A menu.
+  #
+  # == Common usage
+  #
+  #   Aura::Admin.menu
+  #   Aura::Admin.menu.add "hello",
+  #     :name => "Hello",
+  #     :href => '/admin/lol',
+  #     :icon => 'settings'
+  #
+  #   Aura::Admin.menu.add "hello.subitem",
+  #     :name => "Subitem",
+  #     :href => '/admin/lol/sub',
+  #     :icon => 'settings'
+  #
+  #   Aura::Admin.menu.items
+  #
+  #   item = Aura::Admin.menu.get('hello')
+  #   item.name
+  #   item.href
+  #   item.icon
+  #   item.items    # List of sub items
+  #
   class Menu
     def add(key, options={})
       path = key.to_s.split('.')

@@ -1,5 +1,7 @@
 # Creating extensions
 
+(See {file:Extensions.md Extensions} for more info.)
+
 Step 1: Make the folder `extensions/my_extension/`. All of these files and 
 folders are optional.
 
@@ -47,3 +49,20 @@ A theme is just an extension.
         text :excerpt, "Portfolio excerpt"
         end
     end
+
+# Adding something to the admin sidebar
+
+If it's a model you want on there:
+
+   class Aura::Models::MyModel
+     def self.show_on_sidebar?; true; end
+   end
+
+Something else:
+
+   # extensions/my_extension/init.rb
+   Aura::Admin.menu.add "id",
+     :name => "My menu entry",
+     :href => '/admin/foo',
+     :icon => 'settings'
+
