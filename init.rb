@@ -1,5 +1,5 @@
-$:.unshift *Dir["./vendor/*/lib"]
-$:.unshift *Dir["./lib"]
+$:.unshift *Dir[File.expand_path("../vendor/*/*/lib", __FILE__)]
+ENV['APP_ROOT'] ||= Dir.pwd
 
 require "rubygems"  unless defined?(::Gem)
 require "sinatra/base"
@@ -15,6 +15,7 @@ require "shield"
 class Main < Sinatra::Base
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
   set      :root_path, lambda { |*args| root *args }
+  set      :approot, lambda { |*args| File.join(ENV['APP_ROOT'] || root, *args) }
 
   set      :haml, :escape_html => true
   set      :haml, :escape_html => true, :ugly => true  if production?
@@ -27,19 +28,19 @@ class Main < Sinatra::Base
   use      Rack::Deflater  if production?
 
   # Load all, but load defaults first
-  ( Dir[root('config/defaults/*.rb')].sort +
-    Dir[root('config/*.rb')].sort
+  ( Dir[root('config/*.rb')].sort +
+    Dir[approot('config/*.rb')].sort
   ).uniq.each { |f| load f }
 end
 
 # Bootstrap Aura
-require './app/main'
-require './app/admin'
+require Main.root('app/main')
+require Main.root('app/admin')
 
 # Load extensions
 Aura::Extension.active.each { |ext| ext.load! }
 
-seed_file = Main.root_path('config', 'seed.yml')
+seed_file = Main.approot('config', 'seed.yml')
 
 # If the file config/seed.yml is present, use that to initialize the DB.
 # Only if the DB is pristine, though!
@@ -56,4 +57,4 @@ Aura::Models.unpack
 Aura::Extension.active.each { |ext| ext.init }
 
 Main.set :port, ENV['PORT'].to_i  unless ENV['PORT'].nil?
-Main.run!  if __FILE__ == $0
+Main.run!  if __FILE__ == $0 || $RUN

@@ -1,7 +1,6 @@
-core app vendor/jsfiles/lib vendor/agentsniff/lib
+core app
 -r app/manual/Index.md
 --exclude test
 --no-private
 --files=README.md
---files=app/manual/*
---files=core/*/manual/*
+--files=manual/*

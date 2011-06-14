@@ -16,9 +16,9 @@ class Main
 
   register Seeder
 
-  set :multi_views,     [root_path('app/views')]
-  set :app_files,       Dir[root_path('init.rb'), root_path('{app,core,extensions}/**/*.rb')]
-  set :extensions_path, [root_path('core'), root_path('extensions')]
+  set :multi_views,     [root('app/views')]
+  set :app_files,       Dir[root('init.rb'), root('{app,core}/**/*.rb') + root('extensions/**/*.rb')]
+  set :extensions_path, [root('core'), approot('extensions')]
 
   use Pistol, :files => app_files + [root_path('tmp', 'restart.txt')]  unless production?
 

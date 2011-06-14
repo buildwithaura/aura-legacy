@@ -16,20 +16,14 @@ tmtags
 *.swn
 
 # Project (general)
-/vendor/*/vendor
-/vendor/*/test
 /config/*.rb
 /log
 /logs
 /log
 /tmp
 /db
-
-# Docs
 .yardoc
-doc
-
-# Others
+/aura/doc
+/aura/tmp
 .sass-cache
 .rvmrc
-Monkfile

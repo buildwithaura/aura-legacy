@@ -13,6 +13,7 @@
       = "Settings"
   %nav
     %ul
+      -# TODO: admin_submenu('settings')
       - Aura::Admin.menu.get('settings').items.each do |item|
         %li{:class => ('browse' if item.items.any?)}
           != link_to (item.href || '#') do

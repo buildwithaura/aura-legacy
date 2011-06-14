@@ -1,7 +1,0 @@
-app/test
-app/manual
-core/*/test
-core/*/manual
-extensions/*/test
-extensions/*/manual
-
