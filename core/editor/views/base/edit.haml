@@ -46,7 +46,7 @@
   != partial item.templates_for(:errors), :errors => item.errors
 
   .slim
-    %form{:action => action, :method => 'post' }
+    %form{:action => action, :method => 'post'}
       != partial item.templates_for(:form), :item => item
 
       %p.submit

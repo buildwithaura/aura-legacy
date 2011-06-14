@@ -60,20 +60,30 @@ module Sinatra::MultiRenderExt
     #   # Only look at certain paths
     #   show :home, views: [ './views', './skins/default' ]
     #
-    def show(template, options={}, locals={}, &block)
+    def show(templates, options={}, locals={}, &block)
       paths     = [*(options[:views]  || settings.multi_views)].join(',')
       engines   = [*(options[:engine] || settings.multi_engines)].join(',')
 
       @layout = options.delete(:layout)
 
-      t = @template_cache.fetch template, options do
-        template = "{#{template.join(',')}}"  if template.is_a?(Array)
+      get_engine = lambda { |template|
         spec = "{#{paths}}/#{template}.{#{engines}}"
-        template = Dir[spec].first  or raise Errno::ENOENT.new(spec)
+        template = Dir[spec].first
+        return nil  unless template
 
         ext      = File.extname(template)[1..-1].to_sym
         options  = settings.send(ext).merge(options)  if settings.respond_to?(ext)
-        engine   = Tilt[ext]  or raise "Template engine not found: #{ext}"
+
+        eng = Tilt[ext]  or raise "Template engine not found: #{ext}"
+        [ template, eng ]
+      }
+
+      t = @template_cache.fetch templates, options do
+        template, engine = [*templates].inject(nil) do |e, t|
+          e ||= get_engine[t]
+        end
+
+        raise Errno::ENOENT.new(templates.inspect)  unless template
 
         engine.new(template, 0, options)
       end

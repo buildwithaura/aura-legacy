@@ -16,7 +16,7 @@ class Main
 
   register Seeder
 
-  set :multi_views,     [root_path('app', 'views')]
+  set :multi_views,     [root_path('app/views')]
   set :app_files,       Dir[root_path('init.rb'), root_path('{app,core,extensions}/**/*.rb')]
   set :extensions_path, [root_path('core'), root_path('extensions')]
 
@@ -44,13 +44,5 @@ Sequel::Model.plugin :schema
 Sequel::Model.plugin :auto_schema
 Sequel::Model.plugin :validation_helpers
 Sequel.extension :inflector
-
-Aura::Admin.menu.add "settings.your_account",
-  :name => "Your account",
-  :href => Rtopia.R(:user, :me, :edit)
-
-Aura::Admin.menu.add "settings.users",
-  :name => "Users",
-  :href => Rtopia.R(:user, :list)
 
 Dir[File.join(prefix, '{models,helpers,routes}/**/*.rb')].each { |f| require f }
