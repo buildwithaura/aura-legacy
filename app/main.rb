@@ -10,6 +10,9 @@ class Main
   register Sinatra::MultiRenderExt
   helpers  Sinatra::ContentFor
   helpers  Sinatra::UserAgentHelpers
+  helpers Shield::Helpers
+
+  set :login_success_message, nil
 
   register Seeder
 
@@ -41,5 +44,13 @@ Sequel::Model.plugin :schema
 Sequel::Model.plugin :auto_schema
 Sequel::Model.plugin :validation_helpers
 Sequel.extension :inflector
+
+Aura::Admin.menu.add "settings.your_account",
+  :name => "Your account",
+  :href => Rtopia.R(:user, :me, :edit)
+
+Aura::Admin.menu.add "settings.users",
+  :name => "Users",
+  :href => Rtopia.R(:user, :list)
 
 Dir[File.join(prefix, '{models,helpers,routes}/**/*.rb')].each { |f| require f }

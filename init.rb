@@ -10,6 +10,7 @@ require "sinatra/content_for"
 require "jsfiles"
 require "json"
 require "yaml"
+require "shield"
 
 class Main < Sinatra::Base
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
